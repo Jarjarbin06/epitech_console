@@ -217,33 +217,9 @@ if __name__ == "__main__":
 
     show(color("Test started", color_code=BASE_PACK.WARNING, indicator=" "), end="\n\n\n")
 
-    try: # catch exceptions
+    try:
 
-        custom_pack: Packed = Packed(on="=", off=" ", arrow_right=">", borders=("[", "]")) # initialize a custom animation and color pack
-        anim1: Animation = Animation(custom_pack.FILL_R + custom_pack.FULL) # initialize a new animation (source: custom pack)
-        anim2: Animation = Animation(["[|]", "[/]", "[/]", "[-]", "[-]", "[-]", "[\\]", "[\\]"]) # initialize a custom animation (source: list of string)
-
-        while True: # loop forever
-
-            while not anim1.is_last(): # loop while anim1 hasn't reached the last step
-
-                if anim2.is_last(): anim2.reset() # if anim2 as reach the last step, it reset the animation back to step 0
-
-                show( # show a text in the console
-                    (
-                        color( # apply color on a text
-                            "This is a test ", # test coloration of a basic text
-                            color_code=BASE_PACK.VALID, # test a default coloring
-                            indicator=" " # show the color indicator
-                        ) + " <=> " + anim1() + anim2() + "\n\n\n\nAnd this is another test\n('Ctrl+C' to stop)" # test to see if line_up(work)
-                    ),
-                    delete=True, # overwrite previous line
-                    sleep=0.1 # sleep 0.1 second before continuing the program
-                )
-
-                Action.line_up(5) # set printing cursor 5 lines up
-
-            anim1.reset() # reset the animation back to step 0
+        pass
 
     except KeyboardInterrupt:
         show(color("Test stopped", color_code=BASE_PACK.WARNING, indicator=" "), start="\n", delete=True)
