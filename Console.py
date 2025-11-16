@@ -7,6 +7,7 @@
 ### by JARJARBIN's STUDIO ###
 #############################
 
+
 from Color import Color
 from Packed import Packed
 from os import system
@@ -184,7 +185,8 @@ def color(
 
         *,
         color_code: tuple[str, str] = BASE_PACK.INFO,
-        title: str = ""
+        title: str = "",
+        indicator: str = ""
     ) -> str:
     """
         Put color on a text and return it.
@@ -194,20 +196,27 @@ def color(
 
             color_code (tuple[str, str])(optional): color code.
             title (str)(optional): title of the text.
+            indicator (str)(optional): character to indicate the color.
 
         Returns:
             str: colored text.
     """
 
-    if title == "":
-        return f"{color_code[1]}{text}{Color.BASE}"
-    else:
-        return f"{color_code[0]}{title}{Color.BASE}{color_code[1]} : {text}{Color.BASE}"
+    string : str = ""
+
+    if indicator != "": string += f"{color_code[0]}{indicator}{Color.BASE} "
+
+    if title != "": string += f"{color_code[0]}{title}{Color.BASE}{color_code[1]} : "
+
+    string += f"{color_code[1]}{text}{Color.BASE}"
+
+    return string
 
 
 if __name__ == "__main__":
 
-    print("\033[93mtest started\033[0m\n")
+    show(color("Test started", color_code=BASE_PACK.WARNING, indicator=" "), end="\n\n\n")
+
     try: # catch exceptions
 
         custom_pack: Packed = Packed(on="=", off=" ", arrow_right=">", borders=("[", "]")) # initialize a custom animation and color pack
@@ -216,17 +225,17 @@ if __name__ == "__main__":
 
         while True: # loop forever
 
-            while not anim1.is_last(): # loop while anim1 hasn't reach the last step
+            while not anim1.is_last(): # loop while anim1 hasn't reached the last step
 
                 if anim2.is_last(): anim2.reset() # if anim2 as reach the last step, it reset the animation back to step 0
 
                 show( # show a text in the console
                     (
-                        anim2() + anim1() + " <=> " + color( # apply color on a text
-                            "This is a test", # test coloration of a basic text
+                        color( # apply color on a text
+                            "This is a test ", # test coloration of a basic text
                             color_code=BASE_PACK.VALID, # test a default coloring
-                            title="TEST" # test coloration of a title
-                        ) + "\n\n\n\nAnd this is another test\n('Ctrl+C' to stop)" # test to see if line_up(work)
+                            indicator=" " # show the color indicator
+                        ) + " <=> " + anim1() + anim2() + "\n\n\n\nAnd this is another test\n('Ctrl+C' to stop)" # test to see if line_up(work)
                     ),
                     delete=True, # overwrite previous line
                     sleep=0.1 # sleep 0.1 second before continuing the program
@@ -237,4 +246,4 @@ if __name__ == "__main__":
             anim1.reset() # reset the animation back to step 0
 
     except KeyboardInterrupt:
-        print("\r\033[93mtest stopped\033[0m")
+        show(color("Test stopped", color_code=BASE_PACK.WARNING, indicator=" "), start="\n", delete=True)
