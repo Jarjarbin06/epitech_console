@@ -1,59 +1,57 @@
-# ✅ **ROADMAP — Console v2.0 (modulaire, simple, efficace)**
+# ✅ **ROADMAP — Console v2.0 (modular, simple, efficient)**
 
-*(Format prêt à copier dans PyCharm)*
-
----
-
-## 🔹 **[TODO] 1. Cursor Manager (base indispensable)**
-
-**Créer une classe Cursor** pour manipuler proprement le curseur :
-
-* [ ] Ajouter `cursor.hide()` – cacher le curseur
-* [ ] Ajouter `cursor.show()` – montrer le curseur
-* [ ] Ajouter `cursor.move_up(n=1)`
-* [ ] Ajouter `cursor.move_down(n=1)`
-* [ ] Ajouter `cursor.move_right(n=1)`
-* [ ] Ajouter `cursor.move_left(n=1)`
-* [ ] Ajouter `cursor.save()` – sauvegarder la position
-* [ ] Ajouter `cursor.restore()` – restaurer position
-* [ ] Ajouter `cursor.clear_line()` – effacer ligne entière
-
-**Note :** utilise les séquences ANSI suivantes :
-
-* Haut : `\033[{n}A`
-* Bas : `\033[{n}B`
-* Droite : `\033[{n}C`
-* Gauche : `\033[{n}D`
-* Sauver : `\033[s`
-* Restor : `\033[u`
-* Clear line : `\033[2K`
-
-*(je peux t’expliquer une par une si tu veux)*
+*(Format ready to copy into PyCharm)*
 
 ---
 
-## 🔹 **[TODO] 2. ProgressBar (outil pratique réutilisable)**
+## 🔹 **[TODO] 1. Cursor Manager (essential foundation)**
 
-**Créer une classe ProgressBar intégrée à Animation et Packed** :
+**Create a `Cursor` class** to handle the cursor properly:
 
-* [ ] Option `length` (largeur)
-* [ ] Option `style` (pack BASIS : on/off/borders)
+* [ ] Add `cursor.hide()` – hide the cursor
+* [ ] Add `cursor.show()` – show the cursor
+* [ ] Add `cursor.move_up(n=1)`
+* [ ] Add `cursor.move_down(n=1)`
+* [ ] Add `cursor.move_right(n=1)`
+* [ ] Add `cursor.move_left(n=1)`
+* [ ] Add `cursor.save()` – save position
+* [ ] Add `cursor.restore()` – restore position
+* [ ] Add `cursor.clear_line()` – clear entire line
+
+**Note:** use the following ANSI sequences:
+
+* Up: `\033[{n}A`
+* Down: `\033[{n}B`
+* Right: `\033[{n}C`
+* Left: `\033[{n}D`
+* Save: `\033[s`
+* Restore: `\033[u`
+* Clear line: `\033[2K`
+
+---
+
+## 🔹 **[TODO] 2. ProgressBar (reusable handy tool)**
+
+**Create a `ProgressBar` class integrated with `Animation` and `Packed`:**
+
+* [ ] Option `length` (width)
+* [ ] Option `style` (BASIS pack: on/off/borders)
 * [ ] Option `color`
-* [ ] Option `percent_style`: numérique, barre seulement ou mix
-* [ ] Méthode `update(percent)`
-* [ ] Méthode `render(delete=True)`
+* [ ] Option `percent_style`: numeric, bar only, or mixed
+* [ ] Method `update(percent)`
+* [ ] Method `render(delete=True)`
 
-Fonctionnalités standards :
+Standard features:
 
-* [ ] Animation optionnelle (spinner en parallèle)
-* [ ] Suppression automatique de la ligne précédente
-* [ ] Support script / boucle / async léger
+* [ ] Optional animation (spinner in parallel)
+* [ ] Automatically remove previous line
+* [ ] Support scripts / loops / lightweight async
 
 ---
 
-## 🔹 **[TODO] 3. Module ANSI (simple, centralisé, pour tout usage futur)**
+## 🔹 **[TODO] 3. ANSI Module (simple, centralized, for all future use)**
 
-**Créer un fichier ansi.py** contenant les codes courants :
+**Create a file `ansi.py` containing common codes:**
 
 * [ ] CURSOR_UP = "\033[{n}A"
 * [ ] CURSOR_DOWN = "\033[{n}B"
@@ -61,30 +59,30 @@ Fonctionnalités standards :
 * [ ] HIDE_CURSOR = "\033[?25l"
 * [ ] SHOW_CURSOR = "\033[?25h"
 
-*But : éviter de dupliquer du code partout.*
+*Goal: avoid duplicating code everywhere.*
 
 ---
 
-## 🔹 **[TODO] 4. Amélioration d’Action (console utils)**
+## 🔹 **[TODO] 4. Improve Action (console utils)**
 
-Ajouts simples et utiles :
+Simple and useful additions:
 
 * [ ] `Action.pause(msg="Press ENTER to continue...")`
-* [ ] `Action.wait(seconds)` (wrapper sur sleep)
+* [ ] `Action.wait(seconds)` (wrapper around `sleep`)
 * [ ] `Action.flush()` : `stdout.flush()`
-* [ ] `Action.clear_lines(n)` : efface n lignes d’un coup
+* [ ] `Action.clear_lines(n)` : clears `n` lines at once
 
 ---
 
-## 🔹 **[TODO] 5. Améliorer color() et styles (sans complexifier)**
+## 🔹 **[TODO] 5. Improve color() and styles (keep it simple)**
 
-Tu as déjà un système de log, donc on garde simple :
+You already have a logging system, so keep it simple:
 
-* [ ] Ajouter `bold`, `underline` en options
-* [ ] Ajouter un argument `auto_reset=True`
-* [ ] Ajouter un helper `colored(text, fg=None, bg=None, style=None)`
+* [ ] Add `bold`, `underline` options
+* [ ] Add argument `auto_reset=True`
+* [ ] Add helper `colored(text, fg=None, bg=None, style=None)`
 
-Styles optionnels (sans casser ton existant) :
+Optional styles (without breaking existing code):
 
 * [ ] style.bold("text")
 * [ ] style.error("text")
@@ -93,76 +91,76 @@ Styles optionnels (sans casser ton existant) :
 
 ---
 
-## 🔹 **[TODO] 6. Spinner (classe simple)**
+## 🔹 **[TODO] 6. Spinner (simple class)**
 
-Une version plus petite que `Animation`, spécialement pour les scripts :
+A smaller version than `Animation`, especially for scripts:
 
-* [ ] Choisir des sets : `|/-\`, `◐◓◑◒`, etc.
-* [ ] Méthode `next()` → retourne l’image suivante
-* [ ] Méthode `reset()`
+* [ ] Choose sets: `|/-\`, `◐◓◑◒`, etc.
+* [ ] Method `next()` → returns next frame
+* [ ] Method `reset()`
 
 ---
 
-## 🔹 **[TODO] 7. Timer & Stopwatch (outil script très utile)**
+## 🔹 **[TODO] 7. Timer & Stopwatch (very useful for scripts)**
 
-Créer un mini module pour mesurer le temps :
+Create a mini module to measure time:
 
-* [ ] Classe `Stopwatch` :
+* [ ] Class `Stopwatch`:
 
   * start()
   * stop()
   * reset()
-  * elapsed() en secondes ou formaté
+  * elapsed() in seconds or formatted
 
 ---
 
-## 🔹 **[TODO] 8. Wrapper "pretty print"**
+## 🔹 **[TODO] 8. "Pretty Print" Wrapper**
 
-Pour afficher proprement dans les scripts :
+To display neatly in scripts:
 
-* [ ] `pp.dict(d)` – dictionnaire coloré
-* [ ] `pp.list(lst)` – liste stylée
-* [ ] `pp.title(text)` – titre encadré avec Pack
+* [ ] `pp.dict(d)` – colored dictionary
+* [ ] `pp.list(lst)` – styled list
+* [ ] `pp.title(text)` – framed title with Pack
 
-Toujours optionnel et utilisable partout.
-
----
-
-## 🔹 **[TODO] 9. Documentation interne minimale**
-
-* [ ] Exemple d’utilisation pour chaque classe
-* [ ] Ajout d’un dossier /examples
-* [ ] Ajouter un README clair dans ton projet
+Always optional and usable everywhere.
 
 ---
 
-## 🔹 **[TODO] 10. Système Light de Config Globale**
+## 🔹 **[TODO] 9. Minimal Internal Documentation**
 
-Optionnel mais puissant :
+* [ ] Usage example for each class
+* [ ] Add an `/examples` folder
+* [ ] Add a clear README to your project
+
+---
+
+## 🔹 **[TODO] 10. Lightweight Global Config System**
+
+Optional but powerful:
 
 * [ ] Global config (auto color ON/OFF)
-* [ ] Option “safe mode” pour Windows
-* [ ] Option “minimal mode” sans animation pour CI
+* [ ] “Safe mode” option for Windows
+* [ ] “Minimal mode” without animation for CI
 
 ---
 
-## 🔹 **[TODO] 11. Tests rapides (sans frameworks)**
+## 🔹 **[TODO] 11. Quick Tests (without frameworks)**
 
-Pour garder ton module fiable :
+To keep your module reliable:
 
-* [ ] Script test pour vérifier les couleurs
-* [ ] Script test pour vérifier les animations
-* [ ] Test ProgressBar simple
+* [ ] Test script to check colors
+* [ ] Test script to check animations
+* [ ] Simple ProgressBar test
 
 ---
 
-# 🎯 Résultat attendu de cette roadmap
+# 🎯 Expected Outcome of this Roadmap
 
-À la fin de ça, tu auras :
+By the end, you will have:
 
-✔ un module simple
-✔ très modulaire
-✔ utilisable dans tous tes scripts
-✔ avec des utilities vraiment pratiques
-✔ facile à maintenir
-✔ avec animations, couleurs, curseur, progress bar
+✔ a simple module  
+✔ highly modular  
+✔ usable in all your scripts  
+✔ with truly handy utilities  
+✔ easy to maintain  
+✔ with animations, colors, cursor control, and progress bar
