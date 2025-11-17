@@ -8,8 +8,8 @@
 #############################
 
 
-from Color import Color
-from Packed import Packed
+from Color_old import Color
+from Packed_old import Packed
 from os import system
 from sys import stdout, platform
 from time import sleep as slp
@@ -211,15 +211,3 @@ def color(
     string += f"{color_code[1]}{text}{Color.BASE}"
 
     return string
-
-
-if __name__ == "__main__":
-
-    show(color("Test started", color_code=BASE_PACK.WARNING, indicator=" "), end="\n\n\n")
-
-    try:
-
-        pass
-
-    except KeyboardInterrupt:
-        show(color("Test stopped", color_code=BASE_PACK.WARNING, indicator=" "), start="\n", delete=True)
