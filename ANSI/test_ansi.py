@@ -1,8 +1,13 @@
 #############################
 ###                       ###
 ###      Console v2.0     ###
-###    ----ansi.py----    ###
+###    ----test.py----    ###
 ###                       ###
 ###=======================###
 ### by JARJARBIN's STUDIO ###
 #############################
+
+if __name__ == '__main__':
+    from ANSI import ANSI
+
+    print(ANSI.clear() + "hi")
