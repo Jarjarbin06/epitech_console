@@ -11,9 +11,9 @@ from builtins import object, any
 
 class Cursor:
     """
-        Cursor class
+        Cursor class.
 
-        Manipulate the cursor's position
+        Manipulate the cursor's position.
     """
 
     @staticmethod
@@ -27,14 +27,13 @@ class Cursor:
                 n (int): number of lines up
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
             from ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
-
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
         return ANSI(f"{ANSI.ESC}{n}A")
 
@@ -49,13 +48,13 @@ class Cursor:
                 n (int): number of lines down
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
             from ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
         return ANSI(f"{ANSI.ESC}{n}B")
 
@@ -70,13 +69,13 @@ class Cursor:
                 n (int): number of column left
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
             from ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
         return ANSI(f"{ANSI.ESC}{n}D")
 
@@ -91,32 +90,74 @@ class Cursor:
                 n (int): number of column right
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
             from ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
         return ANSI(f"{ANSI.ESC}{n}C")
 
     @staticmethod
     def top(
-        ):
+        ) -> object:
         """
             Move the cursor to the top left corner of the console
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
             from ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
         return ANSI(f"{ANSI.ESC}H")
+
+    @staticmethod
+    def previous(
+            n: int = 1
+        ) -> object:
+        """
+            Move the cursor to the beginning of the 'n' previous line
+
+            Parameters:
+                n (int): number of column right
+
+            Returns:
+                ANSI: ansi sequence
+        """
+
+        try:
+            from ANSI import ANSI
+        except Exception:
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+
+        return ANSI(f"{ANSI.ESC}{n}F")
+
+    @staticmethod
+    def next(
+            n: int = 1
+        ) -> object:
+        """
+            Move the cursor to the beginning of the 'n' previous line
+
+            Parameters:
+                n (int): number of column right
+
+            Returns:
+                ANSI: ansi sequence
+        """
+
+        try:
+            from ANSI import ANSI
+        except Exception:
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+
+        return ANSI(f"{ANSI.ESC}{n}E")
 
     @staticmethod
     def move(
@@ -127,15 +168,33 @@ class Cursor:
             Move the cursor to the column x and line y
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
             from ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
         return ANSI(f"{ANSI.ESC}{y};{x}H")
+
+    @staticmethod
+    def move_column(
+            x : int = 0
+        ) -> object:
+        """
+            Move the cursor to the column x and line y
+
+            Returns:
+                ANSI: ansi sequence
+        """
+
+        try:
+            from ANSI import ANSI
+        except Exception:
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+
+        return ANSI(f"{ANSI.ESC}{x}G")
 
     @staticmethod
     def set(
@@ -144,15 +203,15 @@ class Cursor:
             Save the cursor's position
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
             from ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
-        return ANSI(f"{ANSI.ESC}s")
+        return ANSI(f"{ANSI.ESC}7")
 
     @staticmethod
     def reset(
@@ -161,15 +220,15 @@ class Cursor:
             Move the cursor to the saved position
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
             from ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
-        return ANSI(f"{ANSI.ESC}u")
+        return ANSI(f"{ANSI.ESC}8")
 
     @staticmethod
     def show(
@@ -178,13 +237,13 @@ class Cursor:
             Show the cursor
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
             from ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
         return ANSI(f"{ANSI.ESC}?25h")
 
@@ -195,12 +254,12 @@ class Cursor:
             Hide the cursor
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
             from ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
         return ANSI(f"{ANSI.ESC}?25l")

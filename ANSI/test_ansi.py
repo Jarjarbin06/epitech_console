@@ -10,4 +10,4 @@
 if __name__ == '__main__':
     from ANSI import ANSI
 
-    print(ANSI.clear() + "hi")
+    print(ANSI.right(30) + "hi")

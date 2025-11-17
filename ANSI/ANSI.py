@@ -18,6 +18,9 @@ except Exception:
 
 class ANSI(Cursor, Line, Color):
     """
+        ANSI class.
+
+        ANSI string tool.
     """
 
     ESC: str = "\033["
@@ -36,7 +39,7 @@ class ANSI(Cursor, Line, Color):
         self.sequence : str = ""
         assert type(sequence) in [str, list], 'sequence must be of type str or list[str|ANSI]'
 
-        if isinstance(sequence, str):
+        if isinstance(sequence, list):
             for item in sequence:
                 assert type(item) in [str, ANSI], 'sequence must be of type str or list[str|ANSI]'
                 self.sequence += str(item)

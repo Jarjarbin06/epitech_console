@@ -11,7 +11,9 @@ from builtins import object, any
 
 class Line:
     """
-        Manipulate the lines of the console
+        Line class.
+
+        Manipulate the lines of the console.
     """
 
     @staticmethod
@@ -21,7 +23,7 @@ class Line:
             Clear the current line
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
@@ -38,7 +40,7 @@ class Line:
             Clear the current line from the start to the cursor's position
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
@@ -55,7 +57,7 @@ class Line:
             Clear the current line from the cursor's position to the end
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
@@ -72,7 +74,7 @@ class Line:
             Clear the screen
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
@@ -89,7 +91,7 @@ class Line:
             Clear the screen and bring the cursor to the top left corner
 
             Returns:
-                str: ansi sequence
+                ANSI: ansi sequence
         """
 
         try:
