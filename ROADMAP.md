@@ -34,10 +34,10 @@
 
 **Create a `ProgressBar` class integrated with `Animation` and `Packed`:**
 
-* [ ] Option `length` (width)
-* [ ] Option `style` (BASIS pack: on/off/borders)
-* [ ] Option `color`
-* [ ] Option `percent_style`: numeric, bar only, or mixed
+* [x] Option `length` (width)
+* [x] Option `style` (BASIS pack: on/off/borders)
+* [x] Option `color`
+* [x] Option `percent_style`: numeric, bar only, or mixed
 * [ ] Method `update(percent)`
 * [ ] Method `render(delete=True)`
 

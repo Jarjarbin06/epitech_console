@@ -15,7 +15,6 @@ class Line:
         Manipulate the lines of the console.
     """
 
-
     try:
         from Console.ANSI import ANSI
     except Exception:
@@ -60,7 +59,7 @@ class Line:
 
     @staticmethod
     def clear_end_line(
-    ) -> ANSI:
+        ) -> ANSI:
         """
             Clear the current line from the cursor's position to the end
 
@@ -110,3 +109,21 @@ class Line:
             raise ImportError('ANSI failed to import in Line.py')
 
         return Line.clear_screen() + Cursor.top()
+
+
+    @staticmethod
+    def clear_previous_line(
+    ) -> ANSI:
+        """
+            Clear the previous line.
+
+            Returns:
+                ANSI: ansi sequence
+        """
+
+        try:
+            from Console.ANSI import Line, Cursor
+        except Exception:
+            raise ImportError('ANSI failed to import in Line.py')
+
+        return Cursor.up(1) + Line.clear_line()

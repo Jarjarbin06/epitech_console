@@ -8,10 +8,12 @@
 #############################
 
 
-from Console import ANSI, Error, Text
+from Console import Animation, ANSI, Error, System, Text
 
 __all__ = [
+    'Animation',
     'ANSI',
     'Error',
+    'System',
     'Text'
 ]

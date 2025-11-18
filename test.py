@@ -6,10 +6,11 @@
 ###=======================###
 ### by JARJARBIN's STUDIO ###
 #############################
+from Console.Animation import Animation
 
 if __name__ == '__main__':
 
-    from Console import ANSI, Error, Text
+    from Console import *
 
     epitech_color : ANSI.ANSI = ANSI.Color.rgb_fg(0, 145, 211)
     reset : ANSI.ANSI = ANSI.ANSI(ANSI.Color.C_RESET)
@@ -24,4 +25,10 @@ if __name__ == '__main__':
     )
 
     print(text)
-    print(Error.Error("test", link=(__file__, 25)))
+    print(str(Error.Error("test", link=(__file__, 28))) + "\n\n")
+
+    anim = Animation.Spinner.stick()
+    for _ in range(20):
+        anim()
+        print(ANSI.Line.clear_previous_line() + anim)
+        System.Time.sleep(0.2)

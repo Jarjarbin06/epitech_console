@@ -57,4 +57,4 @@ class Error(Exception):
                 str: String representation of the error.
         """
 
-        return f"{self.error}:\n    {self.message}\n\n{self.link}"
+        return f"{self.error}:\n    {self.message}" + (f"\n\n{self.link}" if self.link else "")

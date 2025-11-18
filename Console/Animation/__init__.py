@@ -8,10 +8,14 @@
 #############################
 
 
-from Console.Text.Text import Text
-from Console.Text.Format import Format
+from Console.Animation.Animation import Animation
+from Console.Animation.ProgressBar import ProgressBar
+from Console.Animation.Style import Style
+from Console.Animation.Spinner import Spinner
 
 __all__ = [
-    'Text',
-    'Format'
+    'Animation',
+    'ProgressBar',
+    'Style',
+    'Spinner'
 ]

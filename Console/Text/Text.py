@@ -16,20 +16,9 @@ class Text:
     """
 
 
-    try:
-        from Console.ANSI import ANSI
-    except Exception:
-        raise ImportError('ANSI failed to import in Text.py')
-
-    try:
-        from Console.Text import Text
-    except Exception:
-        raise ImportError('Text failed to import in Text.py')
-
-
     def __init__(
             self,
-            text : ANSI | str = ""
+            text : object | str = ""
         ) -> None:
         """
             Create a text.
@@ -55,30 +44,34 @@ class Text:
 
     def __add__(
             self,
-            other : ANSI | str
-        ) -> Text:
+            other : object | str
+        ) -> object:
         """
-            Add 2 Animations together.
+            Add 2 Texts together.
 
             Parameters:
-                other (Animation | str): Animation
+                other (ANSI | Text | str): text
 
             Returns:
-                Animation: Animation
+                Text: text
         """
 
         try:
             from Console.ANSI import ANSI
+            from Console.Animation import Animation
         except Exception:
             raise ImportError('ANSI failed to import in Text.py')
 
-        assert type(other) in [Text, ANSI, str], 'Text can only be added with other Text or str'
+        assert type(other) in [Text, Animation, ANSI, str], 'Text can only be added with other Text, Animation, ANSI or str'
 
         if isinstance(other, Text):
             return Text(f"{self.text}{other.text}")
 
         elif isinstance(other, ANSI):
             return Text(f"{self.text}{other.sequence}")
+
+        elif isinstance(other, Animation):
+            return Text(f"{self.text}{str(other)}")
 
         else:
             return Text(f"{self.text}{other}")
@@ -88,10 +81,10 @@ class Text:
             self
         ) -> str :
         """
-            Convert Animation object to string.
+            Convert Text object to string.
 
             Returns:
-                str: Animation string
+                str: Text string
         """
 
         return str(self.text)
@@ -117,4 +110,3 @@ class Text:
             return f'\033]8;;jetbrains://clion/navigate/reference?file={path}&line={line}\033\\File "{path}", line {line}\033]8;;\033\\'
         else:
             return f'\033]8;;jetbrains://clion/navigate/reference?file={path}\033\\"{path}"\033]8;;\033\\'
-

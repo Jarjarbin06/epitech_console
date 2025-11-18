@@ -1,19 +1,11 @@
 #############################
 ###                       ###
 ###      Console v2.0     ###
-###   ----Format.py----   ###
+###  ----__init__.py----  ###
 ###                       ###
 ###=======================###
 ### by JARJARBIN's STUDIO ###
 #############################
 
 
-class Format:
-    """
-        Format class.
-
-        Format tool.
-    """
-
-
-    pass
+from Console.System.Time import Time

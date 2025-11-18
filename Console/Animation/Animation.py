@@ -16,15 +16,9 @@ class Animation:
     """
 
 
-    try:
-        from Console.Text import Text
-    except Exception:
-        raise ImportError('Text failed to import in Animation.py')
-
-
     def __init__(
             self,
-            animation : list[str | Text] | str = ""
+            animation : list[str | object] | str = ""
         ) -> None:
         """
             Create an animation.
@@ -50,6 +44,7 @@ class Animation:
             self.animation = [animation]
 
         self.length : int = len(self.animation)
+        self.animation += [""]
         self.step : int = 0
 
 
@@ -67,13 +62,35 @@ class Animation:
                 Animation: Animation
         """
 
-        assert type(other) in [Animation, str], 'Animation can only be added with other Animation or str'
+        try:
+            from Console.Text import Text
+        except Exception:
+            raise ImportError('failed import in Animation.py')
+
+        assert type(other) in [Animation, Text, str], 'Animation can only be added with other Animation, Text or str'
 
         if isinstance(other, Animation):
             return Animation(self.animation + other.animation)
 
+        elif isinstance(other, Text):
+            return Animation(self.animation + [other.text])
+
         else:
             return Animation(self.animation + [other])
+
+
+    def __getitem__(
+            self,
+            item : int
+        ) -> str :
+        """
+            Get the current step of the animation and convert it to a string.
+
+            Returns:
+                str: Animation string
+        """
+
+        return str(self.animation[item])
 
 
     def __str__(
@@ -86,15 +103,57 @@ class Animation:
                 str: Animation string
         """
 
-        return str(self.animation[self.step])
+        return str(self[self.step])
 
 
     def __call__(
-            self
-        ) -> str:
+            self,
+        ) -> None:
         """
-            Convert Animation object to string.
+            Do a step of the animation.
+        """
+
+        self.next_step(True)
+
+
+    def next_step(
+            self,
+            auto_reset: bool = False
+        ) -> None:
+        """
+            Add a step to the animation.
+
+            Parameters:
+                auto_reset (bool): Automatically reset the animation. Defaults to False.
+        """
+
+        step: str = str(self)
+
+        self.step += 1
+
+        if self.is_last() and auto_reset:
+            self.reset()
+
+        return None
+
+
+    def is_last(
+            self
+        ) -> bool:
+        """
+            Return whether it is or not the last step of the animation.
 
             Returns:
-                str: Animation string
+                bool: is the last step
         """
+
+        return self.step >= self.length
+
+    def reset(
+            self
+        ) -> None:
+        """
+            Reset the animation.
+        """
+
+        self.step = 0

@@ -19,12 +19,6 @@ class ANSI:
     """
 
 
-    try:
-        from Console.ANSI import ANSI
-    except Exception:
-        raise ImportError('ANSI failed to import in ANSI.py')
-
-
     ESC: str = "\033["
 
 
@@ -54,7 +48,7 @@ class ANSI:
     def __add__(
             self,
             other : object | str
-        ) -> ANSI:
+        ) -> object:
         """
             Add 2 ANSI sequences together.
 
@@ -65,10 +59,25 @@ class ANSI:
                 ANSI: ANSI sequence
         """
 
-        assert type(other) in [ANSI, str], 'ANSI can only be added with other ANSI or str'
+        try:
+            from Console.Animation import Animation, ProgressBar
+            from Console.Text import Text
+        except Exception:
+            raise ImportError('failed import in ANSI.py')
+
+        assert type(other) in [ANSI, Animation, ProgressBar, Text, str], 'ANSI can only be added with other ANSI, Text, Animation or str'
 
         if isinstance(other, ANSI):
             return ANSI(f"{self.sequence}{other.sequence}")
+
+        elif isinstance(other, Animation):
+            return ANSI(f"{self.sequence}{str(other)}")
+
+        elif isinstance(other, ProgressBar):
+            return ANSI(f"{self.sequence}{str(other)}")
+
+        elif isinstance(other, Text):
+            return ANSI(f"{self.sequence}{str(other)}")
 
         else:
             return ANSI(f"{self.sequence}{other}")
