@@ -22,7 +22,7 @@ class ANSI:
     try:
         from Console.ANSI import ANSI
     except Exception:
-        raise ImportError('Line sub-modules failed to import')
+        raise ImportError('ANSI failed to import in ANSI.py')
 
 
     ESC: str = "\033["

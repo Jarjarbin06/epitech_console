@@ -19,7 +19,7 @@ class Line:
     try:
         from Console.ANSI import ANSI
     except Exception:
-        raise ImportError('Line sub-modules failed to import')
+        raise ImportError('ANSI failed to import in Line.py')
 
 
     @staticmethod
@@ -35,7 +35,7 @@ class Line:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI failed to import in Line.py')
 
         return ANSI(f"{ANSI.ESC}2K")
 
@@ -53,7 +53,7 @@ class Line:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI failed to import in Line.py')
 
         return ANSI(f"{ANSI.ESC}1K")
 
@@ -71,7 +71,7 @@ class Line:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI failed to import in Line.py')
 
         return ANSI(f"{ANSI.ESC}K")
 
@@ -89,7 +89,7 @@ class Line:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI failed to import in Line.py')
 
         return ANSI(f"{ANSI.ESC}2J")
 
@@ -107,6 +107,6 @@ class Line:
         try:
             from Console.ANSI import Line, Cursor
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import')
+            raise ImportError('ANSI failed to import in Line.py')
 
         return Line.clear_screen() + Cursor.top()

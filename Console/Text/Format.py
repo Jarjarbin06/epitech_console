@@ -19,4 +19,4 @@ class Format:
     try:
         from Console.Text import Text
     except Exception:
-        raise ImportError('Text sub-modules failed to import')
+        raise ImportError('Text failed to import in Format.py')

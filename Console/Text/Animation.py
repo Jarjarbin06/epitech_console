@@ -16,9 +16,15 @@ class Animation:
     """
 
 
+    try:
+        from Console.Text import Text
+    except Exception:
+        raise ImportError('Text failed to import in Animation.py')
+
+
     def __init__(
             self,
-            animation : list[str] | str = ""
+            animation : list[str | Text] | str = ""
         ) -> None:
         """
             Create an animation.
@@ -27,13 +33,18 @@ class Animation:
                 animation (list[str] | str): list of step
         """
 
+        try:
+            from Console.Text import Text
+        except Exception:
+            raise ImportError('Text failed to import in Animation.py')
+
         self.animation : list[str] = []
-        assert type(animation) in [str, list], 'animation must be of type str or list[str]'
+        assert type(animation) in [str, list], 'animation must be of type str or list[str | Text]'
 
         if isinstance(animation, list):
             for step in animation:
-                assert type(step) in [str], 'animation must be of type str or list[str]'
-                self.animation.append(step)
+                assert type(step) in [str, Text], 'animation must be of type str or list[str | Text]'
+                self.animation.append(str(step))
 
         else:
             self.animation = [animation]
@@ -59,10 +70,10 @@ class Animation:
         assert type(other) in [Animation, str], 'Animation can only be added with other Animation or str'
 
         if isinstance(other, Animation):
-            return Animation(f"{self.animation}{other.animation}")
+            return Animation(self.animation + other.animation)
 
         else:
-            return Animation(f"{self.animation}{other}")
+            return Animation(self.animation + [other])
 
 
     def __str__(

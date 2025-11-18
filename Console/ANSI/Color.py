@@ -62,7 +62,7 @@ class Color:
     try:
         from Console.ANSI import ANSI
     except Exception:
-        raise ImportError('Line sub-modules failed to import')
+        raise ImportError('ANSI failed to import in Color.py')
 
 
     C_RESET : str = "\033[0m"
@@ -126,7 +126,7 @@ class Color:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Color.py')
 
         return ANSI(f"{ANSI.ESC}38;5;{color}m")
 
@@ -148,7 +148,7 @@ class Color:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Color.py')
 
         return ANSI(f"{ANSI.ESC}48;5;{color}m")
 
@@ -174,7 +174,7 @@ class Color:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Color.py')
 
         return ANSI(f"{ANSI.ESC}38;2;{r};{g};{b}m")
 
@@ -200,6 +200,6 @@ class Color:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Color.py')
 
         return ANSI(f"{ANSI.ESC}48;2;{r};{g};{b}m")

@@ -18,7 +18,7 @@ class Cursor:
     try:
         from Console.ANSI import ANSI
     except Exception:
-        raise ImportError('Line sub-modules failed to import')
+        raise ImportError('ANSI failed to import in Cursor.py')
 
 
     @staticmethod
@@ -38,7 +38,7 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}{n}A")
 
@@ -60,7 +60,7 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}{n}B")
 
@@ -82,7 +82,7 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}{n}D")
 
@@ -104,7 +104,7 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}{n}C")
 
@@ -122,7 +122,7 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}H")
 
@@ -144,7 +144,7 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}{n}F")
 
@@ -166,7 +166,7 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}{n}E")
 
@@ -186,7 +186,7 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}{y};{x}H")
 
@@ -205,7 +205,7 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}{x}G")
 
@@ -223,7 +223,7 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}7")
 
@@ -241,7 +241,7 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}8")
 
@@ -259,7 +259,7 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}?25h")
 
@@ -277,6 +277,6 @@ class Cursor:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('ANSI failed to import in Cursor.py')
 
         return ANSI(f"{ANSI.ESC}?25l")

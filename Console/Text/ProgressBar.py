@@ -17,6 +17,6 @@ class ProgressBar:
 
 
     try:
-        from Console.Text import Text
+        from Console.Text import Animation
     except Exception:
-        raise ImportError('Text sub-modules failed to import')
+        raise ImportError('Animation failed to import in PrograssBar.py')

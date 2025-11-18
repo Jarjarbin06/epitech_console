@@ -19,12 +19,12 @@ class Text:
     try:
         from Console.ANSI import ANSI
     except Exception:
-        raise ImportError('ANSI sub-modules failed to import (Text.py)')
+        raise ImportError('ANSI failed to import in Text.py')
 
     try:
         from Console.Text import Text
     except Exception:
-        raise ImportError('ANSI sub-modules failed to import (Text.py)')
+        raise ImportError('Text failed to import in Text.py')
 
 
     def __init__(
@@ -41,7 +41,7 @@ class Text:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Text.py)')
+            raise ImportError('ANSI failed to import in Text.py')
 
         self.text : str = ""
         assert type(text) in [ANSI, str], 'text must be of type ANSI or str'
@@ -70,7 +70,7 @@ class Text:
         try:
             from Console.ANSI import ANSI
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Text.py)')
+            raise ImportError('ANSI failed to import in Text.py')
 
         assert type(other) in [Text, ANSI, str], 'Text can only be added with other Text or str'
 

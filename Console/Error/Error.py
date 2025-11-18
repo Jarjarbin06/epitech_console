@@ -35,7 +35,7 @@ class Error(Exception):
         try:
             from Console.Text import Text
         except Exception:
-            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+            raise ImportError('Text failed to import in Error.py')
 
         self.message : str = ""
         self.error : str = ""
