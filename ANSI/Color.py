@@ -16,98 +16,105 @@ class Color:
         ANSI coloring system.
 
         Attributes:
-            BASE (str): Base color.
-            BOLD (str): Bold color.
-            DARK_BASE (str): Dark base color.
-            ITALIC (str): Italic color.
-            UNDERLINE (str): Underline color.
-            FLASH_1 (str): Flash color.
-            FLASH_2 (str): Flash color.
-            HIGHLIGHT (str): Highlight color.
-            HIDDEN (str): Hidden color.
-            CROSSED (str): Crossed color.
-            DARK_GREY (str): Dark grey color.
-            DARK_RED (str): Dark red color.
-            DARK_GREEN (str): Dark green color.
-            DARK_YELLOW (str): Dark yellow color.
-            DARK_BLUE (str): Dark blue color.
-            DARK_LAVANDA (str): Dark lavanda color.
-            DARK_CYAN (str): Dark cyan color.
-            DARK_WHITE (str): Dark white color.
-            HIGHLIGHT_DARK_GREY (str): Highlight dark grey color.
-            HIGHLIGHT_DARK_RED (str): Highlight dark red color.
-            HIGHLIGHT_DARK_GREEN (str): Highlight dark green color.
-            HIGHLIGHT_DARK_YELLOW (str): Highlight dark yellow color.
-            HIGHLIGHT_DARK_BLUE (str): Highlight dark blue color.
-            HIGHLIGHT_DARK_LAVANDA (str): Highlight dark lavanda color.
-            HIGHLIGHT_DARK_CYAN (str): Highlight dark cyan color.
-            HIGHLIGHT_DARK_WHITE (str): Highlight dark white color.
-            GREY (str): Grey color.
-            RED (str): Red color.
-            GREEN (str): Green color.
-            YELLOW (str): Yellow color.
-            BLUE (str): Blue color.
-            LAVANDA (str): Lavanda color.
-            CYAN (str): Cyan color.
-            WHITE (str): White color.
-            HIGHLIGHT_GREY (str): Highlight grey color.
-            HIGHLIGHT_RED (str): Highlight red color.
-            HIGHLIGHT_GREEN (str): Highlight green color.
-            HIGHLIGHT_YELLOW (str): Highlight yellow color.
-            HIGHLIGHT_BLUE (str): Highlight blue color.
-            HIGHLIGHT_LAVANDA (str): Highlight lavanda color.
-            HIGHLIGHT_CYAN (str): Highlight cyan color.
-            HIGHLIGHT_WHITE (str): Highlight white color.
+            C_BASE (str): Base color.
+            C_BOLD (str): Bold color.
+            C_DARK_BASE (str): Dark base color.
+            C_ITALIC (str): Italic color.
+            C_UNDERLINE (str): Underline color.
+            C_FLASH_1 (str): Flash color.
+            C_FLASH_2 (str): Flash color.
+            C_HIGHLIGHT (str): Highlight color.
+            C_HIDDEN (str): Hidden color.
+            C_CROSSED (str): Crossed color.
+            C_DARK_GREY (str): Dark grey color.
+            C_DARK_RED (str): Dark red color.
+            C_DARK_GREEN (str): Dark green color.
+            C_DARK_YELLOW (str): Dark yellow color.
+            C_DARK_BLUE (str): Dark blue color.
+            C_DARK_LAVANDA (str): Dark lavanda color.
+            C_DARK_CYAN (str): Dark cyan color.
+            C_DARK_WHITE (str): Dark white color.
+            C_HIGHLIGHT_DARK_GREY (str): Highlight dark grey color.
+            C_HIGHLIGHT_DARK_RED (str): Highlight dark red color.
+            C_HIGHLIGHT_DARK_GREEN (str): Highlight dark green color.
+            C_HIGHLIGHT_DARK_YELLOW (str): Highlight dark yellow color.
+            C_HIGHLIGHT_DARK_BLUE (str): Highlight dark blue color.
+            C_HIGHLIGHT_DARK_LAVANDA (str): Highlight dark lavanda color.
+            C_HIGHLIGHT_DARK_CYAN (str): Highlight dark cyan color.
+            C_HIGHLIGHT_DARK_WHITE (str): Highlight dark white color.
+            C_GREY (str): Grey color.
+            C_RED (str): Red color.
+            C_GREEN (str): Green color.
+            C_YELLOW (str): Yellow color.
+            C_BLUE (str): Blue color.
+            C_LAVANDA (str): Lavanda color.
+            C_CYAN (str): Cyan color.
+            C_WHITE (str): White color.
+            C_HIGHLIGHT_GREY (str): Highlight grey color.
+            C_HIGHLIGHT_RED (str): Highlight red color.
+            C_HIGHLIGHT_GREEN (str): Highlight green color.
+            C_HIGHLIGHT_YELLOW (str): Highlight yellow color.
+            C_HIGHLIGHT_BLUE (str): Highlight blue color.
+            C_HIGHLIGHT_LAVANDA (str): Highlight lavanda color.
+            C_HIGHLIGHT_CYAN (str): Highlight cyan color.
+            C_HIGHLIGHT_WHITE (str): Highlight white color.
     """
 
-    BASE : str = "\033[0m"
-    BOLD : str = "\033[1m"
-    DARK_BASE : str = "\033[2m"
-    ITALIC : str = "\033[3m"
-    UNDERLINE : str = "\033[4m"
-    FLASH_1 : str = "\033[5m"
-    FLASH_2 : str = "\033[6m"
-    HIGHLIGHT : str = "\033[7m"
-    HIDDEN : str = "\033[8m"
-    CROSSED : str = "\033[9m"
-    DARK_GREY : str = "\033[30m"
-    DARK_RED : str = "\033[31m"
-    DARK_GREEN : str = "\033[32m"
-    DARK_YELLOW : str = "\033[33m"
-    DARK_BLUE : str = "\033[34m"
-    DARK_LAVANDA : str = "\033[35m"
-    DARK_CYAN : str = "\033[36m"
-    DARK_WHITE : str = "\033[37m"
-    HIGHLIGHT_DARK_GREY : str = "\033[40m"
-    HIGHLIGHT_DARK_RED : str = "\033[41m"
-    HIGHLIGHT_DARK_GREEN : str = "\033[42m"
-    HIGHLIGHT_DARK_YELLOW : str = "\033[43m"
-    HIGHLIGHT_DARK_BLUE : str = "\033[44m"
-    HIGHLIGHT_DARK_LAVANDA : str = "\033[45m"
-    HIGHLIGHT_DARK_CYAN : str = "\033[46m"
-    HIGHLIGHT_DARK_WHITE : str = "\033[47m"
-    GREY : str = "\033[90m"
-    RED : str = "\033[91m"
-    GREEN : str = "\033[92m"
-    YELLOW : str = "\033[93m"
-    BLUE : str = "\033[94m"
-    LAVANDA : str = "\033[95m"
-    CYAN : str = "\033[96m"
-    WHITE : str = "\033[97m"
-    HIGHLIGHT_GREY : str = "\033[100m"
-    HIGHLIGHT_RED : str = "\033[101m"
-    HIGHLIGHT_GREEN : str = "\033[102m"
-    HIGHLIGHT_YELLOW : str = "\033[103m"
-    HIGHLIGHT_BLUE : str = "\033[104m"
-    HIGHLIGHT_LAVANDA : str = "\033[105m"
-    HIGHLIGHT_CYAN : str = "\033[106m"
-    HIGHLIGHT_WHITE : str = "\033[107m"
+    C_BASE : str = "\033[0m"
+    C_BOLD : str = "\033[1m"
+    C_DARK_BASE : str = "\033[2m"
+    C_ITALIC : str = "\033[3m"
+    C_UNDERLINE : str = "\033[4m"
+    C_FLASH_1 : str = "\033[5m"
+    C_FLASH_2 : str = "\033[6m"
+    C_HIGHLIGHT : str = "\033[7m"
+    C_HIDDEN : str = "\033[8m"
+    C_CROSSED : str = "\033[9m"
+    C_DARK_GREY : str = "\033[30m"
+    C_DARK_RED : str = "\033[31m"
+    C_DARK_GREEN : str = "\033[32m"
+    C_DARK_YELLOW : str = "\033[33m"
+    C_DARK_BLUE : str = "\033[34m"
+    C_DARK_LAVANDA : str = "\033[35m"
+    C_DARK_CYAN : str = "\033[36m"
+    C_DARK_WHITE : str = "\033[37m"
+    C_HIGHLIGHT_DARK_GREY : str = "\033[40m"
+    C_HIGHLIGHT_DARK_RED : str = "\033[41m"
+    C_HIGHLIGHT_DARK_GREEN : str = "\033[42m"
+    C_HIGHLIGHT_DARK_YELLOW : str = "\033[43m"
+    C_HIGHLIGHT_DARK_BLUE : str = "\033[44m"
+    C_HIGHLIGHT_DARK_LAVANDA : str = "\033[45m"
+    C_HIGHLIGHT_DARK_CYAN : str = "\033[46m"
+    C_HIGHLIGHT_DARK_WHITE : str = "\033[47m"
+    C_GREY : str = "\033[90m"
+    C_RED : str = "\033[91m"
+    C_GREEN : str = "\033[92m"
+    C_YELLOW : str = "\033[93m"
+    C_BLUE : str = "\033[94m"
+    C_LAVANDA : str = "\033[95m"
+    C_CYAN : str = "\033[96m"
+    C_WHITE : str = "\033[97m"
+    C_HIGHLIGHT_GREY : str = "\033[100m"
+    C_HIGHLIGHT_RED : str = "\033[101m"
+    C_HIGHLIGHT_GREEN : str = "\033[102m"
+    C_HIGHLIGHT_YELLOW : str = "\033[103m"
+    C_HIGHLIGHT_BLUE : str = "\033[104m"
+    C_HIGHLIGHT_LAVANDA : str = "\033[105m"
+    C_HIGHLIGHT_CYAN : str = "\033[106m"
+    C_HIGHLIGHT_WHITE : str = "\033[107m"
 
     @staticmethod
     def color_fg(
             color : int
         ) -> object:
         """
+            Get ANSI sequence for the foreground color 'color'
+
+            Arguments:
+                color (int): color code
+
+            Returns:
+                ANSI: ansi sequence
         """
 
         try:
@@ -122,6 +129,13 @@ class Color:
             color : int
         ) -> object:
         """
+            Get ANSI sequence for the background color 'color'
+
+            Arguments:
+                color (int): color code
+
+            Returns:
+                ANSI: ansi sequence
         """
 
         try:
@@ -138,6 +152,15 @@ class Color:
             b : int
         ) -> object:
         """
+            Get ANSI sequence for the foreground color with 'r', 'g' and 'b'
+
+            Arguments:
+                r (int): red value (0->255)
+                g (int): green value (0->255)
+                b (int): blue value (0->255)
+
+            Returns:
+                ANSI: ansi sequence
         """
 
         try:
@@ -145,7 +168,7 @@ class Color:
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
-        return ANSI(f"{ANSI.ESC}38;5;{r};{g};{b}m")
+        return ANSI(f"{ANSI.ESC}38;2;{r};{g};{b}m")
 
     @staticmethod
     def rgb_bg(
@@ -154,6 +177,15 @@ class Color:
             b : int
         ) -> object:
         """
+            Get ANSI sequence for the background color with 'r', 'g' and 'b'
+
+            Arguments:
+                r (int): red value (0->255)
+                g (int): green value (0->255)
+                b (int): blue value (0->255)
+
+            Returns:
+                ANSI: ansi sequence
         """
 
         try:
@@ -161,4 +193,4 @@ class Color:
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
-        return ANSI(f"{ANSI.ESC}48;5;{r};{g};{b}m")
+        return ANSI(f"{ANSI.ESC}48;2;{r};{g};{b}m")

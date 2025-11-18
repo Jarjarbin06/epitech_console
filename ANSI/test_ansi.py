@@ -10,4 +10,4 @@
 if __name__ == '__main__':
     from ANSI import ANSI
 
-    print(ANSI.right(30) + "hi")
+    epitech_color : ANSI = ANSI.rgb_fg(0, 145, 211)

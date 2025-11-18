@@ -21,6 +21,9 @@ class ANSI(Cursor, Line, Color):
         ANSI class.
 
         ANSI string tool.
+
+        Attributes:
+            ESC (str) : ANSI escape (ANSI sequence starter).
     """
 
     ESC: str = "\033["
@@ -52,6 +55,13 @@ class ANSI(Cursor, Line, Color):
             other : object | str
         ) -> object:
         """
+            Add 2 ANSI sequences together.
+
+            Parameters:
+                other (ANSI | str): ANSI sequence
+
+            Returns:
+                ANSI: ANSI sequence
         """
 
         assert type(other) in [ANSI, str], 'ANSI can only be added with other ANSI or str'
@@ -66,6 +76,10 @@ class ANSI(Cursor, Line, Color):
             self
         ) -> str :
         """
+            Convert ANSI object to string.
+
+            Returns:
+                str: ANSI string
         """
 
         return str(self.sequence)
