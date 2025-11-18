@@ -8,5 +8,12 @@
 #############################
 
 
-from Console.Text import Text
-from Console.Text import Animation
+from Console.Text.Text import Text
+from Console.Text.Animation import Animation
+from Console.Text.Format import Format
+from Console.Text.ProgressBar import ProgressBar
+
+__all__ = [
+    'Text',
+    'Animation'
+]

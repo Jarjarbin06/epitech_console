@@ -9,3 +9,7 @@
 
 
 from Console.Error.Error import Error
+
+__all__ = [
+    'Error'
+]

@@ -17,32 +17,46 @@ class Text:
 
 
     try:
-        from Console.Text import Animation
+        from Console.ANSI import ANSI
     except Exception:
-        raise ImportError('Text sub-modules failed to import')
+        raise ImportError('ANSI sub-modules failed to import (Text.py)')
+
+    try:
+        from Console.Text import Text
+    except Exception:
+        raise ImportError('ANSI sub-modules failed to import (Text.py)')
 
 
     def __init__(
             self,
-            text : str = ""
+            text : ANSI | str = ""
         ) -> None:
         """
             Create a text.
 
             Parameters:
-                text (str): text
+                text (ANSI | str): text
         """
 
-        self.text : str = ""
-        assert type(text) in [str], 'text must be of type str'
+        try:
+            from Console.ANSI import ANSI
+        except Exception:
+            raise ImportError('ANSI sub-modules failed to import (Text.py)')
 
-        self.text = text
+        self.text : str = ""
+        assert type(text) in [ANSI, str], 'text must be of type ANSI or str'
+
+        if isinstance(text, ANSI):
+            self.text = text.sequence
+
+        else :
+            self.text = text
 
 
     def __add__(
             self,
-            other : object | str
-        ) -> object:
+            other : ANSI | str
+        ) -> Text:
         """
             Add 2 Animations together.
 
@@ -53,10 +67,18 @@ class Text:
                 Animation: Animation
         """
 
-        assert type(other) in [Text, str], 'Text can only be added with other Text or str'
+        try:
+            from Console.ANSI import ANSI
+        except Exception:
+            raise ImportError('ANSI sub-modules failed to import (Text.py)')
+
+        assert type(other) in [Text, ANSI, str], 'Text can only be added with other Text or str'
 
         if isinstance(other, Text):
             return Text(f"{self.text}{other.text}")
+
+        elif isinstance(other, ANSI):
+            return Text(f"{self.text}{other.sequence}")
 
         else:
             return Text(f"{self.text}{other}")
@@ -73,3 +95,26 @@ class Text:
         """
 
         return str(self.text)
+
+
+    @staticmethod
+    def clion_link(
+            path: str,
+            line: int | None = None
+        ) -> str:
+        """
+            Get CLion link to line 'line' of the file 'path'.
+
+            Parameters:
+                path (str): Path to the file.
+                line (int): Line of the file.
+
+            Returns:
+                str: CLion link.
+        """
+
+        if line:
+            return f'\033]8;;jetbrains://clion/navigate/reference?file={path}&line={line}\033\\File "{path}", line {line}\033]8;;\033\\'
+        else:
+            return f'\033]8;;jetbrains://clion/navigate/reference?file={path}\033\\"{path}"\033]8;;\033\\'
+

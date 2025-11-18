@@ -9,6 +9,11 @@
 
 
 class Error(Exception):
+    """
+    Error class.
+
+    Error for Console.
+    """
 
 
     def __init__(
@@ -27,6 +32,11 @@ class Error(Exception):
                 link (tuple[str, int]): The link to where the error comes from (file and line).
         """
 
+        try:
+            from Console.Text import Text
+        except Exception:
+            raise ImportError('ANSI sub-modules failed to import (Color.py)')
+
         self.message : str = ""
         self.error : str = ""
         self.link : str | None = None
@@ -34,7 +44,8 @@ class Error(Exception):
         self.message = message
         self.error = error
         if link:
-            self.link = Error.clion_link(link[0], link[1])
+            self.link = Text.clion_link(link[0], link[1])
+
 
     def __str__(
             self
@@ -47,24 +58,3 @@ class Error(Exception):
         """
 
         return f"{self.error}:\n    {self.message}\n\n{self.link}"
-
-    @staticmethod
-    def clion_link(
-            path: str,
-            line: int | None = None
-        ) -> str:
-        """
-            Get CLion link to line 'line' of the file 'path'.
-
-            Parameters:
-                path (str): Path to the file.
-                line (int): Line of the file.
-
-            Returns:
-                str: CLion link.
-        """
-
-        if line:
-            return f'\033]8;;jetbrains://clion/navigate/reference?file={path}&line={line}\033\\File "{path}", line {line}\033]8;;\033\\'
-        else:
-            return f'\033]8;;jetbrains://clion/navigate/reference?file={path}\033\\"{path}"\033]8;;\033\\'
