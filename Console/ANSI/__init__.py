@@ -8,7 +8,7 @@
 #############################
 
 
-from ANSI.ANSI import ANSI
-from ANSI.Cursor import Cursor
-from ANSI.Line import Line
-from ANSI.Color import Color
+from Console.ANSI.ANSI import ANSI
+from Console.ANSI.Cursor import Cursor
+from Console.ANSI.Line import Line
+from Console.ANSI.Color import Color

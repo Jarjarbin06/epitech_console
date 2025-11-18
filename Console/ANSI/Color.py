@@ -8,7 +8,7 @@
 #############################
 
 
-class Color(object):
+class Color:
     """
         Color class.
 
@@ -60,7 +60,7 @@ class Color(object):
     """
 
     try:
-        from ANSI import ANSI
+        from Console.ANSI import ANSI
     except Exception:
         raise ImportError('Line sub-modules failed to import')
 
@@ -124,7 +124,7 @@ class Color(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -146,7 +146,7 @@ class Color(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -172,7 +172,7 @@ class Color(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -198,7 +198,7 @@ class Color(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 

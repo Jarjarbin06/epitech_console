@@ -8,7 +8,7 @@
 #############################
 
 
-class Line(object):
+class Line:
     """
         Line class.
 
@@ -17,7 +17,7 @@ class Line(object):
 
 
     try:
-        from ANSI import ANSI
+        from Console.ANSI import ANSI
     except Exception:
         raise ImportError('Line sub-modules failed to import')
 
@@ -33,7 +33,7 @@ class Line(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import')
 
@@ -51,7 +51,7 @@ class Line(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import')
 
@@ -69,7 +69,7 @@ class Line(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import')
 
@@ -87,7 +87,7 @@ class Line(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import')
 
@@ -105,7 +105,7 @@ class Line(object):
         """
 
         try:
-            from ANSI import Line, Cursor
+            from Console.ANSI import Line, Cursor
         except Exception:
             raise ImportError('ANSI sub-modules failed to import')
 

@@ -8,5 +8,4 @@
 #############################
 
 
-from Text import Text
-from Animation import Animation
+from Console import ANSI, Error, Text

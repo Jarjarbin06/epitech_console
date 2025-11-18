@@ -8,18 +8,12 @@
 #############################
 
 
-class Animation(object):
+class Animation:
     """
         Animation class.
 
         Animation tool.
     """
-
-
-    try:
-        pass
-    except Exception:
-        raise ImportError('Animation sub-modules failed to import')
 
 
     def __init__(

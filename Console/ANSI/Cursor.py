@@ -8,7 +8,7 @@
 #############################
 
 
-class Cursor(object):
+class Cursor:
     """
         Cursor class.
 
@@ -16,7 +16,7 @@ class Cursor(object):
     """
 
     try:
-        from ANSI import ANSI
+        from Console.ANSI import ANSI
     except Exception:
         raise ImportError('Line sub-modules failed to import')
 
@@ -36,7 +36,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -58,7 +58,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -80,7 +80,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -102,7 +102,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -120,7 +120,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -142,7 +142,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -164,7 +164,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -184,7 +184,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -203,7 +203,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -221,7 +221,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -239,7 +239,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -257,7 +257,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 
@@ -275,7 +275,7 @@ class Cursor(object):
         """
 
         try:
-            from ANSI import ANSI
+            from Console.ANSI import ANSI
         except Exception:
             raise ImportError('ANSI sub-modules failed to import (Color.py)')
 

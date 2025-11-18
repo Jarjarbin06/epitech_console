@@ -8,7 +8,7 @@
 #############################
 
 
-class ANSI(object):
+class ANSI:
     """
         ANSI class.
 
@@ -20,7 +20,7 @@ class ANSI(object):
 
 
     try:
-        from ANSI import ANSI
+        from Console.ANSI import ANSI
     except Exception:
         raise ImportError('Line sub-modules failed to import')
 

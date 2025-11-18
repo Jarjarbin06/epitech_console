@@ -8,4 +8,4 @@
 #############################
 
 
-from Error.Error import Error
+from Console.Error.Error import Error

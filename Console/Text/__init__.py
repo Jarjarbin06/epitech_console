@@ -8,7 +8,5 @@
 #############################
 
 
-import ANSI
-import Text
-import Error
-
+from Console.Text import Text
+from Console.Text import Animation

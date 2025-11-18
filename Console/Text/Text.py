@@ -8,7 +8,7 @@
 #############################
 
 
-class Text(object):
+class Text:
     """
         Text class.
 
@@ -17,7 +17,7 @@ class Text(object):
 
 
     try:
-        from Animation import Animation
+        from Console.Text import Animation
     except Exception:
         raise ImportError('Text sub-modules failed to import')
 
