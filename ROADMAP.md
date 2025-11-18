@@ -8,15 +8,15 @@
 
 **Create a `Cursor` class** to handle the cursor properly:
 
-* [ ] Add `cursor.hide()` – hide the cursor
-* [ ] Add `cursor.show()` – show the cursor
-* [ ] Add `cursor.move_up(n=1)`
-* [ ] Add `cursor.move_down(n=1)`
-* [ ] Add `cursor.move_right(n=1)`
-* [ ] Add `cursor.move_left(n=1)`
-* [ ] Add `cursor.save()` – save position
-* [ ] Add `cursor.restore()` – restore position
-* [ ] Add `cursor.clear_line()` – clear entire line
+* [x] Add `cursor.hide()` – hide the cursor
+* [x] Add `cursor.show()` – show the cursor
+* [x] Add `cursor.move_up(n=1)`
+* [x] Add `cursor.move_down(n=1)`
+* [x] Add `cursor.move_right(n=1)`
+* [x] Add `cursor.move_left(n=1)`
+* [x] Add `cursor.save()` – save position
+* [x] Add `cursor.restore()` – restore position
+* [x] Add `cursor.clear_line()` – clear entire line
 
 **Note:** use the following ANSI sequences:
 
@@ -53,11 +53,11 @@ Standard features:
 
 **Create a file `ansi.py` containing common codes:**
 
-* [ ] CURSOR_UP = "\033[{n}A"
-* [ ] CURSOR_DOWN = "\033[{n}B"
-* [ ] CLEAR_LINE = "\033[2K"
-* [ ] HIDE_CURSOR = "\033[?25l"
-* [ ] SHOW_CURSOR = "\033[?25h"
+* [x] CURSOR_UP = "\033[{n}A"
+* [x] CURSOR_DOWN = "\033[{n}B"
+* [x] CLEAR_LINE = "\033[2K"
+* [x] HIDE_CURSOR = "\033[?25l"
+* [x] SHOW_CURSOR = "\033[?25h"
 
 *Goal: avoid duplicating code everywhere.*
 
@@ -78,7 +78,7 @@ Simple and useful additions:
 
 You already have a logging system, so keep it simple:
 
-* [ ] Add `bold`, `underline` options
+* [x] Add `bold`, `underline` options
 * [ ] Add argument `auto_reset=True`
 * [ ] Add helper `colored(text, fg=None, bg=None, style=None)`
 

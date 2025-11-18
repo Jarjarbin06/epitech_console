@@ -7,18 +7,24 @@
 ### by JARJARBIN's STUDIO ###
 #############################
 
-from builtins import object, any
 
-class Line:
+class Line(object):
     """
         Line class.
 
         Manipulate the lines of the console.
     """
 
+
+    try:
+        from ANSI import ANSI
+    except Exception:
+        raise ImportError('Line sub-modules failed to import')
+
+
     @staticmethod
     def clear_line(
-        ) -> object:
+        ) -> ANSI:
         """
             Clear the current line
 
@@ -33,9 +39,10 @@ class Line:
 
         return ANSI(f"{ANSI.ESC}2K")
 
+
     @staticmethod
     def clear_start_line(
-        ) -> object:
+        ) -> ANSI:
         """
             Clear the current line from the start to the cursor's position
 
@@ -50,9 +57,10 @@ class Line:
 
         return ANSI(f"{ANSI.ESC}1K")
 
+
     @staticmethod
     def clear_end_line(
-    ) -> object:
+    ) -> ANSI:
         """
             Clear the current line from the cursor's position to the end
 
@@ -67,9 +75,10 @@ class Line:
 
         return ANSI(f"{ANSI.ESC}K")
 
+
     @staticmethod
     def clear_screen(
-        ) -> object:
+        ) -> ANSI:
         """
             Clear the screen
 
@@ -84,9 +93,10 @@ class Line:
 
         return ANSI(f"{ANSI.ESC}2J")
 
+
     @staticmethod
     def clear(
-        ) -> object:
+        ) -> ANSI:
         """
             Clear the screen and bring the cursor to the top left corner
 
@@ -95,8 +105,8 @@ class Line:
         """
 
         try:
-            from ANSI import ANSI
+            from ANSI import Line, Cursor
         except Exception:
             raise ImportError('ANSI sub-modules failed to import')
 
-        return ANSI.clear_screen() + ANSI.top()
+        return Line.clear_screen() + Cursor.top()

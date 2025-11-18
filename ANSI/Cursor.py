@@ -7,19 +7,24 @@
 ### by JARJARBIN's STUDIO ###
 #############################
 
-from builtins import object, any
 
-class Cursor:
+class Cursor(object):
     """
         Cursor class.
 
         Manipulate the cursor's position.
     """
 
+    try:
+        from ANSI import ANSI
+    except Exception:
+        raise ImportError('Line sub-modules failed to import')
+
+
     @staticmethod
     def up(
             n: int = 1
-        ) -> object:
+        ) -> ANSI:
         """
             Bring the cursor up 'n' lines
 
@@ -37,10 +42,11 @@ class Cursor:
 
         return ANSI(f"{ANSI.ESC}{n}A")
 
+
     @staticmethod
     def down(
             n: int = 1
-        ) -> object:
+        ) -> ANSI:
         """
             Bring the cursor down 'n' lines
 
@@ -58,10 +64,11 @@ class Cursor:
 
         return ANSI(f"{ANSI.ESC}{n}B")
 
+
     @staticmethod
     def left(
             n: int = 1
-        ) -> object:
+        ) -> ANSI:
         """
             Bring the cursor left 'n' column
 
@@ -79,10 +86,11 @@ class Cursor:
 
         return ANSI(f"{ANSI.ESC}{n}D")
 
+
     @staticmethod
     def right(
             n: int = 1
-        ) -> object:
+        ) -> ANSI:
         """
             Bring the cursor right 'n' column
 
@@ -100,9 +108,10 @@ class Cursor:
 
         return ANSI(f"{ANSI.ESC}{n}C")
 
+
     @staticmethod
     def top(
-        ) -> object:
+        ) -> ANSI:
         """
             Move the cursor to the top left corner of the console
 
@@ -117,10 +126,11 @@ class Cursor:
 
         return ANSI(f"{ANSI.ESC}H")
 
+
     @staticmethod
     def previous(
             n: int = 1
-        ) -> object:
+        ) -> ANSI:
         """
             Move the cursor to the beginning of the 'n' previous line
 
@@ -138,10 +148,11 @@ class Cursor:
 
         return ANSI(f"{ANSI.ESC}{n}F")
 
+
     @staticmethod
     def next(
             n: int = 1
-        ) -> object:
+        ) -> ANSI:
         """
             Move the cursor to the beginning of the 'n' previous line
 
@@ -159,11 +170,12 @@ class Cursor:
 
         return ANSI(f"{ANSI.ESC}{n}E")
 
+
     @staticmethod
     def move(
             x : int = 0,
             y : int = 0
-        ) -> object:
+        ) -> ANSI:
         """
             Move the cursor to the column x and line y
 
@@ -178,10 +190,11 @@ class Cursor:
 
         return ANSI(f"{ANSI.ESC}{y};{x}H")
 
+
     @staticmethod
     def move_column(
             x : int = 0
-        ) -> object:
+        ) -> ANSI:
         """
             Move the cursor to the column x and line y
 
@@ -196,9 +209,10 @@ class Cursor:
 
         return ANSI(f"{ANSI.ESC}{x}G")
 
+
     @staticmethod
     def set(
-        ) -> object:
+        ) -> ANSI:
         """
             Save the cursor's position
 
@@ -213,9 +227,10 @@ class Cursor:
 
         return ANSI(f"{ANSI.ESC}7")
 
+
     @staticmethod
     def reset(
-        ) -> object:
+        ) -> ANSI:
         """
             Move the cursor to the saved position
 
@@ -230,9 +245,10 @@ class Cursor:
 
         return ANSI(f"{ANSI.ESC}8")
 
+
     @staticmethod
     def show(
-        ) -> object:
+        ) -> ANSI:
         """
             Show the cursor
 
@@ -247,9 +263,10 @@ class Cursor:
 
         return ANSI(f"{ANSI.ESC}?25h")
 
+
     @staticmethod
     def hide(
-        ) -> object:
+        ) -> ANSI:
         """
             Hide the cursor
 

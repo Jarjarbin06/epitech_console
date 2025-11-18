@@ -7,16 +7,15 @@
 ### by JARJARBIN's STUDIO ###
 #############################
 
-from builtins import object, any
 
-class Color:
+class Color(object):
     """
         Color class.
 
         ANSI coloring system.
 
         Attributes:
-            C_BASE (str): Base color.
+            C_RESET (str): Base color.
             C_BOLD (str): Bold color.
             C_DARK_BASE (str): Dark base color.
             C_ITALIC (str): Italic color.
@@ -60,7 +59,13 @@ class Color:
             C_HIGHLIGHT_WHITE (str): Highlight white color.
     """
 
-    C_BASE : str = "\033[0m"
+    try:
+        from ANSI import ANSI
+    except Exception:
+        raise ImportError('Line sub-modules failed to import')
+
+
+    C_RESET : str = "\033[0m"
     C_BOLD : str = "\033[1m"
     C_DARK_BASE : str = "\033[2m"
     C_ITALIC : str = "\033[3m"
@@ -103,10 +108,11 @@ class Color:
     C_HIGHLIGHT_CYAN : str = "\033[106m"
     C_HIGHLIGHT_WHITE : str = "\033[107m"
 
+
     @staticmethod
     def color_fg(
             color : int
-        ) -> object:
+        ) -> ANSI:
         """
             Get ANSI sequence for the foreground color 'color'
 
@@ -124,10 +130,11 @@ class Color:
 
         return ANSI(f"{ANSI.ESC}38;5;{color}m")
 
+
     @staticmethod
     def color_bg(
             color : int
-        ) -> object:
+        ) -> ANSI:
         """
             Get ANSI sequence for the background color 'color'
 
@@ -145,12 +152,13 @@ class Color:
 
         return ANSI(f"{ANSI.ESC}48;5;{color}m")
 
+
     @staticmethod
     def rgb_fg(
             r : int,
             g : int,
             b : int
-        ) -> object:
+        ) -> ANSI:
         """
             Get ANSI sequence for the foreground color with 'r', 'g' and 'b'
 
@@ -170,12 +178,13 @@ class Color:
 
         return ANSI(f"{ANSI.ESC}38;2;{r};{g};{b}m")
 
+
     @staticmethod
     def rgb_bg(
             r : int,
             g : int,
             b : int
-        ) -> object:
+        ) -> ANSI:
         """
             Get ANSI sequence for the background color with 'r', 'g' and 'b'
 

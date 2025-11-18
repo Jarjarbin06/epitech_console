@@ -7,16 +7,8 @@
 ### by JARJARBIN's STUDIO ###
 #############################
 
-from builtins import object, any
 
-try:
-    from Cursor import Cursor
-    from Line import Line
-    from Color import Color
-except Exception:
-    raise ImportError('ANSI sub-modules failed to import')
-
-class ANSI(Cursor, Line, Color):
+class ANSI(object):
     """
         ANSI class.
 
@@ -26,14 +18,22 @@ class ANSI(Cursor, Line, Color):
             ESC (str) : ANSI escape (ANSI sequence starter).
     """
 
+
+    try:
+        from ANSI import ANSI
+    except Exception:
+        raise ImportError('Line sub-modules failed to import')
+
+
     ESC: str = "\033["
+
 
     def __init__(
             self,
             sequence : list[object | str] | str = ""
         ) -> None:
         """
-            create an ANSI sequence
+            Create an ANSI sequence.
 
             Parameters:
                 sequence (list[ANSI | str] | str): ANSI sequence
@@ -50,10 +50,11 @@ class ANSI(Cursor, Line, Color):
         else:
             self.sequence = sequence
 
+
     def __add__(
             self,
             other : object | str
-        ) -> object:
+        ) -> ANSI:
         """
             Add 2 ANSI sequences together.
 
@@ -71,6 +72,7 @@ class ANSI(Cursor, Line, Color):
 
         else:
             return ANSI(f"{self.sequence}{other}")
+
 
     def __str__(
             self
