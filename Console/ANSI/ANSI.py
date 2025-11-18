@@ -53,7 +53,7 @@ class ANSI:
             Add 2 ANSI sequences together.
 
             Parameters:
-                other (ANSI | str): ANSI sequence
+                other (ANSI | Animation | StopWatch | ProgressBar | Text | str): ANSI sequence
 
             Returns:
                 ANSI: ANSI sequence
@@ -62,25 +62,20 @@ class ANSI:
         try:
             from Console.Animation import Animation, ProgressBar
             from Console.Text import Text
+            from Console.System.Stopwatch import StopWatch
         except Exception:
             raise ImportError('failed import in ANSI.py')
 
-        assert type(other) in [ANSI, Animation, ProgressBar, Text, str], 'ANSI can only be added with other ANSI, Text, Animation or str'
+        assert type(other) in [ANSI, Animation, StopWatch, ProgressBar, Text, str]
 
         if isinstance(other, ANSI):
             return ANSI(f"{self.sequence}{other.sequence}")
 
-        elif isinstance(other, Animation):
-            return ANSI(f"{self.sequence}{str(other)}")
-
-        elif isinstance(other, ProgressBar):
-            return ANSI(f"{self.sequence}{str(other)}")
-
-        elif isinstance(other, Text):
+        elif isinstance(other, (Animation, StopWatch, ProgressBar, Text, str)):
             return ANSI(f"{self.sequence}{str(other)}")
 
         else:
-            return ANSI(f"{self.sequence}{other}")
+            return ANSI("")
 
 
     def __str__(

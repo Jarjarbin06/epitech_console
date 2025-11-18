@@ -56,7 +56,7 @@ class Animation:
             Add 2 Animations together.
 
             Parameters:
-                other (Animation | str): Animation
+                other (Animation | ANSI | Text | StopWatch | str): Animation
 
             Returns:
                 Animation: Animation
@@ -64,19 +64,18 @@ class Animation:
 
         try:
             from Console.Text import Text
+            from Console.ANSI import ANSI
+            from Console.System import Stopwatch
         except Exception:
             raise ImportError('failed import in Animation.py')
 
-        assert type(other) in [Animation, Text, str], 'Animation can only be added with other Animation, Text or str'
+        assert type(other) in [Animation, ANSI, Text, Stopwatch, str]
 
         if isinstance(other, Animation):
             return Animation(self.animation + other.animation)
 
-        elif isinstance(other, Text):
-            return Animation(self.animation + [other.text])
-
-        else:
-            return Animation(self.animation + [other])
+        elif isinstance(other, (Text, Stopwatch, ANSI, str)):
+            return Animation(self.animation + [str(other)])
 
 
     def __getitem__(
@@ -113,11 +112,12 @@ class Animation:
             Do a step of the animation.
         """
 
-        self.next_step(True)
+        self.update(True)
 
 
-    def next_step(
+    def update(
             self,
+            *,
             auto_reset: bool = False
         ) -> None:
         """
@@ -135,6 +135,26 @@ class Animation:
             self.reset()
 
         return None
+
+
+    def render(
+            self,
+            *,
+            delete : bool = False
+        ) -> str:
+        """
+            Convert Animation object to string.
+
+            Returns:
+                str: Animation string
+        """
+
+        try:
+            from Console.ANSI import Line
+        except Exception:
+            raise ImportError('failed import in Animation.py')
+
+        return Line.clear_previous_line() + str(self)
 
 
     def is_last(

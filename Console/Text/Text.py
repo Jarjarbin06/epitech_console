@@ -64,17 +64,11 @@ class Text:
 
         assert type(other) in [Text, Animation, ANSI, str], 'Text can only be added with other Text, Animation, ANSI or str'
 
-        if isinstance(other, Text):
-            return Text(f"{self.text}{other.text}")
-
-        elif isinstance(other, ANSI):
-            return Text(f"{self.text}{other.sequence}")
-
-        elif isinstance(other, Animation):
+        if isinstance(other, Animation):
             return Text(f"{self.text}{str(other)}")
 
-        else:
-            return Text(f"{self.text}{other}")
+        elif isinstance(other, (ANSI, Text, str)):
+            return Text(f"{self.text}{str(other)}")
 
 
     def __str__(

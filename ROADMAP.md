@@ -38,13 +38,13 @@
 * [x] Option `style` (BASIS pack: on/off/borders)
 * [x] Option `color`
 * [x] Option `percent_style`: numeric, bar only, or mixed
-* [ ] Method `update(percent)`
-* [ ] Method `render(delete=True)`
+* [x] Method `update(percent)`
+* [x] Method `render(delete=True)`
 
 Standard features:
 
-* [ ] Optional animation (spinner in parallel)
-* [ ] Automatically remove previous line
+* [x] Optional animation (spinner in parallel)
+* [x] Automatically remove previous line
 * [ ] Support scripts / loops / lightweight async
 
 ---
@@ -105,7 +105,7 @@ A smaller version than `Animation`, especially for scripts:
 
 Create a mini module to measure time:
 
-* [ ] Class `Stopwatch`:
+* [  ] Class `Stopwatch`:
 
   * start()
   * stop()

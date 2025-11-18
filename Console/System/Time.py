@@ -15,7 +15,6 @@ class Time:
         Time tool.
     """
 
-
     @staticmethod
     def sleep(
             seconds : int | float

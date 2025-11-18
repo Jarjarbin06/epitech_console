@@ -9,3 +9,4 @@
 
 
 from Console.System.Time import Time
+from Console.System.Stopwatch import StopWatch

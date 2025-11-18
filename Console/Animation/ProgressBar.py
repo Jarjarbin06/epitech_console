@@ -98,6 +98,39 @@ class ProgressBar:
             Do a step of the animations.
         """
 
+        self.update()
+
+
+    def update(
+            self,
+            *,
+            auto_reset: bool = False
+        ) -> None:
+        """
+            Do a step of the animations.
+        """
+
         if self.spinner :
-            self.spinner.next_step(True)
-        self.animation.next_step(True)
+            self.spinner.update(auto_reset=auto_reset)
+
+        self.animation.update(auto_reset=auto_reset)
+
+
+    def render(
+            self,
+            *,
+            delete : bool = False
+        ) -> str:
+        """
+            Convert ProgressBar object to string.
+
+            Returns:
+                str: ProgressBar string
+        """
+
+        try:
+            from Console.ANSI import Line
+        except Exception:
+            raise ImportError('failed import in ProgressBar.py')
+
+        return Line.clear_previous_line() + str(self)
