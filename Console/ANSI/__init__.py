@@ -8,14 +8,21 @@
 #############################
 
 
-from Console.ANSI.ANSI import ANSI
-from Console.ANSI.Cursor import Cursor
-from Console.ANSI.Line import Line
-from Console.ANSI.Color import Color
+from Console.ANSI.ansi import ANSI
+from Console.ANSI.cursor import Cursor
+from Console.ANSI.line import Line
+from Console.ANSI.color import Color
+from Console.ANSI.basepack import BasePack
 
-__all__ = [
+
+__all__ : list[str] = [
     'ANSI',
-    'Color',
     'Cursor',
-    'Line'
+    'Line',
+    'Color',
+    'BasePack'
 ]
+
+
+__author__ : str = 'Nathan Jarjarbin'
+__email__ : str = 'nathan.epitech.eu'

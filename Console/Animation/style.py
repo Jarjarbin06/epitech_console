@@ -8,7 +8,10 @@
 #############################
 
 
-class Style:
+from builtins import object
+
+
+class Style(object):
     """
         Style class.
 

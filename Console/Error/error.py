@@ -8,6 +8,9 @@
 #############################
 
 
+from builtins import object
+
+
 class Error(Exception):
     """
     Error class.
@@ -32,17 +35,12 @@ class Error(Exception):
                 link (tuple[str, int]): The link to where the error comes from (file and line).
         """
 
-        try:
-            from Console.Text import Text
-        except Exception:
-            raise ImportError('Text failed to import in Error.py')
+        from Console.Text.text import Text
 
-        self.message : str = ""
-        self.error : str = ""
+        self.message : str = message
+        self.error : str = error
         self.link : str | None = None
 
-        self.message = message
-        self.error = error
         if link:
             self.link = Text.clion_link(link[0], link[1])
 

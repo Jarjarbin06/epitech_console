@@ -8,7 +8,10 @@
 #############################
 
 
-class ANSI:
+from builtins import object
+
+
+class ANSI(object):
     """
         ANSI class.
 
@@ -34,11 +37,9 @@ class ANSI:
         """
 
         self.sequence : str = ""
-        assert type(sequence) in [str, list], 'sequence must be of type str or list[str|ANSI]'
 
-        if isinstance(sequence, list):
+        if type(sequence) in [list]:
             for item in sequence:
-                assert type(item) in [str, ANSI], 'sequence must be of type str or list[str|ANSI]'
                 self.sequence += str(item)
 
         else:
@@ -59,19 +60,15 @@ class ANSI:
                 ANSI: ANSI sequence
         """
 
-        try:
-            from Console.Animation import Animation, ProgressBar
-            from Console.Text import Text
-            from Console.System.Stopwatch import StopWatch
-        except Exception:
-            raise ImportError('failed import in ANSI.py')
+        from Console.Animation.animation import Animation
+        from Console.Animation.progressbar import ProgressBar
+        from Console.Text.text import Text
+        from Console.System.stopwatch import StopWatch
 
-        assert type(other) in [ANSI, Animation, StopWatch, ProgressBar, Text, str]
-
-        if isinstance(other, ANSI):
+        if type(other) in [ANSI]:
             return ANSI(f"{self.sequence}{other.sequence}")
 
-        elif isinstance(other, (Animation, StopWatch, ProgressBar, Text, str)):
+        elif type(other) in [Animation, StopWatch, ProgressBar, Text, str]:
             return ANSI(f"{self.sequence}{str(other)}")
 
         else:

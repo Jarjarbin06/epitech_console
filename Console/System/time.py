@@ -8,7 +8,10 @@
 #############################
 
 
-class Time:
+from builtins import object
+
+
+class Time(object):
     """
         Time class.
 
@@ -22,9 +25,6 @@ class Time:
         """
         """
 
-        try:
-            from time import sleep
-        except Exception:
-            raise ImportError('time failed to import in Time.py')
+        from time import sleep
 
         sleep(seconds)

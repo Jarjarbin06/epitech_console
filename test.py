@@ -7,22 +7,30 @@
 ### by JARJARBIN's STUDIO ###
 #############################
 
+
 if __name__ == '__main__':
 
-    from Console import *
+    from Console import ANSI, Error, Text, System, Animation
 
-    epitech_color : ANSI.ANSI = ANSI.Color.rgb_fg(0, 145, 211)
-    reset : ANSI.ANSI = ANSI.ANSI(ANSI.Color.C_RESET)
+    watch = System.StopWatch(True)
 
-    anim = Animation.Spinner.stick()
-    print(ANSI.Cursor.hide())
-    watch = System.StopWatch()
-    watch.start()
-    for _ in range(20):
-        anim.update(auto_reset=True)
+    epitech_color = ANSI.Color.rgb_fg(0, 145, 211)
+    reset = ANSI.Color.color(ANSI.Color.C_RESET)
+
+    spin = Animation.Spinner.stick()
+    bar = Animation.ProgressBar(50, percent_style="mix", spinner=spin)
+
+    System.Console.print(ANSI.Line.clear() + ANSI.Cursor.hide())
+
+    for p in range(101):
+        bar.update(p)
         watch.update()
-        print(epitech_color + anim.render(delete=True) + reset + watch)
+
+        text = Text.Text(ANSI.Cursor.move_column(25) + bar.render(color=ANSI.Color.C_GREEN, delete=True) + ANSI.Cursor.move_column(0) + epitech_color + watch + reset)
+        System.Console.print(text)
+
         watch.reset()
-        System.Time.sleep(0.2)
+        System.Time.sleep(0.1)
+
+    text = Text.Text(ANSI.Cursor.move_column(25) + bar.render(color=ANSI.Color.C_GREEN, delete=True) + ANSI.Cursor.move_column(0) + epitech_color + watch + reset)
     watch.stop()
-    print(ANSI.Cursor.show(), end="")

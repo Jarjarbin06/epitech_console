@@ -16,4 +16,6 @@ class Format:
     """
 
 
-    pass
+    @staticmethod
+    def u():
+        pass

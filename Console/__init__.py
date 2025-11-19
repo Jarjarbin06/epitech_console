@@ -10,7 +10,8 @@
 
 from Console import Animation, ANSI, Error, System, Text
 
-__all__ = [
+
+__all__ : list[str] = [
     'Animation',
     'ANSI',
     'Error',

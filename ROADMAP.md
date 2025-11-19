@@ -95,9 +95,9 @@ Optional styles (without breaking existing code):
 
 A smaller version than `Animation`, especially for scripts:
 
-* [ ] Choose sets: `|/-\`, `◐◓◑◒`, etc.
-* [ ] Method `next()` → returns next frame
-* [ ] Method `reset()`
+* [x] Choose sets: `|/-\`, `◐◓◑◒`, etc.
+* [x] Method `next()` → returns next frame
+* [x] Method `reset()`
 
 ---
 
@@ -105,7 +105,7 @@ A smaller version than `Animation`, especially for scripts:
 
 Create a mini module to measure time:
 
-* [  ] Class `Stopwatch`:
+* [x] Class `Stopwatch`:
 
   * start()
   * stop()

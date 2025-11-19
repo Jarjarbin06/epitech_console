@@ -8,7 +8,12 @@
 #############################
 
 
-class Text:
+from builtins import object
+
+from Console.Text.format import Format
+
+
+class Text(Format):
     """
         Text class.
 
@@ -27,13 +32,10 @@ class Text:
                 text (ANSI | str): text
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Text.py')
+        from Console.ANSI.ansi import ANSI
 
         self.text : str = ""
-        assert type(text) in [ANSI, str], 'text must be of type ANSI or str'
+        assert type(text) in [ANSI, str]
 
         if isinstance(text, ANSI):
             self.text = text.sequence
@@ -56,19 +58,7 @@ class Text:
                 Text: text
         """
 
-        try:
-            from Console.ANSI import ANSI
-            from Console.Animation import Animation
-        except Exception:
-            raise ImportError('ANSI failed to import in Text.py')
-
-        assert type(other) in [Text, Animation, ANSI, str], 'Text can only be added with other Text, Animation, ANSI or str'
-
-        if isinstance(other, Animation):
-            return Text(f"{self.text}{str(other)}")
-
-        elif isinstance(other, (ANSI, Text, str)):
-            return Text(f"{self.text}{str(other)}")
+        return Text(str(self) + str(other))
 
 
     def __str__(

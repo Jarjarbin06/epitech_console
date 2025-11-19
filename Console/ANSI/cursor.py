@@ -8,17 +8,17 @@
 #############################
 
 
-class Cursor:
+from builtins import object
+
+
+class Cursor(object):
     """
         Cursor class.
 
         Manipulate the cursor's position.
     """
 
-    try:
-        from Console.ANSI import ANSI
-    except Exception:
-        raise ImportError('ANSI failed to import in Cursor.py')
+    from Console.ANSI.ansi import ANSI
 
 
     @staticmethod
@@ -35,10 +35,7 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{n}A")
 
@@ -57,10 +54,7 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{n}B")
 
@@ -79,10 +73,7 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{n}D")
 
@@ -101,10 +92,7 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{n}C")
 
@@ -119,10 +107,7 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}H")
 
@@ -141,10 +126,7 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{n}F")
 
@@ -163,10 +145,7 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{n}E")
 
@@ -183,10 +162,7 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{y};{x}H")
 
@@ -202,10 +178,7 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{x}G")
 
@@ -220,10 +193,7 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}7")
 
@@ -238,10 +208,7 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}8")
 
@@ -256,10 +223,7 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}?25h")
 
@@ -274,9 +238,6 @@ class Cursor:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Cursor.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}?25l")

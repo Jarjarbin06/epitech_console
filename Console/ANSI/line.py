@@ -8,17 +8,17 @@
 #############################
 
 
-class Line:
+from builtins import object
+
+
+class Line(object):
     """
         Line class.
 
         Manipulate the lines of the console.
     """
 
-    try:
-        from Console.ANSI import ANSI
-    except Exception:
-        raise ImportError('ANSI failed to import in Line.py')
+    from Console.ANSI.ansi import ANSI
 
 
     @staticmethod
@@ -31,10 +31,7 @@ class Line:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Line.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}2K")
 
@@ -49,10 +46,7 @@ class Line:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Line.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}1K")
 
@@ -67,10 +61,7 @@ class Line:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Line.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}K")
 
@@ -85,10 +76,7 @@ class Line:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import ANSI
-        except Exception:
-            raise ImportError('ANSI failed to import in Line.py')
+        from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}2J")
 
@@ -103,10 +91,8 @@ class Line:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import Line, Cursor
-        except Exception:
-            raise ImportError('ANSI failed to import in Line.py')
+        from Console.ANSI.line import Line
+        from Console.ANSI.cursor import Cursor
 
         return Line.clear_screen() + Cursor.top()
 
@@ -121,9 +107,7 @@ class Line:
                 ANSI: ansi sequence
         """
 
-        try:
-            from Console.ANSI import Line, Cursor
-        except Exception:
-            raise ImportError('ANSI failed to import in Line.py')
+        from Console.ANSI.line import Line
+        from Console.ANSI.cursor import Cursor
 
         return Cursor.up(1) + Line.clear_line()

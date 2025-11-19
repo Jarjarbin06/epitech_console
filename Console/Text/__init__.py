@@ -8,10 +8,15 @@
 #############################
 
 
-from Console.Text.Text import Text
-from Console.Text.Format import Format
+from Console.Text.text import Text
+from Console.Text.format import Format
 
-__all__ = [
+
+__all__ : list[str] = [
     'Text',
     'Format'
 ]
+
+
+__author__ : str = 'Nathan Jarjarbin'
+__email__ : str = 'nathan.epitech.eu'

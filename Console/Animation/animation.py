@@ -8,12 +8,17 @@
 #############################
 
 
-class Animation:
+from builtins import object
+
+
+class Animation(object):
     """
         Animation class.
 
         Animation tool.
     """
+
+    from Console.ANSI import Color
 
 
     def __init__(
@@ -27,17 +32,12 @@ class Animation:
                 animation (list[str] | str): list of step
         """
 
-        try:
-            from Console.Text import Text
-        except Exception:
-            raise ImportError('Text failed to import in Animation.py')
+        from Console.Text import Text
 
         self.animation : list[str] = []
-        assert type(animation) in [str, list], 'animation must be of type str or list[str | Text]'
 
         if isinstance(animation, list):
             for step in animation:
-                assert type(step) in [str, Text], 'animation must be of type str or list[str | Text]'
                 self.animation.append(str(step))
 
         else:
@@ -62,20 +62,18 @@ class Animation:
                 Animation: Animation
         """
 
-        try:
-            from Console.Text import Text
-            from Console.ANSI import ANSI
-            from Console.System import Stopwatch
-        except Exception:
-            raise ImportError('failed import in Animation.py')
+        from Console.Text.text import Text
+        from Console.ANSI.ansi import ANSI
+        from Console.System.stopwatch import StopWatch
 
-        assert type(other) in [Animation, ANSI, Text, Stopwatch, str]
-
-        if isinstance(other, Animation):
+        if type(other) in [Animation]:
             return Animation(self.animation + other.animation)
 
-        elif isinstance(other, (Text, Stopwatch, ANSI, str)):
+        elif type(other) in [Text, StopWatch, ANSI, str]:
             return Animation(self.animation + [str(other)])
+
+        else:
+            return Animation([])
 
 
     def __getitem__(
@@ -93,7 +91,9 @@ class Animation:
 
 
     def __str__(
-            self
+            self,
+            *,
+            color : int = Color.C_RESET
         ) -> str :
         """
             Convert Animation object to string.
@@ -102,7 +102,9 @@ class Animation:
                 str: Animation string
         """
 
-        return str(self[self.step])
+        from Console.ANSI.color import Color
+
+        return f"{Color.color(color)}{str(self[self.step])}{Color.color(Color.C_RESET)}"
 
 
     def __call__(
@@ -118,7 +120,7 @@ class Animation:
     def update(
             self,
             *,
-            auto_reset: bool = False
+            auto_reset: bool = True
         ) -> None:
         """
             Add a step to the animation.
@@ -126,8 +128,6 @@ class Animation:
             Parameters:
                 auto_reset (bool): Automatically reset the animation. Defaults to False.
         """
-
-        step: str = str(self)
 
         self.step += 1
 
@@ -149,12 +149,16 @@ class Animation:
                 str: Animation string
         """
 
-        try:
-            from Console.ANSI import Line
-        except Exception:
-            raise ImportError('failed import in Animation.py')
+        from Console.ANSI.line import Line
 
-        return Line.clear_previous_line() + str(self)
+        string : str = ""
+
+        if delete:
+            string += str(Line.clear_previous_line())
+
+        string += str(self)
+
+        return string
 
 
     def is_last(

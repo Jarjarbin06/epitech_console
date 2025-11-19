@@ -8,7 +8,10 @@
 #############################
 
 
-class StopWatch:
+from builtins import object
+
+
+class StopWatch(object):
     """
         StopWatch class.
 
@@ -17,7 +20,8 @@ class StopWatch:
 
 
     def __init__(
-            self
+            self,
+            start : bool = False,
         ) -> None:
         """
             Create a stopwatch.
@@ -25,6 +29,9 @@ class StopWatch:
 
         self.start_time : float = 0.0
         self.time : float = 0.0
+
+        if start:
+            self.start()
 
 
     def __str__(
@@ -50,7 +57,6 @@ class StopWatch:
         from time import time
 
         self.start_time = time()
-        self.update()
 
 
     def stop(
@@ -78,7 +84,10 @@ class StopWatch:
             self
         ) -> float:
         """
-            Elapse the stopwatch.
+            Get elapsed time.
+
+            Returns:
+                float: Elapsed time.
         """
 
         return self.time

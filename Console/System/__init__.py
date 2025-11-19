@@ -8,5 +8,22 @@
 #############################
 
 
-from Console.System.Time import Time
-from Console.System.Stopwatch import StopWatch
+from Console.System.time import Time
+from Console.System.stopwatch import StopWatch
+from Console.System.console import Console
+
+from sys import stdin, stdout, stderr
+
+
+__all__ : list[str] = [
+    'Time',
+    'StopWatch',
+    'Console',
+    'stdin',
+    'stdout',
+    'stderr',
+]
+
+
+__author__ : str = 'Nathan Jarjarbin'
+__email__ : str = 'nathan.epitech.eu'

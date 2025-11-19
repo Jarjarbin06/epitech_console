@@ -8,8 +8,13 @@
 #############################
 
 
-from Console.Error.Error import Error
+from Console.Error.error import Error
 
-__all__ = [
+
+__all__ : list[str] = [
     'Error'
 ]
+
+
+__author__ : str = 'Nathan Jarjarbin'
+__email__ : str = 'nathan.epitech.eu'
