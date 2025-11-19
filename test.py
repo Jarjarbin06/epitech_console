@@ -26,11 +26,12 @@ if __name__ == '__main__':
         bar.update(p)
         watch.update()
 
-        text = Text.Text(ANSI.Cursor.move_column(25) + bar.render(color=ANSI.Color.C_GREEN, delete=True) + ANSI.Cursor.move_column(0) + epitech_color + watch + reset)
+        text = Text.Text(ANSI.Cursor.move_column(25) + bar.render(color=ANSI.Color.C_RED, delete=True) + ANSI.Cursor.move_column(0) + epitech_color + watch + reset)
         System.Console.print(text)
 
         watch.reset()
         System.Time.sleep(0.1)
 
-    text = Text.Text(ANSI.Cursor.move_column(25) + bar.render(color=ANSI.Color.C_GREEN, delete=True) + ANSI.Cursor.move_column(0) + epitech_color + watch + reset)
+    text = Text.Text(ANSI.Cursor.move_column(25) + bar.render(color=ANSI.Color.C_GREEN, delete=True) + ANSI.Cursor.move_column(0) + epitech_color + watch + reset + ANSI.Cursor.show())
+    System.Console.print(text)
     watch.stop()
