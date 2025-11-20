@@ -33,16 +33,13 @@ Homepage = "https://github.com/Jarjarbin06/epitech_console"
 Repository = "https://github.com/Jarjarbin06/epitech_console"
 Issues = "https://github.com/Jarjarbin06/epitech_console/issues"
 
-[tool.setuptools]
-package-dir = {"" = "epitech_console"}
-
 [tool.setuptools_scm]
 version_scheme = "guess-next-dev"
 local_scheme = "dirty-tag"
 
 [tool.setuptools.packages.find]
-where = ["epitech_console"]
-include = ["*"]
+where = ["."]
+include = ["epitech_console*"]
 
 [tool.setuptools.package-data]
-"*" = ["*.ini", "LICENSE", "install-package"]
+"epitech_console" = ["*.ini", "LICENSE", "install-package"]
