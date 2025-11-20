@@ -34,10 +34,3 @@ __email__ : str = 'nathan.epitech.eu'
 
 if System.config.Config.is_empty(PATH):
     System.config.Config.create(PATH)
-
-
-epitech_color : ANSI.ANSI = ANSI.Color.rgb_fg(0, 145, 211) + ANSI.Color.rgb_bg(0, 0 ,0)
-reset : ANSI.ANSI = ANSI.Color.color(ANSI.Color.C_RESET)
-text : Text.Text = epitech_color + Text.Text("hi").bold() + reset
-
-System.Console.print(text, sleep=2)
