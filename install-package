@@ -1,0 +1,4 @@
+#!/bin/bash
+
+pip install -e .
+pip show console-v2

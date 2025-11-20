@@ -1,0 +1,3 @@
+include Console/config.ini
+include LICENSE
+include install-package

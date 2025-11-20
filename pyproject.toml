@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "epitech-console"
+version = "0.1.1"
+description = "Console tools (animation/colored printing/formating/etc)"
+authors = [
+    { name = "Nathan Jarjarbin", email = "nathan.amaraggi@epitech.eu" }
+]
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "GPL-3.0-or-later" }
+
+dependencies = [
+    # No external dependencies declared (sys, time, builtins are standard)
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: GNU General Public License (GPL)",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Terminals",
+    "Topic :: Utilities"
+]
+
+[project.urls]
+Homepage = "https://github.com/Jarjarbin06/Console"
+Repository = "https://github.com/Jarjarbin06/Console"
+Issues = "https://github.com/Jarjarbin06/Console/issues"
+
+[tool.setuptools]
+package-dir = {"" = "Console"}
+
+[tool.setuptools.packages.find]
+where = ["Console"]
+include = ["*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.ini", "LICENSE", "install-package"]

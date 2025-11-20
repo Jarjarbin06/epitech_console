@@ -213,3 +213,29 @@ class Color(object):
         from Console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}48;2;{r};{g};{b}m")
+
+
+    @staticmethod
+    def epitech_fg(
+        ) -> ANSI:
+        """
+            Get ANSI sequence for the foreground color of epitech
+
+            Returns:
+                ANSI: ansi sequence
+        """
+
+        return Color.rgb_fg(0, 145, 211)
+
+
+    @staticmethod
+    def epitech_bg(
+        ) -> ANSI:
+        """
+            Get ANSI sequence for the background color of epitech
+
+            Returns:
+                ANSI: ansi sequence
+        """
+
+        return Color.rgb_bg(0, 145, 211)

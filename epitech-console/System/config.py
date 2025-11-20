@@ -8,9 +8,6 @@
 #############################
 
 
-from configparser import ConfigParser
-
-
 class Config:
     """
     """
@@ -43,11 +40,19 @@ class Config:
             data : dict | None = None
         ) -> None:
         """
+            Create a new config file
+
+            Parameters:
+                path (str): path to folder which you want you config file to be in
+                data (dict | None): data to put in the config file
         """
+
+        from configparser import ConfigParser
 
         if not data :
             data = {
                 "GENERAL" : {
+                    "version" : "0.0.0",
                     "debug": "False",
                     "log": "True",
                     "introduction": "True"
