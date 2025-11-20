@@ -2,4 +2,5 @@
 
 pip uninstall epitech_console
 pip install -e .
+echo ""
 pip show epitech_console
