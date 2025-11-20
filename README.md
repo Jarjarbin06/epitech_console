@@ -56,7 +56,7 @@ The `epitech_console` is a friendly Python tool that helps you create cool stuff
 
 Ready to get started? Here's how to install `epitech_console`:
 
-1.  **First Things First**: Make sure you have Python 3.13 or newer installed on your computer. You can check your Python version by opening a terminal and typing `python --version`.
+1.  **First Things First**: Make sure you have Python 3.8 or newer installed on your computer. You can check your Python version by opening a terminal and typing `python --version`.
 
 2.  **Install with `pip` (Easy Method)**:
 
@@ -126,11 +126,11 @@ for i in range(5):
 from epitech_console.Animation import ProgressBar, Spinner
 from epitech_console import System
 
-spinner = Spinner.stick()
-progress_bar = ProgressBar(length=20, percent_style="mix", spinner=spinner)
+my_spinner = Spinner.stick()
+my_progress_bar = ProgressBar(length=20, percent_style="mix", spinner=my_spinner)
 for i in range(101):
-    progress_bar.update(percent=i, update_spinner=(i % 5 == 0))
-    System.Console.print(progress_bar.render(delete=True), sleep=0.05)
+    my_progress_bar.update(percent=i, update_spinner=(i % 5 == 0))
+    System.Console.print(my_progress_bar.render(delete=True), sleep=0.05)
 ```
 
 ### Utilizing the Stopwatch
@@ -138,10 +138,10 @@ for i in range(101):
 ```python
 from epitech_console import System
 
-stopwatch = System.StopWatch(start=True)
+my_stopwatch = System.StopWatch(start=True)
 System.Time.sleep(2)
-stopwatch.stop()
-print(f"Elapsed time: {stopwatch.elapsed()}")
+my_stopwatch.stop()
+print(f"Elapsed time: {my_stopwatch.elapsed()}")
 ```
 
 ### Create a config.ini file
@@ -149,9 +149,9 @@ print(f"Elapsed time: {stopwatch.elapsed()}")
 ```python
 from epitech_console.System import Config
 
-path = "."
-if Config.is_empty(path):
-    Config.create(path, {
+my_path = "."
+if Config.is_empty(my_path):
+    Config.create(my_path, {
       "GENERALE" : {"theme": "dark", "language": "en"},
       "USER" : {"username": "guest", "email": "my_email@email.com"}
     })
@@ -194,7 +194,8 @@ epitech_console/
 ├── config.ini
 ├── install-package
 ├── LICENSE
-└── pyproject.toml
+├── pyproject.toml
+└── README.md
 ```
 
 ## API-Reference
@@ -205,62 +206,94 @@ epitech_console/
     *   `Animation(animation: list[str] | str = "")`: Constructor to create an animation.
     *   `update(auto_reset: bool = True)`: Advances the animation by one step.
     *   `render(delete: bool = False)`: Renders the current frame of the animation.
+*   **BasePack**: Ready-to-use animations.
+	* `def update(style: Style = Style("#", "-", "<", ">", "|", "|"))`: Update the BasePack animations to fit with the given Style (or the default one if no Style given)
 *   **ProgressBar**: Class for creating progress bars.
     *   `ProgressBar(length: int, animation: Animation | None = None, style: object = Style("#", "-", "<", ">", "|", "|"), percent_style: str = "bar", spinner: Animation | None = None, spinner_position: str = "a")`: Constructor to create a progress bar.
     *   `update(percent: int = 0, update_spinner: bool = True, auto_reset: bool = True)`: Updates the progress bar to a specified percentage.
     *   `render(color: object | tuple[object, object, object] = Color.color(Color.C_RESET), hide_spinner_at_end: bool = True, delete: bool = False)`: Renders the progress bar.
-*   **Style**: Class for styling progress bars.
-    *   `Style(on: str = "#", off: str = "-", arrow_left: str = "<", arrow_right: str = ">", border_left: str = "|", border_right: str = "|")`: Constructor to create a style.
 *   **Spinner**: Class with pre-built spinner animations.
     *   `stick(style: object = Style("#", " ", "#", "#", "", ""))`: Creates a stick spinner.
     *   `plus(style: object = Style("#", " ", "#", "#", "", ""))`: Creates a plus spinner.
     *   `cross(style: object = Style("#", " ", "#", "#", "", ""))`: Creates a cross spinner.
+*   **Style**: Class for styling progress bars.
+    *   `Style(on: str = "#", off: str = "-", arrow_left: str = "<", arrow_right: str = ">", border_left: str = "|", border_right: str = "|")`: Constructor to create a style.
 
 ### ANSI Module
 
 *   **ANSI**: Class for creating ANSI escape sequences.
     *   `ANSI(sequence: str = "")`: Constructor to create an ANSI sequence.
     *   `ESC`: ANSI escape character.
+*   **BasePack**: Ready-to-use ANSI escape sequences.
+	* `def update()`: Update the BasePack escape sequences(no Style created yet)
 *   **Color**: Class for ANSI color codes.
-    *   Provides static methods for foreground (`color_fg`) and background (`color_bg`) colors.
+    *   `color_fg`: Returns ANSI sequence for a foreground color.
+    * `color_bg`: Returns ANSI sequence for a foreground color.
     *   `rgb_fg(r: int, g: int, b: int)`: Returns ANSI sequence for a foreground RGB color.
     *   `rgb_bg(r: int, g: int, b: int)`: Returns ANSI sequence for a background RGB color.
+    *   `epitech_fg(r: int, g: int, b: int)`: Returns ANSI sequence for a foreground colored as Epitech.
+    *   `epitech_bg(r: int, g: int, b: int)`: Returns ANSI sequence for a background colored as Epitech.
 *   **Cursor**: Class for cursor manipulation.
     *   `up(n: int = 1)`: Moves the cursor up `n` lines.
     *   `down(n: int = 1)`: Moves the cursor down `n` lines.
     *   `left(n: int = 1)`: Moves the cursor left `n` columns.
     *   `right(n: int = 1)`: Moves the cursor right `n` columns.
+    *   `top()`: Moves the cursor to the top left corner.
+    *   `previous(n: int = 1)`: Moves the cursor to the beginning of `n` lines before.
+    *   `next(n: int = 1)`: Moves the cursor to the beginning of `n` lines after.
+    *   `move(x: int = 0, y: int = 0)`: Moves the cursor at position (x, y).
+    *   `move_column(n: int = 1)`: Moves the cursor at position y on the same line.
+    *   `set()`: Save the position of the cursor.
+    *   `reset()`: Load the saved position of the cursor.
     *   `hide()`: Hides the cursor.
     *   `show()`: Shows the cursor.
 *   **Line**: Class for line manipulation.
     *   `clear_line()`: Clears the current line.
+    *   `clear_start_line()`: Clears the current line from the beginning to the cursor.
+    *   `clear_end_line()`: Clears the current line from the cursor to the end.
     *   `clear_screen()`: Clears the entire screen.
-
-### System Module
-
-*   **StopWatch**: Class for measuring elapsed time.
-    *   `StopWatch(start: bool = False)`: Constructor to create a stopwatch.
-    *   `start()`: Starts the stopwatch.
-    *   `stop()`: Stops the stopwatch.
-    *   `elapsed()`: Returns the elapsed time.
-*   **Time**: Class for time-related functions.
-    *   `sleep(seconds: int | float)`: Pauses execution for a specified number of seconds.
-*   **Config**: Class for configuration management.
-    *   `is_empty(path: str) -> bool`: Checks if a config file is empty.
-    *   `create(path: str, data: dict | None = None)`: Creates a new config file.
-*   **Console**: Class for console output.
-    *   `print(value: any = "", start: str = "", end: str = "\n", file: any = stdout, sleep: int | float | None = None)`: Prints to the console with optional start, end, file, and sleep parameters.
-
-### Text Module
-
-*   **Text**: Class for handling text.
-    *   `Text(text: object | str = "")`: Constructor to create a text object.
-    *   `clion_link(path: str, line: int | None = None)`: Creates a CLion link to a file and line number.
+    *   `clear()`: Clears the entire screen and bring the cursor to the top left corner.
+    *   `clear_previous_line()`: Clears the previous line and bring the cursor to the beginning of the previous line.
 
 ### Error Module
 
 *   **Error**: Class for custom error handling.
     *   `Error(message: str = "an error occurred", error: str = "Error", link: tuple[str, int] | None = None)`: Constructor to create an error object.
+
+### System Module
+
+*   **Config**: Class for configuration management.
+    *   `is_empty(path: str) -> bool`: Checks if a config file is empty.
+    *   `create(path: str, data: dict | None = None)`: Creates a new config file.
+*   **Console**: Class for console output.
+    *   `print(value: any = "", start: str = "", end: str = "\n", file: any = stdout, sleep: int | float | None = None)`: Prints to the console with optional start, end, file, and sleep parameters.
+*   **StopWatch**: Class for measuring elapsed time.
+    *   `StopWatch(start: bool = False)`: Constructor to create a stopwatch.
+    *   `start()`: Starts the stopwatch.
+    *   `stop()`: Stops the stopwatch.
+    *   `update()`: update the elapsed time stopwatch.
+    *   `elapsed()`: Returns the elapsed time.
+    *   `reset()`: Reset the StopWatch back to 0.
+*   **Time**: Class for time-related functions.
+    *   `sleep(seconds: int | float)`: Pauses execution for a specified number of seconds.
+
+### Text Module
+
+*   **Format**: Class for handling text's format.
+    *   `reset()`: Clear the format of a text.
+    *   `bold()`: Make a text bold.
+    *   `italic()`: Make a text italic.
+    *   `underline()`: Make a text underlined.
+    *   `hide()`: Make a text hidden.
+    *   `strikthrough()`: Make a text strokethrough.
+    *   `error(title: bool = False)`: Make a text styled as an ERROR (background is colored if title, foreground otherwise).
+    *   `warning(title: bool = False)`: Make a text styled as a WARNING (background is colored if title, foreground otherwise).
+    *   `ok(title: bool = False)`: Make a text styled as an OK (background is colored if title, foreground otherwise).
+    *   `info(title: bool = False)`: Make a text styled as an INFO (background is colored if title, foreground otherwise).
+    *   `apply(obj: object, sequence: object | None = None)`: Apply any escape sequence (as a string or an ANSI) to an object (Text, ANSI, Animation, ProgressBar or str).
+*   **Text**: Class for handling text.
+    *   `Text(text: object | str = "")`: Constructor to create a text object.
+    *   `clion_link(path: str, line: int | None = None)`: Creates a CLion link to a file and line number.
 
 ## License
 

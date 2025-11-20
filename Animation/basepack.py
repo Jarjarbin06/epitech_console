@@ -48,7 +48,7 @@ class BasePack(object):
 
     @staticmethod
     def update(
-            style : Style = Style("#", "-", "<", ">", "|", "|")
+            style: Style = Style("#", "-", "<", ">", "|", "|")
         ) -> None:
         """
             Initialise the BasePack class

@@ -120,7 +120,7 @@ class Cursor(object):
             Move the cursor to the beginning of the 'n' previous line
 
             Parameters:
-                n (int): number of column right
+                n (int): number of column up
 
             Returns:
                 ANSI: ansi sequence

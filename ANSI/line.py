@@ -110,4 +110,4 @@ class Line(object):
         from epitech_console.ANSI.line import Line
         from epitech_console.ANSI.cursor import Cursor
 
-        return Cursor.up(1) + Line.clear_line()
+        return Cursor.up(1) + Line.clear_line() + Cursor.move_column(0)
