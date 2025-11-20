@@ -11,6 +11,7 @@
 from Console.System.time import Time
 from Console.System.stopwatch import StopWatch
 from Console.System.console import Console
+from Console.System.config import Config
 
 from sys import stdin, stdout, stderr
 
@@ -19,6 +20,7 @@ __all__ : list[str] = [
     'Time',
     'StopWatch',
     'Console',
+    'Config',
     'stdin',
     'stdout',
     'stderr',
