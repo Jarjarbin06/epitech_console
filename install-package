@@ -1,5 +1,5 @@
 #!/bin/bash
 
-pip uninstall epitech-console
-pip install -e .
-pip show epitech-console
+pip uninstall epitech_console
+pip install -e epitech_console
+pip show epitech_console
