@@ -9,7 +9,6 @@
 
 
 from builtins import object
-
 from Console.Text.format import Format
 
 
@@ -35,13 +34,12 @@ class Text(Format):
         from Console.ANSI.ansi import ANSI
 
         self.text : str = ""
-        assert type(text) in [ANSI, str]
 
-        if isinstance(text, ANSI):
+        if type(text) in [ANSI]:
             self.text = text.sequence
 
         else :
-            self.text = text
+            self.text = str(text)
 
 
     def __add__(

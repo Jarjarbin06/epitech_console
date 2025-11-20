@@ -9,10 +9,13 @@
 
 
 from Console import Animation, ANSI, Error, System, Text
-from configparser import ConfigParser
 
 
 PATH = __file__.removesuffix("__init__.py")
+
+
+Animation.basepack.BasePack.update(Animation.Style("#", " ", "#", "#", "", ""))
+ANSI.basepack.BasePack.update()
 
 
 __all__ : list[str] = [
@@ -25,32 +28,16 @@ __all__ : list[str] = [
 ]
 
 
-if System.Config.is_empty(PATH + "config.ini"):
+__author__ : str = 'Nathan Jarjarbin'
+__email__ : str = 'nathan.epitech.eu'
 
-    with open(PATH + "config.ini", 'w') as config_file:
-        config = ConfigParser()
-        config['GENERAL'] = {
-            "debug": "False",
-            "log": "True",
-            "introduction": "True",
-        }
 
-        config.write(config_file)
-    config_file.close()
+if System.config.Config.is_empty(PATH):
+    System.config.Config.create(PATH)
 
-Animation.BasePack.update(Animation.Style("#", " ", "#", "#", "", ""))
 
-epitech_color : ANSI.ANSI = ANSI.Color.rgb_bg(0, 145, 211) + ANSI.Color.color(ANSI.Color.C_WHITE)
+epitech_color : ANSI.ANSI = ANSI.Color.rgb_fg(0, 145, 211) + ANSI.Color.rgb_bg(0, 0 ,0)
 reset : ANSI.ANSI = ANSI.Color.color(ANSI.Color.C_RESET)
-anim_1 : Animation.Animation = Animation.Animation(Animation.BasePack.P_FILL_L)
-anim_2 : Animation.Animation = Animation.Animation(Animation.BasePack.P_FILL_R)
-text : Text.Text = Text.Text(" Console v2.0 ")
-line : Text.Text = Text.Text() + anim_1.render(delete=True) + text + anim_2.render()
+text : Text.Text = epitech_color + Text.Text("hi").bold() + reset
 
-for _ in range(anim_1.length):
-    anim_1.update()
-    anim_2.update()
-    line = Text.Text() + anim_1.render(delete=True) + text + anim_2.render()
-    System.Console.print(line, sleep=0.1)
-
-System.Time.sleep(2)
+System.Console.print(text, sleep=2)

@@ -20,92 +20,96 @@ class Color(object):
         Attributes:
             C_RESET (int): Base color.
             C_BOLD (int): Bold color.
-            C_DARK_BASE (int): Dark base color.
             C_ITALIC (int): Italic color.
             C_UNDERLINE (int): Underline color.
-            C_FLASH_1 (int): Flash color.
-            C_FLASH_2 (int): Flash color.
-            C_HIGHLIGHT (int): Highlight color.
+            C_FLASH_SLOW (int): Flash color.
+            C_FLASH_FAST (int): Flash color.
             C_HIDDEN (int): Hidden color.
-            C_CROSSED (int): Crossed color.
-            C_DARK_GREY (int): Dark grey color.
-            C_DARK_RED (int): Dark red color.
-            C_DARK_GREEN (int): Dark green color.
-            C_DARK_YELLOW (int): Dark yellow color.
-            C_DARK_BLUE (int): Dark blue color.
-            C_DARK_LAVANDA (int): Dark lavanda color.
-            C_DARK_CYAN (int): Dark cyan color.
-            C_DARK_WHITE (int): Dark white color.
-            C_HIGHLIGHT_DARK_GREY (int): Highlight dark grey color.
-            C_HIGHLIGHT_DARK_RED (int): Highlight dark red color.
-            C_HIGHLIGHT_DARK_GREEN (int): Highlight dark green color.
-            C_HIGHLIGHT_DARK_YELLOW (int): Highlight dark yellow color.
-            C_HIGHLIGHT_DARK_BLUE (int): Highlight dark blue color.
-            C_HIGHLIGHT_DARK_LAVANDA (int): Highlight dark lavanda color.
-            C_HIGHLIGHT_DARK_CYAN (int): Highlight dark cyan color.
-            C_HIGHLIGHT_DARK_WHITE (int): Highlight dark white color.
-            C_GREY (int): Grey color.
-            C_RED (int): Red color.
-            C_GREEN (int): Green color.
-            C_YELLOW (int): Yellow color.
-            C_BLUE (int): Blue color.
-            C_LAVANDA (int): Lavanda color.
-            C_CYAN (int): Cyan color.
-            C_WHITE (int): White color.
-            C_HIGHLIGHT_GREY (int): Highlight grey color.
-            C_HIGHLIGHT_RED (int): Highlight red color.
-            C_HIGHLIGHT_GREEN (int): Highlight green color.
-            C_HIGHLIGHT_YELLOW (int): Highlight yellow color.
-            C_HIGHLIGHT_BLUE (int): Highlight blue color.
-            C_HIGHLIGHT_LAVANDA (int): Highlight lavanda color.
-            C_HIGHLIGHT_CYAN (int): Highlight cyan color.
-            C_HIGHLIGHT_WHITE (int): Highlight white color.
+            C_STRIKETHROUGH (int): Crossed color.
+
+            C_FG_DARK (int): Dark base color.
+            C_FG_DARK_GREY (int): Dark grey color.
+            C_FG_DARK_RED (int): Dark red color.
+            C_FG_DARK_GREEN (int): Dark green color.
+            C_FG_DARK_YELLOW (int): Dark yellow color.
+            C_FG_DARK_BLUE (int): Dark blue color.
+            C_FG_DARK_LAVANDA (int): Dark lavanda color.
+            C_FG_DARK_CYAN (int): Dark cyan color.
+            C_FG_DARK_WHITE (int): Dark white color.
+            C_FG_GREY (int): Grey color.
+            C_FG_RED (int): Red color.
+            C_FG_GREEN (int): Green color.
+            C_FG_YELLOW (int): Yellow color.
+            C_FG_BLUE (int): Blue color.
+            C_FG_LAVANDA (int): Lavanda color.
+            C_FG_CYAN (int): Cyan color.
+            C_FG_WHITE (int): White color.
+
+            C_BG (int): BACKGROUND color.
+            C_BG_DARK_GREY (int): BACKGROUND dark grey color.
+            C_BG_DARK_RED (int): BACKGROUND dark red color.
+            C_BG_DARK_GREEN (int): BACKGROUND dark green color.
+            C_BG_DARK_YELLOW (int): BACKGROUND dark yellow color.
+            C_BG_DARK_BLUE (int): BACKGROUND dark blue color.
+            C_BG_DARK_LAVANDA (int): BACKGROUND dark lavanda color.
+            C_BG_DARK_CYAN (int): BACKGROUND dark cyan color.
+            C_BG_DARK_WHITE (int): BACKGROUND dark white color.
+            C_BG_GREY (int): BACKGROUND grey color.
+            C_BG_RED (int): BACKGROUND red color.
+            C_BG_GREEN (int): BACKGROUND green color.
+            C_BG_YELLOW (int): BACKGROUND yellow color.
+            C_BG_BLUE (int): BACKGROUND blue color.
+            C_BG_LAVANDA (int): BACKGROUND lavanda color.
+            C_BG_CYAN (int): BACKGROUND cyan color.
+            C_BG_WHITE (int): BACKGROUND white color.
     """
 
     from Console.ANSI.ansi import ANSI
 
     C_RESET : int = 0
     C_BOLD : int = 1
-    C_DARK_BASE : int = 2
     C_ITALIC : int = 3
     C_UNDERLINE : int = 4
-    C_FLASH_1 : int = 5
-    C_FLASH_2 : int = 6
-    C_HIGHLIGHT : int = 7
+    C_FLASH_SLOW : int = 5
+    C_FLASH_FAST : int = 6
     C_HIDDEN : int = 8
-    C_CROSSED : int = 9
-    C_DARK_GREY : int = 30
-    C_DARK_RED : int = 31
-    C_DARK_GREEN : int = 32
-    C_DARK_YELLOW : int = 33
-    C_DARK_BLUE : int = 34
-    C_DARK_LAVANDA : int = 35
-    C_DARK_CYAN : int = 36
-    C_DARK_WHITE : int = 37
-    C_HIGHLIGHT_DARK_GREY : int = 40
-    C_HIGHLIGHT_DARK_RED : int = 41
-    C_HIGHLIGHT_DARK_GREEN : int = 42
-    C_HIGHLIGHT_DARK_YELLOW : int = 43
-    C_HIGHLIGHT_DARK_BLUE : int = 44
-    C_HIGHLIGHT_DARK_LAVANDA : int = 45
-    C_HIGHLIGHT_DARK_CYAN : int = 46
-    C_HIGHLIGHT_DARK_WHITE : int = 47
-    C_GREY : int = 90
-    C_RED : int = 91
-    C_GREEN : int = 92
-    C_YELLOW : int = 93
-    C_BLUE : int = 94
-    C_LAVANDA : int = 95
-    C_CYAN : int = 96
-    C_WHITE : int = 97
-    C_HIGHLIGHT_GREY : int = 100
-    C_HIGHLIGHT_RED : int = 101
-    C_HIGHLIGHT_GREEN : int = 102
-    C_HIGHLIGHT_YELLOW : int = 103
-    C_HIGHLIGHT_BLUE : int = 104
-    C_HIGHLIGHT_LAVANDA : int = 105
-    C_HIGHLIGHT_CYAN : int = 106
-    C_HIGHLIGHT_WHITE : int = 107
+    C_STRIKETHROUGH : int = 9
+
+    C_FG_DARK : int = 2
+    C_FG_DARK_GREY : int = 30
+    C_FG_DARK_RED : int = 31
+    C_FG_DARK_GREEN : int = 32
+    C_FG_DARK_YELLOW : int = 33
+    C_FG_DARK_BLUE : int = 34
+    C_FG_DARK_LAVANDA : int = 35
+    C_FG_DARK_CYAN : int = 36
+    C_FG_DARK_WHITE : int = 37
+    C_FG_GREY : int = 90
+    C_FG_RED : int = 91
+    C_FG_GREEN : int = 92
+    C_FG_YELLOW : int = 93
+    C_FG_BLUE : int = 94
+    C_FG_LAVANDA : int = 95
+    C_FG_CYAN : int = 96
+    C_FG_WHITE : int = 97
+
+    C_BG : int = 7
+    C_BG_DARK_GREY : int = 40
+    C_BG_DARK_RED : int = 41
+    C_BG_DARK_GREEN : int = 42
+    C_BG_DARK_YELLOW : int = 43
+    C_BG_DARK_BLUE : int = 44
+    C_BG_DARK_LAVANDA : int = 45
+    C_BG_DARK_CYAN : int = 46
+    C_BG_DARK_WHITE : int = 47
+    C_BG_GREY : int = 100
+    C_BG_RED : int = 101
+    C_BG_GREEN : int = 102
+    C_BG_YELLOW : int = 103
+    C_BG_BLUE : int = 104
+    C_BG_LAVANDA : int = 105
+    C_BG_CYAN : int = 106
+    C_BG_WHITE : int = 107
 
 
     @staticmethod

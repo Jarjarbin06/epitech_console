@@ -78,13 +78,13 @@ Simple and useful additions:
 
 You already have a logging system, so keep it simple:
 
-* [x] Add `bold`, `underline` options
+* [ ] Add `bold`, `underline` options
 * [ ] Add argument `auto_reset=True`
 * [ ] Add helper `colored(text, fg=None, bg=None, style=None)`
 
 Optional styles (without breaking existing code):
 
-* [ ] style.bold("text")
+* [x] style.bold("text")
 * [ ] style.error("text")
 * [ ] style.warn("text")
 * [ ] style.ok("text")

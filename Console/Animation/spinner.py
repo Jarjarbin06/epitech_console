@@ -20,10 +20,13 @@ class Spinner(object):
 
 
     from Console.Animation.animation import Animation
+    from Console.Animation.style import Style
 
 
     @staticmethod
     def stick(
+            *,
+            style : object = Style("#", " ", "#", "#", "", "")
         ) -> Animation:
         """
             Stick spinner.
@@ -36,16 +39,18 @@ class Spinner(object):
 
         return Animation(
             [
-                f"[-]",
-                f"[\\]",
-                f"[|]",
-                f"[/]"
+                f"{style.border_left}-{style.border_right}",
+                f"{style.border_left}\\{style.border_right}",
+                f"{style.border_left}|{style.border_right}",
+                f"{style.border_left}/{style.border_right}"
             ]
         )
 
 
     @staticmethod
     def plus(
+            *,
+            style : object = Style("#", " ", "#", "#", "", "")
         ) -> Animation:
         """
             Plus spinner.
@@ -58,14 +63,16 @@ class Spinner(object):
 
         return Animation(
             [
-                f"[-]",
-                f"[|]"
+                f"{style.border_left}-{style.border_right}",
+                f"{style.border_left}|{style.border_right}"
             ]
         )
 
 
     @staticmethod
     def cross(
+            *,
+            style : object = Style("#", " ", "#", "#", "", "")
         ) -> Animation:
         """
             Cross spinner.
@@ -78,7 +85,7 @@ class Spinner(object):
 
         return Animation(
             [
-                f"[/]",
-                f"[\\]"
+                f"{style.border_left}/{style.border_right}",
+                f"{style.border_left}\\{style.border_right}"
             ]
         )

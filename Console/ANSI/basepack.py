@@ -20,14 +20,14 @@ class BasePack(object):
         Attributes:
             P_ERROR (tuple): error tuple of color.
             P_WARNING (tuple): warning tuple of color.
-            P_VALID (tuple): validation tuple of color.
+            P_OK (tuple): validation tuple of color.
             P_INFO (tuple): information tuple of color.
     """
 
 
     P_ERROR = (0, 0)
     P_WARNING = (0, 0)
-    P_VALID = (0, 0)
+    P_OK = (0, 0)
     P_INFO = (0, 0)
 
 
@@ -36,14 +36,11 @@ class BasePack(object):
         ) -> None:
         """
             Initialise the BasePack class
-
-            Parameters:
-                style (Style): Style of the BasePack animations.
         """
 
         from Console.ANSI.color import Color
 
-        BasePack.P_ERROR = (Color.C_HIGHLIGHT_DARK_RED, Color.C_DARK_RED)
-        BasePack.P_WARNING = (Color.C_HIGHLIGHT_DARK_YELLOW, Color.C_DARK_YELLOW)
-        BasePack.P_VALID = (Color.C_HIGHLIGHT_DARK_GREEN, Color.C_DARK_GREEN)
-        BasePack.P_INFO = (Color.C_HIGHLIGHT, Color.C_RESET)
+        BasePack.P_ERROR = (Color.C_BG_DARK_RED, Color.C_FG_DARK_RED)
+        BasePack.P_WARNING = (Color.C_BG_DARK_YELLOW, Color.C_FG_DARK_YELLOW)
+        BasePack.P_OK = (Color.C_BG_DARK_GREEN, Color.C_FG_DARK_GREEN)
+        BasePack.P_INFO = (Color.C_BG, Color.C_RESET)

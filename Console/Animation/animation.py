@@ -9,16 +9,17 @@
 
 
 from builtins import object
+from Console.Text.format import Format
 
 
-class Animation(object):
+class Animation(Format):
     """
         Animation class.
 
         Animation tool.
     """
 
-    from Console.ANSI import Color
+    from Console.ANSI.color import Color
 
 
     def __init__(
@@ -44,7 +45,6 @@ class Animation(object):
             self.animation = [animation]
 
         self.length : int = len(self.animation)
-        self.animation += [""]
         self.step : int = 0
 
 
@@ -93,7 +93,7 @@ class Animation(object):
     def __str__(
             self,
             *,
-            color : int = Color.C_RESET
+            color : object = Color.C_RESET
         ) -> str :
         """
             Convert Animation object to string.
@@ -104,7 +104,7 @@ class Animation(object):
 
         from Console.ANSI.color import Color
 
-        return f"{Color.color(color)}{str(self[self.step])}{Color.color(Color.C_RESET)}"
+        return f"{color}{str(self[self.step])}{Color.color(Color.C_RESET)}"
 
 
     def __call__(

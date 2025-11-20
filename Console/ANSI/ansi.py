@@ -9,9 +9,10 @@
 
 
 from builtins import object
+from Console.Text.format import Format
 
 
-class ANSI(object):
+class ANSI(Format):
     """
         ANSI class.
 
@@ -48,7 +49,7 @@ class ANSI(object):
 
     def __add__(
             self,
-            other : object | str
+            other : object | str | int
         ) -> object:
         """
             Add 2 ANSI sequences together.

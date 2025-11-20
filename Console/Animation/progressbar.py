@@ -9,35 +9,10 @@
 
 
 from builtins import object
+from Console.Text.format import Format
 
 
-def create_progress_bar(
-        length,
-        style
-    ) -> list[str]:
-    """
-        Create the Progress-bar animation.
-    """
-
-    animation : list[str] = []
-
-    for y in range(length):
-        animation += [style.border_left]
-
-        for x in range(y):
-            animation[y] += style.on
-
-        animation[y] += style.arrow_right
-
-        for x in range((length - y) - 1):
-            animation[y] += style.off
-
-        animation[y] = animation[y][0:-1] + style.border_right
-
-    return animation
-
-
-class ProgressBar(object):
+class ProgressBar(Format):
     """
         ProgressBar class.
 
@@ -54,10 +29,11 @@ class ProgressBar(object):
             length : int,
 
             *,
+            animation : Animation | None = None,
             style : object = Style("#", "-", "<", ">", "|", "|"),
             percent_style : str = "bar",
             spinner : Animation | None = None,
-            spinner_position : str = "s"
+            spinner_position : str = "a"
         ) -> None:
         """
             Create a Progress-bar object.
@@ -65,16 +41,47 @@ class ProgressBar(object):
             Parameters:
                 length (int): Progress bar length.
 
+                animation (Animation | None): Animation object.
                 style (Style | None)(optional): Progress bar style.
                 percent_style (str)(optional): Progress bar percent style (num/bar/mix).
                 spinner (Animation | None)(optional): Progress bar spinner.
-                spinner_position (str)(optional): Progress bar spinner position (s/e).
+                spinner_position (str)(optional): Progress bar spinner position (b/a).
         """
 
         from Console.Animation.animation import Animation
+        from Console.Animation.style import Style
+
+        def create_progress_bar(
+                length,
+                style
+            ) -> list[str]:
+            """
+                Create the Progress-bar animation.
+            """
+
+            animation: list[str] = []
+
+            for y in range(length):
+                animation += [style.border_left]
+
+                for x in range(y):
+                    animation[y] += style.on
+
+                animation[y] += style.arrow_right
+
+                for x in range((length - y) - 1):
+                    animation[y] += style.off
+
+                animation[y] = animation[y][0:-1] + style.border_right
+
+            return animation
+
+        if not animation :
+            animation = Animation(create_progress_bar(length, style))
 
         self.length = length
-        self.animation : Animation = Animation(create_progress_bar(length, style))
+        self.animation : Animation = animation
+        self.style : Style = style
         self.percent : int | float = 0
         self.percent_style : str = percent_style
         self.spinner : Animation | None = spinner
@@ -85,33 +92,35 @@ class ProgressBar(object):
             self,
             item : int,
             *,
-            color : int = Color.C_RESET
+            color : object = Color.color(Color.C_RESET)
         ) -> str :
         """
             Get the current step of the animations and convert it to a string.
 
             Parameters:
                 item (int): Step number
-                color (int)(optional): Color
+                color (ANSI)(optional): Color
 
             Returns:
                 str: Animations string
         """
 
-        return str(self.animation[item])
+        from Console.ANSI.color import Color
+
+        return str(color + self.animation[item])
 
 
     def __str__(
             self,
             *,
-            color : tuple[int, int, int] = (Color.C_RESET, Color.C_RESET, Color.C_RESET),
+            color : tuple[object, object, object] = (Color.color(Color.C_RESET), Color.color(Color.C_RESET), Color.color(Color.C_RESET)),
             hide_spinner : bool = False
         ) -> str :
         """
             Convert ProgressBar object to string.
 
             Parameters:
-                color (tuple[int, int, int])(optional): Color
+                color (tuple[ANSI, ANSI, ANSI])(optional): Color
                 hide_spinner (bool): hide the spinner
 
             Returns:
@@ -122,6 +131,9 @@ class ProgressBar(object):
 
         string : str = ""
 
+        if self.spinner and self.spinner_position == "b" and not hide_spinner :
+            string += self.spinner.__str__(color=color[1])
+
         if self.percent_style in ["bar", "mix"] :
             idx : int = int((self.percent / 100) * self.length)
 
@@ -130,11 +142,11 @@ class ProgressBar(object):
 
             string += self.__getitem__(idx, color=color[0])
 
-        if self.spinner and not hide_spinner :
+        if self.spinner and self.spinner_position == "a" and not hide_spinner :
             string += self.spinner.__str__(color=color[1])
 
         if self.percent_style in ["num", "mix"] :
-            string += f" {Color.color(color[2])}{str(self.percent)}%{Color.color(Color.C_RESET)}"
+            string += f" {color[2]}{str(self.percent)}%{Color.color(Color.C_RESET)}"
 
         return string
 
@@ -177,7 +189,7 @@ class ProgressBar(object):
     def render(
             self,
             *,
-            color : int | tuple[int, int, int] = Color.C_RESET,
+            color : object | tuple[object, object, object] = Color.color(Color.C_RESET),
             hide_spinner_at_end: bool = True,
             delete : bool = False
         ) -> str:
@@ -185,7 +197,7 @@ class ProgressBar(object):
             Convert ProgressBar object to string.
 
             Parameters:
-                color (int | tuple[int, int, int])(optional): Color
+                color (ANSI | tuple[ANSI, ANSI, ANSI])(optional): Color
                 hide_spinner_at_end (bool): Hide spinner at end
                 delete (bool)(optional): Delete previous line and right on it
 
@@ -193,17 +205,17 @@ class ProgressBar(object):
                 str: ProgressBar string
         """
 
+        from Console.ANSI.ansi import ANSI
         from Console.ANSI.line import Line
-        from Console.ANSI.color import Color
 
         string : str = ""
 
         if delete:
             string += str(Line.clear_previous_line())
 
-        if type(color) in [int]:
-            color : tuple[int, int, int] = (color, color, color)
+        if type(color) in [ANSI]:
+            color : tuple[object, object, object] = (color, color, color)
 
-        string += str(Color.color(color[0])) + self.__str__(color=color, hide_spinner=(hide_spinner_at_end and self.percent == 100)) + str(Color.color(Color.C_RESET))
+        string += str(self.__str__(color=color, hide_spinner=(hide_spinner_at_end and self.percent == 100)))
 
         return string
