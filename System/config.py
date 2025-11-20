@@ -26,9 +26,13 @@ class Config:
 
         empty_config : bool = False
 
-        with open(path + "config.ini", 'r') as config_file:
-            if config_file.read() == "":
-                empty_config = True
+        try :
+            with open(path + "config.ini", 'r') as config_file:
+                if config_file.read() == "":
+                    empty_config = True
+
+        except FileNotFoundError:
+            empty_config = True
 
         config_file.close()
 
