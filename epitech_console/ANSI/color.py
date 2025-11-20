@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###    ----Color.py----   ###
 ###                       ###
 ###=======================###
@@ -64,7 +64,7 @@ class Color(object):
             C_BG_WHITE (int): BACKGROUND white color.
     """
 
-    from Console.ANSI.ansi import ANSI
+    from epitech_console.ANSI.ansi import ANSI
 
     C_RESET : int = 0
     C_BOLD : int = 1
@@ -126,7 +126,7 @@ class Color(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{str(color)}m")
 
@@ -145,7 +145,7 @@ class Color(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}38;5;{color}m")
 
@@ -164,7 +164,7 @@ class Color(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}48;5;{color}m")
 
@@ -187,7 +187,7 @@ class Color(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}38;2;{r};{g};{b}m")
 
@@ -210,7 +210,7 @@ class Color(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}48;2;{r};{g};{b}m")
 

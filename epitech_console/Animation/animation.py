@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###  ----Animation.py---- ###
 ###                       ###
 ###=======================###
@@ -9,7 +9,7 @@
 
 
 from builtins import object
-from Console.Text.format import Format
+from epitech_console.Text.format import Format
 
 
 class Animation(Format):
@@ -19,7 +19,7 @@ class Animation(Format):
         Animation tool.
     """
 
-    from Console.ANSI.color import Color
+    from epitech_console.ANSI.color import Color
 
 
     def __init__(
@@ -33,7 +33,7 @@ class Animation(Format):
                 animation (list[str] | str): list of step
         """
 
-        from Console.Text import Text
+        from epitech_console.Text import Text
 
         self.animation : list[str] = []
 
@@ -62,9 +62,9 @@ class Animation(Format):
                 Animation: Animation
         """
 
-        from Console.Text.text import Text
-        from Console.ANSI.ansi import ANSI
-        from Console.System.stopwatch import StopWatch
+        from epitech_console.Text.text import Text
+        from epitech_console.ANSI.ansi import ANSI
+        from epitech_console.System.stopwatch import StopWatch
 
         if type(other) in [Animation]:
             return Animation(self.animation + other.animation)
@@ -102,7 +102,7 @@ class Animation(Format):
                 str: Animation string
         """
 
-        from Console.ANSI.color import Color
+        from epitech_console.ANSI.color import Color
 
         return f"{color}{str(self[self.step])}{Color.color(Color.C_RESET)}"
 
@@ -149,7 +149,7 @@ class Animation(Format):
                 str: Animation string
         """
 
-        from Console.ANSI.line import Line
+        from epitech_console.ANSI.line import Line
 
         string : str = ""
 

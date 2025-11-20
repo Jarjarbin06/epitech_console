@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ### ----ProgressBar.py----###
 ###                       ###
 ###=======================###
@@ -9,7 +9,7 @@
 
 
 from builtins import object
-from Console.Text.format import Format
+from epitech_console.Text.format import Format
 
 
 class ProgressBar(Format):
@@ -19,9 +19,9 @@ class ProgressBar(Format):
         Progress-bar tool.
     """
 
-    from Console.Animation.animation import Animation
-    from Console.ANSI.color import Color
-    from Console.Animation.style import Style
+    from epitech_console.Animation.animation import Animation
+    from epitech_console.ANSI.color import Color
+    from epitech_console.Animation.style import Style
 
 
     def __init__(
@@ -48,8 +48,8 @@ class ProgressBar(Format):
                 spinner_position (str)(optional): Progress bar spinner position (b/a).
         """
 
-        from Console.Animation.animation import Animation
-        from Console.Animation.style import Style
+        from epitech_console.Animation.animation import Animation
+        from epitech_console.Animation.style import Style
 
         def create_progress_bar(
                 length,
@@ -105,7 +105,7 @@ class ProgressBar(Format):
                 str: Animations string
         """
 
-        from Console.ANSI.color import Color
+        from epitech_console.ANSI.color import Color
 
         return str(color + self.animation[item])
 
@@ -127,7 +127,7 @@ class ProgressBar(Format):
                 str: ProgressBar string
         """
 
-        from Console.ANSI.color import Color
+        from epitech_console.ANSI.color import Color
 
         string : str = ""
 
@@ -205,8 +205,8 @@ class ProgressBar(Format):
                 str: ProgressBar string
         """
 
-        from Console.ANSI.ansi import ANSI
-        from Console.ANSI.line import Line
+        from epitech_console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.line import Line
 
         string : str = ""
 

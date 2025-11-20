@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###  ----BasePack.py----  ###
 ###                       ###
 ###=======================###
@@ -31,7 +31,7 @@ class BasePack(object):
     """
 
 
-    from Console.Animation.style import Style
+    from epitech_console.Animation.style import Style
 
 
     P_SLIDE_R = []

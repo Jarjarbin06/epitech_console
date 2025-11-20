@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###    ----Error.py----   ###
 ###                       ###
 ###=======================###
@@ -15,7 +15,7 @@ class Error(Exception):
     """
     Error class.
 
-    Error for Console.
+    Error for epitech_console.
     """
 
 
@@ -35,7 +35,7 @@ class Error(Exception):
                 link (tuple[str, int]): The link to where the error comes from (file and line).
         """
 
-        from Console.Text.text import Text
+        from epitech_console.Text.text import Text
 
         self.message : str = message
         self.error : str = error

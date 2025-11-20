@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###  ----__init__.py----  ###
 ###                       ###
 ###=======================###
@@ -8,13 +8,11 @@
 #############################
 
 
-from Console.Text.text import Text
-from Console.Text.format import Format
+from epitech_console.Error.error import Error
 
 
 __all__ : list[str] = [
-    'Text',
-    'Format'
+    'Error'
 ]
 
 

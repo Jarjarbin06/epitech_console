@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###   ----Format.py----   ###
 ###                       ###
 ###=======================###
@@ -29,7 +29,7 @@ class Format:
                 any: formatted object.
         """
 
-        from Console.ANSI.color import Color
+        from epitech_console.ANSI.color import Color
 
         return Format.apply(self, Color.color(Color.C_RESET))
 
@@ -45,7 +45,7 @@ class Format:
                 any: formatted object.
         """
 
-        from Console.ANSI.color import Color
+        from epitech_console.ANSI.color import Color
 
         return Format.apply(self, Color.color(Color.C_BOLD))
 
@@ -59,7 +59,7 @@ class Format:
             Returns:
                 any: formatted object.
         """
-        from Console.ANSI.color import Color
+        from epitech_console.ANSI.color import Color
 
         return Format.apply(self, Color.color(Color.C_ITALIC))
 
@@ -74,7 +74,7 @@ class Format:
                 any: formatted object.
         """
 
-        from Console.ANSI.color import Color
+        from epitech_console.ANSI.color import Color
 
         return Format.apply(self, Color.color(Color.C_UNDERLINE))
 
@@ -89,7 +89,7 @@ class Format:
                 any: formatted object.
         """
 
-        from Console.ANSI.color import Color
+        from epitech_console.ANSI.color import Color
 
         return Format.apply(self, Color.color(Color.C_HIDDEN))
 
@@ -104,7 +104,7 @@ class Format:
                 any: formatted object.
         """
 
-        from Console.ANSI.color import Color
+        from epitech_console.ANSI.color import Color
 
         return Format.apply(self, Color.color(Color.C_STRIKETHROUGH))
 
@@ -124,8 +124,8 @@ class Format:
                 any: formatted object.
         """
 
-        from Console.ANSI.color import Color
-        from Console.ANSI.basepack import BasePack
+        from epitech_console.ANSI.color import Color
+        from epitech_console.ANSI.basepack import BasePack
 
         if title:
             return Format.apply(self, Color.color(BasePack.P_ERROR[0]))
@@ -147,8 +147,8 @@ class Format:
                 any: formatted object.
         """
 
-        from Console.ANSI.color import Color
-        from Console.ANSI.basepack import BasePack
+        from epitech_console.ANSI.color import Color
+        from epitech_console.ANSI.basepack import BasePack
 
         if title:
             return Format.apply(self, Color.color(BasePack.P_WARNING[0]))
@@ -170,8 +170,8 @@ class Format:
                 any: formatted object.
         """
 
-        from Console.ANSI.color import Color
-        from Console.ANSI.basepack import BasePack
+        from epitech_console.ANSI.color import Color
+        from epitech_console.ANSI.basepack import BasePack
 
         if title:
             return Format.apply(self, Color.color(BasePack.P_OK[0]))
@@ -193,8 +193,8 @@ class Format:
                 any: formatted object.
         """
 
-        from Console.ANSI.color import Color
-        from Console.ANSI.basepack import BasePack
+        from epitech_console.ANSI.color import Color
+        from epitech_console.ANSI.basepack import BasePack
 
         if title:
             return Format.apply(self, Color.color(BasePack.P_INFO[0]))
@@ -217,11 +217,11 @@ class Format:
                 any: formatted object.
         """
 
-        from Console.ANSI.color import Color
-        from Console.Text.text import Text
-        from Console.ANSI.ansi import ANSI
-        from Console.Animation.animation import Animation
-        from Console.Animation.progressbar import ProgressBar
+        from epitech_console.ANSI.color import Color
+        from epitech_console.Text.text import Text
+        from epitech_console.ANSI.ansi import ANSI
+        from epitech_console.Animation.animation import Animation
+        from epitech_console.Animation.progressbar import ProgressBar
 
         if not sequence:
             sequence: ANSI = Color.color(Color.C_BOLD)

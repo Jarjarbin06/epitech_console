@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###  ----BasePack.py----  ###
 ###                       ###
 ###=======================###
@@ -38,7 +38,7 @@ class BasePack(object):
             Initialise the BasePack class
         """
 
-        from Console.ANSI.color import Color
+        from epitech_console.ANSI.color import Color
 
         BasePack.P_ERROR = (Color.C_BG_DARK_RED, Color.C_FG_DARK_RED)
         BasePack.P_WARNING = (Color.C_BG_DARK_YELLOW, Color.C_FG_DARK_YELLOW)

@@ -1,43 +1,47 @@
 [build-system]
-requires = ["setuptools>=64", "setuptools-scm>=8"]
+requires = ["setuptools>=65.0", "wheel", "setuptools_scm[toml]>=6.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "epitech-console"
+name = "epitech_console"
 version = "0.1.1"
 description = "Console tools (animation/colored printing/formating/etc)"
 authors = [
     { name = "Nathan Jarjarbin", email = "nathan.amaraggi@epitech.eu" }
 ]
 readme = "README.md"
-requires-python = ">=3.8"
-license = { text = "GPL-3.0-or-later" }
+requires-python = ">=3.13"
+license = "GPL-3.0-or-later"
 
 dependencies = [
     # No external dependencies declared (sys, time, builtins are standard)
 ]
 
 classifiers = [
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3 :: Only",
-    "License :: OSI Approved :: GNU General Public License (GPL)",
+    "Programming Language :: Python :: 3.13",
     "Operating System :: OS Independent",
     "Environment :: Console",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
     "Topic :: Software Development :: Libraries",
     "Topic :: Terminals",
     "Topic :: Utilities"
 ]
 
 [project.urls]
-Homepage = "https://github.com/Jarjarbin06/Console"
-Repository = "https://github.com/Jarjarbin06/Console"
-Issues = "https://github.com/Jarjarbin06/Console/issues"
+Homepage = "https://github.com/Jarjarbin06/epitech_console"
+Repository = "https://github.com/Jarjarbin06/epitech_console"
+Issues = "https://github.com/Jarjarbin06/epitech_console/issues"
 
 [tool.setuptools]
-package-dir = {"" = "Console"}
+package-dir = {"" = "epitech_console"}
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "dirty-tag"
 
 [tool.setuptools.packages.find]
-where = ["Console"]
+where = ["epitech_console"]
 include = ["*"]
 
 [tool.setuptools.package-data]

@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ### ----ProgressBar.py----###
 ###                       ###
 ###=======================###
@@ -19,8 +19,8 @@ class Spinner(object):
     """
 
 
-    from Console.Animation.animation import Animation
-    from Console.Animation.style import Style
+    from epitech_console.Animation.animation import Animation
+    from epitech_console.Animation.style import Style
 
 
     @staticmethod
@@ -35,7 +35,7 @@ class Spinner(object):
                 Animation: Stick animation.
         """
 
-        from Console.Animation.animation import Animation
+        from epitech_console.Animation.animation import Animation
 
         return Animation(
             [
@@ -59,7 +59,7 @@ class Spinner(object):
                 Animation: Plus animation.
         """
 
-        from Console.Animation.animation import Animation
+        from epitech_console.Animation.animation import Animation
 
         return Animation(
             [
@@ -81,7 +81,7 @@ class Spinner(object):
                 Animation: Cross animation.
         """
 
-        from Console.Animation.animation import Animation
+        from epitech_console.Animation.animation import Animation
 
         return Animation(
             [

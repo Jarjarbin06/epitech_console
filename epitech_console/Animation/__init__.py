@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###  ----__init__.py----  ###
 ###                       ###
 ###=======================###
@@ -8,11 +8,11 @@
 #############################
 
 
-from Console.Animation.animation import Animation
-from Console.Animation.basepack import BasePack
-from Console.Animation.progressbar import ProgressBar
-from Console.Animation.style import Style
-from Console.Animation.spinner import Spinner
+from epitech_console.Animation.animation import Animation
+from epitech_console.Animation.basepack import BasePack
+from epitech_console.Animation.progressbar import ProgressBar
+from epitech_console.Animation.style import Style
+from epitech_console.Animation.spinner import Spinner
 
 
 __all__ : list[str] = [

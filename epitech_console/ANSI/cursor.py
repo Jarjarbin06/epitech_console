@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###   ----Cursor.py----   ###
 ###                       ###
 ###=======================###
@@ -18,7 +18,7 @@ class Cursor(object):
         Manipulate the cursor's position.
     """
 
-    from Console.ANSI.ansi import ANSI
+    from epitech_console.ANSI.ansi import ANSI
 
 
     @staticmethod
@@ -35,7 +35,7 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{n}A")
 
@@ -54,7 +54,7 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{n}B")
 
@@ -73,7 +73,7 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{n}D")
 
@@ -92,7 +92,7 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{n}C")
 
@@ -107,7 +107,7 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}H")
 
@@ -126,7 +126,7 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{n}F")
 
@@ -145,7 +145,7 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{n}E")
 
@@ -162,7 +162,7 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{y};{x}H")
 
@@ -178,7 +178,7 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}{x}G")
 
@@ -193,7 +193,7 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}7")
 
@@ -208,7 +208,7 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}8")
 
@@ -223,7 +223,7 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}?25h")
 
@@ -238,6 +238,6 @@ class Cursor(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}?25l")

@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###     ----Line.py----   ###
 ###                       ###
 ###=======================###
@@ -18,7 +18,7 @@ class Line(object):
         Manipulate the lines of the console.
     """
 
-    from Console.ANSI.ansi import ANSI
+    from epitech_console.ANSI.ansi import ANSI
 
 
     @staticmethod
@@ -31,7 +31,7 @@ class Line(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}2K")
 
@@ -46,7 +46,7 @@ class Line(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}1K")
 
@@ -61,7 +61,7 @@ class Line(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}K")
 
@@ -76,7 +76,7 @@ class Line(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}2J")
 
@@ -91,8 +91,8 @@ class Line(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.line import Line
-        from Console.ANSI.cursor import Cursor
+        from epitech_console.ANSI.line import Line
+        from epitech_console.ANSI.cursor import Cursor
 
         return Line.clear_screen() + Cursor.top()
 
@@ -107,7 +107,7 @@ class Line(object):
                 ANSI: ansi sequence
         """
 
-        from Console.ANSI.line import Line
-        from Console.ANSI.cursor import Cursor
+        from epitech_console.ANSI.line import Line
+        from epitech_console.ANSI.cursor import Cursor
 
         return Cursor.up(1) + Line.clear_line()

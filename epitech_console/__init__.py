@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###  ----__init__.py----  ###
 ###                       ###
 ###=======================###
@@ -8,7 +8,7 @@
 #############################
 
 
-from Console import Animation, ANSI, Error, System, Text
+from epitech_console import Animation, ANSI, Error, System, Text
 
 
 PATH = __file__.removesuffix("__init__.py")

@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###    ----ANSI.py----    ###
 ###                       ###
 ###=======================###
@@ -9,7 +9,7 @@
 
 
 from builtins import object
-from Console.Text.format import Format
+from epitech_console.Text.format import Format
 
 
 class ANSI(Format):
@@ -61,10 +61,10 @@ class ANSI(Format):
                 ANSI: ANSI sequence
         """
 
-        from Console.Animation.animation import Animation
-        from Console.Animation.progressbar import ProgressBar
-        from Console.Text.text import Text
-        from Console.System.stopwatch import StopWatch
+        from epitech_console.Animation.animation import Animation
+        from epitech_console.Animation.progressbar import ProgressBar
+        from epitech_console.Text.text import Text
+        from epitech_console.System.stopwatch import StopWatch
 
         if type(other) in [ANSI]:
             return ANSI(f"{self.sequence}{other.sequence}")

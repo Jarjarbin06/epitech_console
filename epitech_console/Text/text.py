@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###    ----Text.py----    ###
 ###                       ###
 ###=======================###
@@ -9,7 +9,7 @@
 
 
 from builtins import object
-from Console.Text.format import Format
+from epitech_console.Text.format import Format
 
 
 class Text(Format):
@@ -31,7 +31,7 @@ class Text(Format):
                 text (ANSI | str): text
         """
 
-        from Console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.ansi import ANSI
 
         self.text : str = ""
 

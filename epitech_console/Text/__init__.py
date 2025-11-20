@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###  ----__init__.py----  ###
 ###                       ###
 ###=======================###
@@ -8,19 +8,13 @@
 #############################
 
 
-from Console.ANSI.ansi import ANSI
-from Console.ANSI.cursor import Cursor
-from Console.ANSI.line import Line
-from Console.ANSI.color import Color
-from Console.ANSI.basepack import BasePack
+from epitech_console.Text.text import Text
+from epitech_console.Text.format import Format
 
 
 __all__ : list[str] = [
-    'ANSI',
-    'Cursor',
-    'Line',
-    'Color',
-    'BasePack'
+    'Text',
+    'Format'
 ]
 
 

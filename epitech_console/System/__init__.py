@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###  ----__init__.py----  ###
 ###                       ###
 ###=======================###
@@ -8,10 +8,10 @@
 #############################
 
 
-from Console.System.time import Time
-from Console.System.stopwatch import StopWatch
-from Console.System.console import Console
-from Console.System.config import Config
+from epitech_console.System.time import Time
+from epitech_console.System.stopwatch import StopWatch
+from epitech_console.System.console import Console
+from epitech_console.System.config import Config
 
 from sys import stdin, stdout, stderr
 

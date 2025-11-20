@@ -1,6 +1,6 @@
 #############################
 ###                       ###
-###      Console v2.0     ###
+###    Epitech Console    ###
 ###   ----Console.py----  ###
 ###                       ###
 ###=======================###
@@ -34,7 +34,7 @@ class Console(object):
             print on the console.
         """
 
-        from Console.System.time import Time
+        from epitech_console.System.time import Time
 
         print(f"{start}{str(value)}{end}", end="", file=file)
 
