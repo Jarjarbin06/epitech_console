@@ -65,7 +65,7 @@ def _init() -> None:
             Console.print(line_t)
 
         except ModuleNotFoundError:
-            print("epitech_console imported (repo : https://github.com/Jarjarbin06/epitech_console)")
+            print("epitech_console imported (repository : https://github.com/Jarjarbin06/epitech_console)")
 
 
 _init()
