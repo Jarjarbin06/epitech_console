@@ -192,7 +192,7 @@ class ProgressBar(Format):
             color : object | tuple[object, object, object] = Color.color(Color.C_RESET),
             hide_spinner_at_end: bool = True,
             delete : bool = False
-        ) -> str:
+        ) -> object:
         """
             Convert ProgressBar object to string.
 
@@ -207,6 +207,7 @@ class ProgressBar(Format):
 
         from epitech_console.ANSI.ansi import ANSI
         from epitech_console.ANSI.line import Line
+        from epitech_console.Text.text import Text
 
         string : str = ""
 
@@ -218,4 +219,4 @@ class ProgressBar(Format):
 
         string += str(self.__str__(color=color, hide_spinner=(hide_spinner_at_end and self.percent == 100)))
 
-        return string
+        return Text(string)

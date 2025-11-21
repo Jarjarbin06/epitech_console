@@ -46,9 +46,9 @@ class Style(object):
         """
 
         return (
-            f'on={self.on};off={self.off};' +
-            f'arrow_left={self.arrow_left};arrow_right{self.arrow_right};' +
-            f'border_left={self.border_left};border_right{self.border_right}' +
+            f'on="{self.on}";off="{self.off}";' +
+            f'arrow_left="{self.arrow_left}";arrow_right"{self.arrow_right}";' +
+            f'border_left="{self.border_left}";border_right"{self.border_right}"' +
             f'\n\nExample:' +
-            f'\n{self.border_left}{self.on}{self.on}{self.arrow_right}{self.off}{self.border_right}'
+            f'\n"{self.border_left}{self.on}{self.on}{self.arrow_right}{self.off}{self.off}{self.off}{self.border_right}"'
         )
