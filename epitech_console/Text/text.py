@@ -73,22 +73,44 @@ class Text(Format):
 
 
     @staticmethod
-    def clion_link(
+    def url_link(
+            url: str,
+            text: str | None = None
+        ) -> object:
+        """
+            Get url link to line 'line' of the file 'path' (may not work in IDE's console).
+
+            Parameters:
+                url (str): URL to website.
+                text (int): Text to show instead of the url (show the url if no text).
+
+            Returns:
+                str: url link.
+        """
+
+        if not text:
+            text = url
+
+        return Text(f'\033]8;;{url}\033\\{text}\033]8;;\033\\')
+
+
+    @staticmethod
+    def file_link(
             path: str,
             line: int | None = None
-        ) -> str:
+        ) -> object:
         """
-            Get CLion link to line 'line' of the file 'path'.
+            Get file link to line 'line' of the file 'path' (needs CLion from JetBrains to work).
 
             Parameters:
                 path (str): Path to the file.
                 line (int): Line of the file.
 
             Returns:
-                str: CLion link.
+                str: file link.
         """
 
         if line:
-            return f'\033]8;;jetbrains://clion/navigate/reference?file={path}&line={line}\033\\File "{path}", line {line}\033]8;;\033\\'
+            return Text(f'\033]8;;jetbrains://clion/navigate/reference?file={path}&line={line}\033\\File "{path}", line {line}\033]8;;\033\\')
         else:
-            return f'\033]8;;jetbrains://clion/navigate/reference?file={path}\033\\"{path}"\033]8;;\033\\'
+            return Text(f'\033]8;;jetbrains://clion/navigate/reference?file={path}\033\\"{path}"\033]8;;\033\\')

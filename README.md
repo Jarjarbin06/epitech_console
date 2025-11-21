@@ -192,6 +192,7 @@ epitech_console/
 │   └── text.py
 ├── __init__.py
 ├── config.ini
+├── check-package
 ├── install-package
 ├── LICENSE
 ├── pyproject.toml
@@ -231,8 +232,10 @@ epitech_console/
     * `color_bg`: Returns ANSI sequence for a foreground color.
     *   `rgb_fg(r: int, g: int, b: int)`: Returns ANSI sequence for a foreground RGB color.
     *   `rgb_bg(r: int, g: int, b: int)`: Returns ANSI sequence for a background RGB color.
-    *   `epitech_fg(r: int, g: int, b: int)`: Returns ANSI sequence for a foreground colored as Epitech.
-    *   `epitech_bg(r: int, g: int, b: int)`: Returns ANSI sequence for a background colored as Epitech.
+    *   `epitech_fg(r: int, g: int, b: int)`: Returns ANSI sequence for a foreground colored as Epitech (light).
+    *   `epitech_bg(r: int, g: int, b: int)`: Returns ANSI sequence for a background colored as Epitech (light).
+    *   `epitech_dark_fg(r: int, g: int, b: int)`: Returns ANSI sequence for a foreground colored as Epitech (dark).
+    *   `epitech_dark_bg(r: int, g: int, b: int)`: Returns ANSI sequence for a background colored as Epitech (dark).
 *   **Cursor**: Class for cursor manipulation.
     *   `up(n: int = 1)`: Moves the cursor up `n` lines.
     *   `down(n: int = 1)`: Moves the cursor down `n` lines.
@@ -263,8 +266,10 @@ epitech_console/
 ### System Module
 
 *   **Config**: Class for configuration management.
-    *   `is_empty(path: str) -> bool`: Checks if a config file is empty.
-    *   `create(path: str, data: dict | None = None)`: Creates a new config file.
+    *   `exist(path: str, file_name: str = "config.ini")`: Checks if a config file exist or is empty.
+    *   `create(path: str, data: dict | None = None, file_name: str = "config.ini")`: Creates a new config file.
+    *   `read(path: str, file_name: str = "config.ini")`: Read a config file.
+
 *   **Console**: Class for console output.
     *   `print(value: any = "", start: str = "", end: str = "\n", file: any = stdout, sleep: int | float | None = None)`: Prints to the console with optional start, end, file, and sleep parameters.
 *   **StopWatch**: Class for measuring elapsed time.
@@ -293,7 +298,8 @@ epitech_console/
     *   `apply(obj: object, sequence: object | None = None)`: Apply any escape sequence (as a string or an ANSI) to an object (Text, ANSI, Animation, ProgressBar or str).
 *   **Text**: Class for handling text.
     *   `Text(text: object | str = "")`: Constructor to create a text object.
-    *   `clion_link(path: str, line: int | None = None)`: Creates a CLion link to a file and line number.
+    *   `url_link(url: str, text: str | None = None)`: Creates a link to an url.
+    *   `file_link(path: str, line: int | None = None)`: Creates a link to a file and line number.
 
 ## License
 

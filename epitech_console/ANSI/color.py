@@ -239,3 +239,29 @@ class Color(object):
         """
 
         return Color.rgb_bg(0, 145, 211)
+
+
+    @staticmethod
+    def epitech_dark_fg(
+        ) -> ANSI:
+        """
+            Get ANSI sequence for the foreground color of epitech
+
+            Returns:
+                ANSI: ansi sequence
+        """
+
+        return Color.rgb_fg(31, 72, 94)
+
+
+    @staticmethod
+    def epitech_dark_bg(
+        ) -> ANSI:
+        """
+            Get ANSI sequence for the background color of epitech
+
+            Returns:
+                ANSI: ansi sequence
+        """
+
+        return Color.rgb_bg(31, 72, 94)

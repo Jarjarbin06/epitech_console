@@ -13,56 +13,70 @@ class Config:
     """
 
 
+    from configparser import ConfigParser
+
+
     @staticmethod
-    def is_empty(
-            path : str
+    def exist(
+            path : str,
+            *,
+            file_name : str = "config.ini"
         ) -> bool:
         """
-            Check if a config file config.ini is empty
+            Check if a config file config.ini is empty or doesn't exist
 
             Returns:
-                bool: True if empty, False otherwise
+                bool: False if empty or not existing, True otherwise
+                file_name (str)(optional): name of config file
         """
 
-        empty_config : bool = False
+        empty_config : bool = True
 
         try :
-            with open(path + "config.ini", 'r') as config_file:
+            with open(path + file_name, 'r') as config_file:
                 if config_file.read() == "":
-                    empty_config = True
+                    empty_config = False
             config_file.close()
 
         except FileNotFoundError:
-            empty_config = True
+            empty_config = False
 
         return empty_config
 
     @staticmethod
     def create(
             path : str,
-            data : dict | None = None
+            data : dict | None = None,
+            *,
+            file_name : str = "config.ini"
         ) -> None:
         """
             Create a new config file
 
             Parameters:
-                path (str): path to folder which you want you config file to be in
+                path (str): path to folder which you want your config file to be in
                 data (dict | None): data to put in the config file
+                file_name (str)(optional): name of config file
         """
 
         from configparser import ConfigParser
 
-        if not data :
+        if not data and file_name == "config.ini":
             data = {
-                "GENERAL" : {
-                    "version" : "0.0.0",
+                "PACKAGE" : {
+                    "name": "None",
+                    "version": "0.0.0",
+                    "description": "None",
+                    "repository": "None",
+                },
+                "SETTING" : {
+                    "show-banner": "False",
                     "debug": "False",
-                    "log": "True",
-                    "introduction": "True"
+                    "log": "False"
                 }
             }
 
-        with open(path + "config.ini", 'w') as config_file:
+        with open(path + file_name, 'w') as config_file:
             config = ConfigParser()
             for key in data:
                 config[key] = data[key]
@@ -70,3 +84,27 @@ class Config:
             config.write(config_file)
 
         config_file.close()
+
+    @staticmethod
+    def read(
+            path: str,
+            *,
+            file_name : str = "config.ini"
+        ) -> ConfigParser | None:
+        """
+            Read a config file
+
+            Parameters:
+                path (str): path to folder which contain your config file
+                file_name (str)(optional): name of config file
+        """
+
+        from configparser import ConfigParser
+
+        if Config.exist(path):
+            config = ConfigParser()
+            config.read(path + file_name)
+
+            return config
+
+        return None
