@@ -64,9 +64,17 @@ def _init(
             Console.print(offset_t + title_t + " " + version_t + offset_t)
             Console.print(offset_t + desc_t + offset_t)
             Console.print(line_t)
+            Console.print()
 
-        except ModuleNotFoundError:
-            print("epitech_console imported (repository : https://github.com/Jarjarbin06/epitech_console)")
+        except Exception:
+            print(
+                "epitech_console imported with error\n"
+                "\n"
+                "Please reinstall with :\n"
+                "    'pip install --upgrade --force-reinstall epitech_console'\n"
+                "\n"
+                "Please report the issue here : https://github.com/Jarjarbin06/epitech_console/issues\n"
+            )
 
 
 _init()
