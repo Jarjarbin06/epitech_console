@@ -57,7 +57,7 @@ def _init(
             offset_t = T("  ")
             title_t = epitech + T(f"{config.get("PACKAGE", "name")}").bold().underline() + reset + "  " + T.url_link("https://github.com/Jarjarbin06/epitech_console", text="repository")
             version_t = Cursor.move_column(banner_size - 14) + epitech_dark + T("version ").italic() + T(f"{config.get("PACKAGE", "version")}").bold() + reset
-            desc_t = T("Text • Animations • ANSI • Error • System").italic()
+            desc_t = T("   Text • Animation • ANSI • Error • System   ").italic()
             line_t = epitech + ("─" * banner_size) + reset
 
             Console.print(line_t)
