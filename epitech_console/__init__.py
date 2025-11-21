@@ -32,7 +32,8 @@ __author__ : str = 'Nathan Jarjarbin'
 __email__ : str = 'nathan.epitech.eu'
 
 
-def _init() -> None:
+def _init(
+    ) -> None:
     """
         _init() initializes the epitech console package and show a banner (if SETTING : show-banner = True in config.ini)
     """
