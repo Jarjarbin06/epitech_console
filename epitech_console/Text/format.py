@@ -1,14 +1,15 @@
 #############################
 ###                       ###
 ###    Epitech Console    ###
-###   ----Format.py----   ###
+###   ----format.py----   ###
 ###                       ###
 ###=======================###
 ### by JARJARBIN's STUDIO ###
 #############################
 
 
-from builtins import object, any
+from builtins import object
+from typing import Any
 
 
 class Format:
@@ -21,12 +22,12 @@ class Format:
 
     def reset(
             self
-        ) -> any:
+        ) -> Any:
         """
             Apply the 'reset' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
             Returns:
-                any: formatted object.
+                Any: formatted object.
         """
 
         from epitech_console.ANSI.color import Color
@@ -37,12 +38,12 @@ class Format:
 
     def bold(
             self
-        ) -> any:
+        ) -> Any:
         """
             Apply the 'bold' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
             Returns:
-                any: formatted object.
+                Any: formatted object.
         """
 
         from epitech_console.ANSI.color import Color
@@ -52,12 +53,12 @@ class Format:
 
     def italic(
             self
-        ) -> any:
+        ) -> Any:
         """
             Apply the 'italic' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
             Returns:
-                any: formatted object.
+                Any: formatted object.
         """
         from epitech_console.ANSI.color import Color
 
@@ -66,12 +67,12 @@ class Format:
 
     def underline(
             self
-        ) -> any:
+        ) -> Any:
         """
             Apply the 'underline' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
             Returns:
-                any: formatted object.
+                Any: formatted object.
         """
 
         from epitech_console.ANSI.color import Color
@@ -81,12 +82,12 @@ class Format:
 
     def hide(
             self
-        ) -> any:
+        ) -> Any:
         """
             Apply the 'hide' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
             Returns:
-                any: formatted object.
+                Any: formatted object.
         """
 
         from epitech_console.ANSI.color import Color
@@ -96,12 +97,12 @@ class Format:
 
     def strikethrough(
             self
-        ) -> any:
+        ) -> Any:
         """
             Apply the 'strikethrough' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
             Returns:
-                any: formatted object.
+                Any: formatted object.
         """
 
         from epitech_console.ANSI.color import Color
@@ -113,7 +114,7 @@ class Format:
             self,
             *,
             title : bool = False
-        ) -> any:
+        ) -> Any:
         """
             Apply the 'error' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
@@ -121,7 +122,7 @@ class Format:
                 title (bool): whether it is a title or not
 
             Returns:
-                any: formatted object.
+                Any: formatted object.
         """
 
         from epitech_console.ANSI.color import Color
@@ -136,7 +137,7 @@ class Format:
             self,
             *,
             title : bool = False
-        ) -> any:
+        ) -> Any:
         """
             Apply the 'warning' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
@@ -144,7 +145,7 @@ class Format:
                 title (bool): whether it is a title or not
 
             Returns:
-                any: formatted object.
+                Any: formatted object.
         """
 
         from epitech_console.ANSI.color import Color
@@ -159,7 +160,7 @@ class Format:
             self,
             *,
             title : bool = False
-        ) -> any:
+        ) -> Any:
         """
             Apply the 'ok' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
@@ -167,7 +168,7 @@ class Format:
                 title (bool): whether it is a title or not
 
             Returns:
-                any: formatted object.
+                Any: formatted object.
         """
 
         from epitech_console.ANSI.color import Color
@@ -182,7 +183,7 @@ class Format:
             self,
             *,
             title : bool = False
-        ) -> any:
+        ) -> Any:
         """
             Apply the 'info' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
@@ -190,7 +191,7 @@ class Format:
                 title (bool): whether it is a title or not
 
             Returns:
-                any: formatted object.
+                Any: formatted object.
         """
 
         from epitech_console.ANSI.color import Color
@@ -205,7 +206,7 @@ class Format:
     def apply(
             obj : object,
             sequence : object | None = None
-        ) -> any:
+        ) -> Any:
         """
             Apply a format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
@@ -214,7 +215,7 @@ class Format:
                 sequence (ANSI): format.
 
             Returns:
-                any: formatted object.
+                Any: formatted object.
         """
 
         from epitech_console.ANSI.color import Color

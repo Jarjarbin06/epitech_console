@@ -1,7 +1,7 @@
 #############################
 ###                       ###
 ###    Epitech Console    ###
-### ----ProgressBar.py----###
+### ----progressbar.py----###
 ###                       ###
 ###=======================###
 ### by JARJARBIN's STUDIO ###
