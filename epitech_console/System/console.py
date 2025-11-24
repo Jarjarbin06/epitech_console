@@ -1,14 +1,15 @@
 #############################
 ###                       ###
 ###    Epitech Console    ###
-###   ----Console.py----  ###
+###   ----console.py----  ###
 ###                       ###
 ###=======================###
 ### by JARJARBIN's STUDIO ###
 #############################
 
 
-from builtins import object, any
+from builtins import object
+from typing import Any
 
 
 class Console(object):
@@ -18,16 +19,17 @@ class Console(object):
         Console tool.
     """
 
+
     from sys import stdout
 
 
     @staticmethod
     def print(
-            value : any = "",
+            value : Any = "",
             *,
             start : str = "",
             end : str = "\n",
-            file : any = stdout,
+            file : Any = stdout,
             sleep : int | float | None = None
         ) -> None:
         """
