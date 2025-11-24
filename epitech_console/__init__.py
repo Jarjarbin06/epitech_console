@@ -55,12 +55,9 @@ def _simple_banner(
         f"{config.get("PACKAGE", "version")}").bold() + reset
     desc_t = T("   Text • Animation • ANSI • Error • System   ").italic()
     line_t = epitech + ("─" * banner_size) + reset
+    line_break = T("\n")
 
-    Console.print(line_t)
-    Console.print(offset_t + title_t + " " + version_t + offset_t)
-    Console.print(offset_t + desc_t + offset_t)
-    Console.print(line_t)
-    Console.print()
+    Console.print(line_t + line_break + offset_t + title_t + " " + version_t + offset_t + line_break + offset_t + desc_t + offset_t + line_break + line_t)
 
 
 def _animated_banner(
@@ -71,14 +68,14 @@ def _animated_banner(
     """
     from epitech_console.ANSI import Color, Cursor
     from epitech_console.Text import Text as T
-    from epitech_console.System import Console, Config
+    from epitech_console.System import Console, Config, Time
 
     banner_size = 50
 
     epitech = Color.epitech_fg()
     epitech_dark = Color.epitech_dark_fg()
     reset = Color.color(Color.C_RESET)
-    
+
     offset_t = T("  ")
     title_t = epitech + T(f"{config.get("PACKAGE", "name")}").bold().underline() + reset + "  " + T.url_link(
         "https://github.com/Jarjarbin06/epitech_console", text="repository")
@@ -86,12 +83,11 @@ def _animated_banner(
         f"{config.get("PACKAGE", "version")}").bold() + reset
     desc_t = T("   Text • Animation • ANSI • Error • System   ").italic()
     line_t = epitech + ("─" * banner_size) + reset
+    line_break = T("\n")
 
-    Console.print(line_t)
-    Console.print(offset_t + title_t + " " + version_t + offset_t)
-    Console.print(offset_t + desc_t + offset_t)
-    Console.print(line_t)
-    Console.print()
+    for _ in range(banner_size):
+        Console.print(line_t + line_break + offset_t + title_t + " " + version_t + offset_t + line_break + offset_t + desc_t + offset_t + line_break + line_t)
+        Time.sleep(0.05)
 
 
 def _init(
