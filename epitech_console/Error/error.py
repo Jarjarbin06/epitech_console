@@ -9,6 +9,7 @@
 
 
 from builtins import object
+from typing import Any
 
 
 class Error(Exception):

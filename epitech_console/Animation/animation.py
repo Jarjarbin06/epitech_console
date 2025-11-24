@@ -9,6 +9,7 @@
 
 
 from builtins import object
+from typing import Any
 from epitech_console.Text.format import Format
 
 
@@ -24,7 +25,7 @@ class Animation(Format):
 
     def __init__(
             self,
-            animation : list[str | object] | str = ""
+            animation : list[str | Any] | str = ""
         ) -> None:
         """
             Create an animation.
@@ -50,8 +51,8 @@ class Animation(Format):
 
     def __add__(
             self,
-            other : object | str
-        ) -> object:
+            other : Any | str
+        ) -> Any:
         """
             Add 2 Animations together.
 
@@ -93,7 +94,7 @@ class Animation(Format):
     def __str__(
             self,
             *,
-            color : object = Color.C_RESET
+            color : Any = Color.C_RESET
         ) -> str :
         """
             Convert Animation object to string.

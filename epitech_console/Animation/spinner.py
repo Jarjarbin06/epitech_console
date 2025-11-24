@@ -9,9 +9,10 @@
 
 
 from builtins import object
+from typing import Any
 
 
-class Spinner(object):
+class Spinner:
     """
         ProgressBar class.
 
@@ -26,7 +27,7 @@ class Spinner(object):
     @staticmethod
     def stick(
             *,
-            style : object = Style("#", " ", "#", "#", "", "")
+            style : Any = Style("#", " ", "#", "#", "", "")
         ) -> Animation:
         """
             Stick spinner.
@@ -50,7 +51,7 @@ class Spinner(object):
     @staticmethod
     def plus(
             *,
-            style : object = Style("#", " ", "#", "#", "", "")
+            style : Any = Style("#", " ", "#", "#", "", "")
         ) -> Animation:
         """
             Plus spinner.
@@ -72,7 +73,7 @@ class Spinner(object):
     @staticmethod
     def cross(
             *,
-            style : object = Style("#", " ", "#", "#", "", "")
+            style : Any = Style("#", " ", "#", "#", "", "")
         ) -> Animation:
         """
             Cross spinner.

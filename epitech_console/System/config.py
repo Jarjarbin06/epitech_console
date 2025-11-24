@@ -8,8 +8,15 @@
 #############################
 
 
+from builtins import object
+from typing import Any
+
+
 class Config:
     """
+        Config class.
+
+        Config file tool.
     """
 
 

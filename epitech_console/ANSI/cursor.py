@@ -9,9 +9,10 @@
 
 
 from builtins import object
+from typing import Any
 
 
-class Cursor(object):
+class Cursor:
     """
         Cursor class.
 

@@ -9,6 +9,7 @@
 
 
 from builtins import object
+from typing import Any
 from epitech_console.Text.format import Format
 
 
@@ -30,7 +31,7 @@ class ProgressBar(Format):
 
             *,
             animation : Animation | None = None,
-            style : object = Style("#", "-", "<", ">", "|", "|"),
+            style : Any = Style("#", "-", "<", ">", "|", "|"),
             percent_style : str = "bar",
             spinner : Animation | None = None,
             spinner_position : str = "a"
@@ -92,7 +93,7 @@ class ProgressBar(Format):
             self,
             item : int,
             *,
-            color : object = Color.color(Color.C_RESET)
+            color : Any = Color.color(Color.C_RESET)
         ) -> str :
         """
             Get the current step of the animations and convert it to a string.
@@ -113,7 +114,7 @@ class ProgressBar(Format):
     def __str__(
             self,
             *,
-            color : tuple[object, object, object] = (Color.color(Color.C_RESET), Color.color(Color.C_RESET), Color.color(Color.C_RESET)),
+            color : tuple[Any, Any, Any] = (Color.color(Color.C_RESET), Color.color(Color.C_RESET), Color.color(Color.C_RESET)),
             hide_spinner : bool = False
         ) -> str :
         """
@@ -189,10 +190,10 @@ class ProgressBar(Format):
     def render(
             self,
             *,
-            color : object | tuple[object, object, object] = Color.color(Color.C_RESET),
+            color : Any | tuple[Any, Any, Any] = Color.color(Color.C_RESET),
             hide_spinner_at_end: bool = True,
             delete : bool = False
-        ) -> object:
+        ) -> Any:
         """
             Convert ProgressBar object to string.
 
@@ -215,7 +216,7 @@ class ProgressBar(Format):
             string += str(Line.clear_previous_line())
 
         if type(color) in [ANSI]:
-            color : tuple[object, object, object] = (color, color, color)
+            color : tuple[Any, Any, Any] = (color, color, color)
 
         string += str(self.__str__(color=color, hide_spinner=(hide_spinner_at_end and self.percent == 100)))
 

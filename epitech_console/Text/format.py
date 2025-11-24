@@ -204,8 +204,8 @@ class Format:
 
     @staticmethod
     def apply(
-            obj : object,
-            sequence : object | None = None
+            obj : Any,
+            sequence : Any | None = None
         ) -> Any:
         """
             Apply a format to an object of type Text, ANSI, Animation, ProgressBar or str.

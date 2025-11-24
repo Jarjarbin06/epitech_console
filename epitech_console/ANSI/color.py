@@ -9,9 +9,10 @@
 
 
 from builtins import object
+from typing import Any
 
 
-class Color(object):
+class Color:
     """
         Color class.
 

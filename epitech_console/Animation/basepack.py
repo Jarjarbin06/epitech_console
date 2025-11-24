@@ -9,9 +9,10 @@
 
 
 from builtins import object
+from typing import Any
 
 
-class BasePack(object):
+class BasePack:
     """
         BasePack class.
 

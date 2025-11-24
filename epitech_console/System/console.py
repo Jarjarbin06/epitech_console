@@ -12,7 +12,7 @@ from builtins import object
 from typing import Any
 
 
-class Console(object):
+class Console:
     """
         Console class.
 

@@ -51,7 +51,7 @@ def _simple_banner(
     offset_t = T("  ")
     title_t = epitech + T(f"{config.get("PACKAGE", "name")}").bold().underline() + reset + "  " + T.url_link(
         "https://github.com/Jarjarbin06/epitech_console", text="repository")
-    version_t = Cursor.move_column(banner_size - 14) + epitech_dark + T("version ").italic() + T(
+    version_t = T(" " * 5) + epitech_dark + T("version ").italic() + T(
         f"{config.get("PACKAGE", "version")}").bold() + reset
     desc_t = T("   Text • Animation • ANSI • Error • System   ").italic()
     line_t = epitech + ("─" * banner_size) + reset
@@ -68,26 +68,24 @@ def _animated_banner(
     """
     from epitech_console.ANSI import Color, Cursor
     from epitech_console.Text import Text as T
-    from epitech_console.System import Console, Config, Time
+    from epitech_console.System import Console, Config
 
     banner_size = 50
 
     epitech = Color.epitech_fg()
     epitech_dark = Color.epitech_dark_fg()
     reset = Color.color(Color.C_RESET)
+    name = config.get("PACKAGE", "name")
+    version = config.get("PACKAGE", "version")
 
     offset_t = T("  ")
-    title_t = epitech + T(f"{config.get("PACKAGE", "name")}").bold().underline() + reset + "  " + T.url_link(
-        "https://github.com/Jarjarbin06/epitech_console", text="repository")
-    version_t = Cursor.move_column(banner_size - 14) + epitech_dark + T("version ").italic() + T(
-        f"{config.get("PACKAGE", "version")}").bold() + reset
+    title_t = epitech + T(f"{name}").bold().underline() + reset + "  " + T.url_link("https://github.com/Jarjarbin06/epitech_console", text="repository")
+    version_t = T(" " * (5 - (len(version) - 5))) + epitech_dark + T("version ").italic() + T(f"{version}").bold() + reset
     desc_t = T("   Text • Animation • ANSI • Error • System   ").italic()
     line_t = epitech + ("─" * banner_size) + reset
     line_break = T("\n")
 
-    for _ in range(banner_size):
-        Console.print(line_t + line_break + offset_t + title_t + " " + version_t + offset_t + line_break + offset_t + desc_t + offset_t + line_break + line_t)
-        Time.sleep(0.05)
+    Console.print(line_t + line_break + offset_t + title_t + " " + version_t + offset_t + line_break + offset_t + desc_t + offset_t + line_break + line_t)
 
 
 def _init(
@@ -111,14 +109,16 @@ def _init(
             else:
                 _simple_banner(config)
 
-        except Exception:
+        except Exception as error:
+            if config.getboolean("SETTING", "debug"):
+                print("\033[101m \033[0m \033[91m" + str(error) + "\033[0m\n")
             print(
-                "epitech_console imported with error\n"
-                "\n"
-                "Please reinstall with :\n"
-                "    'pip install --upgrade --force-reinstall epitech_console'\n"
-                "\n"
-                "Please report the issue here : https://github.com/Jarjarbin06/epitech_console/issues\n"
+                "\033[103m \033[0m \033[93mepitech_console imported with error\033[0m\n"
+                "\033[103m \033[0m\n"
+                "\033[103m \033[0m \033[93mPlease reinstall with :\033[0m\n"
+                "\033[103m \033[0m \033[93m    'pip install --upgrade --force-reinstall epitech_console'\033[0m\n"
+                "\033[103m \033[0m\n"
+                "\033[103m \033[0m \033[93mPlease report the issue here : https://github.com/Jarjarbin06/epitech_console/issues\033[0m\n"
             )
 
 

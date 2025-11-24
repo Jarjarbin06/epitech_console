@@ -9,6 +9,7 @@
 
 
 from builtins import object
+from typing import Any
 from epitech_console.Text.format import Format
 
 
@@ -28,7 +29,7 @@ class ANSI(Format):
 
     def __init__(
             self,
-            sequence : list[object | str] | str = ""
+            sequence : list[Any | str] | str = ""
         ) -> None:
         """
             Create an ANSI sequence.
@@ -49,8 +50,8 @@ class ANSI(Format):
 
     def __add__(
             self,
-            other : object | str | int
-        ) -> object:
+            other : Any | str | int
+        ) -> Any:
         """
             Add 2 ANSI sequences together.
 

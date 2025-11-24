@@ -9,6 +9,7 @@
 
 
 from builtins import object
+from typing import Any
 from epitech_console.Text.format import Format
 
 
@@ -22,7 +23,7 @@ class Text(Format):
 
     def __init__(
             self,
-            text : object | str = ""
+            text : Any | str = ""
         ) -> None:
         """
             Create a text.
@@ -44,8 +45,8 @@ class Text(Format):
 
     def __add__(
             self,
-            other : object | str
-        ) -> object:
+            other : Any | str
+        ) -> Any:
         """
             Add 2 Texts together.
 
@@ -76,7 +77,7 @@ class Text(Format):
     def url_link(
             url: str,
             text: str | None = None
-        ) -> object:
+        ) -> Any:
         """
             Get url link to line 'line' of the file 'path' (may not work in IDE's console).
 
@@ -98,7 +99,7 @@ class Text(Format):
     def file_link(
             path: str,
             line: int | None = None
-        ) -> object:
+        ) -> Any:
         """
             Get file link to line 'line' of the file 'path' (needs CLion from JetBrains to work).
 
