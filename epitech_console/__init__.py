@@ -32,6 +32,68 @@ __author__ : str = 'Nathan Jarjarbin'
 __email__ : str = 'nathan.epitech.eu'
 
 
+def _simple_banner(
+        config
+    ) -> None:
+    """
+        Show a simple banner.
+    """
+    from epitech_console.ANSI import Color, Cursor
+    from epitech_console.Text import Text as T
+    from epitech_console.System import Console, Config
+
+    banner_size = 50
+
+    epitech = Color.epitech_fg()
+    epitech_dark = Color.epitech_dark_fg()
+    reset = Color.color(Color.C_RESET)
+
+    offset_t = T("  ")
+    title_t = epitech + T(f"{config.get("PACKAGE", "name")}").bold().underline() + reset + "  " + T.url_link(
+        "https://github.com/Jarjarbin06/epitech_console", text="repository")
+    version_t = Cursor.move_column(banner_size - 14) + epitech_dark + T("version ").italic() + T(
+        f"{config.get("PACKAGE", "version")}").bold() + reset
+    desc_t = T("   Text • Animation • ANSI • Error • System   ").italic()
+    line_t = epitech + ("─" * banner_size) + reset
+
+    Console.print(line_t)
+    Console.print(offset_t + title_t + " " + version_t + offset_t)
+    Console.print(offset_t + desc_t + offset_t)
+    Console.print(line_t)
+    Console.print()
+
+
+def _animated_banner(
+        config
+    ) -> None:
+    """
+        Show an animation.
+    """
+    from epitech_console.ANSI import Color, Cursor
+    from epitech_console.Text import Text as T
+    from epitech_console.System import Console, Config
+
+    banner_size = 50
+
+    epitech = Color.epitech_fg()
+    epitech_dark = Color.epitech_dark_fg()
+    reset = Color.color(Color.C_RESET)
+    
+    offset_t = T("  ")
+    title_t = epitech + T(f"{config.get("PACKAGE", "name")}").bold().underline() + reset + "  " + T.url_link(
+        "https://github.com/Jarjarbin06/epitech_console", text="repository")
+    version_t = Cursor.move_column(banner_size - 14) + epitech_dark + T("version ").italic() + T(
+        f"{config.get("PACKAGE", "version")}").bold() + reset
+    desc_t = T("   Text • Animation • ANSI • Error • System   ").italic()
+    line_t = epitech + ("─" * banner_size) + reset
+
+    Console.print(line_t)
+    Console.print(offset_t + title_t + " " + version_t + offset_t)
+    Console.print(offset_t + desc_t + offset_t)
+    Console.print(line_t)
+    Console.print()
+
+
 def _init(
     ) -> None:
     """
@@ -48,23 +110,10 @@ def _init(
 
     if config.getboolean("SETTING", "show-banner"):
         try:
-            banner_size = 50
-
-            epitech = Color.epitech_fg()
-            epitech_dark = Color.epitech_dark_fg()
-            reset = Color.color(Color.C_RESET)
-
-            offset_t = T("  ")
-            title_t = epitech + T(f"{config.get("PACKAGE", "name")}").bold().underline() + reset + "  " + T.url_link("https://github.com/Jarjarbin06/epitech_console", text="repository")
-            version_t = Cursor.move_column(banner_size - 14) + epitech_dark + T("version ").italic() + T(f"{config.get("PACKAGE", "version")}").bold() + reset
-            desc_t = T("   Text • Animation • ANSI • Error • System   ").italic()
-            line_t = epitech + ("─" * banner_size) + reset
-
-            Console.print(line_t)
-            Console.print(offset_t + title_t + " " + version_t + offset_t)
-            Console.print(offset_t + desc_t + offset_t)
-            Console.print(line_t)
-            Console.print()
+            if config.getboolean("SETTING", "animated-banner"):
+                _animated_banner(config)
+            else:
+                _simple_banner(config)
 
         except Exception:
             print(

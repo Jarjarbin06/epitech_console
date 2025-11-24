@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "y" | ./install-package
+./check-package

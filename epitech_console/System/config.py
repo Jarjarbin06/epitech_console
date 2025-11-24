@@ -71,6 +71,7 @@ class Config:
                 },
                 "SETTING" : {
                     "show-banner": "False",
+                    "animated-banner": "False",
                     "debug": "False",
                     "log": "False"
                 }
