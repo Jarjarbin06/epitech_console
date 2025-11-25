@@ -11,6 +11,8 @@
 from builtins import object
 from typing import Any
 
+from pygame.examples.eventlist import last_key
+
 
 class Format:
     """
@@ -244,3 +246,37 @@ class Format:
             animation: Animation = Animation([(str(sequence) + str(line)) for line in obj.animation])
             spinner: Animation = Animation([(str(sequence) + str(line)) for line in obj.spinner])
             return ProgressBar(obj.length, animation=animation, style=obj.style, percent_style=obj.percent_style,  spinner=spinner, spinner_position=obj.spinner_position)
+
+
+    @staticmethod
+    def tree(
+            d : dict | str,
+            indent : int = 0
+        ) -> str:
+        """
+            Format a dict into a tree (bash) formatted string.
+
+            Parameters:
+                d (dict | str): dictionary to be formatted.
+                indent (int)(optional): indent level.
+
+            Returns:
+                str: formatted string.
+        """
+
+        string : str = ""
+
+        if type(d) in [str]:
+            string += ("│   " * indent) + "├── " + d
+
+        else :
+            last_key : str = ""
+
+            for key in d:
+                last_key = key
+
+            for key in d:
+                string += ("│   " * indent) + "├── " + key + "/\n"
+                string += Format.tree(d[key], indent + 1) + "\n"
+
+        return string[:-1]

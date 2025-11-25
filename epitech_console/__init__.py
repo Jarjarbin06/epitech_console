@@ -10,6 +10,7 @@
 
 from epitech_console import Animation, ANSI, Error, System, Text
 from epitech_console.System import Actions
+from epitech_console.Text import Format
 
 PATH = __file__.removesuffix("__init__.py")
 
@@ -94,7 +95,7 @@ def _init(
         _init() initializes the epitech console package and show a banner (if SETTING : show-banner = True in config.ini)
     """
     from epitech_console.ANSI import Color, Cursor
-    from epitech_console.Text import Text as T
+    from epitech_console.Text import Text as T, Format
     from epitech_console.System import Console, Config, Action
 
     if not Config.exist(PATH):
@@ -108,6 +109,14 @@ def _init(
                 _animated_banner(config)
             else:
                 _simple_banner(config)
+            print(Format.tree({
+                "1": "1.1",
+                "2": {
+                    "2.1": "2.1.1",
+                    "2.2": "2.2.1",
+                    "2.3": "2.3.1",
+                },
+            }))
 
         except Exception as error:
             if config.getboolean("SETTING", "debug"):
