@@ -29,7 +29,7 @@ The `epitech_console` is a friendly Python tool that helps you create cool stuff
 
 ## Features
 
-*   **Cool Text Effects**: Easily add colors, bold text, italics, underlines, and even strikethroughs to your terminal text.
+*   **Cool Text Effects**: Easily add colors, bold text, italics, underlines, and even strikethrough to your terminal text.
 *   **Animations**: Make your terminal come alive with simple animations. Great for loading screens or just adding some visual flair!
 *   **Progress Bars**: Show the progress of long tasks with customizable progress bars.  Keep your users informed in a visually appealing way.
 *   **Timers**: Use the built-in stopwatch to measure how long parts of your code take to run.
@@ -81,7 +81,7 @@ Ready to get started? Here's how to install `epitech_console`:
 
     This downloads the code, then the `install-package` script handles the installation.
 
-    These commands installs the `epitech_console` package and its dependencies (None currently).
+    These commands install the `epitech_console` package and its dependencies (None currently).
 
 ## Usage
 
@@ -121,7 +121,7 @@ for i in range(5):
     my_animation.update()
 ```
 
-### Using a Progress Bar
+### Using Progress Bar
 
 ```python
 from epitech_console.Animation import ProgressBar, Spinner
@@ -298,7 +298,7 @@ REPO/
     *   `italic()`: Make a text italic.
     *   `underline()`: Make a text underlined.
     *   `hide()`: Make a text hidden.
-    *   `strikthrough()`: Make a text strokethrough.
+    *   `strikthrough()`: Make a text strikethrough.
     *   `error(title: bool = False)`: Make a text styled as an ERROR (background is colored if title, foreground otherwise).
     *   `warning(title: bool = False)`: Make a text styled as a WARNING (background is colored if title, foreground otherwise).
     *   `ok(title: bool = False)`: Make a text styled as an OK (background is colored if title, foreground otherwise).
@@ -306,15 +306,20 @@ REPO/
     *   `apply(obj: object, sequence: object | None = None)`: Apply any escape sequence (as a string or an ANSI) to an object (Text, ANSI, Animation, ProgressBar or str).
 *   **Text**: Class for handling text.
     *   `Text(text: object | str = "")`: Constructor to create a text object.
-    *   `url_link(url: str, text: str | None = None)`: Creates a link to an url.
+    *   `url_link(url: str, text: str | None = None)`: Creates a link to a url.
     *   `file_link(path: str, line: int | None = None)`: Creates a link to a file and line number.
 
 ## Release-Note
-* v0.1.4:
-    * New release section in README
-    * Syntax and type error fix
-    * package auto-reloader (install-package + check-package)
-    * New action class
+* #### v0.1.5:
+    *   README grammar correction 😅
+    *   Non object class had 'object' as parent
+
+* #### v0.1.4:
+    *   New release section in README
+    *   Syntax and type error fix
+    *   package auto-reloader (install-package + check-package)
+    *   New action class
+    *   New import introduction
 
 ## License
 
