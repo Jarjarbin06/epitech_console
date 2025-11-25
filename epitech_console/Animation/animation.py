@@ -34,8 +34,6 @@ class Animation(Format):
                 animation (list[str] | str): list of step
         """
 
-        from epitech_console.Text import Text
-
         self.animation : list[str] = []
 
         if isinstance(animation, list):
@@ -115,7 +113,7 @@ class Animation(Format):
             Do a step of the animation.
         """
 
-        self.update(True)
+        self.update(auto_reset=True)
 
 
     def update(

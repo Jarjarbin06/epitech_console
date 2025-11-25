@@ -9,7 +9,7 @@
 
 
 from epitech_console import Animation, ANSI, Error, System, Text
-
+from epitech_console.System import Actions
 
 PATH = __file__.removesuffix("__init__.py")
 
@@ -95,7 +95,7 @@ def _init(
     """
     from epitech_console.ANSI import Color, Cursor
     from epitech_console.Text import Text as T
-    from epitech_console.System import Console, Config
+    from epitech_console.System import Console, Config, Action
 
     if not Config.exist(PATH):
         Config.create(PATH)

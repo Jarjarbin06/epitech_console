@@ -82,14 +82,21 @@ class StopWatch:
 
 
     def elapsed(
-            self
+            self,
+            auto_update : bool = False
         ) -> float:
         """
             Get elapsed time.
 
+            Parameters:
+                auto_update (bool)(optional): Auto update. Defaults to False.
+
             Returns:
                 float: Elapsed time.
         """
+
+        if auto_update:
+            self.update()
 
         return self.time
 

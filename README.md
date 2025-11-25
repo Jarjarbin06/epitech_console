@@ -212,16 +212,20 @@ REPO/
     *   `Animation(animation: list[str] | str = "")`: Constructor to create an animation.
     *   `update(auto_reset: bool = True)`: Advances the animation by one step.
     *   `render(delete: bool = False)`: Renders the current frame of the animation.
+
 *   **BasePack**: Ready-to-use animations.
 	* `def update(style: Style = Style("#", "-", "<", ">", "|", "|"))`: Update the BasePack animations to fit with the given Style (or the default one if no Style given)
+
 *   **ProgressBar**: Class for creating progress bars.
     *   `ProgressBar(length: int, animation: Animation | None = None, style: object = Style("#", "-", "<", ">", "|", "|"), percent_style: str = "bar", spinner: Animation | None = None, spinner_position: str = "a")`: Constructor to create a progress bar.
     *   `update(percent: int = 0, update_spinner: bool = True, auto_reset: bool = True)`: Updates the progress bar to a specified percentage.
     *   `render(color: object | tuple[object, object, object] = Color.color(Color.C_RESET), hide_spinner_at_end: bool = True, delete: bool = False)`: Renders the progress bar.
+
 *   **Spinner**: Class with pre-built spinner animations.
     *   `stick(style: object = Style("#", " ", "#", "#", "", ""))`: Creates a stick spinner.
     *   `plus(style: object = Style("#", " ", "#", "#", "", ""))`: Creates a plus spinner.
     *   `cross(style: object = Style("#", " ", "#", "#", "", ""))`: Creates a cross spinner.
+
 *   **Style**: Class for styling progress bars.
     *   `Style(on: str = "#", off: str = "-", arrow_left: str = "<", arrow_right: str = ">", border_left: str = "|", border_right: str = "|")`: Constructor to create a style.
 
@@ -230,8 +234,10 @@ REPO/
 *   **ANSI**: Class for creating ANSI escape sequences.
     *   `ANSI(sequence: str = "")`: Constructor to create an ANSI sequence.
     *   `ESC`: ANSI escape character.
+
 *   **BasePack**: Ready-to-use ANSI escape sequences.
 	* `def update()`: Update the BasePack escape sequences(no Style created yet)
+
 *   **Color**: Class for ANSI color codes.
     *   `color_fg`: Returns ANSI sequence for a foreground color.
     * `color_bg`: Returns ANSI sequence for a foreground color.
@@ -241,6 +247,7 @@ REPO/
     *   `epitech_bg(r: int, g: int, b: int)`: Returns ANSI sequence for a background colored as Epitech (light).
     *   `epitech_dark_fg(r: int, g: int, b: int)`: Returns ANSI sequence for a foreground colored as Epitech (dark).
     *   `epitech_dark_bg(r: int, g: int, b: int)`: Returns ANSI sequence for a background colored as Epitech (dark).
+
 *   **Cursor**: Class for cursor manipulation.
     *   `up(n: int = 1)`: Moves the cursor up `n` lines.
     *   `down(n: int = 1)`: Moves the cursor down `n` lines.
@@ -255,6 +262,7 @@ REPO/
     *   `reset()`: Load the saved position of the cursor.
     *   `hide()`: Hides the cursor.
     *   `show()`: Shows the cursor.
+
 *   **Line**: Class for line manipulation.
     *   `clear_line()`: Clears the current line.
     *   `clear_start_line()`: Clears the current line from the beginning to the cursor.
@@ -271,7 +279,10 @@ REPO/
 ### System Module
 
 *   **Action**: Class for action saving.
-    (*work in progress*)
+    *   `Action(name: str, function: Callable, *args, **kwargs`: Constructor to create an Action object.
+
+*   **Actions**: Class for actions list saving.
+    *   `Actions(actions: list[Action] | Action)`: Constructor to create a Actions object.
 
 *   **Config**: Class for configuration management.
     *   `exist(path: str, file_name: str = "config.ini")`: Checks if a config file exist or is empty.
@@ -280,15 +291,18 @@ REPO/
 
 *   **Console**: Class for console output.
     *   `print(value: any = "", start: str = "", end: str = "\n", file: any = stdout, sleep: int | float | None = None)`: Prints to the console with optional start, end, file, and sleep parameters.
-*   **StopWatch**: Class for measuring elapsed time.
+
+* **StopWatch**: Class for measuring elapsed time.
     *   `StopWatch(start: bool = False)`: Constructor to create a stopwatch.
     *   `start()`: Starts the stopwatch.
     *   `stop()`: Stops the stopwatch.
     *   `update()`: update the elapsed time stopwatch.
-    *   `elapsed()`: Returns the elapsed time.
+    *   `elapsed(auto_update: bool = False)`: Returns the elapsed time.
     *   `reset()`: Reset the StopWatch back to 0.
+
 *   **Time**: Class for time-related functions.
-    *   `sleep(seconds: int | float)`: Pauses execution for a specified number of seconds.
+    *   `wait(sleep: int | float)`: Pauses execution for a specified number of seconds.
+    *   `pause(msg: str = "Press enter to continue...")`: Pauses execution until enter is pressed.
 
 ### Text Module
 
@@ -304,6 +318,7 @@ REPO/
     *   `ok(title: bool = False)`: Make a text styled as an OK (background is colored if title, foreground otherwise).
     *   `info(title: bool = False)`: Make a text styled as an INFO (background is colored if title, foreground otherwise).
     *   `apply(obj: object, sequence: object | None = None)`: Apply any escape sequence (as a string or an ANSI) to an object (Text, ANSI, Animation, ProgressBar or str).
+
 *   **Text**: Class for handling text.
     *   `Text(text: object | str = "")`: Constructor to create a text object.
     *   `url_link(url: str, text: str | None = None)`: Creates a link to a url.
@@ -311,15 +326,19 @@ REPO/
 
 ## Release-Note
 * #### v0.1.5:
-    *   README grammar correction 😅
-    *   Non object class had 'object' as parent
+    *   [ADD] New config global settings
+    *   [ADD] Console stream flush
+    *   [DELETE] Useless import
+    *   [ADD] Action and Actions classes
+    *   [FIX] README grammar 😅
+    *   [FIX] Non object class had 'object' as parent
 
 * #### v0.1.4:
-    *   New release section in README
-    *   Syntax and type error fix
-    *   package auto-reloader (install-package + check-package)
-    *   New action class
-    *   New import introduction
+    *   [FIX] Syntax and type error
+    *   [ADD] package auto-reloader (install-package + check-package)
+    *   [ADD] New action class (not implemented yet)
+    *   [ADD] New import introduction
+    *   [ADD] New release section in README
 
 ## License
 

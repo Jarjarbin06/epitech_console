@@ -43,7 +43,7 @@ class Error(Exception):
         self.link : str | None = None
 
         if link:
-            self.link = Text.clion_link(link[0], link[1])
+            self.link = Text.file_link(link[0], link[1])
 
 
     def __str__(

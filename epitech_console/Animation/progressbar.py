@@ -106,8 +106,6 @@ class ProgressBar(Format):
                 str: Animations string
         """
 
-        from epitech_console.ANSI.color import Color
-
         return str(color + self.animation[item])
 
 
