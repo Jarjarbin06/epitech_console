@@ -4,7 +4,7 @@
 
 
 
-# epitech_console v0.1.4
+# epitech_console v0.1.5
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Stars](https://img.shields.io/github/stars/Jarjarbin06/epitech_console?style=social)](https://github.com/Jarjarbin06/epitech_console)
@@ -22,9 +22,10 @@ The `epitech_console` is a friendly Python tool that helps you create cool stuff
 5.  [Usage](#Usage)
 6.  [Project Structure](#Project-Structure)
 7.  [API Reference](#API-Reference)
-8.  [License](#License)
-9. [Important Links](#Important-Links)
-10. [Footer](#Footer)
+8.  [Release Note](#Release-Note)
+9.  [License](#License)
+10. [Important Links](#Important-Links)
+11. [Footer](#Footer)
 
 ## Features
 
@@ -150,7 +151,7 @@ print(f"Elapsed time: {my_stopwatch.elapsed()}")
 from epitech_console.System import Config
 
 my_path = "."
-if Config.is_empty(my_path):
+if not Config.exist(my_path):
     Config.create(my_path, {
       "GENERALE" : {"theme": "dark", "language": "en"},
       "USER" : {"username": "guest", "email": "my_email@email.com"}
@@ -162,39 +163,43 @@ This will check and create a `config.ini` file if it doesn't exist.
 ## Project-Structure
 
 ```
-epitech_console/
-├── Animation/
+REPO/
+├── epitech_console/
+│   ├── Animation/
+│   │   ├── __init__.py
+│   │   ├── animation.py
+│   │   ├── basepack.py
+│   │   ├── progressbar.py
+│   │   ├── spinner.py
+│   │   └── style.py
+│   ├── ANSI/
+│   │   ├── __init__.py
+│   │   ├── ansi.py
+│   │   ├── basepack.py
+│   │   ├── color.py
+│   │   ├── cursor.py
+│   │   └── line.py
+│   ├── Error/
+│   │   ├── __init__.py
+│   │   └── error.py
+│   ├── System/
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   ├── console.py
+│   │   ├── stopwatch.py
+│   │   └── time.py
+│   ├── Text/
+│   │   ├── __init__.py
+│   │   ├── format.py
+│   │   └── text.py
 │   ├── __init__.py
-│   ├── animation.py
-│   ├── basepack.py
-│   ├── progressbar.py
-│   ├── spinner.py
-│   └── style.py
-├── ANSI/
-│   ├── __init__.py
-│   ├── ansi.py
-│   ├── basepack.py
-│   ├── color.py
-│   ├── cursor.py
-│   └── line.py
-├── Error/
-│   ├── __init__.py
-│   └── error.py
-├── System/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── console.py
-│   ├── stopwatch.py
-│   └── time.py
-├── Text/
-│   ├── __init__.py
-│   ├── format.py
-│   └── text.py
-├── __init__.py
-├── config.ini
+│   └── config.ini
+├── .gitignore
+├── auto-reload
 ├── check-package
 ├── install-package
 ├── LICENSE
+├── MANIFEST.in
 ├── pyproject.toml
 └── README.md
 ```
@@ -265,6 +270,9 @@ epitech_console/
 
 ### System Module
 
+*   **Action**: Class for action saving.
+    (*work in progress*)
+
 *   **Config**: Class for configuration management.
     *   `exist(path: str, file_name: str = "config.ini")`: Checks if a config file exist or is empty.
     *   `create(path: str, data: dict | None = None, file_name: str = "config.ini")`: Creates a new config file.
@@ -300,6 +308,13 @@ epitech_console/
     *   `Text(text: object | str = "")`: Constructor to create a text object.
     *   `url_link(url: str, text: str | None = None)`: Creates a link to an url.
     *   `file_link(path: str, line: int | None = None)`: Creates a link to a file and line number.
+
+## Release-Note
+* v0.1.4:
+    * New release section in README
+    * Syntax and type error fix
+    * package auto-reloader (install-package + check-package)
+    * New action class
 
 ## License
 
