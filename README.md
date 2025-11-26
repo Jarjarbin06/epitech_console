@@ -328,6 +328,7 @@ REPO/
 
 ## Release-Note
 * #### v0.1.5:
+    *   [ADD] package uninstaller
     *   [ADD] dict tree formating
     *   [ADD] len() Animation, ANSI and Text compatibility
     *   [ADD] New config global settings
