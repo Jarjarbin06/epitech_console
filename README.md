@@ -328,22 +328,22 @@ REPO/
 
 ## Release-Note
 * #### v0.1.5:
-    *   [ADD] package uninstaller
-    *   [ADD] dict tree formating
-    *   [ADD] len() Animation, ANSI and Text compatibility
-    *   [ADD] New config global settings
-    *   [ADD] Console stream flush
-    *   [DELETE] Useless import
-    *   [ADD] Action and Actions classes
-    *   [FIX] README grammar 😅
-    *   [FIX] Non object class had 'object' as parent
+    *   **[ADD]** package uninstaller
+    *   **[ADD]** dict tree formating
+    *   **[ADD]** len() Animation, ANSI and Text compatibility
+    *   **[ADD]** New config global settings
+    *   **[ADD]** Console stream flush
+    *   **[REM]** Useless import
+    *   **[ADD]** Action and Actions classes
+    *   **[FIX]** README grammar 😅
+    *   **[FIX]** Non object class had 'object' as parent
 
 * #### v0.1.4:
-    *   [FIX] Syntax and type error
-    *   [ADD] package auto-reloader (install-package + check-package)
-    *   [ADD] New action class (not implemented yet)
-    *   [ADD] New import introduction
-    *   [ADD] New release section in README
+    *   **[FIX]** Syntax and type error
+    *   **[ADD]** package auto-reloader (install-package + check-package)
+    *   **[ADD]** New action class (not implemented yet)
+    *   **[ADD]** New import introduction
+    *   **[ADD]** New release section in README
 
 ## License
 
