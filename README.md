@@ -318,6 +318,8 @@ REPO/
     *   `ok(title: bool = False)`: Make a text styled as an OK (background is colored if title, foreground otherwise).
     *   `info(title: bool = False)`: Make a text styled as an INFO (background is colored if title, foreground otherwise).
     *   `apply(obj: object, sequence: object | None = None)`: Apply any escape sequence (as a string or an ANSI) to an object (Text, ANSI, Animation, ProgressBar or str).
+    *   `tree(d: dict | str | list, title: str | None = None, indent: int = 0`: Get a formated version of a dictionary as bash tree command).
+    *   `module_tree()`: Get module's file tree.
 
 *   **Text**: Class for handling text.
     *   `Text(text: object | str = "")`: Constructor to create a text object.

@@ -245,6 +245,9 @@ class Format:
             spinner: Animation = Animation([(str(sequence) + str(line)) for line in obj.spinner])
             return ProgressBar(obj.length, animation=animation, style=obj.style, percent_style=obj.percent_style,  spinner=spinner, spinner_position=obj.spinner_position)
 
+        else:
+            return obj
+
 
     @staticmethod
     def tree(
