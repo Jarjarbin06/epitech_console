@@ -11,8 +11,6 @@
 from builtins import object
 from typing import Any
 
-from pygame.examples.eventlist import last_key
-
 
 class Format:
     """
@@ -250,33 +248,77 @@ class Format:
 
     @staticmethod
     def tree(
-            d : dict | str,
+            d : dict | str | list,
+            title : str | None = None,
             indent : int = 0
         ) -> str:
         """
             Format a dict into a tree (bash) formatted string.
 
             Parameters:
-                d (dict | str): dictionary to be formatted.
-                indent (int)(optional): indent level.
+                d (dict | str | list): dictionary to be formatted
+                title (str | None): the title of the tree
+                indent (int)(optional): indent level
 
             Returns:
                 str: formatted string.
         """
 
-        string : str = ""
+        string : str = ((title + "/\n") if title else "")
 
         if type(d) in [str]:
-            string += ("│   " * indent) + "├── " + d
+            string += ("│   " * indent) + "├── " + d + "\n"
+
+        elif type(d) in [list]:
+            for line in d:
+                string += ("│   " * indent) + "├── " + line + "\n"
 
         else :
-            last_key : str = ""
-
-            for key in d:
-                last_key = key
-
             for key in d:
                 string += ("│   " * indent) + "├── " + key + "/\n"
-                string += Format.tree(d[key], indent + 1) + "\n"
+                string += Format.tree(d[key], None, indent + 1) + "\n"
 
         return string[:-1]
+
+    @staticmethod
+    def module_tree(
+        ) -> str:
+        """
+            Get the module's tree.
+
+            Returns:
+                str: formatted string.
+        """
+
+        return Format.tree(
+            {
+                "Text": [
+                    "Text",
+                    "Format"
+                ],
+                "Animation": [
+                    "Animation",
+                    "BasePack",
+                    "ProgressBar",
+                    "Spinner",
+                    "Style"
+                ],
+                "ANSI": [
+                    "ANSI",
+                    "BasePack",
+                    "Color",
+                    "Cursor",
+                    "Line"
+                ],
+                "Error": [
+                    "Error"
+                ],
+                "System": [
+                    "Action & Actions",
+                    "Config",
+                    "Console",
+                    "StopWatch",
+                    "Time"
+                ]
+            },
+            "epitech_console")

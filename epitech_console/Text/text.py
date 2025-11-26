@@ -73,6 +73,16 @@ class Text(Format):
         return str(self.text)
 
 
+    def __len__(
+            self
+        ) -> int:
+        """
+            Get length of Text object.
+        """
+
+        return len(self.text)
+
+
     @staticmethod
     def url_link(
             url: str,

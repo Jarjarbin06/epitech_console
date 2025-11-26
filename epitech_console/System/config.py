@@ -78,7 +78,6 @@ class Config:
                 },
                 "SETTING" : {
                     "show-banner": "False",
-                    "animated-banner": "False",
                     "auto-color": "True",
                     "safe-mode": "False",
                     "minimal-mode": "False",

@@ -88,3 +88,13 @@ class ANSI(Format):
         """
 
         return str(self.sequence)
+
+
+    def __len__(
+            self
+        ) -> int:
+        """
+            Return the number of ANSI sequences.
+        """
+
+        return len(self.sequence)

@@ -61,41 +61,13 @@ def _simple_banner(
     Console.print(line_t + line_break + offset_t + title_t + " " + version_t + offset_t + line_break + offset_t + desc_t + offset_t + line_break + line_t)
 
 
-def _animated_banner(
-        config
-    ) -> None:
-    """
-        Show an animation.
-    """
-    from epitech_console.ANSI import Color, Cursor
-    from epitech_console.Text import Text as T
-    from epitech_console.System import Console, Config
-
-    banner_size = 50
-
-    epitech = Color.epitech_fg()
-    epitech_dark = Color.epitech_dark_fg()
-    reset = Color.color(Color.C_RESET)
-    name = config.get("PACKAGE", "name")
-    version = config.get("PACKAGE", "version")
-
-    offset_t = T("  ")
-    title_t = epitech + T(f"{name}").bold().underline() + reset + "  " + T.url_link("https://github.com/Jarjarbin06/epitech_console", text="repository")
-    version_t = T(" " * (5 - (len(version) - 5))) + epitech_dark + T("version ").italic() + T(f"{version}").bold() + reset
-    desc_t = T("   Text • Animation • ANSI • Error • System   ").italic()
-    line_t = epitech + ("─" * banner_size) + reset
-    line_break = T("\n")
-
-    Console.print(line_t + line_break + offset_t + title_t + " " + version_t + offset_t + line_break + offset_t + desc_t + offset_t + line_break + line_t)
-
-
 def _init(
     ) -> None:
     """
         _init() initializes the epitech console package and show a banner (if SETTING : show-banner = True in config.ini)
     """
     from epitech_console.ANSI import Color, Cursor
-    from epitech_console.Text import Text as T, Format
+    from epitech_console.Text import Text as T
     from epitech_console.System import Console, Config, Action
 
     if not Config.exist(PATH):
@@ -105,18 +77,7 @@ def _init(
 
     if config.getboolean("SETTING", "show-banner"):
         try:
-            if config.getboolean("SETTING", "animated-banner"):
-                _animated_banner(config)
-            else:
-                _simple_banner(config)
-            print(Format.tree({
-                "1": "1.1",
-                "2": {
-                    "2.1": "2.1.1",
-                    "2.2": "2.2.1",
-                    "2.3": "2.3.1",
-                },
-            }))
+            _simple_banner(config)
 
         except Exception as error:
             if config.getboolean("SETTING", "debug"):

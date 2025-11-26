@@ -86,6 +86,9 @@ class Animation(Format):
                 str: Animation string
         """
 
+        if self.is_last():
+            return str(self.animation[self.length - 1])
+
         return str(self.animation[item])
 
 
@@ -114,6 +117,16 @@ class Animation(Format):
         """
 
         self.update(auto_reset=True)
+
+
+    def __len__(
+            self
+        ) -> int:
+        """
+            Return the number of steps of the animation.
+        """
+
+        return self.length
 
 
     def update(

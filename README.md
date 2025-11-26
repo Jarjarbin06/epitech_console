@@ -326,6 +326,8 @@ REPO/
 
 ## Release-Note
 * #### v0.1.5:
+    *   [ADD] dict tree formating
+    *   [ADD] len() Animation, ANSI and Text compatibility
     *   [ADD] New config global settings
     *   [ADD] Console stream flush
     *   [DELETE] Useless import
