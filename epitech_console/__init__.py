@@ -33,7 +33,7 @@ __author__ : str = 'Nathan Jarjarbin'
 __email__ : str = 'nathan.epitech.eu'
 
 
-def _simple_banner(
+def _banner(
         config
     ) -> None:
     """
@@ -56,9 +56,8 @@ def _simple_banner(
         f"{config.get("PACKAGE", "version")}").bold() + reset
     desc_t = T("   Text • Animation • ANSI • Error • System   ").italic()
     line_t = epitech + ("─" * banner_size) + reset
-    line_break = T("\n")
 
-    Console.print(line_t + line_break + offset_t + title_t + " " + version_t + offset_t + line_break + offset_t + desc_t + offset_t + line_break + line_t)
+    Console.print(line_t, offset_t + title_t + " " + version_t + offset_t, offset_t + desc_t + offset_t, line_t, separator="\n")
 
 
 def _init(
@@ -77,7 +76,7 @@ def _init(
 
     if config.getboolean("SETTING", "show-banner"):
         try:
-            _simple_banner(config)
+            _banner(config)
 
         except Exception as error:
             if config.getboolean("SETTING", "debug"):

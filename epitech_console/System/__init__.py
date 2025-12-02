@@ -22,6 +22,8 @@ __all__ : list[str] = [
     'StopWatch',
     'Console',
     'Config',
+    'Action',
+    'Actions',
     'stdin',
     'stdout',
     'stderr',

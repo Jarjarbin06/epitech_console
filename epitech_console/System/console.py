@@ -12,7 +12,28 @@ from builtins import object
 from typing import Any
 
 
-class Console:
+class ConsoleMeta(type):
+    """
+        Metaclass for Console classe.
+    """
+
+
+    def __len__(
+            cls
+        ) -> int:
+        """
+            get length of the current terminal (number of columns)
+
+            Returns:
+                int: length of the terminal
+        """
+
+        from os import get_terminal_size
+
+        return get_terminal_size().columns
+
+
+class Console(metaclass=ConsoleMeta):
     """
         Console class.
 
@@ -25,29 +46,46 @@ class Console:
 
     @staticmethod
     def print(
-            value : Any = "",
-            *,
-            separator : str = " ",
-            start : str = "",
-            end : str = "\n",
-            file : Any = stdout,
-            sleep : int | float | None = None
+            *args,
+            separator: str = " ",
+            start: str = "",
+            end: str = "\n",
+            file: Any = stdout,
+            sleep: int | float | None = None,
+            cut_to_terminal_size: bool = False
         ) -> None:
         """
-            print on the console.
+            Print on the console.
 
-            Parameters:
-                value : Any value to print.
-                separator (str)(optional) : Separator to use between values.
-                start (str)(optional) : Start value to use for print.
-                end (str)(optional) : End value to use for print.
-                file (Any)(optional) : File object to use for print.
-                sleep (int | float | None)(optional) : Sleep time in seconds.
+            Args:
+                *args: Any values to print.
+                separator (str, optional): Separator between values.
+                start (str, optional): String prepended before printing.
+                end (str, optional): String appended after printing.
+                file (Any, optional): File-like object to write into.
+                sleep (int | float | None, optional): Delay in seconds after printing.
+                cut_to_terminal_size (bool, optional): Cut output to terminal width (/!\\ WARNING : May not work properly /!\\).
         """
 
         from epitech_console.System.time import Time
+        from epitech_console.ANSI.color import Color
 
-        print(f"{start}{str(value)}{end}", end="", file=file)
+        string_list : list[str]
+        string : str = f"{start}"
+
+        for idx in range(len(args)):
+            if idx and idx < len(args):
+                string += separator
+            string += str(args[idx])
+
+        string += f"{end}"
+
+        string_list = string.split("\n")
+
+        for idx in range(len(string_list)):
+            if cut_to_terminal_size and (len(string_list[idx]) - (string_list[idx].count("\033[") * 5)) > len(Console):
+                string_list[idx] = string_list[idx][:(len(Console) - 4)] + "..." + str(Color.color(Color.C_RESET))
+            print(string_list[idx], file=file)
 
         if sleep:
             Time.wait(sleep)

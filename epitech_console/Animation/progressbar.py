@@ -210,12 +210,12 @@ class ProgressBar(Format):
 
         string : str = ""
 
-        if delete:
-            string += str(Line.clear_previous_line())
-
         if type(color) in [ANSI]:
             color : tuple[Any, Any, Any] = (color, color, color)
 
         string += str(self.__str__(color=color, hide_spinner=(hide_spinner_at_end and self.percent == 100)))
+
+        if delete:
+            string += str(Line.clear_previous_line())
 
         return Text(string)
