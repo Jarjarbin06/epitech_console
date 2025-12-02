@@ -226,7 +226,7 @@ class Cursor:
 
         from epitech_console.ANSI.ansi import ANSI
 
-        return ANSI(f"{ANSI.ESC}?25h")
+        return ANSI(f"{ANSI.ESC}25h")
 
 
     @staticmethod
@@ -241,4 +241,4 @@ class Cursor:
 
         from epitech_console.ANSI.ansi import ANSI
 
-        return ANSI(f"{ANSI.ESC}?25l")
+        return ANSI(f"{ANSI.ESC}25l")
