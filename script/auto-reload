@@ -1,5 +1,5 @@
 #!/bin/bash
 
-./uninstall-package
-./install-package
-./check-package
+./script/uninstall-package
+./script/install-package
+./script/check-package

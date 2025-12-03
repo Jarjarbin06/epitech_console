@@ -39,25 +39,24 @@ def _banner(
     """
         Show a simple banner.
     """
-    from epitech_console.ANSI import Color, Cursor
-    from epitech_console.Text import Text as T
-    from epitech_console.System import Console, Config
+
+    from epitech_console import Animation as AN, ANSI as AS, Error as E, System as S, Text as T
 
     banner_size = 50
 
-    epitech = Color.epitech_fg()
-    epitech_dark = Color.epitech_dark_fg()
-    reset = Color.color(Color.C_RESET)
+    epitech = AS.Color.epitech_fg()
+    epitech_dark = AS.Color.epitech_dark_fg()
+    reset = AS.Color.color(AS.Color.C_RESET)
 
-    offset_t = T("  ")
-    title_t = epitech + T(f"{config.get("PACKAGE", "name")}").bold().underline() + reset + "  " + T.url_link(
+    offset_t = T.Text("  ")
+    title_t = epitech + T.Text(f"{config.get("PACKAGE", "name")}").bold().underline() + reset + "  " + T.Text.url_link(
         "https://github.com/Jarjarbin06/epitech_console", text="repository")
-    version_t = T(" " * 5) + epitech_dark + T("version ").italic() + T(
+    version_t = T.Text(" " * 5) + epitech_dark + T.Text("version ").italic() + T.Text(
         f"{config.get("PACKAGE", "version")}").bold() + reset
-    desc_t = T("   Text • Animation • ANSI • Error • System   ").italic()
+    desc_t = T.Text("   Text • Animation • ANSI • Error • System   ").italic()
     line_t = epitech + ("─" * banner_size) + reset
 
-    Console.print(line_t, offset_t + title_t + " " + version_t + offset_t, offset_t + desc_t + offset_t, line_t, separator="\n")
+    S.Console.print(line_t, offset_t + title_t + " " + version_t + offset_t, offset_t + desc_t + offset_t, line_t, separator="\n")
 
 
 def _init(
@@ -65,14 +64,16 @@ def _init(
     """
         _init() initializes the epitech console package and show a banner (if SETTING : show-banner = True in config.ini)
     """
-    from epitech_console.ANSI import Color, Cursor
-    from epitech_console.Text import Text as T
-    from epitech_console.System import Console, Config, Action
 
-    if not Config.exist(PATH):
-        Config.create(PATH)
+    from epitech_console import Animation as AN, ANSI as AS, Error as E, System as S, Text as T
 
-    config = Config.read(PATH)
+    Animation.BasePack.update()
+    ANSI.basepack.BasePack.update()
+
+    if not S.Config.exist(PATH):
+        S.Config.create(PATH)
+
+    config = S.Config.read(PATH)
 
     if config.getboolean("SETTING", "show-banner"):
         try:
@@ -92,5 +93,3 @@ def _init(
 
 
 _init()
-Animation.basepack.BasePack.update()
-ANSI.basepack.BasePack.update()

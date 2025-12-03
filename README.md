@@ -73,9 +73,9 @@ Ready to get started? Here's how to install `epitech_console`:
     If you want the latest version directly from the source, you can install it using `git`:
 
     ```bash
-    git clone git@github.com:Jarjarbin06/epitech_console.git
+    git clone https://github.com/Jarjarbin06/epitech_console.git
     cd epitech_console
-    ./install-package
+    ./script/install-package
     ```
 
     This downloads the code, then the `install-package` script handles the installation.
