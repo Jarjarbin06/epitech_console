@@ -1,6 +1,7 @@
 ## Epitech Student's project
 
-![Project Logo](https://www.epitech.eu/wp-content/uploads/Epitech-Accueil.png "Epitech logo")
+<img src="https://github.com/Jarjarbin06/epitech_console/blob/main/src/epitech_logo.png?raw=true" alt="Epitech logo" width="50%">
+<img src="https://github.com/Jarjarbin06/epitech_console/blob/main/src/epitech_console_logo.png?raw=true" alt="Epitech Console logo" width="50%">
 
 
 
@@ -194,10 +195,12 @@ REPO/
 │   │   └── text.py
 │   ├── __init__.py
 │   └── config.ini
+├── script/
+│   ├── auto-reload
+│   ├── check-package
+│   ├── install-package
+│   └── uninstall-package
 ├── .gitignore
-├── auto-reload
-├── check-package
-├── install-package
 ├── LICENSE
 ├── MANIFEST.in
 ├── pyproject.toml
