@@ -1,7 +1,7 @@
 ## Epitech Student's project
 
-<img src="https://github.com/Jarjarbin06/epitech_console/blob/main/src/epitech_logo.png?raw=true" alt="Epitech logo" width="50%">
-<img src="https://github.com/Jarjarbin06/epitech_console/blob/main/src/epitech_console_logo.png?raw=true" alt="Epitech Console logo" width="50%">
+<img src="https://github.com/Jarjarbin06/epitech_console/blob/main/src/epitech_logo.png?raw=true" alt="Epitech logo" width="100%">
+<img src="https://github.com/Jarjarbin06/epitech_console/blob/main/src/epitech_console_logo.png?raw=true" alt="Epitech Console logo" width="100%">
 
 
 
