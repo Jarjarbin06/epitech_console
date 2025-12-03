@@ -3,7 +3,7 @@
 <img src="https://github.com/Jarjarbin06/epitech_console/blob/main/src/epitech_logo.png?raw=true" alt="Epitech logo" width="49%" style="display:inline-block; margin-right:1%;">
 <img src="https://github.com/Jarjarbin06/epitech_console/blob/main/src/epitech_console_logo.png?raw=true" alt="Epitech Console logo" width="49%" style="display:inline-block;">
 
-# epitech_console v0.1.6(2)
+# epitech_console v0.1.7
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Stars](https://img.shields.io/github/stars/Jarjarbin06/epitech_console?style=social)](https://github.com/Jarjarbin06/epitech_console)
@@ -328,29 +328,32 @@ REPO/
     *   `file_link(path: str, line: int | None = None)`: Creates a link to a file and line number.
 
 ## Release-Note
+* #### v0.1.7:
+    *   **[FIX]** all docstring containing `(optional)`
+
 * #### v0.1.6(2):
     *   **[ADD]** project wiki
-    *   **[ADD]** len() Console compatibility
+    *   **[ADD]** `len()` `Console` compatibility
     *   **[UPDATE]** file tree
     *   **[ADD]** epitech console logo
 
 * #### v0.1.5:
-    *   **[ADD]** package uninstaller
+    *   **[ADD]** uninstaller (`uninstall-package`)
     *   **[ADD]** dict tree formating
-    *   **[ADD]** len() Animation, ANSI and Text compatibility
+    *   **[ADD]** `len()` `Animation`, `ANSI` and `Text` compatibility
     *   **[ADD]** New config global settings
     *   **[ADD]** Console stream flush
     *   **[REM]** Useless import
-    *   **[ADD]** Action and Actions classes
-    *   **[FIX]** README grammar 😅
-    *   **[FIX]** Non object class had 'object' as parent
+    *   **[ADD]** `Action` and `Actions` classes
+    *   **[FIX]** `README` grammar 😅
+    *   **[FIX]** Non object class had `object` as parent
 
 * #### v0.1.4:
     *   **[FIX]** Syntax and type error
-    *   **[ADD]** package auto-reloader (install-package + check-package)
-    *   **[ADD]** New action class (not implemented yet)
+    *   **[ADD]** package auto-reloader (`install-package` + `check-package`)
+    *   **[ADD]** New `Action` class (not implemented yet)
     *   **[ADD]** New import introduction
-    *   **[ADD]** New release section in README
+    *   **[ADD]** New release section in `README`
 
 ## License
 
