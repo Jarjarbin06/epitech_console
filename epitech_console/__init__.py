@@ -92,3 +92,5 @@ def _init(
 
 
 _init()
+Animation.basepack.BasePack.update()
+ANSI.basepack.BasePack.update()

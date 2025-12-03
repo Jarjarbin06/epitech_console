@@ -92,7 +92,6 @@ class Line:
                 ANSI: ansi sequence
         """
 
-        from epitech_console.ANSI.line import Line
         from epitech_console.ANSI.cursor import Cursor
 
         return Line.clear_screen() + Cursor.top()
@@ -108,7 +107,6 @@ class Line:
                 ANSI: ansi sequence
         """
 
-        from epitech_console.ANSI.line import Line
         from epitech_console.ANSI.cursor import Cursor
 
-        return Cursor.up(1) + Line.clear_line() + Cursor.move_column(0)
+        return Cursor.up(1) + Line.clear_end_line() + Cursor.move_column(0)
