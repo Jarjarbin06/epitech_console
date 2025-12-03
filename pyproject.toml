@@ -42,4 +42,4 @@ where = ["."]
 include = ["epitech_console*"]
 
 [tool.setuptools.package-data]
-"epitech_console" = ["*.ini", "LICENSE", "install-package"]
+"epitech_console" = ["*.ini", "LICENSE", "README.md"]
