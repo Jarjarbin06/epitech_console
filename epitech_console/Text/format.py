@@ -119,7 +119,7 @@ class Format:
             Apply the 'error' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
             Parameters:
-                title (bool): whether it is a title or not
+                title (bool, optional): whether it is a title or not
 
             Returns:
                 Any: formatted object.
@@ -142,7 +142,7 @@ class Format:
             Apply the 'warning' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
             Parameters:
-                title (bool): whether it is a title or not
+                title (bool, optional): whether it is a title or not
 
             Returns:
                 Any: formatted object.
@@ -165,7 +165,7 @@ class Format:
             Apply the 'ok' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
             Parameters:
-                title (bool): whether it is a title or not
+                title (bool, optional): whether it is a title or not
 
             Returns:
                 Any: formatted object.
@@ -188,7 +188,7 @@ class Format:
             Apply the 'info' format to an object of type Text, ANSI, Animation, ProgressBar or str.
 
             Parameters:
-                title (bool): whether it is a title or not
+                title (bool, optional): whether it is a title or not
 
             Returns:
                 Any: formatted object.
@@ -212,7 +212,7 @@ class Format:
 
             Parameters:
                 obj (Text | ANSI | Animation | ProgressBar | str): object to be formatted.
-                sequence (ANSI): format.
+                sequence (ANSI, optional): format.
 
             Returns:
                 Any: formatted object.
@@ -262,8 +262,8 @@ class Format:
 
             Parameters:
                 d (dict | str | list): dictionary to be formatted
-                title (str | None): the title of the tree
-                indent (int)(optional): indent level
+                title (str | None, optional): the title of the tree
+                indent (int, optional): indent level
 
             Returns:
                 str: formatted string.

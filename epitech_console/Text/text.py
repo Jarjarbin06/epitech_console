@@ -29,7 +29,7 @@ class Text(Format):
             Create a text.
 
             Parameters:
-                text (ANSI | str): text
+                text (ANSI | str, optional): text
         """
 
         from epitech_console.ANSI.ansi import ANSI
@@ -78,6 +78,9 @@ class Text(Format):
         ) -> int:
         """
             Get length of Text object.
+
+            Returns:
+                int: Length of Text object
         """
 
         return len(self.text)
@@ -93,7 +96,7 @@ class Text(Format):
 
             Parameters:
                 url (str): URL to website.
-                text (int): Text to show instead of the url (show the url if no text).
+                text (int, optional): Text to show instead of the url (show the url if no text).
 
             Returns:
                 str: url link.
@@ -115,7 +118,7 @@ class Text(Format):
 
             Parameters:
                 path (str): Path to the file.
-                line (int): Line of the file.
+                line (int, optional): Line of the file.
 
             Returns:
                 str: file link.

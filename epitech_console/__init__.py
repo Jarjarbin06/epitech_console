@@ -30,7 +30,7 @@ __all__ : list[str] = [
 
 
 __author__ : str = 'Nathan Jarjarbin'
-__email__ : str = 'nathan.epitech.eu'
+__email__ : str = 'nathan.amaraggi@epitech.eu'
 
 
 def _banner(

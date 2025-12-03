@@ -34,7 +34,7 @@ class Config:
 
             Returns:
                 bool: False if empty or not existing, True otherwise
-                file_name (str)(optional): name of config file
+                file_name (str, optional): name of config file
         """
 
         empty_config : bool = True
@@ -62,8 +62,8 @@ class Config:
 
             Parameters:
                 path (str): path to folder which you want your config file to be in
-                data (dict | None): data to put in the config file
-                file_name (str)(optional): name of config file
+                data (dict | None, optional): data to put in the config file
+                file_name (str, optional): name of config file
         """
 
         from configparser import ConfigParser
@@ -106,7 +106,7 @@ class Config:
 
             Parameters:
                 path (str): path to folder which contain your config file
-                file_name (str)(optional): name of config file
+                file_name (str, optional): name of config file
         """
 
         from configparser import ConfigParser

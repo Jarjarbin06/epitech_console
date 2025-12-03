@@ -32,8 +32,9 @@ class Error(Exception):
             Create an Error.
 
             Parameters:
-                message (str): The error message.
-                link (tuple[str, int]): The link to where the error comes from (file and line).
+                message (str, optional): The error message.
+                error (str, optional): The error type (title).
+                link (tuple[str, int], optional): The link to where the error comes from (file and line).
         """
 
         from epitech_console.Text.text import Text

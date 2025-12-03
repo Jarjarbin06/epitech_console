@@ -55,7 +55,7 @@ class BasePack:
             Initialise the BasePack class
 
             Parameters:
-                style (Style): Style of the BasePack animations.
+                style (Style, optional): Style of the BasePack animations.
         """
 
         BasePack.P_SLIDE_R = [

@@ -32,6 +32,9 @@ class Spinner:
         """
             Stick spinner.
 
+            Parameters:
+                style (Style, optional): Style of the animations.
+
             Returns:
                 Animation: Stick animation.
         """
@@ -56,6 +59,9 @@ class Spinner:
         """
             Plus spinner.
 
+            Parameters:
+                style (Style, optional): Style of the animations.
+
             Returns:
                 Animation: Plus animation.
         """
@@ -77,6 +83,9 @@ class Spinner:
         ) -> Animation:
         """
             Cross spinner.
+
+            Parameters:
+                style (Style, optional): Style of the animations.
 
             Returns:
                 Animation: Cross animation.

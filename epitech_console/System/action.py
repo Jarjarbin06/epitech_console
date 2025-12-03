@@ -36,8 +36,8 @@ class Action:
             Parameters:
                 name (str): Name of the call.
                 function (Callable): Function to be saved.
-                *args (Any): Function's args.
-                **kwargs (Any): Function's kwargs.
+                *args (Any, optional): Function's args.
+                **kwargs (Any, optional): Function's kwargs.
         """
 
         from collections.abc import Callable
@@ -64,6 +64,9 @@ class Action:
         ) -> Any:
         """
             Create Actions object with the 2 given actions.
+
+            Parameters:
+                other (Action): Action to add.
         """
 
         return Actions([self, other])
@@ -116,6 +119,9 @@ class Actions:
         ) -> str:
         """
             Return the string representation of the Actions object.
+
+            Returns:
+                str: String representation of the Actions object.
         """
 
         string : str = ""
@@ -135,6 +141,9 @@ class Actions:
         ) -> dict[str, Any]:
         """
             Call the saved functions with their arguments.
+
+            Returns:
+                dict[str, Any]: Dictionary of functions' return values.
         """
 
         returns : dict[str, Any] = {}

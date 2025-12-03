@@ -51,7 +51,7 @@ class Time:
             Pause the program and print a message and return the exact elapsed time during the pause function.
 
             Parameters:
-                msg (str) : Message to be displayed
+                msg (str, optional) : Message to be displayed
 
             Returns:
                 float : Exact elapsed time

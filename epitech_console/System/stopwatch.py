@@ -26,6 +26,9 @@ class StopWatch:
         ) -> None:
         """
             Create a stopwatch.
+
+            Parameters:
+                start (bool, optional) : If True, start the stopwatch at creation time.
         """
 
         self.start_time : float = 0.0
@@ -89,7 +92,7 @@ class StopWatch:
             Get elapsed time.
 
             Parameters:
-                auto_update (bool)(optional): Auto update. Defaults to False.
+                auto_update (bool, optional): Auto update. Defaults to False.
 
             Returns:
                 float: Elapsed time.

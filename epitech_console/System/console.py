@@ -62,13 +62,13 @@ class Console(metaclass=ConsoleMeta):
 
             Parameters:
                 *args: Any values to print.
-                separator (str)(optional): Separator between values.
-                start (str)(optional): String prepended before printing.
-                end (str)(optional): String appended after printing.
-                file (Any)(optional): File-like object to write into.
-                auto_reset (bool)(optional): Automatically reset ANSI sequence.
-                sleep (int | float | None)(optional): Delay in seconds after printing.
-                cut_to_terminal_size (bool)(optional): Cut output to terminal width.
+                separator (str, optional): Separator between values.
+                start (str, optional): String prepended before printing.
+                end (str, optional): String appended after printing.
+                file (Any, optional): File-like object to write into.
+                auto_reset (bool, optional): Automatically reset ANSI sequence.
+                sleep (int | float | None, optional): Delay in seconds after printing.
+                cut_to_terminal_size (bool, optional): Cut output to terminal width.
         """
 
         from epitech_console.System.time import Time
@@ -108,9 +108,9 @@ class Console(metaclass=ConsoleMeta):
             Get user text input from the console.
 
             Parameters:
-                msg (str) : Message to show when user enters input.
-                separator (str)(optional): Separator between message and input.
-                wanted_type (type): Type of input to return.
+                msg (str, optional) : Message to show when user enters input.
+                separator (str, optional): Separator between message and input.
+                wanted_type (type, optional): Type of input to return.
 
             Returns:
                 Any: User input as 'type' type.
@@ -126,7 +126,7 @@ class Console(metaclass=ConsoleMeta):
             Flush console output.
 
             Parameters:
-                stream (Any)(optional) : Stream object to be flushed (generally stdin, stdout and stderr).
+                stream (Any, optional) : Stream object to be flushed (generally stdin, stdout and stderr).
         """
 
         stream.flush()

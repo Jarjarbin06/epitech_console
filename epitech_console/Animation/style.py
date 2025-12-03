@@ -30,6 +30,15 @@ class Style:
             border_right : str = "|"
         ) -> None:
         """
+            Create a new style object.
+
+            Parameters:
+                on (str, optional): "#"
+                off (str, optional): "-"
+                arrow_left (str, optional): "<"
+                arrow_right (str, optional): ">"
+                border_left (str, optional): "|"
+                border_right (str, optional): "|"
         """
 
         self.on = on
@@ -44,6 +53,10 @@ class Style:
             self
         ) -> str:
         """
+            Returns the string representation of the style.
+
+            Returns:
+                str: String representation of the style.
         """
 
         return (

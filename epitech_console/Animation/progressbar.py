@@ -42,22 +42,29 @@ class ProgressBar(Format):
             Parameters:
                 length (int): Progress bar length.
 
-                animation (Animation | None): Animation object.
-                style (Style | None)(optional): Progress bar style.
-                percent_style (str)(optional): Progress bar percent style (num/bar/mix).
-                spinner (Animation | None)(optional): Progress bar spinner.
-                spinner_position (str)(optional): Progress bar spinner position (b/a).
+                animation (Animation | None, optional): Animation object.
+                style (Style | None, optional): Progress bar style.
+                percent_style (str, optional): Progress bar percent style (num/bar/mix).
+                spinner (Animation | None, optional): Progress bar spinner.
+                spinner_position (str, optional): Progress bar spinner position (b/a).
         """
 
         from epitech_console.Animation.animation import Animation
         from epitech_console.Animation.style import Style
 
         def create_progress_bar(
-                length,
-                style
+                length : int,
+                style : Style
             ) -> list[str]:
             """
                 Create the Progress-bar animation.
+
+                Parameters:
+                    length (int): Progress bar length.
+                    style (Style): Progress bar style.
+
+                Returns:
+                    list[str]: Progress bar animation.
             """
 
             animation: list[str] = []
@@ -100,7 +107,7 @@ class ProgressBar(Format):
 
             Parameters:
                 item (int): Step number
-                color (ANSI)(optional): Color
+                color (ANSI, optional): Color
 
             Returns:
                 str: Animations string
@@ -119,8 +126,8 @@ class ProgressBar(Format):
             Convert ProgressBar object to string.
 
             Parameters:
-                color (tuple[ANSI, ANSI, ANSI])(optional): Color
-                hide_spinner (bool): hide the spinner
+                color (tuple[ANSI, ANSI, ANSI], optional): Color
+                hide_spinner (bool, optional): hide the spinner
 
             Returns:
                 str: ProgressBar string
@@ -171,9 +178,9 @@ class ProgressBar(Format):
             Do a step of the animations.
 
             Parameters:
-                percent (int): Percentage
-                update_spinner (bool)(optional): Update spinner
-                auto_reset (bool)(optional): Auto reset spinner
+                percent (int, optional): Percentage
+                update_spinner (bool, optional): Update spinner
+                auto_reset (bool, optional): Auto reset spinner
         """
 
         if self.spinner and update_spinner :
@@ -196,9 +203,9 @@ class ProgressBar(Format):
             Convert ProgressBar object to string.
 
             Parameters:
-                color (ANSI | tuple[ANSI, ANSI, ANSI])(optional): Color
-                hide_spinner_at_end (bool): Hide spinner at end
-                delete (bool)(optional): Delete previous line and right on it
+                color (ANSI | tuple[ANSI, ANSI, ANSI], optional): Color
+                hide_spinner_at_end (bool, optional): Hide spinner at end
+                delete (bool, optional): Delete previous line and right on it
 
             Returns:
                 str: ProgressBar string

@@ -35,7 +35,7 @@ class ANSI(Format):
             Create an ANSI sequence.
 
             Parameters:
-                sequence (list[ANSI | str] | str): ANSI sequence
+                sequence (list[ANSI | str] | str, optional): ANSI sequence
         """
 
         self.sequence : str = ""
@@ -50,13 +50,14 @@ class ANSI(Format):
 
     def __add__(
             self,
-            other : Any | str | int
+            other : Any
         ) -> Any:
         """
             Add 2 ANSI sequences together.
+            'other' must have __str__ method.
 
             Parameters:
-                other (ANSI | Animation | StopWatch | ProgressBar | Text | str): ANSI sequence
+                other (ANSI | Animation | StopWatch | ProgressBar | Text | Any): ANSI sequence
 
             Returns:
                 ANSI: ANSI sequence

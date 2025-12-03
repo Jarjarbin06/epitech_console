@@ -30,7 +30,7 @@ class Cursor:
             Bring the cursor up 'n' lines
 
             Parameters:
-                n (int): number of lines up
+                n (int, optional): number of lines up
 
             Returns:
                 ANSI: ansi sequence
@@ -49,7 +49,7 @@ class Cursor:
             Bring the cursor down 'n' lines
 
             Parameters:
-                n (int): number of lines down
+                n (int, optional): number of lines down
 
             Returns:
                 ANSI: ansi sequence
@@ -68,7 +68,7 @@ class Cursor:
             Bring the cursor left 'n' column
 
             Parameters:
-                n (int): number of column left
+                n (int, optional): number of column left
 
             Returns:
                 ANSI: ansi sequence
@@ -87,7 +87,7 @@ class Cursor:
             Bring the cursor right 'n' column
 
             Parameters:
-                n (int): number of column right
+                n (int, optional): number of column right
 
             Returns:
                 ANSI: ansi sequence
@@ -121,7 +121,7 @@ class Cursor:
             Move the cursor to the beginning of the 'n' previous line
 
             Parameters:
-                n (int): number of column up
+                n (int, optional): number of column up
 
             Returns:
                 ANSI: ansi sequence
@@ -140,7 +140,7 @@ class Cursor:
             Move the cursor to the beginning of the 'n' previous line
 
             Parameters:
-                n (int): number of column right
+                n (int, optional): number of column right
 
             Returns:
                 ANSI: ansi sequence
@@ -159,6 +159,10 @@ class Cursor:
         """
             Move the cursor to the column x and line y
 
+            Parameters:
+                x (int, optional): column x position
+                y (int, optional): line y position
+
             Returns:
                 ANSI: ansi sequence
         """
@@ -174,6 +178,9 @@ class Cursor:
         ) -> ANSI:
         """
             Move the cursor to the column x and line y
+
+            Parameters:
+                x (int, optional): column x position
 
             Returns:
                 ANSI: ansi sequence

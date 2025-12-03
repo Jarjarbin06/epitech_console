@@ -31,7 +31,7 @@ class Animation(Format):
             Create an animation.
 
             Parameters:
-                animation (list[str] | str): list of step
+                animation (list[str] | str, optional): list of step
         """
 
         self.animation : list[str] = []
@@ -95,10 +95,13 @@ class Animation(Format):
     def __str__(
             self,
             *,
-            color : Any = Color.C_RESET
+            color : Any = Color.color(Color.C_RESET)
         ) -> str :
         """
             Convert Animation object to string.
+
+            Parameters:
+                color (ANSI, optional): Color
 
             Returns:
                 str: Animation string
@@ -124,6 +127,9 @@ class Animation(Format):
         ) -> int:
         """
             Return the number of steps of the animation.
+
+            Returns:
+                int: Number of steps
         """
 
         return self.length
@@ -138,7 +144,7 @@ class Animation(Format):
             Add a step to the animation.
 
             Parameters:
-                auto_reset (bool): Automatically reset the animation. Defaults to False.
+                auto_reset (bool, optional): Automatically reset the animation. Defaults to False.
         """
 
         self.step += 1
@@ -156,6 +162,9 @@ class Animation(Format):
         ) -> str:
         """
             Convert Animation object to string.
+
+            Parameters:
+                delete (bool, optional): Delete the previous animation. Defaults to False.
 
             Returns:
                 str: Animation string
