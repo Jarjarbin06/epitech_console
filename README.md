@@ -328,6 +328,12 @@ REPO/
     *   `file_link(path: str, line: int | None = None)`: Creates a link to a file and line number.
 
 ## Release-Note
+* #### v0.1.6:
+    *   **[ADD]** project wiki
+    *   **[ADD]** len() Console compatibility
+    *   **[UPDATE]** file tree
+    *   **[ADD]** epitech console logo
+
 * #### v0.1.5:
     *   **[ADD]** package uninstaller
     *   **[ADD]** dict tree formating
