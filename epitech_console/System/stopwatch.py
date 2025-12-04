@@ -31,8 +31,8 @@ class StopWatch:
                 start (bool, optional) : If True, start the stopwatch at creation time.
         """
 
-        self.start_time : float = 0.0
-        self.time : float = 0.0
+        self._start : float = 0.0
+        self._elapsed : float = 0.0
 
         if start:
             self.start()
@@ -51,6 +51,91 @@ class StopWatch:
         return str(self.elapsed())
 
 
+    def __eq__(
+            self,
+            other : float
+        ) -> bool:
+        """
+            Compare elapsed time with float.
+
+            Parameters:
+                other (float) : time
+
+            Returns:
+                bool: True if equal to other, False otherwise
+        """
+
+        return self._elapsed == other
+
+
+    def __gt__(
+            self,
+            other : float
+        ) -> bool:
+        """
+            Compare elapsed time with float.
+
+            Parameters:
+                other (float) : time
+
+            Returns:
+                bool: True if greater than other, False otherwise
+        """
+
+        return self._elapsed > other
+
+
+    def __ge__(
+            self,
+            other : float
+        ) -> bool:
+        """
+            Compare elapsed time with float.
+
+            Parameters:
+                other (float) : time
+
+            Returns:
+                bool: True if greater or equal to other, False otherwise
+        """
+
+        return self > other or self == other
+
+
+    def __lt__(
+            self,
+            other : float
+        ) -> bool:
+        """
+            Compare elapsed time with float.
+
+            Parameters:
+                other (float) : time
+
+            Returns:
+                bool: True if less than other, False otherwise
+        """
+
+        return self._elapsed < other
+
+
+    def __le__(
+            self,
+            other : float
+        ) -> bool:
+        """
+            Compare elapsed time with float.
+
+            Parameters:
+                other (float) : time
+
+            Returns:
+                bool: True if greater or equal to other, False otherwise
+        """
+
+        return self < other or self == other
+
+
     def start(
             self
         ) -> None:
@@ -60,7 +145,8 @@ class StopWatch:
 
         from time import time
 
-        self.start_time = time()
+        self.reset()
+        self._start = time()
 
 
     def stop(
@@ -68,7 +154,7 @@ class StopWatch:
         ) -> None:
 
         self.update()
-        self.start_time = 0.0
+        self._start = 0.0
 
 
     def update(
@@ -80,8 +166,8 @@ class StopWatch:
 
         from time import time
 
-        if self.start_time:
-            self.time = time() - self.start_time
+        if self._start:
+            self._elapsed = time() - self._start
 
 
     def elapsed(
@@ -101,7 +187,7 @@ class StopWatch:
         if auto_update:
             self.update()
 
-        return self.time
+        return self._elapsed
 
 
     def reset(
@@ -111,5 +197,5 @@ class StopWatch:
             Reset the stopwatch.
         """
 
-        self.stop()
-        self.start()
+        self._start = 0.0
+        self._elapsed = 0.0

@@ -8,6 +8,9 @@
 #############################
 
 
+from typing import Any
+
+
 from epitech_console import Animation, ANSI, Error, System, Text
 from epitech_console.System import Actions
 from epitech_console.Text import Format
@@ -34,7 +37,7 @@ __email__ : str = 'nathan.amaraggi@epitech.eu'
 
 
 def _banner(
-        config
+        config : Any
     ) -> None:
     """
         Show a simple banner.
@@ -70,17 +73,14 @@ def _init(
     Animation.BasePack.update()
     ANSI.basepack.BasePack.update()
 
-    if not S.Config.exist(PATH):
-        S.Config.create(PATH)
+    config = S.Config(PATH)
 
-    config = S.Config.read(PATH)
-
-    if config.getboolean("SETTING", "show-banner"):
+    if config.get("SETTING", "show-banner", bool):
         try:
             _banner(config)
 
         except Exception as error:
-            if config.getboolean("SETTING", "debug"):
+            if config.get("SETTING", "debug", bool):
                 print("\033[101m \033[0m \033[91m" + str(error) + "\033[0m\n")
             print(
                 "\033[103m \033[0m \033[93mepitech_console imported with error\033[0m\n"

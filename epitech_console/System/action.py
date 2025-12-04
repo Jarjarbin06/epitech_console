@@ -95,13 +95,13 @@ class Actions:
 
     def __init__(
             self,
-            actions : list[Action] | Action
+            actions : list[Action] | Action | None = None,
         ) -> None:
         """
             Save a list of actions.
 
             Parameters:
-                actions (list[Action] | Action): list of actions to save.
+                actions (list[Action] | Action | None, optional): list of actions to save.
         """
 
         self.actions : list[Action] = []
@@ -110,7 +110,7 @@ class Actions:
             for action in actions:
                 self.actions.append(action)
 
-        else:
+        elif type(actions) in [Action]:
             self.actions = [actions]
 
 
@@ -136,6 +136,24 @@ class Actions:
         return string[:-2]
 
 
+    def __add__(self,
+            other : Any
+        ) -> Any:
+        """
+            Add Actions or Action together.
+        """
+
+        if type(other) in [Actions]:
+            return Actions(self.actions + other.actions)
+
+        elif type(other) in [Action]:
+            return Actions(self.actions + [other])
+
+        else:
+            return Actions()
+
+
+
     def __call__(
             self
         ) -> dict[str, Any]:
@@ -152,3 +170,30 @@ class Actions:
             returns[action.name] = action()
 
         return returns
+
+
+    def __len__(
+            self
+        ) -> int:
+        """
+            Return the length of the Actions object.
+        """
+
+        return len(self.actions)
+
+
+    def __getitem__(
+            self,
+            item : int
+        ) -> Any:
+        """
+            Return the Action at position 'item'.
+
+            Parameters:
+                item (int): Position index.
+
+            Returns:
+                Action: Action at position 'item'.
+        """
+
+        return self.actions[item]

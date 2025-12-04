@@ -242,7 +242,7 @@ class Format:
 
         if type(obj) in [ProgressBar]:
             animation: Animation = Animation([(str(sequence) + str(line)) for line in obj.animation])
-            spinner = None
+            spinner : Animation | None = None
             if obj.spinner:
                 spinner: Animation = Animation([(str(sequence) + str(line)) for line in obj.spinner])
             return ProgressBar(obj.length, animation=animation, style=obj.style, percent_style=obj.percent_style,  spinner=spinner, spinner_position=obj.spinner_position)
