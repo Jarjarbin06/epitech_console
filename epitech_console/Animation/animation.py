@@ -41,7 +41,7 @@ class Animation(Format):
                 self.animation.append(str(step))
 
         else:
-            self.animation = [animation]
+            self.animation = animation.split("\\")
 
         self.length : int = len(self.animation)
         self.step : int = 0
