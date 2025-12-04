@@ -5,8 +5,7 @@
 
 # epitech_console v0.1.6(2)
 
-[![Python package](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml/badge.svg?branch=v0.1.5)](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml)
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Python package](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml/badge.svg?branch=v0.1.6%282%29)](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml)[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Stars](https://img.shields.io/github/stars/Jarjarbin06/epitech_console?style=social)](https://github.com/Jarjarbin06/epitech_console)
 
 ## Description
