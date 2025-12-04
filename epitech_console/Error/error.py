@@ -44,7 +44,11 @@ class Error(Exception):
         self.link : str | None = None
 
         if link:
-            self.link = Text.file_link(link[0], link[1])
+            if len(link) == 1 and type(link[0]) in [str]:
+                self.link = Text.file_link(link[0])
+            if len(link) == 2 and type(link[0]) in [str] and type(link[1]) in [int]:
+                if link[1] > 0:
+                    self.link = Text.file_link(link[0], link[1])
 
 
     def __str__(
@@ -57,4 +61,4 @@ class Error(Exception):
                 str: String representation of the error.
         """
 
-        return f"{self.error}:\n    {self.message}" + (f"\n\n{self.link}" if self.link else "")
+        return f"{self.error}:\n    {self.message}\n\n{self.link if self.link else ""}"

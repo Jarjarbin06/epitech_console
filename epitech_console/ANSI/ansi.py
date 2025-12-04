@@ -75,7 +75,7 @@ class ANSI(Format):
             return ANSI(f"{self.sequence}{str(other)}")
 
         else:
-            return ANSI("")
+            return self
 
 
     def __str__(
@@ -99,3 +99,16 @@ class ANSI(Format):
         """
 
         return len(self.sequence)
+
+
+    def __repr__(
+            self
+        ) -> str:
+        """
+            Convert ANSI object to string.
+
+            Returns:
+                str: ANSI string
+        """
+
+        return f"ANSI(\"{self.sequence}\")"

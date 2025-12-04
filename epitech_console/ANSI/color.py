@@ -190,6 +190,8 @@ class Color:
 
         from epitech_console.ANSI.ansi import ANSI
 
+        if r < 0 or g < 0 or b < 0 or r > 255 or g > 255 or b > 255:
+            return ANSI("")
         return ANSI(f"{ANSI.ESC}38;2;{r};{g};{b}m")
 
 

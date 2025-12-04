@@ -127,4 +127,4 @@ class Text(Format):
         if line:
             return Text(f'\033]8;;jetbrains://clion/navigate/reference?file={path}&line={line}\033\\File "{path}", line {line}\033]8;;\033\\')
         else:
-            return Text(f'\033]8;;jetbrains://clion/navigate/reference?file={path}\033\\"{path}"\033]8;;\033\\')
+            return Text(f'\033]8;;jetbrains://clion/navigate/reference?file={path}\033\\File "{path}"\033]8;;\033\\')

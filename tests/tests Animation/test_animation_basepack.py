@@ -1,14 +1,25 @@
 import pytest
 
+
 from epitech_console.Animation.basepack import BasePack
 from epitech_console.Animation.style import Style
 
 
-# ============================================================
-# BasePack (pre-built animations)
-# ============================================================
+def test_basepack_has_attributes(
+    ) -> None:
+    assert hasattr(BasePack, "P_SLIDE_R")
+    assert hasattr(BasePack, "P_SLIDE_L")
+    assert hasattr(BasePack, "P_SLIDER_R")
+    assert hasattr(BasePack, "P_SLIDER_L")
+    assert hasattr(BasePack, "P_FILL_R")
+    assert hasattr(BasePack, "P_FILL_L")
+    assert hasattr(BasePack, "P_EMPTY_R")
+    assert hasattr(BasePack, "P_EMPTY_L")
+    assert hasattr(BasePack, "P_FULL")
+    assert hasattr(BasePack, "P_EMPTY")
 
-def test_basepack_default_values_exist(
+
+def test_basepack_types(
     ) -> None:
     assert isinstance(BasePack.P_SLIDE_R, list)
     assert isinstance(BasePack.P_SLIDE_L, list)
