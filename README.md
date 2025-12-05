@@ -330,6 +330,9 @@ REPO/
 
 ## Release-Note
 * #### v0.1.7:
+	*   **[FIX]** some mor random bugs
+	*   **[FIX]** coding style
+	*   **[ADD]** pytests for the whole module (including sub-modules)
     *   **[FIX]** all docstring containing `(optional)`
 
 * #### v0.1.6(2):
