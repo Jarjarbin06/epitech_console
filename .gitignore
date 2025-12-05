@@ -1,8 +1,13 @@
+trace
+coverage.xml
 perso
 dist
 dist_done
 epitech_console.egg-info
 htmlcov
+__pycache__
+*/__pycache__
+*/*/__pycache__
 .idea
 .obsidian
 .coverage
