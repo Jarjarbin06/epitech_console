@@ -55,7 +55,7 @@ def _banner(
     title_t = epitech + T.Text(f'{config.get("PACKAGE", "name")}').bold().underline() + reset + "  " + T.Text.url_link(
         "https://github.com/Jarjarbin06/epitech_console", text="repository")
     version_t = T.Text(" " * 5) + epitech_dark + T.Text("version ").italic() + T.Text(
-        f"{config.get("PACKAGE", "version")}").bold() + reset
+        f'{config.get("PACKAGE", "version")}').bold() + reset
     desc_t = T.Text("   Text • Animation • ANSI • Error • System   ").italic()
     line_t = epitech + ("─" * banner_size) + reset
 

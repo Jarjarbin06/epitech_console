@@ -2,7 +2,7 @@ import pytest
 import time
 
 
-from epitech_console.System.time import Time
+from epitech_console.System import Time
 
 
 def test_time_wait(

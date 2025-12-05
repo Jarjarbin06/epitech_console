@@ -1,8 +1,8 @@
 import pytest
 
 
-from epitech_console.ANSI.basepack import BasePack
-from epitech_console.ANSI.ansi import ANSI
+from epitech_console.ANSI import BasePack
+from epitech_console.ANSI import ANSI
 
 
 def test_basepack_has_attributes(

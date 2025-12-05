@@ -2,7 +2,7 @@ import pytest
 import time
 
 
-from epitech_console.System.stopwatch import StopWatch
+from epitech_console.System import StopWatch
 
 
 def test_stopwatch_default_start_false(

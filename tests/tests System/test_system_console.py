@@ -2,7 +2,7 @@ import pytest
 from sys import stderr
 
 
-from epitech_console.System.console import Console
+from epitech_console.System import Console
 
 
 def test_console_print_basic(

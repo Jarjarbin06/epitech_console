@@ -1,7 +1,7 @@
 import pytest
 
 
-from epitech_console.Error.error import Error
+from epitech_console.Error import Error
 
 
 def test_error_default_constructor(

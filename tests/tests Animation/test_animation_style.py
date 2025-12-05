@@ -1,7 +1,7 @@
 import pytest
 
 
-from epitech_console.Animation.style import Style
+from epitech_console.Animation import Style
 
 
 def test_style_initialization(

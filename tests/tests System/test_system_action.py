@@ -1,7 +1,7 @@
 import pytest
 
 
-from epitech_console.System.action import Action, Actions
+from epitech_console.System import Action, Actions
 
 
 def test_action_valid_construction(

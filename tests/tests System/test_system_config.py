@@ -1,7 +1,7 @@
 import pytest
 
 
-from epitech_console.System.config import Config
+from epitech_console.System import Config
 
 
 def test_config_exist_returns_false(

@@ -1,7 +1,7 @@
 import pytest
 
 
-from epitech_console.ANSI.ansi import ANSI
+from epitech_console.ANSI import ANSI
 
 
 def test_ansi_empty_init(

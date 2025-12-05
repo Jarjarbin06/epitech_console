@@ -1,8 +1,8 @@
 import pytest
 
 
-from epitech_console.Text.text import Text
-from epitech_console.Text.format import Format
+from epitech_console.Text import Text
+from epitech_console.Text import Format
 
 
 

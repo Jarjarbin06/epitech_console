@@ -1,7 +1,7 @@
 import pytest
 
 
-from epitech_console.Text.text import Text
+from epitech_console.Text import Text
 
 
 def test_text_initialization():

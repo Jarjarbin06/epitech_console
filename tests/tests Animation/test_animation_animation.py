@@ -1,7 +1,7 @@
 import pytest
 
 
-from epitech_console.Animation.animation import Animation
+from epitech_console.Animation import Animation
 
 
 def test_animation_initialization_with_list(

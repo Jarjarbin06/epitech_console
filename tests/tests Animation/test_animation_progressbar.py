@@ -1,9 +1,9 @@
 import pytest
 
 
-from epitech_console.Animation.animation import Animation
-from epitech_console.Animation.progressbar import ProgressBar
-from epitech_console.Animation.spinner import Spinner
+from epitech_console.Animation import Animation
+from epitech_console.Animation import ProgressBar
+from epitech_console.Animation import Spinner
 
 
 def test_progressbar_initialization(

@@ -1,5 +1,5 @@
 import pytest
-from epitech_console.ANSI.line import Line
+from epitech_console.ANSI import Line
 
 
 def test_clear_line(

@@ -1,8 +1,8 @@
 import pytest
 
 
-from epitech_console.Animation.basepack import BasePack
-from epitech_console.Animation.style import Style
+from epitech_console.Animation import BasePack
+from epitech_console.Animation import Style
 
 
 def test_basepack_has_attributes(

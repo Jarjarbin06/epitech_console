@@ -1,7 +1,7 @@
 import pytest
 
 
-from epitech_console.ANSI.cursor import Cursor
+from epitech_console.ANSI import Cursor
 
 
 def test_cursor_up(
