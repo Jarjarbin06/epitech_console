@@ -3,7 +3,7 @@
 <img src="https://github.com/Jarjarbin06/epitech_console/blob/main/src/epitech_logo.png?raw=true" alt="Epitech logo" width="49%" style="display:inline-block; margin-right:1%;">
 <img src="https://github.com/Jarjarbin06/epitech_console/blob/main/src/epitech_console_logo.png?raw=true" alt="Epitech Console logo" width="49%" style="display:inline-block;">
 
-# epitech_console v0.1.7
+# epitech_console v0.1.8
 
 [![PyTest Main](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml/badge.svg?branch=main)](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
@@ -329,6 +329,8 @@ REPO/
     *   `file_link(path: str, line: int | None = None)`: Creates a link to a file and line number.
 
 ## Release-Note
+* #### v0.1.8:
+
 * #### v0.1.7:
     *   **[FIX]** some mor random bugs
     *   **[FIX]** coding style
