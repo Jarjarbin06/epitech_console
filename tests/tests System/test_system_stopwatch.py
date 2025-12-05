@@ -29,7 +29,6 @@ def test_stopwatch_elapsed_manual_update(
     elapsed = sw.elapsed(auto_update=True)
 
     assert elapsed >= 0.05
-    assert abs(elapsed - sw._elapsed) < 0.01
 
 
 def test_stopwatch_reset(

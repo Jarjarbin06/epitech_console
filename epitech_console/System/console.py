@@ -42,6 +42,7 @@ class Console(metaclass=ConsoleMeta):
 
 
     from sys import stdout
+    from epitech_console.Text.text import Text
 
 
     @staticmethod
@@ -54,11 +55,12 @@ class Console(metaclass=ConsoleMeta):
             auto_reset: bool = True,
             sleep: int | float | None = None,
             cut_to_terminal_size: bool = False
-        ) -> None:
+        ) -> Text:
         """
             Print on the console.
 
             WARNING : 'cut_to_terminal_size' does not work with ANSI sequence
+            WARNING : 'cut_to_terminal_size' does not work properly when changing terminal size
 
             Parameters:
                 *args: Any values to print.
@@ -73,29 +75,32 @@ class Console(metaclass=ConsoleMeta):
 
         from epitech_console.System.time import Time
         from epitech_console.ANSI.color import Color
+        from epitech_console.Text.text import Text
 
         string_list : list[str]
-        string : str = f"{start}"
+        string : str = ""
+        final_string : Text = Text("")
 
         for idx in range(len(args)):
             if idx and idx < len(args):
                 string += separator
             string += str(args[idx])
 
-        string += f"{end}"
-
         string_list = string.split("\n")
 
         for idx in range(len(string_list)):
             if cut_to_terminal_size and (len(string_list[idx]) - (string_list[idx].count("\033[") * 2)) > (len(Console) + 6):
                 string_list[idx] = string_list[idx][:(len(Console) + 2 + string_list[idx].count("\033[") * 2)] + "..." + str(Color.color(Color.C_RESET))
-            print(string_list[idx], file=file)
+            final_string += string_list[idx]
 
-        if auto_reset:
-            print(Color.color(Color.C_RESET), end="")
+        final_string = Text(start) + final_string + (Color.color(Color.C_RESET) if auto_reset else Text("")) + Text(end)
+
+        print(final_string, file=file)
 
         if sleep:
             Time.wait(sleep)
+
+        return final_string
 
 
     @staticmethod

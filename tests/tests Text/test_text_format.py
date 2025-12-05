@@ -9,43 +9,43 @@ from epitech_console.Text.format import Format
 def test_format_reset():
     text = Text("hi")
     s = text.reset()
-    assert isinstance(s, str)
-    assert str(s) == "hi\033[0m"
+    assert isinstance(s, Text)
+    assert str(s) == "\033[0mhi"
 
 
 def test_format_bold():
     text = Text("hi")
     s = text.bold()
-    assert isinstance(s, str)
-    assert str(s) == "hi\033[1m"
+    assert isinstance(s, Text)
+    assert str(s) == "\033[1mhi"
 
 
 def test_format_italic():
     text = Text("hi")
-    s = text.bold()
-    assert isinstance(s, str)
-    assert str(s) == "hi\033[3m"
+    s = text.italic()
+    assert isinstance(s, Text)
+    assert str(s) == "\033[3mhi"
 
 
 def test_format_underline():
     text = Text("hi")
-    s = text.bold()
-    assert isinstance(s, str)
-    assert str(s) == "hi\033[4m"
+    s = text.underline()
+    assert isinstance(s, Text)
+    assert str(s) == "\033[4mhi"
 
 
 def test_format_hide():
     text = Text("hi")
-    s = text.bold()
-    assert isinstance(s, str)
-    assert str(s) == "hi\033[8m"
+    s = text.hide()
+    assert isinstance(s, Text)
+    assert str(s) == "\033[8mhi"
 
 
 def test_format_strikethrough():
     text = Text("hi")
-    s = text.bold()
-    assert isinstance(s, str)
-    assert str(s) == "hi\033[9m"
+    s = text.strikethrough()
+    assert isinstance(s, Text)
+    assert str(s) == "\033[9mhi"
 
 
 """
