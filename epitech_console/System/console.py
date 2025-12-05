@@ -91,7 +91,7 @@ class Console(metaclass=ConsoleMeta):
         for idx in range(len(string_list)):
             if cut_to_terminal_size and (len(string_list[idx]) - (string_list[idx].count("\033[") * 2)) > (len(Console) + 6):
                 string_list[idx] = string_list[idx][:(len(Console) + 2 + string_list[idx].count("\033[") * 2)] + "..." + str(Color.color(Color.C_RESET))
-            final_string += string_list[idx]
+            final_string += Text(string_list[idx]) + (Text("\n") if len(string_list) > 1 else Text(""))
 
         final_string = Text(start) + final_string + (Color.color(Color.C_RESET) if auto_reset else Text("")) + Text(end)
 
