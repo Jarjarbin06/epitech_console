@@ -36,11 +36,15 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+    - name: Install epitech_console
       run: |
         echo "y" | pip uninstall epitech_console || true
         pip install -e .
+    - name: Test with pytest
+      run: |
         pytest --cov=epitech_console --cov-report=xml --cov-report=term-missing
+    - name: Rename coverage file
+      run: |
         mv coverage.xml coverage_${{ matrix.python-version }}.xml
     - name: Upload coverage report
       uses: actions/upload-artifact@v4
