@@ -52,7 +52,7 @@ def _banner(
     reset = AS.Color.color(AS.Color.C_RESET)
 
     offset_t = T.Text("  ")
-    title_t = epitech + T.Text(f"{config.get("PACKAGE", "name")}").bold().underline() + reset + "  " + T.Text.url_link(
+    title_t = epitech + T.Text(f'{config.get("PACKAGE", "name")}').bold().underline() + reset + "  " + T.Text.url_link(
         "https://github.com/Jarjarbin06/epitech_console", text="repository")
     version_t = T.Text(" " * 5) + epitech_dark + T.Text("version ").italic() + T.Text(
         f"{config.get("PACKAGE", "version")}").bold() + reset
