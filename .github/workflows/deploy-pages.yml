@@ -34,7 +34,7 @@ jobs:
 
       # Upload the generated htmlcov directory as the Pages artifact
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v4
         with:
           path: htmlcov
 
