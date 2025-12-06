@@ -2,49 +2,58 @@ name: Deploy coverage to GitHub Pages
 
 on:
   push:
-    branches: [ main ]              # run on pushes to main
+    branches: [ main ]
   workflow_dispatch: {}
 
 permissions:
-  pages: write       # required to deploy
-  id-token: write
   contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install flake8 pytest pytest-cov
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
       - name: Install epitech_console
         run: |
           echo "y" | pip uninstall epitech_console || true
           pip install -e .
-      - name: Test with pytest (html)
+
+      - name: Run pytest with coverage (HTML)
         run: |
           pytest --cov=epitech_console --cov-report=html --cov-report=term-missing
-      - name: Upload coverage report (html)
+
+      # 👉 Upload htmlcov/ as GitHub Pages artifact
+      - name: Upload coverage HTML to Pages
         uses: actions/upload-pages-artifact@v4
         with:
           path: htmlcov
 
   deploy:
+    needs: build
     runs-on: ubuntu-22.04
-    needs: build-and-deploy
+
+    # GitHub Pages official environment
     environment:
       name: github-pages
-      url: https://$GITHUB_REPOSITORY_OWNER.github.io/${{ github.event.repository.name }}
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy GitHub Pages site
+        id: deployment
         uses: actions/deploy-pages@v4
