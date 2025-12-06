@@ -35,17 +35,17 @@ class Log:
 
         from datetime import datetime
 
-        self.log_path : str = path
-        self.log_start_time : str = str(datetime.now()).replace(":", "_") if not file_name else file_name
+        self.log_path : str = (path if path[-1] == "/" else path + "/")
+        self.log_file_name : str = str(datetime.now()).replace(":", "_") if not file_name else file_name
 
         try :
-            with open(f"{self.log_path}/{self.log_start_time}.txt", 'r') as log_file:
+            with open(f"{self.log_path}/{self.log_file_name}.txt", 'r') as log_file:
                 if log_file.read() == "":
                     log_file.write("   date          time      | [type.] category | detail\n\n---START---\n")
             log_file.close()
 
         except FileNotFoundError:
-            with open(f"{self.log_path}/{self.log_start_time}.txt", 'a') as log_file:
+            with open(f"{self.log_path}/{self.log_file_name}.txt", 'a') as log_file:
                 log_file.write("   date          time      | [type.] category | detail\n\n---START---\n")
             log_file.close()
 
@@ -103,7 +103,7 @@ class Log:
                 log_str (str): log string
         """
 
-        with open(f"{self.log_path}/{self.log_start_time}.txt", 'a') as log_file :
+        with open(f"{self.log_path}/{self.log_file_name}.txt", 'a') as log_file :
             log_file.write(f"\n{log_str}")
         log_file.close()
 
@@ -121,12 +121,12 @@ class Log:
 
         from os import remove
 
-        with open(f"{self.log_path}/{self.log_start_time}.txt", 'a') as log_file :
+        with open(f"{self.log_path}{self.log_file_name}.txt", 'a') as log_file :
             log_file.write(f"\n----END----\n")
         log_file.close()
 
         if delete_logs :
-            remove(f"{self.log_path}/{self.log_start_time}.txt")
+            remove(f"{self.log_path}{self.log_file_name}.txt")
 
 
     def read(
@@ -141,7 +141,7 @@ class Log:
 
         log_str : str
 
-        with open(f"{self.log_path}/{self.log_start_time}.txt", 'r') as log_file:
+        with open(f"{self.log_path}{self.log_file_name}.txt", 'r') as log_file:
             log_str = log_file.read()
         log_file.close()
 
@@ -200,3 +200,16 @@ class Log:
         string += footer + (" " * (t_size - 1)) + f"{c_reset}\n"
 
         Console.print(string)
+
+
+    def __repr__(
+            self
+        ) -> str:
+        """
+            Convert Log object to string.
+
+            Returns:
+                str: Log string
+        """
+
+        return f"Log(\"{self.log_path}\", \"{self.log_file_name}\")"

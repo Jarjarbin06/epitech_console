@@ -199,3 +199,16 @@ class StopWatch:
 
         self._start = 0.0
         self._elapsed = 0.0
+
+
+    def __repr__(
+            self
+        ) -> str:
+        """
+            Convert StopWatch object to string.
+
+            Returns:
+                str: StopWatch string
+        """
+
+        return f"StopWatch(?)"

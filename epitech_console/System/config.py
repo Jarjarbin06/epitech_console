@@ -143,3 +143,16 @@ class Config:
             empty_config = False
 
         return empty_config
+
+
+    def __repr__(
+            self
+        ) -> str:
+        """
+            Convert Config object to string.
+
+            Returns:
+                str: Config string
+        """
+
+        return f"Config(\"{self.path}\", ?, \"{self.file_name}\")"

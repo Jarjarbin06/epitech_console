@@ -226,3 +226,16 @@ class ProgressBar(Format):
             string += str(Line.clear_previous_line())
 
         return Text(string)
+
+
+    def __repr__(
+            self
+        ) -> str:
+        """
+            Convert ProgressBar object to string.
+
+            Returns:
+                str: ProgressBar string
+        """
+
+        return f"ProgressBar(\"{self.length}\", animation={self.animation.__repr__()}, style={self.style}, percent_style=\"{self.percent_style}\", spinner={self.spinner.__repr__()}, spinner_position=\"{self.spinner_position}\")"

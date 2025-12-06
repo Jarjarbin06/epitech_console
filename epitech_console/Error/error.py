@@ -26,7 +26,7 @@ class Error(Exception):
 
             *,
             error : str = "Error",
-            link : tuple[str, int] | None = None
+            link : tuple[str , int] | None = None
         ) -> None:
         """
             Create an Error.
@@ -41,14 +41,15 @@ class Error(Exception):
 
         self.message : str = message
         self.error : str = error
+        self.link_data : tuple[str, int] | None = link
         self.link : str | None = None
 
-        if link:
-            if len(link) == 1 and type(link[0]) in [str]:
-                self.link = Text.file_link(link[0])
-            if len(link) == 2 and type(link[0]) in [str] and type(link[1]) in [int]:
-                if link[1] > 0:
-                    self.link = Text.file_link(link[0], link[1])
+        if self.link_data:
+            if len(self.link_data) == 1 and type(self.link_data[0]) in [str]:
+                self.link = Text.file_link(self.link_data[0])
+            if len(self.link_data) == 2 and type(self.link_data[0]) in [str] and type(self.link_data[1]) in [int]:
+                if self.link_data[1] > 0:
+                    self.link = Text.file_link(self.link_data[0], self.link_data[1])
 
 
     def __str__(
@@ -62,3 +63,16 @@ class Error(Exception):
         """
 
         return f'{self.error}:\n    {self.message}\n\n{self.link if self.link else ""}'
+
+
+    def __repr__(
+            self
+        ) -> str:
+        """
+            Convert Error object to string.
+
+            Returns:
+                str: Error string
+        """
+
+        return f"Error(\"{self.message}\", error=\"{self.error}\", link={self.link_data})"

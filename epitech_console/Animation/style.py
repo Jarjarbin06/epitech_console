@@ -66,3 +66,16 @@ class Style:
             f'\n\nExample:' +
             f'\n"{self.border_left}{self.on}{self.on}{self.arrow_right}{self.off}{self.off}{self.off}{self.border_right}"'
         )
+
+
+    def __repr__(
+            self
+        ) -> str:
+        """
+            Convert Style object to string.
+
+            Returns:
+                str: Style string
+        """
+
+        return f"Style(\"{self.on}\", \"{self.off}\", \"{self.arrow_left}\", \"{self.arrow_right}\", \"{self.border_left}\", \"{self.border_right}\")"

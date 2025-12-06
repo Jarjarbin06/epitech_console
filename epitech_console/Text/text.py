@@ -86,6 +86,19 @@ class Text(Format):
         return len(self.text)
 
 
+    def __repr__(
+            self
+        ) -> str:
+        """
+            Convert Text object to string.
+
+            Returns:
+                str: Text string
+        """
+
+        return f"Text(\"{self.text}\")"
+
+
     @staticmethod
     def url_link(
             url: str,

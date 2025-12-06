@@ -85,6 +85,19 @@ class Action:
         return self.function(*self.args, **self.kwargs)
 
 
+    def __repr__(
+            self
+        ) -> str:
+        """
+            Convert Action object to string.
+
+            Returns:
+                str: Action string
+        """
+
+        return f"Action(\"{self.name}\", function={self.function}, args={self.args}, kwargs={self.kwargs})"
+
+
 class Actions:
     """
         Actions class.
@@ -197,3 +210,16 @@ class Actions:
         """
 
         return self.actions[item]
+
+
+    def __repr__(
+            self
+        ) -> str:
+        """
+            Convert Actions object to string.
+
+            Returns:
+                str: Actions string
+        """
+
+        return f"Actions({self.actions})"

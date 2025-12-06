@@ -204,3 +204,15 @@ class Animation(Format):
         """
 
         self.step = 0
+
+    def __repr__(
+            self
+        ) -> str:
+        """
+            Convert Animation object to string.
+
+            Returns:
+                str: Animation string
+        """
+
+        return f"Animation(\"{self.animation}\")"
