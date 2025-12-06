@@ -16,7 +16,7 @@ class Style:
     """
         Style class.
 
-        Progress-bar style.
+        Animation style.
     """
 
 

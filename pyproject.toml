@@ -14,7 +14,7 @@ requires-python = ">=3.11"
 license = "GPL-3.0-or-later"
 
 dependencies = [
-    # No external dependencies declared (sys, time, builtins are standard)
+    "datetime"
 ]
 
 classifiers = [

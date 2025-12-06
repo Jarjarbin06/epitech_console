@@ -98,7 +98,7 @@ class Console(metaclass=ConsoleMeta):
 
         final_string = Text(start) + final_string + (Color.color(Color.C_RESET) if auto_reset else Text("")) + Text(end)
 
-        print(final_string, file=file)
+        print(final_string, end="", file=file)
 
         if sleep:
             Time.wait(sleep)

@@ -8,9 +8,6 @@
 #############################
 
 
-from typing import Any
-
-
 from epitech_console import Animation, ANSI, Error, System, Text
 from epitech_console.System import Actions
 from epitech_console.Text import Format
@@ -37,7 +34,6 @@ __email__ : str = 'nathan.amaraggi@epitech.eu'
 
 
 def _banner(
-        config : Any
     ) -> None:
     """
         Show a simple banner.
@@ -52,10 +48,10 @@ def _banner(
     reset = AS.Color.color(AS.Color.C_RESET)
 
     offset_t = T.Text("  ")
-    title_t = epitech + T.Text(f'{config.get("PACKAGE", "name")}').bold().underline() + reset + "  " + T.Text.url_link(
+    title_t = epitech + T.Text(f'{System.Setting.S_PACKAGE_NAME}').bold().underline() + reset + "  " + T.Text.url_link(
         "https://github.com/Jarjarbin06/epitech_console", text="repository")
     version_t = T.Text(" " * 5) + epitech_dark + T.Text("version ").italic() + T.Text(
-        f'{config.get("PACKAGE", "version")}').bold() + reset
+        f'{System.Setting.S_PACKAGE_VERSION}').bold() + reset
     desc_t = T.Text("   Text • Animation • ANSI • Error • System   ").italic()
     line_t = epitech + ("─" * banner_size) + reset
 
@@ -72,15 +68,14 @@ def _init(
 
     Animation.BasePack.update()
     ANSI.basepack.BasePack.update()
+    System.Setting.update()
 
-    config = S.Config(PATH)
-
-    if config.get("SETTING", "show-banner", bool):
+    if System.Setting.S_SETTING_SHOW_BANNER:
         try:
-            _banner(config)
+            _banner()
 
         except Exception as error:
-            if config.get("SETTING", "debug", bool):
+            if System.Setting.S_SETTING_DEBUG:
                 print("\033[101m \033[0m \033[91m" + str(error) + "\033[0m\n")
             print(
                 "\033[103m \033[0m \033[93mepitech_console imported with error\033[0m\n"

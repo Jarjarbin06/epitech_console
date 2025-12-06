@@ -20,6 +20,7 @@ class Animation(Format):
         Animation tool.
     """
 
+
     from epitech_console.ANSI.color import Color
 
 

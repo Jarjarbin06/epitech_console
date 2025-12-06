@@ -1,0 +1,195 @@
+#############################
+###                       ###
+###    Epitech Console    ###
+###     ----log.py----    ###
+###                       ###
+###=======================###
+### by JARJARBIN's STUDIO ###
+#############################
+
+
+from builtins import object
+from typing import Any
+
+
+class Log:
+    """
+        Log class.
+
+        Log file tool.
+    """
+
+
+    def __init__(
+            self,
+            path : str,
+            file_name : str | None = None
+        ) -> None:
+        """
+            Log class constructor.
+
+            Parameters:
+                path (str): path to log file
+                file_name (str | None, optional): name of log file
+        """
+
+        from datetime import datetime
+
+        self.log_path : str = path
+        self.log_start_time : str = str(datetime.now()).replace(":", "_") if not file_name else file_name
+
+        try :
+            with open(f"{self.log_path}/{self.log_start_time}.txt", 'r') as log_file:
+                if log_file.read() == "":
+                    log_file.write("   date          time      | [type.] category | detail\n\n---START---\n")
+            log_file.close()
+
+        except FileNotFoundError:
+            with open(f"{self.log_path}/{self.log_start_time}.txt", 'a') as log_file:
+                log_file.write("   date          time      | [type.] category | detail\n\n---START---\n")
+            log_file.close()
+
+
+    def log(
+            self,
+            log_status : str,
+            log_title : str,
+            log_description : str
+        ) -> None:
+        """
+            Format a log message then save it.
+
+            Parameters:
+                log_status (str): log status
+                log_title (str): log title
+                log_description (str): log description
+        """
+
+        from datetime import datetime
+
+        log_status += "_" * (5 - len(log_status))
+        log_status = log_status[:4]
+        log_title += " " * (8 - len(log_title))
+        log_title = log_title[:8]
+
+        log_time : str = str(datetime.now())
+        log_str : str = f"{log_time} | [{log_status}] {log_title} | {log_description}"
+
+        self.save(log_str)
+
+
+    def comment(
+            self,
+            comment : str
+        ) -> None:
+        """
+            Save a comment in the log file.
+
+            Parameters:
+                comment (str): comment
+        """
+
+        self.save(f">>> {comment}")
+
+
+    def save(
+            self,
+            log_str : str
+        ) -> None:
+        """
+            Save a new log in the log file.
+
+            Parameters:
+                log_str (str): log string
+        """
+
+        with open(f"{self.log_path}/{self.log_start_time}.txt", 'a') as log_file :
+            log_file.write(f"\n{log_str}")
+        log_file.close()
+
+
+    def close(
+            self
+        ) -> None :
+        """
+            Close the log file.
+        """
+
+        with open(f"{self.log_path}/{self.log_start_time}.txt", 'a') as log_file :
+            log_file.write(f"\n----END----\n")
+        log_file.close()
+
+
+    def read(
+            self
+        ) -> str :
+        """
+            Read the log file and returns its content.
+        """
+
+        log_str : str
+
+        with open(f"{self.log_path}/{self.log_start_time}.txt", 'r') as log_file:
+            log_str = log_file.read()
+        log_file.close()
+
+        return log_str
+
+
+    def show(
+            self,
+            log_str : str | None = None
+        ) -> None :
+        """
+            Show a formated log file.
+
+            Parameters:
+                log_str (str | None, optional): log string to format
+        """
+
+        from epitech_console.System import Console
+        from epitech_console.ANSI import BasePack, Color
+
+        if not log_str :
+            log_str = self.read()
+
+        color_dict: dict = {
+            "[INFO_]" : BasePack.P_INFO,
+            "[VALID]" : BasePack.P_VALID,
+            "[WARN_]" : BasePack.P_WARNING,
+            "[ERROR]" : BasePack.P_ERROR,
+        }
+        c_reset : Any = Color.color(Color.C_RESET)
+        c_under : Any = Color.color(Color.C_UNDERLINE)
+        c_bold : Any = Color.color(Color.C_BOLD)
+        start : int = log_str.index("---START---\n") + len("---START---\n")
+        end : int = log_str.index("----END----\n")
+        logs : list = [lines.split(" | ") for lines in log_str[start:end].splitlines()]
+        t_size = len(Console)
+        footer : str = f"{c_under}{color_dict["[INFO_]"][0]}|{c_reset}{c_bold}{c_under}"
+        detail_size : int
+        string : str = ""
+
+        string += f"{c_under}{color_dict["[INFO_]"][0]}|{c_reset}{c_bold}{c_under}    date          time      | {c_reset}{c_under}{color_dict["[INFO_]"][0]}[type_]{c_reset}{c_bold}{c_under} category | detail" + (" " * (t_size - 56)) + f"{c_reset}"
+        string += f"{color_dict["[INFO_]"][0]}|{c_reset}{c_bold}" + (" " * (t_size - 1)) + f"{c_reset}"
+
+        for log_line in logs :
+            if log_line[0][:3] == ">>>" :
+                string += f"{color_dict["[INFO_]"][0]}>>>{c_reset} {color_dict["[INFO_]"][1]}{log_line[0][3:]}{c_reset}\n"
+
+            else :
+                if len(log_line) == 3 and log_line[1][:7].upper() in color_dict :
+                    color = color_dict[log_line[1][:7].upper()]
+                    string += (
+                        f"{color[0]}|{c_reset} " +
+                        f"{color[1]}{log_line[0]}{c_reset} | " +
+                        f"{color[0]}{log_line[1][0:7]}{c_reset} " +
+                        f"{color[1]}{log_line[1][8:]}{c_reset} | " +
+                        (f"{log_line[2][:(t_size - 1)]}..." if len(log_line[2]) > (t_size - 1) else f"{color[1]}{log_line[2]}") +
+                        f"{c_reset}\n")
+                elif len(log_line) == 1:
+                    string += f"{Color.color(Color.C_BG_DARK_CYAN)}|{c_reset} " + f"{Color.color(Color.C_FG_DARK_CYAN)}UNFORMATTED\n\"{log_line[0]}\""
+
+        string += footer + (" " * (t_size - 1)) + f"{c_reset}\n"
+
+        Console.print(string)

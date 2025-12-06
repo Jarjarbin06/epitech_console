@@ -9,7 +9,7 @@ def test_basepack_has_attributes(
     ) -> None:
     assert hasattr(BasePack, "P_ERROR")
     assert hasattr(BasePack, "P_WARNING")
-    assert hasattr(BasePack, "P_OK")
+    assert hasattr(BasePack, "P_VALID")
     assert hasattr(BasePack, "P_INFO")
 
 
@@ -17,7 +17,7 @@ def test_basepack_types(
     ) -> None:
     assert isinstance(BasePack.P_ERROR, tuple)
     assert isinstance(BasePack.P_WARNING, tuple)
-    assert isinstance(BasePack.P_OK, tuple)
+    assert isinstance(BasePack.P_VALID, tuple)
     assert isinstance(BasePack.P_INFO, tuple)
 
 
