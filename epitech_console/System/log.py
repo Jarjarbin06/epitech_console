@@ -39,13 +39,13 @@ class Log:
         self.log_file_name : str = str(datetime.now()).replace(":", "_") if not file_name else file_name
 
         try :
-            with open(f"{self.log_path}/{self.log_file_name}.txt", 'r') as log_file:
+            with open(f"{self.log_path}{self.log_file_name}.txt", 'r') as log_file:
                 if log_file.read() == "":
                     log_file.write("   date          time      | [type.] category | detail\n\n---START---\n")
             log_file.close()
 
         except FileNotFoundError:
-            with open(f"{self.log_path}/{self.log_file_name}.txt", 'a') as log_file:
+            with open(f"{self.log_path}{self.log_file_name}.txt", 'a') as log_file:
                 log_file.write("   date          time      | [type.] category | detail\n\n---START---\n")
             log_file.close()
 
@@ -103,7 +103,7 @@ class Log:
                 log_str (str): log string
         """
 
-        with open(f"{self.log_path}/{self.log_file_name}.txt", 'a') as log_file :
+        with open(f"{self.log_path}{self.log_file_name}.txt", 'a') as log_file :
             log_file.write(f"\n{log_str}")
         log_file.close()
 
