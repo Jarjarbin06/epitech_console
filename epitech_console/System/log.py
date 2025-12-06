@@ -103,9 +103,12 @@ class Log:
                 log_str (str): log string
         """
 
-        with open(f"{self.log_path}{self.log_file_name}.txt", 'a') as log_file :
-            log_file.write(f"\n{log_str}")
-        log_file.close()
+        try :
+            with open(f"{self.log_path}{self.log_file_name}.txt", 'a') as log_file :
+                log_file.write(f"\n{log_str}")
+            log_file.close()
+        except FileNotFoundError:
+            pass
 
 
     def close(
@@ -121,9 +124,12 @@ class Log:
 
         from os import remove
 
-        with open(f"{self.log_path}{self.log_file_name}.txt", 'a') as log_file :
-            log_file.write(f"\n----END----\n")
-        log_file.close()
+        try:
+            with open(f"{self.log_path}{self.log_file_name}.txt", 'a') as log_file :
+                log_file.write(f"\n----END----\n")
+            log_file.close()
+        except FileNotFoundError:
+            pass
 
         if delete_logs :
             try :
@@ -144,9 +150,12 @@ class Log:
 
         log_str : str
 
-        with open(f"{self.log_path}{self.log_file_name}.txt", 'r') as log_file:
-            log_str = log_file.read()
-        log_file.close()
+        try:
+            with open(f"{self.log_path}{self.log_file_name}.txt", 'r') as log_file:
+                log_str = log_file.read()
+            log_file.close()
+        except FileNotFoundError:
+            pass
 
         return log_str
 
