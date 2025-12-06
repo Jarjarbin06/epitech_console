@@ -51,7 +51,7 @@ jobs:
     # GitHub Pages official environment
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://jarjarbin06.github.io/epitech_console/
 
     steps:
       - name: Deploy GitHub Pages site
