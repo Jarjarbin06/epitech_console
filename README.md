@@ -329,6 +329,7 @@ REPO/
 
 ## Release-Note
 * #### v0.1.8:
+    *   **[UPDATE]** test-package workflow
 
 * #### v0.1.7:
     *   **[FIX]** some mor random bugs
