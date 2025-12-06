@@ -10,7 +10,7 @@
 
 ## Description
 
-The `epitech_console` is a friendly Python tool that helps you create cool stuff in your terminal! It's like giving your command-line interface a makeover with fun animations, colorful text, and neat formatting. If you want to make your terminal programs look more interesting and organized, this library is for you!
+The `epitech_console` is a Python library designed to help you create enhanced terminal interfaces. It's improving the appearance and readability of your command-line interface with lightweight animations, colorful text, and neat formatting. If you want to make your terminal programs more readable and visually structured, this library is for you!
 
 ## Table of Contents
 
@@ -21,70 +21,59 @@ The `epitech_console` is a friendly Python tool that helps you create cool stuff
 5.  [Usage](#Usage)
 6.  [Project Structure](#Project-Structure)
 7.  [API Reference](#API-Reference)
-8.  [Release Note](#Release-Note)
+8.  [Release Notes](#Release-Notes)
 9.  [License](#License)
 10. [Important Links](#Important-Links)
 11. [Footer](#Footer)
 
 ## Features
 
-*   **Cool Text Effects**: Easily add colors, bold text, italics, underlines, and even strikethrough to your terminal text.
-*   **Animations**: Make your terminal come alive with simple animations. Great for loading screens or just adding some visual flair!
-*   **Progress Bars**: Show the progress of long tasks with customizable progress bars.  Keep your users informed in a visually appealing way.
+*   **Cool Text Effects**: Easily add colors, bold text, italics, underlines, and even strike through to your terminal text.
+*   **Animations**: Display simple animations. Useful for loading indicators or status displays.
+*   **Progress Bars**: Show the progress of long tasks with customizable progress bars. Provides clear and configurable visual feedback.
 *   **Timers**: Use the built-in stopwatch to measure how long parts of your code take to run.
-*   **Configuration**: Easily manage settings for your application.
-*   **Error Handling**:  Clear and helpful error messages to make debugging easier.
-*   **Cursor Control**:  Move the cursor around, hide it, or show it as needed.
-*   **Line Control**:  Quickly clear lines or the entire screen.
-
+*   **Configuration**: Easily manage settings for your applications.
+*   **Error Handling**:  Provides structured and readable error messages.
+*   **Cursor Control**:  Provides methods to move, show, and hide the cursor.
+*   **Line Control**:  Features for clearing lines or the entire screen.
 *   **ANSI Escape Sequence Handling**: Provides classes for generating ANSI escape sequences to control text color, formatting, and cursor movement.
-*   **Text Formatting**: Includes tools for applying styles like bold, italic, underline, and strikethrough to text.
-*   **Animation**: Supports creating and displaying animations in the console.
-*   **Progress Bars**: Offers progress bar functionality to visualize task completion.
-*   **Stopwatch**: Includes a stopwatch class for measuring elapsed time.
-*   **Configuration Management**: Provides a configuration system to handle settings and preferences.
-*   **Error Handling**: Custom error class for more informative error messages.
-*   **Cursor Manipulation**: Ability to move, show and hide the cursor.
-*   **Line Manipulation**: Clear lines, clear screen functionality.
 
 ## Tech-Stack
 
-*   **Language**: Python - Because who doesn't love Python?
-*   **Frameworks**: Python -  It's all Python, all the way!
+*   **Language**: Python - Chosen for its readability and versatility.
+*   **Frameworks**: Python -  Entirely implemented in Python.
 
 ## Installation
 
-Ready to get started? Here's how to install `epitech_console`:
+To begin , install `epitech_console`:
 
-1.  **First Things First**: Make sure you have Python 3.8 or newer installed on your computer. You can check your Python version by opening a terminal and typing `python --version`.
+#### **Prerequisites**:
 
-2.  **Install with `pip` (Easy Method)**:
+Make sure you have Python `3.11` or newer installed on your computer.
+You can check your Python version by opening a terminal and typing `python --version`.
 
-    Open your terminal and run this command:
+#### **Install from PyPI** (*recommended*):
+	
+Open your terminal and run this command:
+```bash
+pip install epitech_console
+```
+   This will automatically download and install the library from PyPI.
 
-    ```bash
-    pip install epitech_console
-    ```
+#### **Install from GitHub**:
 
-    This will automatically download and install the library from PyPI.
-
-    **Alternative: Install from GitHub**:
-
-    If you want the latest version directly from the source, you can install it using `git`:
-
-    ```bash
-    git clone https://github.com/Jarjarbin06/epitech_console.git
-    cd epitech_console
-    ./script/install-package
-    ```
-
-    This downloads the code, then the `install-package` script handles the installation.
-
-    These commands install the `epitech_console` package and its dependencies (None currently).
+If you want the latest version directly from the source, you can install it using `git`:
+```bash
+git clone -b latest https://github.com/Jarjarbin06/epitech_console.git
+cd epitech_console
+./script/install-package
+```
+This downloads the code, then the `install-package` script handles the installation.
+These commands install the `epitech_console` package and its dependencies (None currently).
 
 ## Usage
 
-Here are some simple examples to get you started with `epitech_console`:
+Here are some examples demonstrating how to use `epitech_console`:
 
 ### Basic Text Formatting
 
@@ -270,10 +259,10 @@ REPO/
     *   `+Animation(animation: list[Any] | str = "")`: Constructor to create an animation.
     *   ` update(auto_reset: bool = True)`: Advances the animation by one step.
     *   ` render(delete: bool = False)`: Renders the current frame of the animation.
-    *   ` is_last()`: Return whether the current step is last one.
-    *   ` reset()`: Reset the current step back to `0`.
+    *   ` is_last()`: Returns whether the current step is the last one.
+    *   ` reset()`: Resets the current step to `0`.
 
-*   **BasePack**: Ready-to-use animations.
+*   **BasePack**: Predefined animation packs.
 	* `@update(style: Style = Style("#", "-", "<", ">", "|", "|"))`: Update the BasePack animations to fit with the given Style (or the default one if no Style given)
 
 *   **ProgressBar**: Class for creating progress bars.
@@ -296,7 +285,7 @@ REPO/
     *   `#ESC`: ANSI escape character.
 
 *   **BasePack**: Ready-to-use ANSI escape sequences.
-	* `@update()`: Update the BasePack escape sequences (no real use yet)
+	* `@update()`: Update the BasePack escape sequences (currently reserved for future extensions)
 
 *   **Color**: Class for ANSI color codes.
 	*   `@color(color: int)`: Returns Ansi sequence for pre-made color codes.
@@ -314,7 +303,7 @@ REPO/
     *   `#C_UNDERLINE`: Underline color code.
     *   `#C_FLASH_SLOW`: Slow flashing color code.
     *   `#C_FLASH_FAST`: Fast flashing color code.
-    *   `#C_HIDDEN`: Hiden color code.
+    *   `#C_HIDDEN`: Hidden color code.
     *   `#C_STRIKETHROUGH`: Strikethrough color code.
     *   `#C_FG_...`: Foreground colors.
     *   `#C_BG_...`: Background colors.
@@ -339,8 +328,8 @@ REPO/
     *   `@clear_start_line()`: Clears the current line from the beginning to the cursor.
     *   `@clear_end_line()`: Clears the current line from the cursor to the end.
     *   `@clear_screen()`: Clears the entire screen.
-    *   `@clear()`: Clears the entire screen and bring the cursor to the top left corner.
-    *   `@clear_previous_line(n: int = 1)`: Clears the `n` previous line and bring the cursor to the beginning of the previous line.
+    *   `@clear()`: Clears the entire screen and move the cursor to the top-left corner.
+    *   `@clear_previous_line(n: int = 1)`: Go to the previous `n` lines, clear it and bring the cursor to the beginning of the previous line.
 
 ### Error Module
 
@@ -358,7 +347,7 @@ REPO/
 *   **Config**: Class for configuration management.
     *   `+Config(path:str, data: dict | None = None, file_name:str = "config.ini")`: Constructor to create a Config object (create the config file if does not exist, read it otherwise).
     *   ` get(section: str, option: str, wanted_type: type = str)`: Returns the value of type `wanted_type` in section `section` and option `option`.
-    *   ` delete(cached: bool = False)`: Delete the config file (delete objects value with it if not `cached`).
+    *   ` delete(cached: bool = False)`: Deletes the configuration file (and removes cached values unless `cached=True`).
     *   `@exist(path: str, file_name: str = "config.ini")`: Returns whether a config file named `file_name` exist in `path` or not.
 
 *   **Console**: Class for console output.
@@ -400,40 +389,40 @@ REPO/
     *   `@url_link(url: str, text: str | None = None)`: Creates a link to a url.
     *   `@file_link(path: str, line: int | None = None)`: Creates a link to a file and line number.
 
-## Release-Note
+## Release-Notes
 * #### v0.1.8:
-	*   **[FIX]** type-hinting
-    *   **[UPDATE]** test-package workflow
+	*   **[FIX]** type-hints
+    *   **[UPDATE]** `test-package` workflow
 
 * #### v0.1.7:
-    *   **[FIX]** some mor random bugs
-    *   **[FIX]** coding style
-    *   **[ADD]** pytests for the whole module (including sub-modules)
-    *   **[FIX]** all docstring containing `(optional)`
+    *   **[FIX]** several additional bugs
+    *   **[FIX]** code style improvements
+    *   **[ADD]** `pytest` tests for the whole module (including sub-modules)
+    *   **[FIX]** all docstrings containing the word `optional`
 
 * #### v0.1.6(2):
-    *   **[ADD]** project wiki
+    *   **[ADD]** project wiki added
     *   **[ADD]** `len()` `Console` compatibility
-    *   **[UPDATE]** file tree
+    *   **[UPDATE]** directory tree
     *   **[ADD]** epitech console logo
 
 * #### v0.1.5:
-    *   **[ADD]** uninstaller (`uninstall-package`)
+    *   **[ADD]** uninstall script (`uninstall-package`)
     *   **[ADD]** dict tree formating
     *   **[ADD]** `len()` `Animation`, `ANSI` and `Text` compatibility
-    *   **[ADD]** New config global settings
-    *   **[ADD]** Console stream flush
-    *   **[REM]** Useless import
+    *   **[ADD]** new config global settings
+    *   **[ADD]** console stream flush
+    *   **[REM]** useless import
     *   **[ADD]** `Action` and `Actions` classes
     *   **[FIX]** `README` grammar 😅
-    *   **[FIX]** Non object class had `object` as parent
+    *   **[FIX]** non-object classes improperly inherited from `object`
 
 * #### v0.1.4:
-    *   **[FIX]** Syntax and type error
+    *   **[FIX]** syntax and type error
     *   **[ADD]** package auto-reloader (`install-package` + `check-package`)
-    *   **[ADD]** New `Action` class (not implemented yet)
-    *   **[ADD]** New import introduction
-    *   **[ADD]** New release section in `README`
+    *   **[ADD]** new `Action` class (not implemented yet)
+    *   **[ADD]** new import introduction
+    *   **[ADD]** new release section in `README`
 
 ## License
 
@@ -446,7 +435,7 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 *   **PyPI**: [https://pypi.org/project/epitech-console/](https://pypi.org/project/epitech-console/)
 
 #### Wiki
-*   **Wiki** *recommended*: [https://github.com/Jarjarbin06/epitech_console/wiki/](https://github.com/Jarjarbin06/epitech_console/wiki/)
+*   **Wiki** (*take a look*): [https://github.com/Jarjarbin06/epitech_console/wiki/](https://github.com/Jarjarbin06/epitech_console/wiki/)
 *   **README**: [https://github.com/Jarjarbin06/epitech_console/blob/main/README.md](https://github.com/Jarjarbin06/epitech_console/blob/main/README.md)
 *   **GitHub**: [https://jarjarbin06.github.io/epitech_console/](https://jarjarbin06.github.io/epitech_console/)
 
