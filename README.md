@@ -391,6 +391,7 @@ REPO/
 
 ## Release-Notes
 * #### v0.1.8:
+    *   **[FIX]** several additional `README` grammar 😅
 	*   **[FIX]** type-hints
     *   **[UPDATE]** `test-package` workflow
 
