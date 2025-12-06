@@ -45,9 +45,12 @@ class Log:
             log_file.close()
 
         except FileNotFoundError:
-            with open(f"{self.log_path}{self.log_file_name}.txt", 'a') as log_file:
-                log_file.write("   date          time      | [type_] title    | detail\n\n---START---")
-            log_file.close()
+            try :
+                with open(f"{self.log_path}{self.log_file_name}.txt", 'a') as log_file:
+                    log_file.write("   date          time      | [type_] title    | detail\n\n---START---")
+                log_file.close()
+            except FileNotFoundError:
+                pass
 
 
     def log(
