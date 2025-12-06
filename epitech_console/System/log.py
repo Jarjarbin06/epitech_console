@@ -173,16 +173,16 @@ class Log:
         end : int = log_str.index("----END----\n")
         logs : list = [lines.split(" | ") for lines in log_str[start:end].splitlines()]
         t_size = len(Console)
-        footer : str = f"{c_under}{color_dict["[INFO_]"][0]}|{c_reset}{c_bold}{c_under}"
+        footer : str = f"{c_under}{BasePack.P_INFO[0]}|{c_reset}{c_bold}{c_under}"
         detail_size : int
         string : str = ""
 
-        string += f"{c_under}{color_dict["[INFO_]"][0]}|{c_reset}{c_bold}{c_under}    date          time      | {c_reset}{c_under}{color_dict["[INFO_]"][0]}[type_]{c_reset}{c_bold}{c_under} category | detail" + (" " * (t_size - 56)) + f"{c_reset}"
-        string += f"{color_dict["[INFO_]"][0]}|{c_reset}{c_bold}" + (" " * (t_size - 1)) + f"{c_reset}"
+        string += f"{c_under}{BasePack.P_INFO[0]}|{c_reset}{c_bold}{c_under}    date          time      | {c_reset}{c_under}{BasePack.P_INFO[0]}[type_]{c_reset}{c_bold}{c_under} category | detail" + (" " * (t_size - 56)) + f"{c_reset}"
+        string += f"{BasePack.P_INFO[0]}|{c_reset}{c_bold}" + (" " * (t_size - 1)) + f"{c_reset}"
 
         for log_line in logs :
             if log_line[0][:3] == ">>>" :
-                string += f"{color_dict["[INFO_]"][0]}>>>{c_reset} {color_dict["[INFO_]"][1]}{log_line[0][3:]}{c_reset}\n"
+                string += f"{BasePack.P_INFO[0]}>>>{c_reset} {BasePack.P_INFO[1]}{log_line[0][3:]}{c_reset}\n"
 
             else :
                 if len(log_line) == 3 and log_line[1][:7].upper() in color_dict :
