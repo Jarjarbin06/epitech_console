@@ -20,9 +20,6 @@ class Config:
     """
 
 
-    from configparser import ConfigParser
-
-
     def __init__(
             self,
             path : str,
@@ -45,14 +42,16 @@ class Config:
             path += "/"
 
         self.config : ConfigParser | None = ConfigParser()
+        self.path : str = path
+        self.file_name : str = file_name
 
-        if Config.exist(path):
-            self.config.read(path + file_name)
+        if Config.exist(self.path):
+            self.config.read(self.path + self.file_name)
 
         else:
-            if not data and file_name == "config.ini":
+            if not data and self.file_name == "config.ini":
                 data = {}
-            with open(path + file_name, 'w') as config_file:
+            with open(self.path + self.file_name, 'w') as config_file:
                 for key in data:
                     self.config[key] = data[key]
 
@@ -84,17 +83,12 @@ class Config:
 
     def delete(
             self,
-            path : str,
-            *,
-            file_name : str = "config.ini",
             cached : bool = False
         ) -> bool:
         """
             Delete the config file.
 
             Parameters:
-                path (str): path to folder which you want your config file to be in
-                file_name (str, optional): name of config file
                 cached (bool, optional): keep the config file's data in memory
 
             Returns:
@@ -103,15 +97,15 @@ class Config:
 
         from os import remove
 
-        if path[-1] != "/":
-            path += "/"
+        if self.path[-1] != "/":
+            self.path += "/"
 
-        remove(path + file_name)
+        remove(self.path + self.file_name)
 
         if not cached:
             self.config = None
 
-        return not Config.exist(path, file_name=file_name)
+        return not Config.exist(self.path, file_name=self.file_name)
 
 
     @staticmethod

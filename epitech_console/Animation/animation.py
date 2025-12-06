@@ -25,7 +25,7 @@ class Animation(Format):
 
     def __init__(
             self,
-            animation : list[str | Any] | str = ""
+            animation : list[Any] | str = ""
         ) -> None:
         """
             Create an animation.

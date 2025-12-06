@@ -137,7 +137,7 @@ class Cursor:
             n: int = 1
         ) -> ANSI:
         """
-            Move the cursor to the beginning of the 'n' previous line
+            Move the cursor to the beginning of the 'n' next line
 
             Parameters:
                 n (int, optional): number of column right

@@ -53,8 +53,8 @@ class Console(metaclass=ConsoleMeta):
             end: str = "\n",
             file: Any = stdout,
             auto_reset: bool = True,
-            sleep: int | float | None = None,
-            cut_to_terminal_size: bool = False
+            cut: bool = False,
+            sleep: int | float | None = None
         ) -> Text:
         """
             Print on the console.
@@ -69,8 +69,11 @@ class Console(metaclass=ConsoleMeta):
                 end (str, optional): String appended after printing.
                 file (Any, optional): File-like object to write into.
                 auto_reset (bool, optional): Automatically reset ANSI sequence.
+                cut (bool, optional): Cut output to terminal width.
                 sleep (int | float | None, optional): Delay in seconds after printing.
-                cut_to_terminal_size (bool, optional): Cut output to terminal width.
+
+            Returns:
+                Text: Text printed on the console.
         """
 
         from epitech_console.System.time import Time
@@ -89,7 +92,7 @@ class Console(metaclass=ConsoleMeta):
         string_list = string.split("\n")
 
         for idx in range(len(string_list)):
-            if cut_to_terminal_size and (len(string_list[idx]) - (string_list[idx].count("\033[") * 2)) > (len(Console) + 6):
+            if cut and (len(string_list[idx]) - (string_list[idx].count("\033[") * 2)) > (len(Console) + 6):
                 string_list[idx] = string_list[idx][:(len(Console) + 2 + string_list[idx].count("\033[") * 2)] + "..." + str(Color.color(Color.C_RESET))
             final_string += Text(string_list[idx]) + (Text("\n") if len(string_list) > 1 else Text(""))
 

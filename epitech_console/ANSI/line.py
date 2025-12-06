@@ -99,13 +99,13 @@ class Line:
 
     @staticmethod
     def clear_previous_line(
-            line_up : int = 1
+            n : int = 1
     ) -> ANSI:
         """
             Clear the previous line.
 
             Parameters:
-                line_up (int): line up
+                n (int): line up
 
             Returns:
                 ANSI: ansi sequence
@@ -113,4 +113,4 @@ class Line:
 
         from epitech_console.ANSI.cursor import Cursor
 
-        return Cursor.previous(line_up) + Line.clear_line()
+        return Cursor.previous(n) + Line.clear_line()

@@ -89,11 +89,12 @@ Here are some simple examples to get you started with `epitech_console`:
 ### Basic Text Formatting
 
 ```python
-from epitech_console import Text, ANSI
+from epitech_console.Text import Text
+from epitech_console.ANSI import Color
 
-epitech_color = ANSI.Color.epitech_fg() + ANSI.Color.rgb_bg(0, 0 ,0)
-reset = ANSI.Color.color(ANSI.Color.C_RESET)
-my_text = epitech_color + Text.Text("hi").bold() + reset
+epitech_color = Color.epitech_fg() + Color.rgb_bg(0, 0 ,0)
+reset = Color.color(Color.C_RESET)
+my_text = epitech_color + Text("hi").bold() + reset
 
 print(my_text)
 ```
@@ -101,45 +102,65 @@ print(my_text)
 ### Creating an Animation
 
 ```python
-from epitech_console import Animation, System
+from epitech_console.Animation import Animation, BasePack
+from epitech_console.System import Console
 
-my_animation = Animation.Animation(Animation.BasePack.P_FILL_R)
+my_animation = Animation(BasePack.P_FILL_R)
 for i in range(5):
-    System.Console.print(my_animation.render(delete=True), sleep=0.5)
+    Console.print(my_animation.render(delete=True), end="", sleep=0.5)
     my_animation.update()
 ```
 
 ### Creating a custom Animation
 
 ```python
-from epitech_console import Animation, System
+from epitech_console.Animation import Animation
+from epitech_console.System import Console
 
-my_animation = Animation.Animation(['Frame 1', 'Frame 2', 'Frame 3'])
+my_animation = Animation(['Frame 1', 'Frame 2', 'Frame 3'])
 for i in range(5):
-    System.Console.print(my_animation.render(delete=True), sleep=0.5)
+    Console.print(my_animation.render(delete=True), end="", sleep=0.5)
     my_animation.update()
 ```
 
-### Using Progress Bar
+### Using simple Progress Bar 
 
 ```python
 from epitech_console.Animation import ProgressBar, Spinner
-from epitech_console import System
+from epitech_console.System import Console
 
 my_spinner = Spinner.stick()
 my_progress_bar = ProgressBar(length=20, percent_style="mix", spinner=my_spinner)
 for i in range(101):
     my_progress_bar.update(percent=i, update_spinner=(i % 5 == 0))
-    System.Console.print(my_progress_bar.render(delete=True), sleep=0.05)
+    Console.print(my_progress_bar.render(delete=True), sleep=0.05)
+```
+
+### Using advanced Progress Bar with variable size
+
+```python
+from epitech_console.Animation import ProgressBar, Style
+from epitech_console.ANSI import Line
+from epitech_console.System import Console
+  
+
+style : Style = Style(on="=", off=" ", border_left="[", border_right="]")
+bar : ProgressBar
+
+for i in range(1001):
+	bar = ProgressBar(len(Console) - 20, percent_style="mix", style=style)
+	bar.update(i/10)
+	Console.print(bar.render(delete=True), end="", sleep=0.01, cut=True)
 ```
 
 ### Utilizing the Stopwatch
 
 ```python
-from epitech_console import System
+from epitech_console.System import StopWatch
+from time import sleep
 
-my_stopwatch = System.StopWatch(start=True)
-System.Time.sleep(2)
+my_stopwatch = StopWatch(start=True)
+sleep(2)
 my_stopwatch.stop()
 print(f"Elapsed time: {my_stopwatch.elapsed()}")
 ```
@@ -151,7 +172,7 @@ from epitech_console.System import Config
 
 my_path = "."
 if not Config.exist(my_path):
-    Config.create(my_path, {
+    Config(my_path, {
       "GENERALE" : {"theme": "dark", "language": "en"},
       "USER" : {"username": "guest", "email": "my_email@email.com"}
     })
@@ -163,6 +184,10 @@ This will check and create a `config.ini` file if it doesn't exist.
 
 ```
 REPO/
+├── .github/
+│   ├── workflows/
+│   │   ├── codeql.yml
+│   │   └── test-package.yml
 ├── epitech_console/
 │   ├── Animation/
 │   │   ├── __init__.py
@@ -194,10 +219,38 @@ REPO/
 │   ├── __init__.py
 │   └── config.ini
 ├── script/
-│   ├── auto-reload
+│   ├── auto-reload-package
 │   ├── check-package
 │   ├── install-package
+│   ├── test-package
 │   └── uninstall-package
+├── source/
+│   ├── epitech_console_logo.png
+│   └── epitech_logo.png
+├── tests/
+│   ├── tests Animation/
+│   │   ├── test_animation_animation.py
+│   │   ├── test_animation_basepack.py
+│   │   ├── test_animation_progressbar.py
+│   │   ├── test_animation_spinner.py
+│   │   └── test_animation_style.py
+│   ├── tests ANSI/
+│   │   ├── test_ansi_ansi.py
+│   │   ├── test_ansi_basepack.py
+│   │   ├── test_ansi_color.py
+│   │   ├── test_ansi_cursor.py
+│   │   └── test_ansi_line.py
+│   ├── tests Error/
+│   │   └── test_error_error.py
+│   ├── tests System/
+│   │   ├── test_system_action.py
+│   │   ├── test_system_config.py
+│   │   ├── test_system_console.py
+│   │   ├── test_system_stopwatch.py
+│   │   └── test_system_time.py
+│   └── tests Text/
+│   │   ├── test_text_format.py
+│   │   └── test_text_text.py
 ├── .gitignore
 ├── LICENSE
 ├── MANIFEST.in
@@ -206,129 +259,150 @@ REPO/
 ```
 
 ## API-Reference
+` ` = *class method*
+`+` = *class constructor*
+`@` = *static method*
+`#` = *class variable*
 
 ### Animation Module
 
 *   **Animation**: Class for creating animations.
-    *   `Animation(animation: list[str] | str = "")`: Constructor to create an animation.
-    *   `update(auto_reset: bool = True)`: Advances the animation by one step.
-    *   `render(delete: bool = False)`: Renders the current frame of the animation.
+    *   `+Animation(animation: list[Any] | str = "")`: Constructor to create an animation.
+    *   ` update(auto_reset: bool = True)`: Advances the animation by one step.
+    *   ` render(delete: bool = False)`: Renders the current frame of the animation.
+    *   ` is_last()`: Return whether the current step is last one.
+    *   ` reset()`: Reset the current step back to `0`.
 
 *   **BasePack**: Ready-to-use animations.
-	* `def update(style: Style = Style("#", "-", "<", ">", "|", "|"))`: Update the BasePack animations to fit with the given Style (or the default one if no Style given)
+	* `@update(style: Style = Style("#", "-", "<", ">", "|", "|"))`: Update the BasePack animations to fit with the given Style (or the default one if no Style given)
 
 *   **ProgressBar**: Class for creating progress bars.
-    *   `ProgressBar(length: int, animation: Animation | None = None, style: object = Style("#", "-", "<", ">", "|", "|"), percent_style: str = "bar", spinner: Animation | None = None, spinner_position: str = "a")`: Constructor to create a progress bar.
-    *   `update(percent: int = 0, update_spinner: bool = True, auto_reset: bool = True)`: Updates the progress bar to a specified percentage.
-    *   `render(color: object | tuple[object, object, object] = Color.color(Color.C_RESET), hide_spinner_at_end: bool = True, delete: bool = False)`: Renders the progress bar.
+    *   `+ProgressBar(length: int, animation: Animation | None = None, style: Style = Style("#", "-", "<", ">", "|", "|"), percent_style: str = "bar", spinner: Animation | None = None, spinner_position: str = "a")`: Constructor to create a progress bar.
+    *   ` update(percent: int = 0, update_spinner: bool = True, auto_reset: bool = True)`: Updates the progress bar to a specified percentage.
+    *   ` render(color: ANSI | tuple[ANSI, ANSI, ANSI] = Color.color(Color.C_RESET), hide_spinner_at_end: bool = True, delete: bool = False)`: Renders the progress bar.
 
 *   **Spinner**: Class with pre-built spinner animations.
-    *   `stick(style: object = Style("#", " ", "#", "#", "", ""))`: Creates a stick spinner.
-    *   `plus(style: object = Style("#", " ", "#", "#", "", ""))`: Creates a plus spinner.
-    *   `cross(style: object = Style("#", " ", "#", "#", "", ""))`: Creates a cross spinner.
+    *   `@stick(style: Style = Style("#", " ", "#", "#", "", ""))`: Creates a stick spinner.
+    *   `@plus(style: Style = Style("#", " ", "#", "#", "", ""))`: Creates a plus spinner.
+    *   `@cross(style: Style = Style("#", " ", "#", "#", "", ""))`: Creates a cross spinner.
 
 *   **Style**: Class for styling progress bars.
-    *   `Style(on: str = "#", off: str = "-", arrow_left: str = "<", arrow_right: str = ">", border_left: str = "|", border_right: str = "|")`: Constructor to create a style.
+    *   `+Style(on: str = "#", off: str = "-", arrow_left: str = "<", arrow_right: str = ">", border_left: str = "|", border_right: str = "|")`: Constructor to create a style.
 
 ### ANSI Module
 
 *   **ANSI**: Class for creating ANSI escape sequences.
-    *   `ANSI(sequence: str = "")`: Constructor to create an ANSI sequence.
-    *   `ESC`: ANSI escape character.
+    *   `+ANSI(sequence: list[Any | str] | Any | str = "")`: Constructor to create an ANSI sequence.
+    *   `#ESC`: ANSI escape character.
 
 *   **BasePack**: Ready-to-use ANSI escape sequences.
-	* `def update()`: Update the BasePack escape sequences(no Style created yet)
+	* `@update()`: Update the BasePack escape sequences (no real use yet)
 
 *   **Color**: Class for ANSI color codes.
-    *   `color_fg`: Returns ANSI sequence for a foreground color.
-    * `color_bg`: Returns ANSI sequence for a foreground color.
-    *   `rgb_fg(r: int, g: int, b: int)`: Returns ANSI sequence for a foreground RGB color.
-    *   `rgb_bg(r: int, g: int, b: int)`: Returns ANSI sequence for a background RGB color.
-    *   `epitech_fg(r: int, g: int, b: int)`: Returns ANSI sequence for a foreground colored as Epitech (light).
-    *   `epitech_bg(r: int, g: int, b: int)`: Returns ANSI sequence for a background colored as Epitech (light).
-    *   `epitech_dark_fg(r: int, g: int, b: int)`: Returns ANSI sequence for a foreground colored as Epitech (dark).
-    *   `epitech_dark_bg(r: int, g: int, b: int)`: Returns ANSI sequence for a background colored as Epitech (dark).
+	*   `@color(color: int)`: Returns Ansi sequence for pre-made color codes.
+    *   `@color_fg(color: int)`: Returns ANSI sequence for a foreground color.
+    *   `@color_bg(color: int)`: Returns ANSI sequence for a background color.
+    *   `@rgb_fg(r: int, g: int, b: int)`: Returns ANSI sequence for a foreground RGB color.
+    *   `@rgb_bg(r: int, g: int, b: int)`: Returns ANSI sequence for a background RGB color.
+    *   `@epitech_fg()`: Returns ANSI sequence for a foreground colored as Epitech (light).
+    *   `@epitech_bg()`: Returns ANSI sequence for a background colored as Epitech (light).
+    *   `@epitech_dark_fg()`: Returns ANSI sequence for a foreground colored as Epitech (dark).
+    *   `@epitech_dark_bg()`: Returns ANSI sequence for a background colored as Epitech (dark).
+    *   `#C_RESET`: Reset color code.
+    *   `#C_BOLD`: Bold color code.
+    *   `#C_ITALIC`: Italic color code.
+    *   `#C_UNDERLINE`: Underline color code.
+    *   `#C_FLASH_SLOW`: Slow flashing color code.
+    *   `#C_FLASH_FAST`: Fast flashing color code.
+    *   `#C_HIDDEN`: Hiden color code.
+    *   `#C_STRIKETHROUGH`: Strikethrough color code.
+    *   `#C_FG_...`: Foreground colors.
+    *   `#C_BG_...`: Background colors.
 
 *   **Cursor**: Class for cursor manipulation.
-    *   `up(n: int = 1)`: Moves the cursor up `n` lines.
-    *   `down(n: int = 1)`: Moves the cursor down `n` lines.
-    *   `left(n: int = 1)`: Moves the cursor left `n` columns.
-    *   `right(n: int = 1)`: Moves the cursor right `n` columns.
-    *   `top()`: Moves the cursor to the top left corner.
-    *   `previous(n: int = 1)`: Moves the cursor to the beginning of `n` lines before.
-    *   `next(n: int = 1)`: Moves the cursor to the beginning of `n` lines after.
-    *   `move(x: int = 0, y: int = 0)`: Moves the cursor at position (x, y).
-    *   `move_column(n: int = 1)`: Moves the cursor at position y on the same line.
-    *   `set()`: Save the position of the cursor.
-    *   `reset()`: Load the saved position of the cursor.
-    *   `hide()`: Hides the cursor.
-    *   `show()`: Shows the cursor.
+    *   `@up(n: int = 1)`: Moves the cursor up `n` lines.
+    *   `@down(n: int = 1)`: Moves the cursor down `n` lines.
+    *   `@left(n: int = 1)`: Moves the cursor left `n` columns.
+    *   `@right(n: int = 1)`: Moves the cursor right `n` columns.
+    *   `@top()`: Moves the cursor to the top left corner.
+    *   `@previous(n: int = 1)`: Moves the cursor to the beginning of `n` lines before.
+    *   `@next(n: int = 1)`: Moves the cursor to the beginning of `n` lines after.
+    *   `@move(x: int = 0, y: int = 0)`: Moves the cursor at position (`x`, `y`).
+    *   `@move_column(x: int = 0)`: Moves the cursor at position `x` on the same line.
+    *   `@set()`: Save the position of the cursor.
+    *   `@reset()`: Load the saved position of the cursor.
+    *   `@show()`: Shows the cursor.
+    *   `@hide()`: Hides the cursor.
 
 *   **Line**: Class for line manipulation.
-    *   `clear_line()`: Clears the current line.
-    *   `clear_start_line()`: Clears the current line from the beginning to the cursor.
-    *   `clear_end_line()`: Clears the current line from the cursor to the end.
-    *   `clear_screen()`: Clears the entire screen.
-    *   `clear()`: Clears the entire screen and bring the cursor to the top left corner.
-    *   `clear_previous_line()`: Clears the previous line and bring the cursor to the beginning of the previous line.
+    *   `@clear_line()`: Clears the current line.
+    *   `@clear_start_line()`: Clears the current line from the beginning to the cursor.
+    *   `@clear_end_line()`: Clears the current line from the cursor to the end.
+    *   `@clear_screen()`: Clears the entire screen.
+    *   `@clear()`: Clears the entire screen and bring the cursor to the top left corner.
+    *   `@clear_previous_line(n: int = 1)`: Clears the `n` previous line and bring the cursor to the beginning of the previous line.
 
 ### Error Module
 
 *   **Error**: Class for custom error handling.
-    *   `Error(message: str = "an error occurred", error: str = "Error", link: tuple[str, int] | None = None)`: Constructor to create an error object.
+    *   `+Error(message: str = "an error occurred", error: str = "Error", link: tuple[str, int] | None = None)`: Constructor to create an error object.
 
 ### System Module
 
 *   **Action**: Class for action saving.
-    *   `Action(name: str, function: Callable, *args, **kwargs`: Constructor to create an Action object.
+    *   `+Action(name: str, function: Callable, *args, **kwargs`: Constructor to create an Action object.
 
 *   **Actions**: Class for actions list saving.
-    *   `Actions(actions: list[Action] | Action)`: Constructor to create a Actions object.
+    *   `+Actions(actions: list[Action] | Action | None = None)`: Constructor to create a Actions object.
 
 *   **Config**: Class for configuration management.
-    *   `exist(path: str, file_name: str = "config.ini")`: Checks if a config file exist or is empty.
-    *   `create(path: str, data: dict | None = None, file_name: str = "config.ini")`: Creates a new config file.
-    *   `read(path: str, file_name: str = "config.ini")`: Read a config file.
+    *   `+Config(path:str, data: dict | None = None, file_name:str = "config.ini")`: Constructor to create a Config object (create the config file if does not exist, read it otherwise).
+    *   ` get(section: str, option: str, wanted_type: type = str)`: Returns the value of type `wanted_type` in section `section` and option `option`.
+    *   ` delete(cached: bool = False)`: Delete the config file (delete objects value with it if not `cached`).
+    *   `@exist(path: str, file_name: str = "config.ini")`: Returns whether a config file named `file_name` exist in `path` or not.
 
 *   **Console**: Class for console output.
-    *   `print(value: any = "", start: str = "", end: str = "\n", file: any = stdout, sleep: int | float | None = None)`: Prints to the console with optional start, end, file, and sleep parameters.
+    *   `@print(*args, separator: str = " ", start: str = "", end: str = "\n", file: Any = stdout, auto_reset: bool = True, sleep: int | float | None = None, cut: bool = False)`: Print any objects in the terminal (or in any other `file`), starting with `start` and ending with `end`, if multiple value are to be printed, they will be separated by `separator`, if `cut` then the text will be cut to fit in the terminal, optional waiting after printing of `sleep` seconds.
+    *   `@input(msg: str = "Input", separator: str = " >>> ", wanted_type: type = str)`: Returns a user text input changed to `wanted_type`.
+    *   `@flush(stream: Any = stdout)`: Flush any content in `stream`.
 
 * **StopWatch**: Class for measuring elapsed time.
-    *   `StopWatch(start: bool = False)`: Constructor to create a stopwatch.
-    *   `start()`: Starts the stopwatch.
-    *   `stop()`: Stops the stopwatch.
-    *   `update()`: update the elapsed time stopwatch.
-    *   `elapsed(auto_update: bool = False)`: Returns the elapsed time.
-    *   `reset()`: Reset the StopWatch back to 0.
+    *   `+StopWatch(start: bool = False)`: Constructor to create a stopwatch.
+    *   ` start()`: Reset and start the stopwatch.
+    *   ` stop()`: Update and stop the stopwatch.
+    *   ` update()`: Update the elapsed time.
+    *   ` elapsed(auto_update: bool = False)`: Returns the precise elapsed time.
+    *   ` reset()`: Reset the StopWatch back to 0.
 
 *   **Time**: Class for time-related functions.
-    *   `wait(sleep: int | float)`: Pauses execution for a specified number of seconds.
-    *   `pause(msg: str = "Press enter to continue...")`: Pauses execution until enter is pressed.
+    *   `@wait(sleep: int | float)`: Pauses execution for `sleep` seconds.
+    *   `@pause(msg: str = "Press enter to continue...")`: Pauses execution until enter key is pressed.
 
 ### Text Module
 
 *   **Format**: Class for handling text's format.
-    *   `reset()`: Clear the format of a text.
-    *   `bold()`: Make a text bold.
-    *   `italic()`: Make a text italic.
-    *   `underline()`: Make a text underlined.
-    *   `hide()`: Make a text hidden.
-    *   `strikthrough()`: Make a text strikethrough.
-    *   `error(title: bool = False)`: Make a text styled as an ERROR (background is colored if title, foreground otherwise).
-    *   `warning(title: bool = False)`: Make a text styled as a WARNING (background is colored if title, foreground otherwise).
-    *   `ok(title: bool = False)`: Make a text styled as an OK (background is colored if title, foreground otherwise).
-    *   `info(title: bool = False)`: Make a text styled as an INFO (background is colored if title, foreground otherwise).
-    *   `apply(obj: object, sequence: object | None = None)`: Apply any escape sequence (as a string or an ANSI) to an object (Text, ANSI, Animation, ProgressBar or str).
-    *   `tree(d: dict | str | list, title: str | None = None, indent: int = 0`: Get a formated version of a dictionary as bash tree command).
-    *   `module_tree()`: Get module's file tree.
+    *   ` reset()`: Clear the format of a text.
+    *   ` bold()`: Make a text bold.
+    *   ` italic()`: Make a text italic.
+    *   ` underline()`: Make a text underlined.
+    *   ` hide()`: Make a text hidden.
+    *   ` strikthrough()`: Make a text strikethrough.
+    *   ` error(title: bool = False)`: Make a text styled as an ERROR (background is colored if title, foreground otherwise).
+    *   ` warning(title: bool = False)`: Make a text styled as a WARNING (background is colored if title, foreground otherwise).
+    *   ` ok(title: bool = False)`: Make a text styled as an OK (background is colored if title, foreground otherwise).
+    *   ` info(title: bool = False)`: Make a text styled as an INFO (background is colored if title, foreground otherwise).
+    *   `@apply(obj: Any, sequence: Any | None = None)`: Apply anything to an object (Text, ANSI, Animation, ProgressBar or str).
+    *   `@tree(d: dict | str | list, title: str | None = None, indent: int = 0`: Get a formated version of a dictionary as bash "tree" command does).
+    *   `@module_tree()`: Get module's file tree.
 
 *   **Text**: Class for handling text.
-    *   `Text(text: object | str = "")`: Constructor to create a text object.
-    *   `url_link(url: str, text: str | None = None)`: Creates a link to a url.
-    *   `file_link(path: str, line: int | None = None)`: Creates a link to a file and line number.
+    *   `+Text(text: Any | str = "")`: Constructor to create a text object.
+    *   `@url_link(url: str, text: str | None = None)`: Creates a link to a url.
+    *   `@file_link(path: str, line: int | None = None)`: Creates a link to a file and line number.
 
 ## Release-Note
 * #### v0.1.8:
+	*   **[FIX]** type-hinting
     *   **[UPDATE]** test-package workflow
 
 * #### v0.1.7:
@@ -367,7 +441,14 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ## Important-Links
 
-*   **Repository**: [https://github.com/Jarjarbin06/epitech_console](https://github.com/Jarjarbin06/epitech_console)
+#### Files
+*   **Repository**: [https://github.com/Jarjarbin06/epitech_console/](https://github.com/Jarjarbin06/epitech_console/)
+*   **PyPI**: [https://pypi.org/project/epitech-console/](https://pypi.org/project/epitech-console/)
+
+#### Wiki
+*   **Wiki** *recommended*: [https://github.com/Jarjarbin06/epitech_console/wiki/](https://github.com/Jarjarbin06/epitech_console/wiki/)
+*   **README**: [https://github.com/Jarjarbin06/epitech_console/blob/main/README.md](https://github.com/Jarjarbin06/epitech_console/blob/main/README.md)
+*   **GitHub**: [https://jarjarbin06.github.io/epitech_console/](https://jarjarbin06.github.io/epitech_console/)
 
 ## Footer
 

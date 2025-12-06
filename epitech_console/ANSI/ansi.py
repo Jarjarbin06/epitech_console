@@ -29,13 +29,13 @@ class ANSI(Format):
 
     def __init__(
             self,
-            sequence : list[Any | str] | str = ""
+            sequence : list[Any | str] | Any | str = ""
         ) -> None:
         """
             Create an ANSI sequence.
 
             Parameters:
-                sequence (list[ANSI | str] | str, optional): ANSI sequence
+                sequence (list[ANSI | str] | Any | str, optional): ANSI sequence
         """
 
         self.sequence : str = ""
@@ -45,7 +45,7 @@ class ANSI(Format):
                 self.sequence += str(item)
 
         else:
-            self.sequence = sequence
+            self.sequence = str(sequence)
 
 
     def __add__(

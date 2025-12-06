@@ -19,50 +19,50 @@ class Color:
         ANSI coloring system.
 
         Attributes:
-            C_RESET (int): Base color.
-            C_BOLD (int): Bold color.
-            C_ITALIC (int): Italic color.
-            C_UNDERLINE (int): Underline color.
-            C_FLASH_SLOW (int): Flash color.
-            C_FLASH_FAST (int): Flash color.
-            C_HIDDEN (int): Hidden color.
-            C_STRIKETHROUGH (int): Crossed color.
+            C_RESET (int): Base color code.
+            C_BOLD (int): Bold color code.
+            C_ITALIC (int): Italic color code.
+            C_UNDERLINE (int): Underline color code.
+            C_FLASH_SLOW (int): Flash color code.
+            C_FLASH_FAST (int): Flash color code.
+            C_HIDDEN (int): Hidden color code.
+            C_STRIKETHROUGH (int): Crossed color code.
 
-            C_FG_DARK (int): Dark base color.
-            C_FG_DARK_GREY (int): Dark grey color.
-            C_FG_DARK_RED (int): Dark red color.
-            C_FG_DARK_GREEN (int): Dark green color.
-            C_FG_DARK_YELLOW (int): Dark yellow color.
-            C_FG_DARK_BLUE (int): Dark blue color.
-            C_FG_DARK_LAVANDA (int): Dark lavanda color.
-            C_FG_DARK_CYAN (int): Dark cyan color.
-            C_FG_DARK_WHITE (int): Dark white color.
-            C_FG_GREY (int): Grey color.
-            C_FG_RED (int): Red color.
-            C_FG_GREEN (int): Green color.
-            C_FG_YELLOW (int): Yellow color.
-            C_FG_BLUE (int): Blue color.
-            C_FG_LAVANDA (int): Lavanda color.
-            C_FG_CYAN (int): Cyan color.
-            C_FG_WHITE (int): White color.
+            C_FG_DARK (int): Dark base color code.
+            C_FG_DARK_GREY (int): Dark grey color code.
+            C_FG_DARK_RED (int): Dark red color code.
+            C_FG_DARK_GREEN (int): Dark green color code.
+            C_FG_DARK_YELLOW (int): Dark yellow color code.
+            C_FG_DARK_BLUE (int): Dark blue color code.
+            C_FG_DARK_LAVANDA (int): Dark lavanda color code.
+            C_FG_DARK_CYAN (int): Dark cyan color code.
+            C_FG_DARK_WHITE (int): Dark white color code.
+            C_FG_GREY (int): Grey color code.
+            C_FG_RED (int): Red color code.
+            C_FG_GREEN (int): Green color code.
+            C_FG_YELLOW (int): Yellow color code.
+            C_FG_BLUE (int): Blue color code.
+            C_FG_LAVANDA (int): Lavanda color code.
+            C_FG_CYAN (int): Cyan color code.
+            C_FG_WHITE (int): White color code.
 
-            C_BG (int): BACKGROUND color.
-            C_BG_DARK_GREY (int): BACKGROUND dark grey color.
-            C_BG_DARK_RED (int): BACKGROUND dark red color.
-            C_BG_DARK_GREEN (int): BACKGROUND dark green color.
-            C_BG_DARK_YELLOW (int): BACKGROUND dark yellow color.
-            C_BG_DARK_BLUE (int): BACKGROUND dark blue color.
-            C_BG_DARK_LAVANDA (int): BACKGROUND dark lavanda color.
-            C_BG_DARK_CYAN (int): BACKGROUND dark cyan color.
-            C_BG_DARK_WHITE (int): BACKGROUND dark white color.
-            C_BG_GREY (int): BACKGROUND grey color.
-            C_BG_RED (int): BACKGROUND red color.
-            C_BG_GREEN (int): BACKGROUND green color.
-            C_BG_YELLOW (int): BACKGROUND yellow color.
-            C_BG_BLUE (int): BACKGROUND blue color.
-            C_BG_LAVANDA (int): BACKGROUND lavanda color.
-            C_BG_CYAN (int): BACKGROUND cyan color.
-            C_BG_WHITE (int): BACKGROUND white color.
+            C_BG (int): BACKGROUND color code.
+            C_BG_DARK_GREY (int): BACKGROUND dark grey color code.
+            C_BG_DARK_RED (int): BACKGROUND dark red color code.
+            C_BG_DARK_GREEN (int): BACKGROUND dark green color code.
+            C_BG_DARK_YELLOW (int): BACKGROUND dark yellow color code.
+            C_BG_DARK_BLUE (int): BACKGROUND dark blue color code.
+            C_BG_DARK_LAVANDA (int): BACKGROUND dark lavanda color code.
+            C_BG_DARK_CYAN (int): BACKGROUND dark cyan color code.
+            C_BG_DARK_WHITE (int): BACKGROUND dark white color code.
+            C_BG_GREY (int): BACKGROUND grey color code.
+            C_BG_RED (int): BACKGROUND red color code.
+            C_BG_GREEN (int): BACKGROUND green color code.
+            C_BG_YELLOW (int): BACKGROUND yellow color code.
+            C_BG_BLUE (int): BACKGROUND blue color code.
+            C_BG_LAVANDA (int): BACKGROUND lavanda color code.
+            C_BG_CYAN (int): BACKGROUND cyan color code.
+            C_BG_WHITE (int): BACKGROUND white color code.
     """
 
     from epitech_console.ANSI.ansi import ANSI
