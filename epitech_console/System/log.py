@@ -52,28 +52,28 @@ class Log:
 
     def log(
             self,
-            log_status : str,
-            log_title : str,
-            log_description : str
+            status : str,
+            title : str,
+            description : str
         ) -> None:
         """
             Format a log message then save it.
 
             Parameters:
-                log_status (str): log status
-                log_title (str): log title
-                log_description (str): log description
+                status (str): log status
+                title (str): log title
+                description (str): log description
         """
 
         from datetime import datetime
 
-        log_status += "_" * (5 - len(log_status))
-        log_status = log_status[:4]
-        log_title += " " * (8 - len(log_title))
-        log_title = log_title[:8]
+        status += "_" * (5 - len(status))
+        status = status[:4]
+        title += " " * (8 - len(title))
+        title = title[:8]
 
         log_time : str = str(datetime.now())
-        log_str : str = f"{log_time} | [{log_status}] {log_title} | {log_description}"
+        log_str : str = f"{log_time} | [{status}] {title} | {description}"
 
         self.save(log_str)
 
@@ -134,6 +134,9 @@ class Log:
         ) -> str :
         """
             Read the log file and returns its content.
+
+            Returns:
+                str: content of the log file
         """
 
         log_str : str
@@ -146,21 +149,16 @@ class Log:
 
 
     def show(
-            self,
-            log_str : str | None = None
+            self
         ) -> None :
         """
             Show a formated log file.
-
-            Parameters:
-                log_str (str | None, optional): log string to format
         """
 
         from epitech_console.System import Console
         from epitech_console.ANSI import BasePack, Color
 
-        if not log_str :
-            log_str = self.read()
+        log_str = self.read()
 
         color_dict: dict = {
             "[INFO_]" : BasePack.P_INFO,

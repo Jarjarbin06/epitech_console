@@ -80,12 +80,17 @@ Here are some examples demonstrating how to use `epitech_console`:
 ```python
 from epitech_console.Text import Text
 from epitech_console.ANSI import Color
+from epitech_console import init, quit
+
+init()
 
 epitech_color = Color.epitech_fg() + Color.rgb_bg(0, 0 ,0)
 reset = Color.color(Color.C_RESET)
 my_text = epitech_color + Text("hi").bold() + reset
 
 print(my_text)
+
+quit(True)
 ```
 
 ### Creating an Animation
@@ -93,11 +98,16 @@ print(my_text)
 ```python
 from epitech_console.Animation import Animation, BasePack
 from epitech_console.System import Console
+from epitech_console import init, quit
+
+init()
 
 my_animation = Animation(BasePack.P_FILL_R)
 for i in range(5):
     Console.print(my_animation.render(delete=True), end="", sleep=0.5)
     my_animation.update()
+
+quit(True)
 ```
 
 ### Creating a custom Animation
@@ -105,11 +115,16 @@ for i in range(5):
 ```python
 from epitech_console.Animation import Animation
 from epitech_console.System import Console
+from epitech_console import init, quit
+
+init()
 
 my_animation = Animation(['Frame 1', 'Frame 2', 'Frame 3'])
 for i in range(5):
     Console.print(my_animation.render(delete=True), end="", sleep=0.5)
     my_animation.update()
+
+quit(True)
 ```
 
 ### Using simple Progress Bar 
@@ -117,12 +132,17 @@ for i in range(5):
 ```python
 from epitech_console.Animation import ProgressBar, Spinner
 from epitech_console.System import Console
+from epitech_console import init, quit
+
+init()
 
 my_spinner = Spinner.stick()
 my_progress_bar = ProgressBar(length=20, percent_style="mix", spinner=my_spinner)
 for i in range(101):
     my_progress_bar.update(percent=i, update_spinner=(i % 5 == 0))
     Console.print(my_progress_bar.render(delete=True), sleep=0.05)
+
+quit(True)
 ```
 
 ### Using advanced Progress Bar with variable size
@@ -131,6 +151,9 @@ for i in range(101):
 from epitech_console.Animation import ProgressBar, Style
 from epitech_console.ANSI import Line
 from epitech_console.System import Console
+from epitech_console import init, quit
+
+init()
   
 
 style : Style = Style(on="=", off=" ", border_left="[", border_right="]")
@@ -140,24 +163,34 @@ for i in range(1001):
 	bar = ProgressBar(len(Console) - 20, percent_style="mix", style=style)
 	bar.update(i/10)
 	Console.print(bar.render(delete=True), end="", sleep=0.01, cut=True)
+
+quit(True)
 ```
 
 ### Utilizing the Stopwatch
 
 ```python
-from epitech_console.System import StopWatch
 from time import sleep
+from epitech_console.System import StopWatch
+from epitech_console import init, quit
+
+init()
 
 my_stopwatch = StopWatch(start=True)
 sleep(2)
 my_stopwatch.stop()
 print(f"Elapsed time: {my_stopwatch.elapsed()}")
+
+quit(True)
 ```
 
 ### Create a config.ini file
 
 ```python
 from epitech_console.System import Config
+from epitech_console import init, quit
+
+init()
 
 my_path = "."
 if not Config.exist(my_path):
@@ -165,6 +198,8 @@ if not Config.exist(my_path):
       "GENERALE" : {"theme": "dark", "language": "en"},
       "USER" : {"username": "guest", "email": "my_email@email.com"}
     })
+
+quit(True)
 ```
 
 This will check and create a `config.ini` file if it doesn't exist.
@@ -263,7 +298,17 @@ REPO/
     *   ` reset()`: Resets the current step to `0`.
 
 *   **BasePack**: Predefined animation packs.
-	* `@update(style: Style = Style("#", "-", "<", ">", "|", "|"))`: Update the BasePack animations to fit with the given Style (or the default one if no Style given)
+	*   `@update(style: Style = Style("#", "-", "<", ">", "|", "|"))`: Update the BasePack animations to fit with the given Style (or the default one if no Style given).
+	*   `#P_SLIDE_R`: Character sliding to the right.
+	*   `#P_SLIDE_L`: Character sliding to the left.
+	*   `#P_SLIDER_R`: Slider going right.
+	*   `#P_SLIDER_L`: Slider going left.
+	*   `#P_FILL_R`: Filling to the right.
+	*   `#P_FILL_R`: Filling to the left.
+	*   `#P_EMPTY_R`: Emptying to the right.
+	*   `#P_EMPTY_L`: Emptying to the left.
+	*   `#P_FULL`: Full.
+	*   `#P_EMPTY`: Empty.
 
 *   **ProgressBar**: Class for creating progress bars.
     *   `+ProgressBar(length: int, animation: Animation | None = None, style: Style = Style("#", "-", "<", ">", "|", "|"), percent_style: str = "bar", spinner: Animation | None = None, spinner_position: str = "a")`: Constructor to create a progress bar.
@@ -285,7 +330,11 @@ REPO/
     *   `#ESC`: ANSI escape character.
 
 *   **BasePack**: Ready-to-use ANSI escape sequences.
-	* `@update()`: Update the BasePack escape sequences (currently reserved for future extensions)
+	* `@update()`: Update the BasePack escape sequences (currently reserved for future extensions).
+    *   `#P_ERROR`: Colors for error title and body.
+    *   `#P_WARNING`: Colors for warning title and body.
+    *   `#P_VALID`: Colors for valid title and body.
+    *   `#P_INFO`: Colors for information title and body.
 
 *   **Color**: Class for ANSI color codes.
 	*   `@color(color: int)`: Returns Ansi sequence for pre-made color codes.
@@ -355,7 +404,30 @@ REPO/
     *   `@input(msg: str = "Input", separator: str = " >>> ", wanted_type: type = str)`: Returns a user text input changed to `wanted_type`.
     *   `@flush(stream: Any = stdout)`: Flush any content in `stream`.
 
-* **StopWatch**: Class for measuring elapsed time.
+*   **Log**: Class for log files.
+    *   `+Log(path: str, file_name: str | None = None`: Constructor to create a log.
+    *   ` log(status: str, title: str, description: str)`: Create a formatted log and save it a log file.
+    *   ` comment(comment: str)`: Create a non formatted log and save it in a log file.
+    *   ` save(log_str: str)`: Save a log in a log file.
+    *   ` close(delete_logs: bool = False)` delete the log file if `delete_logs`, else format the end of the log file and save it.
+    *   ` read()`: Returns the content of a log file.
+    *   ` show()`: Print a formatted table of the content of a log_file.
+
+*   **Setting**: Class for module's settings.
+	*   `@update()`: Update the Settings.
+    *   `#S_PACKAGE_NAME`: Package's name.
+    *   `#S_PACKAGE_VERSION`: Package's version.
+    *   `#S_PACKAGE_DESCRIPTION`: Package's description.
+    *   `#S_PACKAGE_REPOSITORY`: Package's repository URL.
+    *   `#S_SETTING_SHOW_BANNER`: Package's show-banner setting.
+    *   `#S_SETTING_AUTO_COLOR`: Package's auto-color setting.
+    *   `#S_SETTING_SAFE_MODE`: Package's safe-mode setting.
+    *   `#S_SETTING_MINIMAL_MODE`: Package's minimal-mode setting.
+    *   `#S_SETTING_DEBUG`: Package's debug setting.
+    *   `#S_SETTING_LOG`: Package's log setting.
+    *   `#S_LOG_FILE`: Package's log_file.
+
+*   **StopWatch**: Class for measuring elapsed time.
     *   `+StopWatch(start: bool = False)`: Constructor to create a stopwatch.
     *   ` start()`: Reset and start the stopwatch.
     *   ` stop()`: Update and stop the stopwatch.
@@ -391,6 +463,8 @@ REPO/
 
 ## Release-Notes
 * #### v0.1.8:
+	*   **[ADD]** new pytest tests
+	*   **[ADD]** `Setting` and `log` classes
     *   **[FIX]** several additional `README` grammar 😅
 	*   **[FIX]** type-hints
     *   **[UPDATE]** `test-package` workflow
