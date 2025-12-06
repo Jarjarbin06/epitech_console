@@ -1,5 +1,5 @@
-<img src="https://github.com/Jarjarbin06/epitech_console/blob/main/src/epitech_logo.png?raw=true" alt="Epitech logo" width="49%" style="display:inline-block; margin-right:1%;">
-<img src="https://github.com/Jarjarbin06/epitech_console/blob/main/src/epitech_console_logo.png?raw=true" alt="Epitech Console logo" width="49%" style="display:inline-block;">
+<img src="https://github.com/Jarjarbin06/epitech_console/blob/main/source/epitech_logo.png?raw=true" alt="Epitech logo" width="49%" style="display:inline-block; margin-right:1%;">
+<img src="https://github.com/Jarjarbin06/epitech_console/blob/main/source/epitech_console_logo.png?raw=true" alt="Epitech Console logo" width="49%" style="display:inline-block;">
 
 # **epitech_console** v0.1.8
 🚧 UNDER DEVELOPMENT 🚧
