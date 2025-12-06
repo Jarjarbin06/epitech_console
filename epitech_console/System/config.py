@@ -105,7 +105,13 @@ class Config:
         if not cached:
             self.config = None
 
-        return not Config.exist(self.path, file_name=self.file_name)
+        if not Config.exist(self.path, file_name=self.file_name):
+            self.path = None
+            self.file_name = None
+            return True
+
+        else:
+            return False
 
 
     @staticmethod

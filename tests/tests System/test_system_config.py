@@ -37,7 +37,7 @@ def test_config_read(
 def test_config_delete_cached(
     ) -> None:
     config = Config("tests")
-    config.delete("tests", cached=True)
+    config.delete(True)
     assert config.config
     assert not Config.exist("tests")
 
@@ -45,6 +45,6 @@ def test_config_delete_cached(
 def test_config_delete_not_cached(
     ) -> None:
     config = Config("tests")
-    config.delete("tests")
+    config.delete()
     assert not config.config
     assert not Config.exist("tests")
