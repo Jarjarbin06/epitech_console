@@ -1,0 +1,50 @@
+name: Deploy coverage to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]              # run on pushes to main
+  workflow_dispatch: {}
+
+permissions:
+  pages: write       # required to deploy
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install test deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov
+
+      - name: Run tests + generate coverage HTML
+        run: |
+          pytest --cov=epitech_console --cov-report=html
+
+      # Upload the generated htmlcov directory as the Pages artifact
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: htmlcov
+
+  deploy:
+    runs-on: ubuntu-22.04
+    needs: build-and-deploy
+    environment:
+      name: github-pages
+      url: https://$GITHUB_REPOSITORY_OWNER.github.io/${{ github.event.repository.name }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
