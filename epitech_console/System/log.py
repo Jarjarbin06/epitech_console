@@ -126,7 +126,10 @@ class Log:
         log_file.close()
 
         if delete_logs :
-            remove(f"{self.log_path}{self.log_file_name}.txt")
+            try :
+                remove(f"{self.log_path}{self.log_file_name}.txt")
+            except FileNotFoundError:
+                pass
 
 
     def read(
