@@ -12,23 +12,11 @@ from epitech_console import Animation, ANSI, Error, System, Text
 from epitech_console.System import Actions
 from epitech_console.Text import Format
 
+
 PATH = __file__.removesuffix("__init__.py")
 
 
-Animation.basepack.BasePack.update(Animation.Style("#", " ", "#", "#", "", ""))
-ANSI.basepack.BasePack.update()
-
-
-__all__ : list[str] = [
-    'Animation',
-    'ANSI',
-    'Error',
-    'System',
-    'Text',
-    'PATH'
-]
-
-
+__version__ : str = 'v0.1.8'
 __author__ : str = 'Nathan Jarjarbin'
 __email__ : str = 'nathan.amaraggi@epitech.eu'
 
@@ -58,10 +46,10 @@ def _banner(
     S.Console.print(line_t, offset_t + title_t + " " + version_t + offset_t, offset_t + desc_t + offset_t, line_t, separator="\n")
 
 
-def _init(
+def init(
     ) -> None:
     """
-        _init() initializes the epitech console package and show a banner (if SETTING : show-banner = True in config.ini)
+        init() initializes the epitech console package and show a banner (if SETTING : show-banner = True in config.ini)
     """
 
     from epitech_console import Animation as AN, ANSI as AS, Error as E, System as S, Text as T
@@ -86,5 +74,28 @@ def _init(
                 "\033[103m \033[0m \033[93mPlease report the issue here : https://github.com/Jarjarbin06/epitech_console/issues\033[0m\n"
             )
 
+def quit(
+        delete_logs: bool = False,
+    ) -> None:
+    """
+        quit() uninitializes the epitech console package
 
-_init()
+        Parameters:
+            delete_logs (bool, optional) : delete the log file
+    """
+    System.Setting.S_LOG_FILE.close(delete_logs)
+
+
+__all__ : list[str] = [
+    'Animation',
+    'ANSI',
+    'Error',
+    'System',
+    'Text',
+    'PATH',
+    'init',
+    'quit',
+    '__version__',
+    '__author__',
+    '__email__'
+]

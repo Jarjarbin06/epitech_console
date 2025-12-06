@@ -4,6 +4,11 @@ import pytest
 from epitech_console.Animation import Animation
 from epitech_console.Animation import ProgressBar
 from epitech_console.Animation import Spinner
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_progressbar_initialization(
@@ -101,3 +106,6 @@ def test_progressbar_percent_style_mix(
     # Mix style includes both bar and percent digits
     assert "#" in text
     assert "%" in text
+
+
+quit(True)

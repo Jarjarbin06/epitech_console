@@ -2,6 +2,11 @@ import pytest
 
 
 from epitech_console.ANSI import ANSI
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_ansi_empty_init(
@@ -49,3 +54,6 @@ def test_ansi_invalid_add(
     a = ANSI("\033[31m")
     b = a + 123
     assert str(b) == str(a)
+
+
+quit(True)

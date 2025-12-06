@@ -1,5 +1,10 @@
 import pytest
 from epitech_console.ANSI import Line
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_clear_line(
@@ -30,3 +35,6 @@ def test_clear(
 def test_clear_previous_line(
     ) -> None:
     assert str(Line.clear_previous_line()) == "\033[1F\033[2K"
+
+
+quit(True)

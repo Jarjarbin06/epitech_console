@@ -2,7 +2,11 @@ import pytest
 
 
 from epitech_console.Text import Text
-from epitech_console.Text import Format
+from epitech_console import init, quit
+
+
+init()
+
 
 
 
@@ -111,3 +115,6 @@ def test_format_module_tree():
     # check that the tree contains the expected root
     assert "epitech_console" in output
 """
+
+
+quit(True)

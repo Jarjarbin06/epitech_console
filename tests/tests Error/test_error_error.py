@@ -2,6 +2,11 @@ import pytest
 
 
 from epitech_console.Error import Error
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_error_default_constructor(
@@ -67,3 +72,6 @@ def test_empty_message_and_error_are_allowed(
     err = Error("", error="")
     assert err.message == ""
     assert err.error == ""
+
+
+quit(True)

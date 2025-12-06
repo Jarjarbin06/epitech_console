@@ -3,6 +3,11 @@ import time
 
 
 from epitech_console.System import StopWatch
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_stopwatch_default_start_false(
@@ -60,3 +65,6 @@ def test_stopwatch_update(
     sw.update()
 
     assert sw > 0.0
+
+
+quit(True)

@@ -2,6 +2,11 @@ import pytest
 
 
 from epitech_console.System import Config
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_config_exist_returns_false(
@@ -48,3 +53,6 @@ def test_config_delete_not_cached(
     config.delete()
     assert not config.config
     assert not Config.exist("tests")
+
+
+quit(True)

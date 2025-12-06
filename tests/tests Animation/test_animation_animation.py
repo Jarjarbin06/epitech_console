@@ -2,6 +2,11 @@ import pytest
 
 
 from epitech_console.Animation import Animation
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_animation_initialization_with_list(
@@ -60,3 +65,6 @@ def test_animation_length_magic_method(
     ) -> None:
     anim = Animation(["A", "B", "C"])
     assert len(anim) == 3
+
+
+quit(True)

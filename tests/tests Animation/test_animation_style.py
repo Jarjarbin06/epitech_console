@@ -2,6 +2,11 @@ import pytest
 
 
 from epitech_console.Animation import Style
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_style_initialization(
@@ -24,3 +29,6 @@ def test_style_default_values(
     assert s.arrow_right == ">"
     assert s.border_left == "|"
     assert s.border_right == "|"
+
+
+quit(True)

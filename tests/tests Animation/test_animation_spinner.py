@@ -3,6 +3,11 @@ import pytest
 
 from epitech_console.Animation import Animation
 from epitech_console.Animation import Spinner
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_spinner_stick(
@@ -33,3 +38,6 @@ def test_spinner_updates_correctly(
     sp.update()
     second = sp.render()
     assert first != second
+
+
+quit(True)

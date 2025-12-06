@@ -2,6 +2,11 @@ import pytest
 
 from epitech_console.ANSI import Color
 from epitech_console.ANSI import ANSI
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_rgb_fg_valid(
@@ -44,3 +49,6 @@ def test_epitech_dark_fg(
 def test_len_color(
     ) -> None:
     assert len(Color.color_fg(Color.C_FG_RED)) == len("\033[38;5;31m")
+
+
+quit(True)

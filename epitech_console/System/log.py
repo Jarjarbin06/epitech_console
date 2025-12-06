@@ -109,15 +109,24 @@ class Log:
 
 
     def close(
-            self
+            self,
+            delete_logs : bool = False
         ) -> None :
         """
             Close the log file.
+
+            Parameters:
+                delete_logs (bool, optional): delete the log file
         """
+
+        from os import remove
 
         with open(f"{self.log_path}/{self.log_start_time}.txt", 'a') as log_file :
             log_file.write(f"\n----END----\n")
         log_file.close()
+
+        if delete_logs :
+            remove(f"{self.log_path}/{self.log_start_time}.txt")
 
 
     def read(

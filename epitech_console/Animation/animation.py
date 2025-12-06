@@ -11,6 +11,7 @@
 from builtins import object
 from typing import Any
 from epitech_console.Text.format import Format
+from epitech_console.System.log import Log
 
 
 class Animation(Format):

@@ -3,6 +3,11 @@ import pytest
 
 from epitech_console.Animation import BasePack
 from epitech_console.Animation import Style
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_basepack_has_attributes(
@@ -49,3 +54,6 @@ def test_basepack_update_with_style(
     assert any("X" in frame or "_" in frame for frame in BasePack.P_EMPTY_L)
     assert any("X" in frame or "_" in frame for frame in BasePack.P_FULL)
     assert any("X" in frame or "_" in frame for frame in BasePack.P_EMPTY)
+
+
+quit(True)

@@ -23,7 +23,20 @@ class Setting:
             S_PACKAGE_VERSION (str): package version.
             S_PACKAGE_DESCRIPTION (str): package description.
             S_PACKAGE_REPOSITORY (str): package repository url.
+
+            S_SETTING_SHOW_BANNER (str): show banner.
+            S_SETTING_AUTO_COLOR (str): auto color.
+            S_SETTING_SAFE_MODE (str): safe mode.
+            S_SETTING_MINIMAL_MODE (str): minimal mode.
+            S_SETTING_DEBUG (str): debug mode.
+            S_SETTING_LOG (str): log mode.
+
+            S_LOG_FILE (Log | None): log file.
     """
+
+
+    from epitech_console.System.log import Log
+
 
     S_PACKAGE_NAME : str = "null"
     S_PACKAGE_VERSION : str = "null"
@@ -37,6 +50,8 @@ class Setting:
     S_SETTING_DEBUG : bool = False
     S_SETTING_LOG : bool = False
 
+    S_LOG_FILE : Log | None = None
+
 
     @staticmethod
     def update(
@@ -46,6 +61,7 @@ class Setting:
         """
 
         from epitech_console.System.config import Config
+        from epitech_console.System.log import Log
         from epitech_console import PATH
 
 
@@ -62,3 +78,5 @@ class Setting:
         Setting.S_SETTING_MINIMAL_MODE = config.get("SETTING", "minimal-mode", bool)
         Setting.S_SETTING_DEBUG = config.get("SETTING", "debug", bool)
         Setting.S_SETTING_LOG = config.get("SETTING", "log", bool)
+
+        Setting.S_LOG_FILE = Log(PATH + "log")

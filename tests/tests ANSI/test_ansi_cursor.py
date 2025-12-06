@@ -2,6 +2,11 @@ import pytest
 
 
 from epitech_console.ANSI import Cursor
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_cursor_up(
@@ -65,3 +70,6 @@ def test_cursor_hide():
 
 def test_cursor_show():
     assert str(Cursor.show()) == "\033[25h"
+
+
+quit(True)

@@ -3,6 +3,11 @@ from sys import stderr
 
 
 from epitech_console.System import Console
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_console_print_basic(
@@ -23,3 +28,6 @@ def test_console_print_with_start_end(
 def test_console_print_custom_file(
     ) -> None:
     assert str(Console.print("test", file=stderr)) == "test\033[0m\n"
+
+
+quit(True)

@@ -3,6 +3,11 @@ import pytest
 
 from epitech_console.ANSI import BasePack
 from epitech_console.ANSI import ANSI
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_basepack_has_attributes(
@@ -29,3 +34,6 @@ def test_basepack_update(
     assert isinstance(BasePack.P_ERROR[0], ANSI)
     assert "\033[41m" == BasePack.P_ERROR[0].sequence
     assert before == after
+
+
+quit(True)

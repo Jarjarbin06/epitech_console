@@ -2,6 +2,11 @@ import pytest
 
 
 from epitech_console.System import Action, Actions
+from epitech_console import init, quit
+
+
+init()
+
 
 
 def test_action_valid_construction(
@@ -75,3 +80,6 @@ def test_actions_execute_all(monkeypatch):
     actions()
 
     assert calls == ["f1", "f2"]
+
+
+quit(True)
