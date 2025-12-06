@@ -41,12 +41,12 @@ class Log:
         try :
             with open(f"{self.log_path}{self.log_file_name}.txt", 'r') as log_file:
                 if log_file.read() == "":
-                    log_file.write("   date          time      | [type.] category | detail\n\n---START---\n")
+                    raise FileNotFoundError
             log_file.close()
 
         except FileNotFoundError:
             with open(f"{self.log_path}{self.log_file_name}.txt", 'a') as log_file:
-                log_file.write("   date          time      | [type.] category | detail\n\n---START---\n")
+                log_file.write("   date          time      | [type_] title    | detail\n\n---START---")
             log_file.close()
 
 
@@ -177,8 +177,8 @@ class Log:
         detail_size : int
         string : str = ""
 
-        string += f"{c_under}{BasePack.P_INFO[0]}|{c_reset}{c_bold}{c_under}    date          time      | {c_reset}{c_under}{BasePack.P_INFO[0]}[type_]{c_reset}{c_bold}{c_under} category | detail" + (" " * (t_size - 56)) + f"{c_reset}"
-        string += f"{BasePack.P_INFO[0]}|{c_reset}{c_bold}" + (" " * (t_size - 1)) + f"{c_reset}"
+        string += f"{c_under}{BasePack.P_INFO[0]}|{c_reset}{c_bold}{c_under}    date          time      | {c_reset}{c_under}{BasePack.P_INFO[0]}[type_]{c_reset}{c_bold}{c_under} category | detail" + (" " * (t_size - 56)) + f"{c_reset}\n"
+        string += f"{BasePack.P_INFO[0]}|{c_reset}{c_bold}" + (" " * (t_size - 1)) + f"{c_reset}\n"
 
         for log_line in logs :
             if log_line[0][:3] == ">>>" :
@@ -195,7 +195,7 @@ class Log:
                         (f"{log_line[2][:(t_size - 1)]}..." if len(log_line[2]) > (t_size - 1) else f"{color[1]}{log_line[2]}") +
                         f"{c_reset}\n")
                 elif len(log_line) == 1:
-                    string += f"{Color.color(Color.C_BG_DARK_CYAN)}|{c_reset} " + f"{Color.color(Color.C_FG_DARK_CYAN)}UNFORMATTED\n\"{log_line[0]}\""
+                    string += f"{Color.color(Color.C_BG_DARK_CYAN)}|{c_reset} " + f"{Color.color(Color.C_FG_DARK_CYAN)}UNFORMATTED\n\"{log_line[0]}\"{c_reset}\n"
 
         string += footer + (" " * (t_size - 1)) + f"{c_reset}\n"
 

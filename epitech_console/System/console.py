@@ -30,7 +30,12 @@ class ConsoleMeta(type):
 
         from os import get_terminal_size
 
-        return get_terminal_size().columns
+        try :
+            size : int = get_terminal_size().columns
+        except OSError:
+            size : int = 100
+
+        return size
 
 
 class Console(metaclass=ConsoleMeta):
