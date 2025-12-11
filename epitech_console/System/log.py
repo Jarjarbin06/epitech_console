@@ -152,7 +152,7 @@ class Log:
                 str: content of the log file
         """
 
-        log_str : str
+        log_str : str = ""
 
         try:
             with open(f"{self.log_path}{self.log_file_name}.log", 'r') as log_file:

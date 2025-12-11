@@ -111,6 +111,3 @@ __all__ : list[str] = [
     '__author__',
     '__email__'
 ]
-
-init()
-quit(show=True)
