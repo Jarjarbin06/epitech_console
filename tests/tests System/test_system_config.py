@@ -55,4 +55,4 @@ def test_config_delete_not_cached(
     assert not Config.exist("tests")
 
 
-quit(True)
+quit(delete_log=True)

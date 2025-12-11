@@ -40,4 +40,4 @@ def test_spinner_updates_correctly(
     assert first != second
 
 
-quit(True)
+quit(delete_log=True)

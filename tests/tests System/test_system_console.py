@@ -30,4 +30,4 @@ def test_console_print_custom_file(
     assert str(Console.print("test", file=stderr)) == "test\033[0m\n"
 
 
-quit(True)
+quit(delete_log=True)

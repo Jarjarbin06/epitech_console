@@ -72,4 +72,4 @@ def test_cursor_show():
     assert str(Cursor.show()) == "\033[25h"
 
 
-quit(True)
+quit(delete_log=True)

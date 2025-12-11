@@ -10,7 +10,6 @@
 
 from builtins import object, type
 from typing import Any
-from epitech_console.System.setting import Setting
 
 
 class Config:

@@ -82,4 +82,4 @@ def test_actions_execute_all(monkeypatch):
     assert calls == ["f1", "f2"]
 
 
-quit(True)
+quit(delete_log=True)

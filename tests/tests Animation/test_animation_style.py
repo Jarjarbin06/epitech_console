@@ -31,4 +31,4 @@ def test_style_default_values(
     assert s.border_right == "|"
 
 
-quit(True)
+quit(delete_log=True)

@@ -17,4 +17,4 @@ def test_time_wait(
         assert 0.05 < elapsed < 0.06
 
 
-quit(True)
+quit(delete_log=True)

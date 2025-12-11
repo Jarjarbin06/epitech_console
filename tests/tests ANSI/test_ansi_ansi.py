@@ -56,4 +56,4 @@ def test_ansi_invalid_add(
     assert str(b) == str(a)
 
 
-quit(True)
+quit(delete_log=True)

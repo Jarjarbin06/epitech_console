@@ -37,4 +37,4 @@ def test_clear_previous_line(
     assert str(Line.clear_previous_line()) == "\033[1F\033[2K"
 
 
-quit(True)
+quit(delete_log=True)

@@ -74,4 +74,4 @@ def test_empty_message_and_error_are_allowed(
     assert err.error == ""
 
 
-quit(True)
+quit(delete_log=True)

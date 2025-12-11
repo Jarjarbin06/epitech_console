@@ -108,4 +108,4 @@ def test_progressbar_percent_style_mix(
     assert "%" in text
 
 
-quit(True)
+quit(delete_log=True)

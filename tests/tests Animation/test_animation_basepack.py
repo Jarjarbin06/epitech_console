@@ -56,4 +56,4 @@ def test_basepack_update_with_style(
     assert any("X" in frame or "_" in frame for frame in BasePack.P_EMPTY)
 
 
-quit(True)
+quit(delete_log=True)

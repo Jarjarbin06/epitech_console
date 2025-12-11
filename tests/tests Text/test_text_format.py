@@ -117,4 +117,4 @@ def test_format_module_tree():
 """
 
 
-quit(True)
+quit(delete_log=True)

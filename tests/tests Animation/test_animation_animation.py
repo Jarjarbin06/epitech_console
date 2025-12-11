@@ -67,4 +67,4 @@ def test_animation_length_magic_method(
     assert len(anim) == 3
 
 
-quit(True)
+quit(delete_log=True)

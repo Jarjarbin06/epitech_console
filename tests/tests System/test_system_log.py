@@ -14,9 +14,8 @@ def test_log_reading(
     log = Log("tests", "log_test")
     log.comment("this is a custom comment")
     log.close()
-    log.show()
-    assert log.read() == "   date          time      | [type_] title    | detail\n\n---START---\n>>> this is a custom comment\n----END----\n"
+    assert log.read() == "   date          time      | [type_] title      | detail\n\n---START---\n>>> this is a custom comment\n----END----\n"
     log.close(True)
 
 
-quit(True)
+quit(delete_log=True)

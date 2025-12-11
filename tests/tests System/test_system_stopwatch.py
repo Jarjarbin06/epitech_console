@@ -67,4 +67,4 @@ def test_stopwatch_update(
     assert sw > 0.0
 
 
-quit(True)
+quit(delete_log=True)

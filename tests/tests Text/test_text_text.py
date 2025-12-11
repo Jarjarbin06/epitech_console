@@ -55,4 +55,4 @@ def test_text_file_link_line_number(
     assert str(link) == '\033]8;;jetbrains://clion/navigate/reference?file=/tmp/file.py&line=42\033\\File "/tmp/file.py", line 42\033]8;;\033\\'
 
 
-quit(True)
+quit(delete_log=True)

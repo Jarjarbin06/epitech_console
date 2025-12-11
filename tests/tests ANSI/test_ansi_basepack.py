@@ -33,7 +33,7 @@ def test_basepack_update(
     after = str(BasePack.P_ERROR)
     assert isinstance(BasePack.P_ERROR[0], ANSI)
     assert "\033[41m" == BasePack.P_ERROR[0].sequence
-    assert before == after
+    assert "(0, 0)" == before != after
 
 
-quit(True)
+quit(delete_log=True)

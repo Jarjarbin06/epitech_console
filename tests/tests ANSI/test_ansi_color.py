@@ -51,4 +51,4 @@ def test_len_color(
     assert len(Color.color_fg(Color.C_FG_RED)) == len("\033[38;5;31m")
 
 
-quit(True)
+quit(delete_log=True)

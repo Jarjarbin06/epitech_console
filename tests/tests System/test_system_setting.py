@@ -21,7 +21,7 @@ def test_system_has_attributes(
     assert hasattr(Setting, "S_SETTING_MINIMAL_MODE")
     assert hasattr(Setting, "S_SETTING_DEBUG")
     assert hasattr(Setting, "S_SETTING_LOG")
-    assert hasattr(Setting, "S_LOG_FILE")
+    assert hasattr(Setting, "S_LOG")
 
 
 def test_system_types(
@@ -36,7 +36,7 @@ def test_system_types(
     assert isinstance(Setting.S_SETTING_MINIMAL_MODE, bool)
     assert isinstance(Setting.S_SETTING_DEBUG, bool)
     assert isinstance(Setting.S_SETTING_LOG, bool)
-    assert isinstance(Setting.S_LOG_FILE, Log)
+    assert isinstance(Setting.S_LOG, Log)
 
 
-quit(True)
+quit(delete_log=True)
