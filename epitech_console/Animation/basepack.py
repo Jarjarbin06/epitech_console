@@ -67,7 +67,7 @@ class BasePack:
         from epitech_console.Animation.style import Style
 
         if not isinstance(style, Style):
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.BasePack.update: style is of an unsupported type (supported: Style ; current: {type(style)}")
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.BasePack.update\nstyle is of an unsupported type (supported: Style ; current: {type(style)})")
             raise ErrorType()
 
         BasePack.P_SLIDE_R = [

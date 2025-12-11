@@ -9,7 +9,6 @@ from epitech_console import init, quit
 init()
 
 
-
 def test_basepack_has_attributes(
     ) -> None:
     assert hasattr(BasePack, "P_ERROR")
@@ -28,12 +27,8 @@ def test_basepack_types(
 
 def test_basepack_update(
     ) -> None:
-    before = str(BasePack.P_ERROR)
-    BasePack.update()
-    after = str(BasePack.P_ERROR)
     assert isinstance(BasePack.P_ERROR[0], ANSI)
     assert "\033[41m" == BasePack.P_ERROR[0].sequence
-    assert "(0, 0)" == before != after
 
 
 quit(delete_log=True)

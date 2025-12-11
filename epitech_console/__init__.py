@@ -53,14 +53,18 @@ def init(
 
     try:
         System.Setting.update()
-        Animation.BasePack.update(5)
+        Animation.BasePack.update()
         ANSI.BasePack.update()
 
         if System.Setting.S_SETTING_SHOW_BANNER:
             _banner()
 
+    except Error.Error as error:
+        print(error)
+        print(Error.Error._lauch_message())
+
     except Exception as error:
-        print("\033[101m \033[0m \033[91m" + str(error) + "\033[0m\n")
+        print(f"\033[101m \033[0m \033[91m{error}\033[0m")
         print(
             "\033[103m \033[0m \033[93mepitech_console launched with error\033[0m\n"
             "\033[103m \033[0m\n"
@@ -109,4 +113,4 @@ __all__ : list[str] = [
 ]
 
 init()
-quit(show=True, delete_log=True)
+quit(show=True)

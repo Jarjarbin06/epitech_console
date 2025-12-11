@@ -10,6 +10,7 @@
 
 from builtins import object
 from typing import Any
+from epitech_console.System.setting import Setting
 
 
 class Error(Exception):
@@ -57,14 +58,36 @@ class Error(Exception):
 
         if self.link_data:
             if len(self.link_data) == 1 and type(self.link_data[0]) in [str]:
-                self.link = Text.file_link(self.link_data[0])
+                self.link = str(Text.file_link(self.link_data[0]))
             if len(self.link_data) == 2 and type(self.link_data[0]) in [str] and type(self.link_data[1]) in [int]:
                 if self.link_data[1] > 0:
-                    self.link = Text.file_link(self.link_data[0], self.link_data[1])
+                    self.link = str(Text.file_link(self.link_data[0], self.link_data[1]))
+
+
+    @staticmethod
+    def _lauch_message(
+        ) -> str:
+        """
+            Returns lauch error message.
+
+            Return:
+                str: Lauch error message.
+        """
+
+        from epitech_console.ANSI.color import Color
+
+        return (
+            f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_YELLOW)}epitech_console launched with error{Color.color(Color.C_RESET)}\n"
+            f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)}\n"
+            f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_YELLOW)}Please reinstall with :{Color.color(Color.C_RESET)}\n"
+            f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_YELLOW)}    'pip install --upgrade --force-reinstall epitech_console'{Color.color(Color.C_RESET)}\n"
+            f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)}\n"
+            f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_YELLOW)}Please report the issue here : https://github.com/Jarjarbin06/epitech_console/issues{Color.color(Color.C_RESET)}\n"
+        )
 
 
     def __str__(
-            self
+            self,
         ) -> str:
         """
             Get string representation of the error.
@@ -73,7 +96,16 @@ class Error(Exception):
                 str: String representation of the error.
         """
 
-        return f'{self.error}:\n    {self.message}\n\n{self.link if self.link else ""}'
+        from epitech_console.ANSI.color import Color
+
+        string : str = (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + self.error + ":"
+
+        for line in self.message.splitlines():
+            string += "\n" + (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}     {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + self.message
+
+        string += (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + ("\n{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}\n{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}  {Color.color(Color.C_FG_RED)}" + self.link) if self.link else ""
+
+        return string + "\n"
 
 
     def __repr__(
@@ -89,6 +121,39 @@ class Error(Exception):
         return f"Error(\"{self.message}\", error=\"{self.error}\", link={self.link_data})"
 
 
+class ErrorLaunch(Error):
+    """
+        ErrorLaunch class.
+
+        Launch Error.
+    """
+
+
+    def __init__(
+            self,
+            message : str = "an error occurred during the launch",
+
+            *,
+            error : str = "ErrorLaunch",
+            link : tuple[str , int] | None = None
+        ) -> None:
+        """
+            Create an Error.
+
+            Parameters:
+                message (str, optional): The error message.
+                error (str, optional): The error type (title).
+                link (tuple[str, int], optional): The link to where the error comes from (file and line).
+        """
+
+        self.message : str = message
+        self.error : str = error
+        self.link_data : tuple[str, int] | None = link
+        self.link : str | None = None
+
+        self.create_link()
+
+
 class ErrorImport(Error):
     """
         ErrorImport class.
@@ -97,12 +162,29 @@ class ErrorImport(Error):
     """
 
 
-class ErrorAttribute(Error):
-    """
-        ErrorAttribute class.
+    def __init__(
+            self,
+            message : str = "an error occurred during an import",
 
-        Attribute Error.
-    """
+            *,
+            error : str = "ErrorImport",
+            link : tuple[str , int] | None = None
+        ) -> None:
+        """
+            Create an Error.
+
+            Parameters:
+                message (str, optional): The error message.
+                error (str, optional): The error type (title).
+                link (tuple[str, int], optional): The link to where the error comes from (file and line).
+        """
+
+        self.message : str = message
+        self.error : str = error
+        self.link_data : tuple[str, int] | None = link
+        self.link : str | None = None
+
+        self.create_link()
 
 
 class ErrorType(Error):
@@ -113,12 +195,29 @@ class ErrorType(Error):
     """
 
 
-class ErrorName(Error):
-    """
-        ErrorName class.
+    def __init__(
+            self,
+            message : str = "an error occurred on a type",
 
-        Name Error.
-    """
+            *,
+            error : str = "ErrorType",
+            link : tuple[str , int] | None = None
+        ) -> None:
+        """
+            Create an Error.
+
+            Parameters:
+                message (str, optional): The error message.
+                error (str, optional): The error type (title).
+                link (tuple[str, int], optional): The link to where the error comes from (file and line).
+        """
+
+        self.message : str = message
+        self.error : str = error
+        self.link_data : tuple[str, int] | None = link
+        self.link : str | None = None
+
+        self.create_link()
 
 
 class ErrorValue(Error):
@@ -127,3 +226,28 @@ class ErrorValue(Error):
 
         Value Error.
     """
+
+
+    def __init__(
+            self,
+            message : str = "an error occurred on a value",
+
+            *,
+            error : str = "ErrorValue",
+            link : tuple[str , int] | None = None
+        ) -> None:
+        """
+            Create an Error.
+
+            Parameters:
+                message (str, optional): The error message.
+                error (str, optional): The error type (title).
+                link (tuple[str, int], optional): The link to where the error comes from (file and line).
+        """
+
+        self.message : str = message
+        self.error : str = error
+        self.link_data : tuple[str, int] | None = link
+        self.link : str | None = None
+
+        self.create_link()

@@ -47,7 +47,7 @@ class Log:
         except FileNotFoundError:
             try :
                 with open(f"{self.log_path}{self.log_file_name}.log", 'a') as log_file:
-                    log_file.write("   date          time      | [type_] title      | detail\n\n---START---")
+                    log_file.write("   date          time      | [TYPE]  title      | detail\n\n---START---")
                 log_file.close()
             except FileNotFoundError:
                 pass
@@ -70,13 +70,14 @@ class Log:
 
         from datetime import datetime
 
-        status += "_" * (5 - len(status))
-        status = status[:5]
+        status = f"[{status}]"
+        status += " " * (7 - len(status))
+        status = status[:7]
         title += " " * (10 - len(title))
         title = title[:10]
 
         log_time : str = str(datetime.now())
-        log_str : str = f"{log_time} | [{status}] {title} | {description}"
+        log_str : str = f"{log_time} | {status} {title} | {description}"
 
         self.save(log_str)
 
@@ -176,9 +177,9 @@ class Log:
         log_str = self.read()
 
         color_dict: dict = {
-            "[INFO_]" : BasePack.P_INFO,
+            "[INFO] " : BasePack.P_INFO,
             "[VALID]" : BasePack.P_VALID,
-            "[WARN_]" : BasePack.P_WARNING,
+            "[WARN] " : BasePack.P_WARNING,
             "[ERROR]" : BasePack.P_ERROR,
         }
         c_reset : Any = Color.color(Color.C_RESET)
@@ -192,7 +193,7 @@ class Log:
         detail_size : int
         string : str = ""
 
-        string += f"{c_under}{BasePack.P_INFO[0]}|{c_reset}{c_bold}{c_under}    date          time      | {c_reset}{c_under}{BasePack.P_INFO[0]}[type_]{c_reset}{c_bold}{c_under} title      | detail" + (" " * (t_size - 58)) + f"{c_reset}\n"
+        string += f"{c_under}{BasePack.P_INFO[0]}|{c_reset}{c_bold}{c_under}    date          time      | {c_reset}{c_under}{BasePack.P_INFO[0]}[TYPE] {c_reset}{c_bold}{c_under} title      | detail" + (" " * (t_size - 58)) + f"{c_reset}\n"
         string += f"{BasePack.P_INFO[0]}|{c_reset}{c_bold}" + (" " * (t_size - 1)) + f"{c_reset}\n"
 
         for log_line in logs :
@@ -210,7 +211,7 @@ class Log:
                         (f"{log_line[2][:(t_size - 1)]}..." if len(log_line[2]) > (t_size - 1) else f"{color[1]}{log_line[2]}") +
                         f"{c_reset}\n")
                 elif len(log_line) == 1:
-                    string += f"{Color.color(Color.C_BG_DARK_CYAN)}|{c_reset} " + f"{Color.color(Color.C_FG_DARK_CYAN)}UNFORMATTED\n\"{log_line[0]}\"{c_reset}\n"
+                    string += f"{Color.color(Color.C_BG_DARK_BLUE)}|{c_reset} " + f"{Color.color(Color.C_FG_DARK_BLUE)}UNFORMATTED\n\"{log_line[0]}\"{c_reset}\n"
 
         string += footer + (" " * (t_size - 1)) + f"{c_reset}\n"
 

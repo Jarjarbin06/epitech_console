@@ -40,8 +40,11 @@ class Animation(Format):
                 animation (list[str] | str, optional): list of step
         """
 
+        from epitech_console.Error.error import ErrorType
+
         if not isinstance(animation, (list, str)):
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.__init__: animation is of an unsupported type (supported: list[Any], str ; current: {type(animation)}")
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__init__: animation is of an unsupported type (supported: list[Any], str ; current: {type(animation)})")
+            raise ErrorType()
 
         self.animation : list[str] = []
 
@@ -70,12 +73,14 @@ class Animation(Format):
                 Animation: Animation
         """
 
+        from epitech_console.Error.error import ErrorType
         from epitech_console.Text.text import Text
         from epitech_console.ANSI.ansi import ANSI
         from epitech_console.System.stopwatch import StopWatch
 
         if not isinstance(other, (Animation, ANSI, Text, StopWatch, str)):
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.__add__: other is of an unsupported type (supported: Animation, ANSI, Text, StopWatch, str ; current: {type(other)}")
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__add__: other is of an unsupported type (supported: Animation, ANSI, Text, StopWatch, str ; current: {type(other)})")
+            raise ErrorType()
 
         if type(other) in [Animation]:
             return Animation(self.animation + other.animation)
@@ -98,8 +103,11 @@ class Animation(Format):
                 str: Animation string
         """
 
+        from epitech_console.Error.error import ErrorType
+
         if not isinstance(item, int):
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.__getitem__: item is of an unsupported type (supported: int ; current: {type(item)}")
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__getitem__: item is of an unsupported type (supported: int ; current: {type(item)})")
+            raise ErrorType()
 
         if self.is_last():
             return str(self.animation[self.length - 1])
@@ -126,7 +134,7 @@ class Animation(Format):
         from epitech_console.ANSI.color import Color
 
         if not isinstance(color, ANSI):
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.__str__: color is of an unsupported type (supported: ANSI ; current: {type(color)}")
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.__str__: color is of an unsupported type (supported: ANSI ; current: {type(color)})")
 
         return f"{color}{str(self[self.step])}{Color.color(Color.C_RESET)}"
 
@@ -167,7 +175,7 @@ class Animation(Format):
         """
 
         if not isinstance(auto_reset, bool):
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.update: auto_reset is of an unsupported type (supported: bool ; current: {type(auto_reset)}")
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.update: auto_reset is of an unsupported type (supported: bool ; current: {type(auto_reset)})")
 
         self.step += 1
 
@@ -190,10 +198,10 @@ class Animation(Format):
                 str: Animation string
         """
 
-        if not isinstance(delete, bool):
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.render: delete is of an unsupported type (supported: bool ; current: {type(delete)}")
-
         from epitech_console.ANSI.line import Line
+
+        if not isinstance(delete, bool):
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.render: delete is of an unsupported type (supported: bool ; current: {type(delete)})")
 
         string : str = ""
 

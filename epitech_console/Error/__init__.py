@@ -8,16 +8,15 @@
 #############################
 
 
-from epitech_console.Error.error import Error, ErrorType, ErrorName, ErrorValue, ErrorAttribute, ErrorImport
+from epitech_console.Error.error import Error, ErrorType, ErrorValue, ErrorImport, ErrorLaunch
 
 
 __all__ : list[str] = [
     'Error',
     'ErrorType',
-    'ErrorName',
     'ErrorValue',
-    'ErrorAttribute',
-    'ErrorImport'
+    'ErrorImport',
+    'ErrorLaunch'
 ]
 
 

@@ -8,13 +8,12 @@ from epitech_console import init, quit
 init()
 
 
-
 def test_log_reading(
     ) -> None:
     log = Log("tests", "log_test")
     log.comment("this is a custom comment")
     log.close()
-    assert log.read() == "   date          time      | [type_] title      | detail\n\n---START---\n>>> this is a custom comment\n----END----\n"
+    assert log.read() == "   date          time      | [TYPE]  title      | detail\n\n---START---\n>>> this is a custom comment\n----END----\n"
     log.close(True)
 
 

@@ -31,17 +31,20 @@ class BasePack:
     """
 
 
-    P_ERROR = (0, 0)
-    P_WARNING = (0, 0)
-    P_VALID = (0, 0)
-    P_INFO = (0, 0)
+    from epitech_console.ANSI.ansi import ANSI
+
+
+    P_ERROR : tuple[ANSI | str, ANSI | str] = ("\033[0m", "\033[0m")
+    P_WARNING : tuple[ANSI | str, ANSI | str] = ("\033[0m", "\033[0m")
+    P_VALID : tuple[ANSI | str, ANSI | str] = ("\033[0m", "\033[0m")
+    P_INFO : tuple[ANSI | str, ANSI | str] = ("\033[0m", "\033[0m")
 
 
     @staticmethod
     def update(
         ) -> None:
         """
-            Initialise the BasePack class
+            Initialize the BasePack class
         """
 
         from epitech_console.ANSI.color import Color
