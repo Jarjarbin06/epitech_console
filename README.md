@@ -286,7 +286,7 @@ REPO/
 ```
 
 ## API-Reference
-`.` = *function* ; `_` = *class method* ; `+` = *class constructor* ; `@` = *static method* ; `#` = *class variable*
+`.` = *function* ; `+` = *class constructor* ; `_` = *class method* ; `@` = *static method* ; `#` = *class variable*
 
 *   `.init()`: Initializes the module, BasePacks and Setting classes and the log file (if activated in the config file).
 *   `.quit(show: bool = False, delete_log: bool = False)`: Uninitializes the module and the log file (if activated in the config file).
