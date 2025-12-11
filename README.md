@@ -90,7 +90,7 @@ my_text = epitech_color + Text("hi").bold() + reset
 
 print(my_text)
 
-quit(True)
+quit(delete_log=True)
 ```
 
 ### Creating an Animation
@@ -107,7 +107,7 @@ for i in range(5):
     Console.print(my_animation.render(delete=True), end="", sleep=0.5)
     my_animation.update()
 
-quit(True)
+quit(delete_log=True)
 ```
 
 ### Creating a custom Animation
@@ -124,7 +124,7 @@ for i in range(5):
     Console.print(my_animation.render(delete=True), end="", sleep=0.5)
     my_animation.update()
 
-quit(True)
+quit(delete_log=True)
 ```
 
 ### Using simple Progress Bar 
@@ -142,7 +142,7 @@ for i in range(101):
     my_progress_bar.update(percent=i, update_spinner=(i % 5 == 0))
     Console.print(my_progress_bar.render(delete=True), sleep=0.05)
 
-quit(True)
+quit(delete_log=True)
 ```
 
 ### Using advanced Progress Bar with variable size
@@ -154,7 +154,6 @@ from epitech_console.System import Console
 from epitech_console import init, quit
 
 init()
-  
 
 style : Style = Style(on="=", off=" ", border_left="[", border_right="]")
 bar : ProgressBar
@@ -164,7 +163,7 @@ for i in range(1001):
 	bar.update(i/10)
 	Console.print(bar.render(delete=True), end="", sleep=0.01, cut=True)
 
-quit(True)
+quit(delete_log=True)
 ```
 
 ### Utilizing the Stopwatch
@@ -181,7 +180,7 @@ sleep(2)
 my_stopwatch.stop()
 print(f"Elapsed time: {my_stopwatch.elapsed()}")
 
-quit(True)
+quit(delete_log=True)
 ```
 
 ### Create a config.ini file
@@ -199,7 +198,7 @@ if not Config.exist(my_path):
       "USER" : {"username": "guest", "email": "my_email@email.com"}
     })
 
-quit(True)
+quit(delete_log=True)
 ```
 
 This will check and create a `config.ini` file if it doesn't exist.
@@ -230,10 +229,14 @@ REPO/
 │   ├── Error/
 │   │   ├── __init__.py
 │   │   └── error.py
+│   ├── log/
 │   ├── System/
 │   │   ├── __init__.py
+│   │   ├── action.py
 │   │   ├── config.py
 │   │   ├── console.py
+│   │   ├── log.py
+│   │   ├── setting.py
 │   │   ├── stopwatch.py
 │   │   └── time.py
 │   ├── Text/
@@ -284,6 +287,9 @@ REPO/
 
 ## API-Reference
 `_` = *class method* ; `+` = *class constructor* ; `@` = *static method* ; `#` = *class variable*
+
+*   `init()`: Initializes the module, BasePacks and Setting classes and the log file (if activated in the config file).
+*   `quit(show: bool = False, delete_log: bool = False)`: Uninitializes the module and the log file (if activated in the config file).
 
 ### Animation Module
 
