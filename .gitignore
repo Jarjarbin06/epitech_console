@@ -1,5 +1,6 @@
 trace
 coverage.xml
+*.log
 perso
 dist
 dist_done
