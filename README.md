@@ -460,6 +460,8 @@ REPO/
 
 ## Release-Notes
 * #### v0.1.8:
+	*   **[ADD]** some logs in Animation classes
+	*   **[ADD]** new logging system
 	*   **[ADD]** new pytest tests
 	*   **[ADD]** `Setting` and `log` classes
     *   **[FIX]** several additional `README` grammar 😅
