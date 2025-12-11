@@ -37,12 +37,23 @@ class Error(Exception):
                 link (tuple[str, int], optional): The link to where the error comes from (file and line).
         """
 
-        from epitech_console.Text.text import Text
-
         self.message : str = message
         self.error : str = error
         self.link_data : tuple[str, int] | None = link
         self.link : str | None = None
+
+        self.create_link()
+
+
+    def create_link(
+            self
+        ) -> None:
+        """
+            Create an error link.
+            Create an error link.
+        """
+
+        from epitech_console.Text.text import Text
 
         if self.link_data:
             if len(self.link_data) == 1 and type(self.link_data[0]) in [str]:
@@ -76,3 +87,43 @@ class Error(Exception):
         """
 
         return f"Error(\"{self.message}\", error=\"{self.error}\", link={self.link_data})"
+
+
+class ErrorImport(Error):
+    """
+        ErrorImport class.
+
+        Import Error.
+    """
+
+
+class ErrorAttribute(Error):
+    """
+        ErrorAttribute class.
+
+        Attribute Error.
+    """
+
+
+class ErrorType(Error):
+    """
+        ErrorType class.
+
+        Type Error.
+    """
+
+
+class ErrorName(Error):
+    """
+        ErrorName class.
+
+        Name Error.
+    """
+
+
+class ErrorValue(Error):
+    """
+        ErrorValue class.
+
+        Value Error.
+    """

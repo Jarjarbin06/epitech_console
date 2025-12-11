@@ -8,12 +8,13 @@
 #############################
 
 
+from builtins import object
+from typing import Any
+
+
 from epitech_console import Animation, ANSI, Error, System, Text
 from epitech_console.System import Actions
 from epitech_console.Text import Format
-
-
-PATH = __file__.removesuffix("__init__.py")
 
 
 __version__ : str = 'v0.1.8'
@@ -27,23 +28,21 @@ def _banner(
         Show a simple banner.
     """
 
-    from epitech_console import Animation as AN, ANSI as AS, Error as E, System as S, Text as T
-
     banner_size = 50
 
-    epitech = AS.Color.epitech_fg()
-    epitech_dark = AS.Color.epitech_dark_fg()
-    reset = AS.Color.color(AS.Color.C_RESET)
+    epitech = ANSI.Color.epitech_fg()
+    epitech_dark = ANSI.Color.epitech_dark_fg()
+    reset = ANSI.Color.color(ANSI.Color.C_RESET)
 
-    offset_t = T.Text("  ")
-    title_t = epitech + T.Text(f'{System.Setting.S_PACKAGE_NAME}').bold().underline() + reset + "  " + T.Text.url_link(
+    offset_t = Text.Text("  ")
+    title_t = epitech + Text.Text(f'{System.Setting.S_PACKAGE_NAME}').bold().underline() + reset + "  " + Text.Text.url_link(
         "https://github.com/Jarjarbin06/epitech_console", text="repository")
-    version_t = T.Text(" " * 5) + epitech_dark + T.Text("version ").italic() + T.Text(
+    version_t = Text.Text(" " * 5) + epitech_dark + Text.Text("version ").italic() + Text.Text(
         f'{System.Setting.S_PACKAGE_VERSION}').bold() + reset
-    desc_t = T.Text("   Text • Animation • ANSI • Error • System   ").italic()
+    desc_t = Text.Text("   Text • Animation • ANSI • Error • System   ").italic()
     line_t = epitech + ("─" * banner_size) + reset
 
-    S.Console.print(line_t, offset_t + title_t + " " + version_t + offset_t, offset_t + desc_t + offset_t, line_t, separator="\n")
+    System.Console.print(line_t, offset_t + title_t + " " + version_t + offset_t, offset_t + desc_t + offset_t, line_t, separator="\n")
 
 
 def init(
@@ -52,38 +51,48 @@ def init(
         init() initializes the epitech console package and show a banner (if SETTING : show-banner = True in config.ini)
     """
 
-    from epitech_console import Animation as AN, ANSI as AS, Error as E, System as S, Text as T
+    try:
+        System.Setting.update()
+        Animation.BasePack.update(5)
+        ANSI.BasePack.update()
 
-    Animation.BasePack.update()
-    ANSI.basepack.BasePack.update()
-    System.Setting.update()
-
-    if System.Setting.S_SETTING_SHOW_BANNER:
-        try:
+        if System.Setting.S_SETTING_SHOW_BANNER:
             _banner()
 
-        except Exception as error:
-            if System.Setting.S_SETTING_DEBUG:
-                print("\033[101m \033[0m \033[91m" + str(error) + "\033[0m\n")
-            print(
-                "\033[103m \033[0m \033[93mepitech_console imported with error\033[0m\n"
-                "\033[103m \033[0m\n"
-                "\033[103m \033[0m \033[93mPlease reinstall with :\033[0m\n"
-                "\033[103m \033[0m \033[93m    'pip install --upgrade --force-reinstall epitech_console'\033[0m\n"
-                "\033[103m \033[0m\n"
-                "\033[103m \033[0m \033[93mPlease report the issue here : https://github.com/Jarjarbin06/epitech_console/issues\033[0m\n"
-            )
+    except Exception as error:
+        print("\033[101m \033[0m \033[91m" + str(error) + "\033[0m\n")
+        print(
+            "\033[103m \033[0m \033[93mepitech_console launched with error\033[0m\n"
+            "\033[103m \033[0m\n"
+            "\033[103m \033[0m \033[93mPlease reinstall with :\033[0m\n"
+            "\033[103m \033[0m \033[93m    'pip install --upgrade --force-reinstall epitech_console'\033[0m\n"
+            "\033[103m \033[0m\n"
+            "\033[103m \033[0m \033[93mPlease report the issue here : https://github.com/Jarjarbin06/epitech_console/issues\033[0m\n"
+        )
+
 
 def quit(
-        delete_logs: bool = False,
+        *,
+        show : bool = False,
+        delete_log: bool = False
     ) -> None:
     """
         quit() uninitializes the epitech console package
 
         Parameters:
-            delete_logs (bool, optional) : delete the log file
+            show (bool, optional) : show the log file on terminal
+            delete_log (bool, optional) : delete the log file
     """
-    System.Setting.S_LOG_FILE.close(delete_logs)
+
+    if System.Setting.S_SETTING_LOG:
+        System.Setting.S_LOG.close()
+        System.Setting.S_CONFIG.set("SETTING", "opened-log", "null")
+
+        if show:
+            System.Setting.S_LOG.show()
+
+        if delete_log:
+            System.Setting.S_LOG.close(True)
 
 
 __all__ : list[str] = [
@@ -92,10 +101,12 @@ __all__ : list[str] = [
     'Error',
     'System',
     'Text',
-    'PATH',
     'init',
     'quit',
     '__version__',
     '__author__',
     '__email__'
 ]
+
+init()
+quit(show=True, delete_log=True)

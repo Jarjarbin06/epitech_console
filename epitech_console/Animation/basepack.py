@@ -10,6 +10,11 @@
 
 from builtins import object
 from typing import Any
+from epitech_console.System.setting import Setting
+Setting.update()
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.BasePack: imported")
 
 
 class BasePack:
@@ -52,11 +57,18 @@ class BasePack:
             style: Style = Style("#", "-", "<", ">", "|", "|")
         ) -> None:
         """
-            Initialise the BasePack class
+            Initialize the BasePack class
 
             Parameters:
                 style (Style, optional): Style of the BasePack animations.
         """
+
+        from epitech_console.Error.error import ErrorType
+        from epitech_console.Animation.style import Style
+
+        if not isinstance(style, Style):
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.BasePack.update: style is of an unsupported type (supported: Style ; current: {type(style)}")
+            raise ErrorType()
 
         BasePack.P_SLIDE_R = [
             f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
@@ -199,3 +211,6 @@ class BasePack:
         BasePack.P_EMPTY = [
             f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}"
         ]
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.BasePack: created")

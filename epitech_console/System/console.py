@@ -10,6 +10,7 @@
 
 from builtins import object, type
 from typing import Any
+from epitech_console.System.setting import Setting
 
 
 class ConsoleMeta(type):
@@ -47,7 +48,6 @@ class Console(metaclass=ConsoleMeta):
 
 
     from sys import stdout
-    from epitech_console.Text.text import Text
 
 
     @staticmethod
@@ -60,7 +60,7 @@ class Console(metaclass=ConsoleMeta):
             auto_reset: bool = True,
             cut: bool = False,
             sleep: int | float | None = None
-        ) -> Text:
+        ) -> Any:
         """
             Print on the console.
 

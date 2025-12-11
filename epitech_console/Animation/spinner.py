@@ -10,6 +10,11 @@
 
 from builtins import object
 from typing import Any
+from epitech_console.System.setting import Setting
+Setting.update()
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.Spinner: imported")
 
 
 class Spinner:
@@ -99,3 +104,6 @@ class Spinner:
                 f"{style.border_left}\\{style.border_right}"
             ]
         )
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.Spinner: created")

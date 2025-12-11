@@ -10,6 +10,7 @@
 
 from builtins import object, type
 from typing import Any
+from epitech_console.System.setting import Setting
 
 
 class Config:
@@ -42,8 +43,8 @@ class Config:
             path += "/"
 
         self.config : ConfigParser | None = ConfigParser()
-        self.path : str = path
-        self.file_name : str = file_name
+        self.path : str | None = path
+        self.file_name : str | None = file_name
 
         if Config.exist(self.path):
             self.config.read(self.path + self.file_name)
@@ -51,13 +52,36 @@ class Config:
         else:
             if not data and self.file_name == "config.ini":
                 data = {}
-            with open(self.path + self.file_name, 'w') as config_file:
+            with open(str(self.path) + str(self.file_name), 'w') as config_file:
                 for key in data:
                     self.config[key] = data[key]
 
                 self.config.write(config_file)
 
             config_file.close()
+
+
+    def set(
+            self,
+            section : str,
+            option : str,
+            data : Any
+        ) -> None:
+        """
+            Set a new value in a config file.
+
+            Parameters:
+                section (str): section name
+                option (str): option name
+                data (Any): data to put in the config file
+        """
+
+        self.config.set(section, option, str(data))
+
+        with open(str(self.path) + str(self.file_name), 'w') as config_file:
+            self.config.write(config_file)
+
+        config_file.close()
 
 
     def get(
@@ -75,10 +99,73 @@ class Config:
                 wanted_type (type, optional): type to check
 
             Returns:
-                Any
+                Any: data retrieved from config file and of type 'wanted_type'
         """
 
         return wanted_type(self.config.get(section, option))
+
+
+    def get_bool(
+            self,
+            section : str,
+            option : str,
+            wanted_type : type = bool
+        ) -> Any:
+        """
+            Get a value as a bool from the config file.
+
+            Parameters:
+                section (str): section name
+                option (str): option name
+                wanted_type (type, optional): type to check
+
+            Returns:
+                Any: data retrieved from config file and of type 'wanted_type'
+        """
+
+        return wanted_type(self.config.getboolean(section, option))
+
+
+    def get_int(
+            self,
+            section : str,
+            option : str,
+            wanted_type : type = int
+        ) -> Any:
+        """
+            Get a value as a int from the config file.
+
+            Parameters:
+                section (str): section name
+                option (str): option name
+                wanted_type (type, optional): type to check
+
+            Returns:
+                Any: data retrieved from config file and of type 'wanted_type'
+        """
+
+        return wanted_type(self.config.getint(section, option))
+
+
+    def get_float(
+            self,
+            section : str,
+            option : str,
+            wanted_type : type = float
+        ) -> Any:
+        """
+            Get a value as a float from the config file.
+
+            Parameters:
+                section (str): section name
+                option (str): option name
+                wanted_type (type, optional): type to check
+
+            Returns:
+                Any: data retrieved from config file and of type 'wanted_type'
+        """
+
+        return wanted_type(self.config.getfloat(section, option))
 
 
     def delete(

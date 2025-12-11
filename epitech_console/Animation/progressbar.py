@@ -11,6 +11,11 @@
 from builtins import object
 from typing import Any
 from epitech_console.Text.format import Format
+from epitech_console.System.setting import Setting
+Setting.update()
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.ProgressBar: imported")
 
 
 class ProgressBar(Format):
@@ -239,3 +244,6 @@ class ProgressBar(Format):
         """
 
         return f"ProgressBar(\"{self.length}\", animation={self.animation.__repr__()}, style={self.style}, percent_style=\"{self.percent_style}\", spinner={self.spinner.__repr__()}, spinner_position=\"{self.spinner_position}\")"
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.ProgressBar: created")

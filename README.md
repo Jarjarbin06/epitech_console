@@ -283,19 +283,16 @@ REPO/
 ```
 
 ## API-Reference
-` ` = *class method*
-`+` = *class constructor*
-`@` = *static method*
-`#` = *class variable*
+`_` = *class method* ; `+` = *class constructor* ; `@` = *static method* ; `#` = *class variable*
 
 ### Animation Module
 
 *   **Animation**: Class for creating animations.
     *   `+Animation(animation: list[Any] | str = "")`: Constructor to create an animation.
-    *   ` update(auto_reset: bool = True)`: Advances the animation by one step.
-    *   ` render(delete: bool = False)`: Renders the current frame of the animation.
-    *   ` is_last()`: Returns whether the current step is the last one.
-    *   ` reset()`: Resets the current step to `0`.
+    *   `_update(auto_reset: bool = True)`: Advances the animation by one step.
+    *   `_render(delete: bool = False)`: Renders the current frame of the animation.
+    *   `_is_last()`: Returns whether the current step is the last one.
+    *   `_reset()`: Resets the current step to `0`.
 
 *   **BasePack**: Predefined animation packs.
 	*   `@update(style: Style = Style("#", "-", "<", ">", "|", "|"))`: Update the BasePack animations to fit with the given Style (or the default one if no Style given).
@@ -312,8 +309,8 @@ REPO/
 
 *   **ProgressBar**: Class for creating progress bars.
     *   `+ProgressBar(length: int, animation: Animation | None = None, style: Style = Style("#", "-", "<", ">", "|", "|"), percent_style: str = "bar", spinner: Animation | None = None, spinner_position: str = "a")`: Constructor to create a progress bar.
-    *   ` update(percent: int = 0, update_spinner: bool = True, auto_reset: bool = True)`: Updates the progress bar to a specified percentage.
-    *   ` render(color: ANSI | tuple[ANSI, ANSI, ANSI] = Color.color(Color.C_RESET), hide_spinner_at_end: bool = True, delete: bool = False)`: Renders the progress bar.
+    *   `_update(percent: int = 0, update_spinner: bool = True, auto_reset: bool = True)`: Updates the progress bar to a specified percentage.
+    *   `_render(color: ANSI | tuple[ANSI, ANSI, ANSI] = Color.color(Color.C_RESET), hide_spinner_at_end: bool = True, delete: bool = False)`: Renders the progress bar.
 
 *   **Spinner**: Class with pre-built spinner animations.
     *   `@stick(style: Style = Style("#", " ", "#", "#", "", ""))`: Creates a stick spinner.
@@ -330,7 +327,7 @@ REPO/
     *   `#ESC`: ANSI escape character.
 
 *   **BasePack**: Ready-to-use ANSI escape sequences.
-	* `@update()`: Update the BasePack escape sequences (currently reserved for future extensions).
+	*   `@update()`: Update the BasePack escape sequences (currently reserved for future extensions).
     *   `#P_ERROR`: Colors for error title and body.
     *   `#P_WARNING`: Colors for warning title and body.
     *   `#P_VALID`: Colors for valid title and body.
@@ -395,8 +392,8 @@ REPO/
 
 *   **Config**: Class for configuration management.
     *   `+Config(path:str, data: dict | None = None, file_name:str = "config.ini")`: Constructor to create a Config object (create the config file if does not exist, read it otherwise).
-    *   ` get(section: str, option: str, wanted_type: type = str)`: Returns the value of type `wanted_type` in section `section` and option `option`.
-    *   ` delete(cached: bool = False)`: Deletes the configuration file (and removes cached values unless `cached=True`).
+    *   `_get(section: str, option: str, wanted_type: type = str)`: Returns the value of type `wanted_type` in section `section` and option `option`.
+    *   `_delete(cached: bool = False)`: Deletes the configuration file (and removes cached values unless `cached=True`).
     *   `@exist(path: str, file_name: str = "config.ini")`: Returns whether a config file named `file_name` exist in `path` or not.
 
 *   **Console**: Class for console output.
@@ -406,12 +403,12 @@ REPO/
 
 *   **Log**: Class for log files.
     *   `+Log(path: str, file_name: str | None = None`: Constructor to create a log.
-    *   ` log(status: str, title: str, description: str)`: Create a formatted log and save it a log file.
-    *   ` comment(comment: str)`: Create a non formatted log and save it in a log file.
-    *   ` save(log_str: str)`: Save a log in a log file.
-    *   ` close(delete_logs: bool = False)` delete the log file if `delete_logs`, else format the end of the log file and save it.
-    *   ` read()`: Returns the content of a log file.
-    *   ` show()`: Print a formatted table of the content of a log_file.
+    *   `_log(status: str, title: str, description: str)`: Create a formatted log and save it a log file.
+    *   `_comment(comment: str)`: Create a non formatted log and save it in a log file.
+    *   `_save(log_str: str)`: Save a log in a log file.
+    *   `_close(delete_logs: bool = False)` delete the log file if `delete_logs`, else format the end of the log file and save it.
+    *   `_read()`: Returns the content of a log file.
+    *   `_show()`: Print a formatted table of the content of a log_file.
 
 *   **Setting**: Class for module's settings.
 	*   `@update()`: Update the Settings.
@@ -429,11 +426,11 @@ REPO/
 
 *   **StopWatch**: Class for measuring elapsed time.
     *   `+StopWatch(start: bool = False)`: Constructor to create a stopwatch.
-    *   ` start()`: Reset and start the stopwatch.
-    *   ` stop()`: Update and stop the stopwatch.
-    *   ` update()`: Update the elapsed time.
-    *   ` elapsed(auto_update: bool = False)`: Returns the precise elapsed time.
-    *   ` reset()`: Reset the StopWatch back to 0.
+    *   `_start()`: Reset and start the stopwatch.
+    *   `_stop()`: Update and stop the stopwatch.
+    *   `_update()`: Update the elapsed time.
+    *   `_elapsed(auto_update: bool = False)`: Returns the precise elapsed time.
+    *   `_reset()`: Reset the StopWatch back to 0.
 
 *   **Time**: Class for time-related functions.
     *   `@wait(sleep: int | float)`: Pauses execution for `sleep` seconds.
@@ -442,16 +439,16 @@ REPO/
 ### Text Module
 
 *   **Format**: Class for handling text's format.
-    *   ` reset()`: Clear the format of a text.
-    *   ` bold()`: Make a text bold.
-    *   ` italic()`: Make a text italic.
-    *   ` underline()`: Make a text underlined.
-    *   ` hide()`: Make a text hidden.
-    *   ` strikthrough()`: Make a text strikethrough.
-    *   ` error(title: bool = False)`: Make a text styled as an ERROR (background is colored if title, foreground otherwise).
-    *   ` warning(title: bool = False)`: Make a text styled as a WARNING (background is colored if title, foreground otherwise).
-    *   ` ok(title: bool = False)`: Make a text styled as an OK (background is colored if title, foreground otherwise).
-    *   ` info(title: bool = False)`: Make a text styled as an INFO (background is colored if title, foreground otherwise).
+    *   `_reset()`: Clear the format of a text.
+    *   `_bold()`: Make a text bold.
+    *   `_italic()`: Make a text italic.
+    *   `_underline()`: Make a text underlined.
+    *   `_hide()`: Make a text hidden.
+    *   `_strikthrough()`: Make a text strikethrough.
+    *   `_error(title: bool = False)`: Make a text styled as an ERROR (background is colored if title, foreground otherwise).
+    *   `_warning(title: bool = False)`: Make a text styled as a WARNING (background is colored if title, foreground otherwise).
+    *   `_ok(title: bool = False)`: Make a text styled as an OK (background is colored if title, foreground otherwise).
+    *   `_info(title: bool = False)`: Make a text styled as an INFO (background is colored if title, foreground otherwise).
     *   `@apply(obj: Any, sequence: Any | None = None)`: Apply anything to an object (Text, ANSI, Animation, ProgressBar or str).
     *   `@tree(d: dict | str | list, title: str | None = None, indent: int = 0`: Get a formated version of a dictionary as bash "tree" command does).
     *   `@module_tree()`: Get module's file tree.

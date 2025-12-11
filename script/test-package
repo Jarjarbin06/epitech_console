@@ -3,4 +3,4 @@
 ./script/auto-reload-package
 pytest --debug=trace --cov=epitech_console --cov-report=html
 xdg-open htmlcov/index.html
-rm .coverage
+rm -f .coverage

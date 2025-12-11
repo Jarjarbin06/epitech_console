@@ -47,7 +47,7 @@ class Log:
         except FileNotFoundError:
             try :
                 with open(f"{self.log_path}{self.log_file_name}.txt", 'a') as log_file:
-                    log_file.write("   date          time      | [type_] title    | detail\n\n---START---")
+                    log_file.write("   date          time      | [type_] title      | detail\n\n---START---")
                 log_file.close()
             except FileNotFoundError:
                 pass
@@ -71,9 +71,9 @@ class Log:
         from datetime import datetime
 
         status += "_" * (5 - len(status))
-        status = status[:4]
-        title += " " * (8 - len(title))
-        title = title[:8]
+        status = status[:5]
+        title += " " * (10 - len(title))
+        title = title[:10]
 
         log_time : str = str(datetime.now())
         log_str : str = f"{log_time} | [{status}] {title} | {description}"
@@ -192,7 +192,7 @@ class Log:
         detail_size : int
         string : str = ""
 
-        string += f"{c_under}{BasePack.P_INFO[0]}|{c_reset}{c_bold}{c_under}    date          time      | {c_reset}{c_under}{BasePack.P_INFO[0]}[type_]{c_reset}{c_bold}{c_under} category | detail" + (" " * (t_size - 56)) + f"{c_reset}\n"
+        string += f"{c_under}{BasePack.P_INFO[0]}|{c_reset}{c_bold}{c_under}    date          time      | {c_reset}{c_under}{BasePack.P_INFO[0]}[type_]{c_reset}{c_bold}{c_under} title      | detail" + (" " * (t_size - 58)) + f"{c_reset}\n"
         string += f"{BasePack.P_INFO[0]}|{c_reset}{c_bold}" + (" " * (t_size - 1)) + f"{c_reset}\n"
 
         for log_line in logs :
@@ -206,7 +206,7 @@ class Log:
                         f"{color[0]}|{c_reset} " +
                         f"{color[1]}{log_line[0]}{c_reset} | " +
                         f"{color[0]}{log_line[1][0:7]}{c_reset} " +
-                        f"{color[1]}{log_line[1][8:]}{c_reset} | " +
+                        f"{color[1]}{c_bold}{log_line[1][8:]}{c_reset} | " +
                         (f"{log_line[2][:(t_size - 1)]}..." if len(log_line[2]) > (t_size - 1) else f"{color[1]}{log_line[2]}") +
                         f"{c_reset}\n")
                 elif len(log_line) == 1:

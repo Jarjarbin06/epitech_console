@@ -10,6 +10,11 @@
 
 from builtins import object
 from typing import Any
+from epitech_console.System.setting import Setting
+Setting.update()
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.Style: imported")
 
 
 class Style:
@@ -62,9 +67,7 @@ class Style:
         return (
             f'on="{self.on}";off="{self.off}";' +
             f'arrow_left="{self.arrow_left}";arrow_right"{self.arrow_right}";' +
-            f'border_left="{self.border_left}";border_right"{self.border_right}"' +
-            f'\n\nExample:' +
-            f'\n"{self.border_left}{self.on}{self.on}{self.arrow_right}{self.off}{self.off}{self.off}{self.border_right}"'
+            f'border_left="{self.border_left}";border_right"{self.border_right}"'
         )
 
 
@@ -79,3 +82,6 @@ class Style:
         """
 
         return f"Style(\"{self.on}\", \"{self.off}\", \"{self.arrow_left}\", \"{self.arrow_right}\", \"{self.border_left}\", \"{self.border_right}\")"
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.Style: created")

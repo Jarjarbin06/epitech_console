@@ -31,13 +31,16 @@ class Setting:
             S_SETTING_DEBUG (str): debug mode.
             S_SETTING_LOG (str): log mode.
 
-            S_LOG_FILE (Log | None): log file.
+            S_LOG (Log | None): log file.
     """
 
 
     from epitech_console.System.log import Log
+    from epitech_console.System.config import Config
 
+    S_CONFIG : Config | None = None
 
+    S_PACKAGE_PATH : str = "null"
     S_PACKAGE_NAME : str = "null"
     S_PACKAGE_VERSION : str = "null"
     S_PACKAGE_DESCRIPTION : str = "null"
@@ -49,34 +52,47 @@ class Setting:
     S_SETTING_MINIMAL_MODE : bool = True
     S_SETTING_DEBUG : bool = False
     S_SETTING_LOG : bool = False
+    S_SETTING_OPENED_LOG : str = "null"
 
-    S_LOG_FILE : Log | None = None
+    S_LOG : Log | None = None
 
 
     @staticmethod
     def update(
         ) -> None:
         """
-            Initialise the BasePack class
+            Initialize the BasePack class
         """
 
         from epitech_console.System.config import Config
         from epitech_console.System.log import Log
-        from epitech_console import PATH
 
+        Setting.S_PACKAGE_PATH = __file__.removesuffix("System/setting.py")
 
-        config = Config(PATH)
+        Setting.S_CONFIG = Config(Setting.S_PACKAGE_PATH)
 
-        Setting.S_PACKAGE_NAME = config.get("PACKAGE", "name", str)
-        Setting.S_PACKAGE_VERSION = config.get("PACKAGE", "version", str)
-        Setting.S_PACKAGE_DESCRIPTION = config.get("PACKAGE", "description", str)
-        Setting.S_PACKAGE_REPOSITORY = config.get("PACKAGE", "repository", str)
+        Setting.S_PACKAGE_NAME = Setting.S_CONFIG.get("PACKAGE", "name")
+        Setting.S_PACKAGE_VERSION = Setting.S_CONFIG.get("PACKAGE", "version")
+        Setting.S_PACKAGE_DESCRIPTION = Setting.S_CONFIG.get("PACKAGE", "description")
+        Setting.S_PACKAGE_REPOSITORY = Setting.S_CONFIG.get("PACKAGE", "repository")
 
-        Setting.S_SETTING_SHOW_BANNER = config.get("SETTING", "show-banner", bool)
-        Setting.S_SETTING_AUTO_COLOR = config.get("SETTING", "auto-color", bool)
-        Setting.S_SETTING_SAFE_MODE = config.get("SETTING", "safe-mode", bool)
-        Setting.S_SETTING_MINIMAL_MODE = config.get("SETTING", "minimal-mode", bool)
-        Setting.S_SETTING_DEBUG = config.get("SETTING", "debug", bool)
-        Setting.S_SETTING_LOG = config.get("SETTING", "log", bool)
+        Setting.S_SETTING_SHOW_BANNER = Setting.S_CONFIG.get_bool("SETTING", "show-banner")
+        Setting.S_SETTING_AUTO_COLOR = Setting.S_CONFIG.get_bool("SETTING", "auto-color")
+        Setting.S_SETTING_SAFE_MODE = Setting.S_CONFIG.get_bool("SETTING", "safe-mode")
+        Setting.S_SETTING_MINIMAL_MODE = Setting.S_CONFIG.get_bool("SETTING", "minimal-mode")
+        Setting.S_SETTING_DEBUG = Setting.S_CONFIG.get_bool("SETTING", "debug")
+        Setting.S_SETTING_LOG = Setting.S_CONFIG.get_bool("SETTING", "log")
 
-        Setting.S_LOG_FILE = Log(PATH + "log")
+        if Setting.S_SETTING_LOG:
+
+            Setting.S_SETTING_OPENED_LOG = Setting.S_CONFIG.get("SETTING", "opened-log")
+
+            if Setting.S_SETTING_OPENED_LOG == "null":
+                Setting.S_LOG = Log(Setting.S_PACKAGE_PATH + "log")
+                Setting.S_CONFIG.set("SETTING", "opened-log", Setting.S_LOG.log_file_name)
+                Setting.S_SETTING_OPENED_LOG = Setting.S_CONFIG.get("SETTING", "opened-log")
+
+            else:
+                Setting.S_LOG = Log(Setting.S_PACKAGE_PATH + "log", file_name=Setting.S_SETTING_OPENED_LOG)
+
+            Setting.S_LOG.log("INFO", "function", "System.Setting.update(): setting updated")
