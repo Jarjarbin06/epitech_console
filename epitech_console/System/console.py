@@ -11,10 +11,12 @@
 from builtins import object, type
 from typing import Any
 from epitech_console.System.setting import Setting
+
+
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "ANSI.Cursor: imported")
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Console: imported")
 
 
 class ConsoleMeta(type):
@@ -147,3 +149,6 @@ class Console(metaclass=ConsoleMeta):
         """
 
         stream.flush()
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Console: created")

@@ -11,10 +11,12 @@
 from builtins import object
 from typing import Any
 from epitech_console.System.setting import Setting
+
+
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "ANSI.Cursor: imported")
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Action: imported")
 
 
 class Action:
@@ -228,3 +230,6 @@ class Actions:
         """
 
         return f"Actions({self.actions})"
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Action: created")

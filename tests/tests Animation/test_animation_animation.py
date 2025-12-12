@@ -58,7 +58,7 @@ def test_animation_render_delete_flag(
     output = anim.render(delete=True).replace("\033[0m", "")
     # Output MUST include delete sequence and frame
     assert isinstance(output, str)
-    assert output == "\033[1F\033[2KA"
+    assert output == "\x1b[1A\x1b[0GA"
 
 
 def test_animation_length_magic_method(

@@ -12,6 +12,8 @@ from builtins import object
 from typing import Any
 from epitech_console.Text.format import Format
 from epitech_console.System.setting import Setting
+
+
 Setting.update()
 
 
@@ -40,11 +42,13 @@ class Animation(Format):
                 animation (list[str] | str, optional): list of step
         """
 
-        from epitech_console.Error.error import ErrorType
-
         if not isinstance(animation, (list, str)):
+            from epitech_console.Error.error import ErrorType
+            from epitech_console import quit
+
             if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__init__: animation is of an unsupported type (supported: list[Any], str ; current: {type(animation)})")
-            raise ErrorType()
+            quit()
+            raise ErrorType(link=(f"{Setting.S_PACKAGE_PATH}Animation/animation", 36)) from None
 
         self.animation : list[str] = []
 
@@ -73,13 +77,16 @@ class Animation(Format):
                 Animation: Animation
         """
 
-        from epitech_console.Error.error import ErrorType
         from epitech_console.Text.text import Text
         from epitech_console.ANSI.ansi import ANSI
         from epitech_console.System.stopwatch import StopWatch
 
         if not isinstance(other, (Animation, ANSI, Text, StopWatch, str)):
+            from epitech_console.Error.error import ErrorType
+            from epitech_console import quit
+
             if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__add__: other is of an unsupported type (supported: Animation, ANSI, Text, StopWatch, str ; current: {type(other)})")
+            quit()
             raise ErrorType()
 
         if type(other) in [Animation]:
@@ -103,10 +110,12 @@ class Animation(Format):
                 str: Animation string
         """
 
-        from epitech_console.Error.error import ErrorType
-
         if not isinstance(item, int):
+            from epitech_console.Error.error import ErrorType
+            from epitech_console import quit
+
             if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__getitem__: item is of an unsupported type (supported: int ; current: {type(item)})")
+            quit()
             raise ErrorType()
 
         if self.is_last():
@@ -186,29 +195,39 @@ class Animation(Format):
     def render(
             self,
             *,
+            color : Any = Color.color(Color.C_RESET),
             delete : bool = False
         ) -> str:
         """
             Convert Animation object to string.
 
             Parameters:
+                color (ANSI | int, optional): Color to render in.
                 delete (bool, optional): Delete the previous animation. Defaults to False.
 
             Returns:
                 str: Animation string
         """
 
-        from epitech_console.ANSI.line import Line
+        from epitech_console.ANSI.ansi import ANSI
+        from epitech_console.ANSI.cursor import Cursor
+        from epitech_console.ANSI.color import Color
+
+        if not isinstance(color, (ANSI, int)):
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.render: color is of an unsupported type (supported: ANSI, int ; current: {type(color)})")
 
         if not isinstance(delete, bool):
             if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.render: delete is of an unsupported type (supported: bool ; current: {type(delete)})")
 
+        if type(color) == int:
+            color = Color.color(color)
+
         string : str = ""
 
         if delete:
-            string += str(Line.clear_previous_line())
+            string += str(Cursor.up() + Cursor.move_column(0))
 
-        string += str(self)
+        string += self.__str__(color=color) + str(Color.color(Color.C_RESET))
 
         return string
 

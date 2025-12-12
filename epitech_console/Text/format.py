@@ -13,6 +13,12 @@ from typing import Any
 from epitech_console.System.setting import Setting
 
 
+Setting.update()
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Text.Format: imported")
+
+
 class Format:
     """
         Format class.
@@ -328,3 +334,6 @@ class Format:
                 ]
             },
             "epitech_console")
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Text.Format: created")

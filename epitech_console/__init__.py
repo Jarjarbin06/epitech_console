@@ -11,11 +11,7 @@
 from builtins import object
 from typing import Any
 
-
 from epitech_console import Animation, ANSI, Error, System, Text
-from epitech_console.System import Actions
-from epitech_console.Text import Format
-
 
 __version__ : str = 'v0.1.8'
 __author__ : str = 'Nathan Jarjarbin'
@@ -46,18 +42,22 @@ def _banner(
 
 
 def init(
+        banner: bool | None = None,
     ) -> None:
     """
         init() initializes the epitech console package and show a banner (if SETTING : show-banner = True in config.ini)
+
+        Parameters:
+            banner (bool | None, optional) : Override the show-banner setting
     """
 
     try:
+        if (System.Setting.S_SETTING_SHOW_BANNER and banner is None) or banner == True:
+            _banner()
         System.Setting.update()
         Animation.BasePack.update()
         ANSI.BasePack.update()
-
-        if System.Setting.S_SETTING_SHOW_BANNER:
-            _banner()
+        System.Setting.S_LOG.log("INFO", "module", "epitech_console initialized")
 
     except Error.Error as error:
         print(error)
@@ -89,6 +89,7 @@ def quit(
     """
 
     if System.Setting.S_SETTING_LOG:
+        System.Setting.S_LOG.log("INFO", "module", "epitech_console uninitialized")
         System.Setting.S_LOG.close()
         System.Setting.S_CONFIG.set("SETTING", "opened-log", "null")
 
@@ -111,3 +112,6 @@ __all__ : list[str] = [
     '__author__',
     '__email__'
 ]
+
+init(banner=False)
+quit(delete_log=True)

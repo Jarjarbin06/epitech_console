@@ -11,6 +11,8 @@
 from builtins import object
 from typing import Any
 from epitech_console.System.setting import Setting
+
+
 Setting.update()
 
 
@@ -53,3 +55,6 @@ class BasePack:
         BasePack.P_WARNING = (Color.color(Color.C_BG_DARK_YELLOW), Color.color(Color.C_FG_DARK_YELLOW))
         BasePack.P_VALID = (Color.color(Color.C_BG_DARK_GREEN), Color.color(Color.C_FG_DARK_GREEN))
         BasePack.P_INFO = (Color.color(Color.C_BG), Color.color(Color.C_RESET))
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "ANSI.BasePack: created")

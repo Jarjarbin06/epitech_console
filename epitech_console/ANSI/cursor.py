@@ -11,6 +11,8 @@
 from builtins import object
 from typing import Any
 from epitech_console.System.setting import Setting
+
+
 Setting.update()
 
 
@@ -254,3 +256,6 @@ class Cursor:
         from epitech_console.ANSI.ansi import ANSI
 
         return ANSI(f"{ANSI.ESC}25l")
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "ANSI.Cursor: created")

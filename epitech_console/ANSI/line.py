@@ -11,6 +11,8 @@
 from builtins import object
 from typing import Any
 from epitech_console.System.setting import Setting
+
+
 Setting.update()
 
 
@@ -119,3 +121,6 @@ class Line:
         from epitech_console.ANSI.cursor import Cursor
 
         return Cursor.previous(n) + Line.clear_line()
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "ANSI.Line: created")

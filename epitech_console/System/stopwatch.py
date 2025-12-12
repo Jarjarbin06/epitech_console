@@ -11,10 +11,12 @@
 from builtins import object
 from typing import Any
 from epitech_console.System.setting import Setting
+
+
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "ANSI.Cursor: imported")
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.StopWatch: imported")
 
 
 class StopWatch:
@@ -177,13 +179,13 @@ class StopWatch:
 
     def elapsed(
             self,
-            auto_update : bool = False
+            auto_update : bool = True
         ) -> float:
         """
             Get elapsed time.
 
             Parameters:
-                auto_update (bool, optional): Auto update. Defaults to False.
+                auto_update (bool, optional): Auto update. Defaults to True.
 
             Returns:
                 float: Elapsed time.
@@ -217,3 +219,6 @@ class StopWatch:
         """
 
         return f"StopWatch(?)"
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.StopWatch: created")

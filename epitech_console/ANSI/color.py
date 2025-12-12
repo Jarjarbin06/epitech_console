@@ -11,6 +11,8 @@
 from builtins import object
 from typing import Any
 from epitech_console.System.setting import Setting
+
+
 Setting.update()
 
 
@@ -273,3 +275,6 @@ class Color:
         """
 
         return Color.rgb_bg(31, 72, 94)
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "ANSI.Color: created")

@@ -11,6 +11,8 @@
 from builtins import object
 from typing import Any
 from epitech_console.System.setting import Setting
+
+
 Setting.update()
 
 
@@ -63,11 +65,14 @@ class BasePack:
                 style (Style, optional): Style of the BasePack animations.
         """
 
-        from epitech_console.Error.error import ErrorType
         from epitech_console.Animation.style import Style
 
         if not isinstance(style, Style):
+            from epitech_console.Error.error import ErrorType
+            from epitech_console import quit
+
             if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.BasePack.update: style is of an unsupported type (supported: Style ; current: {type(style)})")
+            quit()
             raise ErrorType()
 
         BasePack.P_SLIDE_R = [
@@ -107,29 +112,29 @@ class BasePack:
         ]
 
         BasePack.P_SLIDER_R = [
-            f"{style.border_left}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.border_right}"
+            f"{style.border_left}{style.arrow_right}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.arrow_right}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.arrow_right}{style.off}{style.border_right}"
         ]
 
         BasePack.P_SLIDER_L = [
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}"
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_left}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_left}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.off}{style.arrow_left}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}"
         ]
 
         BasePack.P_FILL_R = [
@@ -169,38 +174,38 @@ class BasePack:
         ]
 
         BasePack.P_EMPTY_R = [
-            f"{style.border_left}{style.arrow_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.arrow_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.on}{style.border_right}",
-            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_left}{style.border_right}",
+            f"{style.border_left}{style.arrow_right}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.arrow_right}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.on}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.on}{style.border_right}",
+            f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.arrow_right}{style.border_right}",
             f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}"
         ]
 
         BasePack.P_EMPTY_L = [
-            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_right}{style.border_right}",
-            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_right}{style.off}{style.border_right}",
-            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.on}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.on}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.on}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
-            f"{style.border_left}{style.arrow_right}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_left}{style.border_right}",
+            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_left}{style.off}{style.border_right}",
+            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.on}{style.on}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.on}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.on}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.on}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
+            f"{style.border_left}{style.arrow_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
             f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}"
         ]
 

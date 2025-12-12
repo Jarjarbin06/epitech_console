@@ -12,6 +12,8 @@ from builtins import object
 from typing import Any
 from epitech_console.Text.format import Format
 from epitech_console.System.setting import Setting
+
+
 Setting.update()
 
 
@@ -117,3 +119,6 @@ class ANSI(Format):
         """
 
         return f"ANSI(\"{self.sequence}\")"
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "ANSI.ANSI: created")

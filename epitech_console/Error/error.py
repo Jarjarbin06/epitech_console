@@ -13,6 +13,12 @@ from typing import Any
 from epitech_console.System.setting import Setting
 
 
+Setting.update()
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Error.Error: imported")
+
+
 class Error(Exception):
     """
     Error class.
@@ -37,6 +43,8 @@ class Error(Exception):
                 error (str, optional): The error type (title).
                 link (tuple[str, int], optional): The link to where the error comes from (file and line).
         """
+
+        from epitech_console import quit as q
 
         self.message : str = message
         self.error : str = error
@@ -98,12 +106,13 @@ class Error(Exception):
 
         from epitech_console.ANSI.color import Color
 
-        string : str = (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + self.error + ":"
+        string : str = "\n"
+        string += (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + self.error + ":"
 
         for line in self.message.splitlines():
             string += "\n" + (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}     {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + self.message
 
-        string += (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + ("\n{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}\n{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}  {Color.color(Color.C_FG_RED)}" + self.link) if self.link else ""
+        string += "\n" + (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + (f"\n{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}\n{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}  {Color.color(Color.C_FG_RED)}" + self.link) if self.link else ""
 
         return string + "\n"
 
@@ -251,3 +260,6 @@ class ErrorValue(Error):
         self.link : str | None = None
 
         self.create_link()
+
+
+if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Error.Error: created")
