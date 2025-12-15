@@ -120,7 +120,9 @@ class ProgressBar(Format):
                 str: Animations string
         """
 
-        return str(color + self.animation[item])
+        from epitech_console.ANSI.color import Color
+
+        return str(color + self.animation[item] + str(Color.color(Color.C_RESET)))
 
 
     def __str__(
@@ -224,8 +226,8 @@ class ProgressBar(Format):
 
         string : str = ""
 
-        if type(color) in [ANSI]:
-            color : tuple[Any, Any, Any] = (color, color, color)
+        if type(color) not in [tuple]:
+            color : tuple[Any, Any, Any] = (ANSI(color), ANSI(color), ANSI(color))
 
         string += str(self.__str__(color=color, hide_spinner=(hide_spinner_at_end and self.percent == 100)))
 

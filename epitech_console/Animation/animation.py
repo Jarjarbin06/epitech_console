@@ -224,10 +224,10 @@ class Animation(Format):
 
         string : str = ""
 
+        string += self.__str__(color=color) + str(Color.color(Color.C_RESET))
+
         if delete:
             string += str(Cursor.up() + Cursor.move_column(0))
-
-        string += self.__str__(color=color) + str(Color.color(Color.C_RESET))
 
         return string
 

@@ -278,7 +278,10 @@ class Format:
 
         string : str = ((title + "/\n") if title else "")
 
-        if type(d) in [str]:
+        if type(d) in [None]:
+            return string
+
+        elif type(d) in [str]:
             string += ("│   " * indent) + "├── " + d + "\n"
 
         elif type(d) in [list]:

@@ -33,7 +33,7 @@ class Error(Exception):
 
             *,
             error : str = "Error",
-            link : tuple[str , int] | None = None
+            link : tuple[str , int | None] | None = None
         ) -> None:
         """
             Create an Error.
@@ -48,7 +48,7 @@ class Error(Exception):
 
         self.message : str = message
         self.error : str = error
-        self.link_data : tuple[str, int] | None = link
+        self.link_data : tuple[str, int | None] | None = link
         self.link : str | None = None
 
         self.create_link()
@@ -65,7 +65,7 @@ class Error(Exception):
         from epitech_console.Text.text import Text
 
         if self.link_data:
-            if len(self.link_data) == 1 and type(self.link_data[0]) in [str]:
+            if (len(self.link_data) == 1 or (len(self.link_data) == 2 and not self.link_data[1])) and type(self.link_data[0]) in [str]:
                 self.link = str(Text.file_link(self.link_data[0]))
             if len(self.link_data) == 2 and type(self.link_data[0]) in [str] and type(self.link_data[1]) in [int]:
                 if self.link_data[1] > 0:
