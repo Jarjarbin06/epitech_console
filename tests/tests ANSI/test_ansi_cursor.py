@@ -64,12 +64,14 @@ def test_cursor_restore(
     assert str(Cursor.reset()) == "\033[8"
 
 
-def test_cursor_hide():
-    assert str(Cursor.hide()) == "\033[25l"
+def test_cursor_hide(
+    ) -> None:
+    assert str(Cursor.hide()) == "\033[?25l"
 
 
-def test_cursor_show():
-    assert str(Cursor.show()) == "\033[25h"
+def test_cursor_show(
+    ) -> None:
+    assert str(Cursor.show()) == "\033[?25h"
 
 
 quit(delete_log=True)
