@@ -1,0 +1,11 @@
+#!/bin/bash
+
+python3 demo/demo_animation.py
+sleep 5
+python3 demo/demo_ansi.py
+sleep 5
+python3 demo/demo_error.py
+sleep 5
+python3 demo/demo_system.py
+sleep 5
+python3 demo/demo_text.py
