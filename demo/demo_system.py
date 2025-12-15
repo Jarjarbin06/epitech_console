@@ -84,7 +84,7 @@ def system_demo(
 
     print("\n=== CONSOLE.PRINT CUSTOM FILE ===")
 
-    with open("perso/demo/output/console_output_test.txt", "w") as f:
+    with open("demo/output/console_output_test.txt", "w") as f:
         Console.print("This goes into a file", file=f)
         Console.print("Another line in file", file=f)
 
@@ -256,7 +256,7 @@ def system_demo(
 
     print("\n=== CONFIG EXIST (EXISTING) ===")
 
-    config_path = "./perso/demo/output"
+    config_path = "./demo/output"
 
     exists = Config.exist(config_path)
     print(f"Config exists before deletion: {exists}")
