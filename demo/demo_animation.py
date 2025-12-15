@@ -45,7 +45,7 @@ def animation_demo(
 
     anim = Animation.Animation("Loading")
     for i in range(5):
-        Console.print(anim.render(delete=True), sleep=0.1, end="")
+        Console.print(anim.render(delete=True), sleep=0.1)
         anim.update()
 
     print("\n(no visual change expected, but render/update are exercised)")
@@ -61,7 +61,7 @@ def animation_demo(
     anim = Animation.Animation(frames)
 
     for i in range(9):
-        Console.print(anim.render(delete=True), sleep=0.1, end="")
+        Console.print(anim.render(delete=True), sleep=0.1)
         anim.update()
 
     print("\n(should loop through A → B → C)")
@@ -76,7 +76,7 @@ def animation_demo(
     anim = Animation.Animation(["1", "2", "3"])
 
     for i in range(6):
-        Console.print(anim.render(delete=True), sleep=0.1, end="")
+        Console.print(anim.render(delete=True), sleep=0.1)
         anim.update(auto_reset=True)
 
     print("\n(animation loops automatically)")
@@ -87,7 +87,7 @@ def animation_demo(
     anim = Animation.Animation(["X", "Y", "Z"])
 
     for i in range(6):
-        Console.print(anim.render(delete=True), sleep=0.1, end="")
+        Console.print(anim.render(delete=True), sleep=0.1)
         anim.update(auto_reset=False)
 
     print("\n(animation should stop at last frame)")
@@ -101,7 +101,7 @@ def animation_demo(
 
     anim = Animation.Animation(Animation.BasePack.P_SLIDE_L)
     for _ in range(12):
-        Console.print(anim.render(delete=True), sleep=0.1, end="")
+        Console.print(anim.render(delete=True), sleep=0.1)
         anim.update()
 
     print("\n(should animate a character sliding to the left)")
@@ -111,7 +111,7 @@ def animation_demo(
 
     anim = Animation.Animation(Animation.BasePack.P_SLIDER_L)
     for _ in range(12):
-        Console.print(anim.render(delete=True), sleep=0.1, end="")
+        Console.print(anim.render(delete=True), sleep=0.1)
         anim.update()
 
     print("\n(should animate a chain of character sliding to the left)")
@@ -121,7 +121,7 @@ def animation_demo(
 
     anim = Animation.Animation(Animation.BasePack.P_FILL_L)
     for _ in range(12):
-        Console.print(anim.render(delete=True), sleep=0.1, end="")
+        Console.print(anim.render(delete=True), sleep=0.1)
         anim.update()
 
     print("\n(should animate characters filling to the left)")
@@ -146,7 +146,7 @@ def animation_demo(
 
     anim = Animation.Animation(Animation.BasePack.P_FILL_R)
     for _ in range(12):
-        Console.print(anim.render(delete=True), sleep=0.1, end="")
+        Console.print(anim.render(delete=True), sleep=0.1)
         anim.update()
 
     print("\n(style change applied globally to BasePack)")
@@ -160,7 +160,7 @@ def animation_demo(
 
     spinner = Spinner.stick()
     for _ in range(8):
-        Console.print(spinner.render(delete=True), sleep=0.1, end="")
+        Console.print(spinner.render(delete=True), sleep=0.1)
         spinner.update()
 
     print("\n(should animate a spinning character with 8 steps)")
@@ -170,7 +170,7 @@ def animation_demo(
 
     spinner = Spinner.plus()
     for _ in range(8):
-        Console.print(spinner.render(delete=True), sleep=0.1, end="")
+        Console.print(spinner.render(delete=True), sleep=0.1)
         spinner.update()
 
     print("\n(should animate a spinning character with 4 steps)")
@@ -180,7 +180,7 @@ def animation_demo(
 
     spinner = Spinner.cross()
     for _ in range(8):
-        Console.print(spinner.render(delete=True), sleep=0.1, end="")
+        Console.print(spinner.render(delete=True), sleep=0.1)
         spinner.update()
 
     print("\n(should animate a spinning character with 4 steps)")
@@ -196,7 +196,7 @@ def animation_demo(
 
     for i in range(0, 101, 5):
         bar.update(percent=i)
-        Console.print(bar.render(delete=True), sleep=0.1, end="")
+        Console.print(bar.render(delete=True), sleep=0.1)
 
     print("\n(progress should reach 100%)")
 
@@ -210,7 +210,7 @@ def animation_demo(
     bar = ProgressBar(length=20, percent_style="bar")
     for i in range(0, 101, 5):
         bar.update(i)
-        Console.print(bar.render(delete=True), sleep=0.1, end="")
+        Console.print(bar.render(delete=True), sleep=0.1)
 
     print("\n(progress should be shown as a bar)")
 
@@ -220,7 +220,7 @@ def animation_demo(
     bar = ProgressBar(length=20, percent_style="num")
     for i in range(0, 101, 5):
         bar.update(i)
-        Console.print(bar.render(delete=True), sleep=0.1, end="")
+        Console.print(bar.render(delete=True), sleep=0.1)
 
     print("\n(progress should be shown as a percentage)")
 
@@ -230,7 +230,7 @@ def animation_demo(
     bar = ProgressBar(length=20, percent_style="mix")
     for i in range(0, 101, 5):
         bar.update(i)
-        Console.print(bar.render(delete=True), sleep=0.1, end="")
+        Console.print(bar.render(delete=True), sleep=0.1)
 
     print("\n(progress should be shown as a bar and percentage)")
 
@@ -250,7 +250,7 @@ def animation_demo(
 
     for i in range(0, 101, 5):
         bar.update(percent=i, update_spinner=True)
-        Console.print(bar.render(delete=True), sleep=0.1, end="")
+        Console.print(bar.render(delete=True), sleep=0.1)
 
     print("\n(progress should be shown while a character is spinning)")
 
@@ -264,7 +264,7 @@ def animation_demo(
     bar = ProgressBar(length=20, percent_style="mix")
     for i in range(0, 101, 5):
         bar.update(i)
-        Console.print(bar.render(color=("\033[32m", "\033[31m", "\033[33m"), delete=True), sleep=0.1, end="")
+        Console.print(bar.render(color=("\033[32m", "\033[31m", "\033[33m"), delete=True), sleep=0.1)
 
     print("\n(bar should be shown in green and percentage in yellow)")
 
@@ -274,7 +274,7 @@ def animation_demo(
     bar = ProgressBar(length=20, percent_style="mix")
     for i in range(0, 101, 5):
         bar.update(i)
-        Console.print(bar.render(color=("\033[5m", "\033[5m", "\033[0m"), delete=True, hide_spinner_at_end=False), sleep=0.1, end="")
+        Console.print(bar.render(color=("\033[5m", "\033[5m", "\033[0m"), delete=True, hide_spinner_at_end=False), sleep=0.1)
 
     print("\n(bar should be flashing but not percentage)")
 
@@ -293,7 +293,7 @@ def animation_demo(
 
     for i in range(0, 101, 5):
         bar.update(i)
-        Console.print(bar.render(delete=True), sleep=0.1, end="")
+        Console.print(bar.render(delete=True), sleep=0.1)
 
     print("\n(progress should be shown while a character is spinning before the bar)")
 
@@ -308,7 +308,7 @@ def animation_demo(
 
     for i in range(0, 101, 5):
         bar.update(i)
-        Console.print(bar.render(delete=True), sleep=0.1, end="")
+        Console.print(bar.render(delete=True), sleep=0.1)
     print("\n(progress should be shown while a character is spinning after the bar)")
 
 
@@ -336,7 +336,7 @@ def animation_demo(
 
     for i in range(0, 101, 5):
         bar.update(i)
-        Console.print(bar.render(delete=True), sleep=0.1, end="")
+        Console.print(bar.render(delete=True), sleep=0.1)
 
     print("\n(progress should be shown with a custom style)")
 
