@@ -31,7 +31,7 @@ class ANSI(Format):
     """
 
 
-    ESC: str = "\033["
+    ESC: str = "\x1b["
 
 
     def __init__(
