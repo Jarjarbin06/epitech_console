@@ -1,4 +1,4 @@
-<small>last update : **PACKAGE** = *2025-12-15 15:50 UTC+1(Paris)* ; **README** = *2025-12-15 16:35 UTC+1(Paris)*</small>\
+<small>last update : **PACKAGE** = *2025-12-15 15:50 UTC+1(Paris)* ; **README** = *2025-12-15 16:39 UTC+1(Paris)*</small>\
 <img src="https://github.com/Jarjarbin06/epitech_console/blob/main/source/epitech_logo.png?raw=true" alt="Epitech logo" width="49%" style="display:inline-block; margin-right:1%;">
 <img src="https://github.com/Jarjarbin06/epitech_console/blob/main/source/epitech_console_logo.png?raw=true" alt="Epitech Console logo" width="49%" style="display:inline-block;">
 
