@@ -64,12 +64,14 @@ class Time:
                 float : Exact elapsed time
         """
 
-        from epitech_console.System.stopwatch import StopWatch
+        ## cannot be tested with pytest ##
 
-        watch = StopWatch(True)
-        input(msg)
+        from epitech_console.System.stopwatch import StopWatch # pragma: no cover
 
-        return watch.elapsed(True)
+        watch = StopWatch(True) # pragma: no cover
+        input(msg) # pragma: no cover
+
+        return watch.elapsed(True) # pragma: no cover
 
 
 if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Time: created")
