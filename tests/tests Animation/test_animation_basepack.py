@@ -1,8 +1,8 @@
 import pytest
 
 
-from epitech_console.Animation import BasePack
-from epitech_console.Animation import Style
+from epitech_console.Animation import BasePack, Style
+from epitech_console.Error import ErrorType
 from epitech_console import init, quit
 
 
@@ -43,7 +43,6 @@ def test_basepack_update_with_style(
     style = Style(on="X", off="_", arrow_left="{", arrow_right="}", border_left="[", border_right="]")
     BasePack.update(style)
 
-    # Check if update was applied on at least one animation pack
     assert any("X" in frame or "_" in frame for frame in BasePack.P_SLIDE_R)
     assert any("X" in frame or "_" in frame for frame in BasePack.P_SLIDE_L)
     assert any("X" in frame or "_" in frame for frame in BasePack.P_SLIDER_R)
@@ -54,6 +53,28 @@ def test_basepack_update_with_style(
     assert any("X" in frame or "_" in frame for frame in BasePack.P_EMPTY_L)
     assert any("X" in frame or "_" in frame for frame in BasePack.P_FULL)
     assert any("X" in frame or "_" in frame for frame in BasePack.P_EMPTY)
+
+
+def test_basepack_update_without_style(
+    ) -> None:
+    BasePack.update()
+
+    assert any("#" in frame or "-" in frame for frame in BasePack.P_SLIDE_R)
+    assert any("#" in frame or "-" in frame for frame in BasePack.P_SLIDE_L)
+    assert any("#" in frame or "-" in frame for frame in BasePack.P_SLIDER_R)
+    assert any("#" in frame or "-" in frame for frame in BasePack.P_SLIDER_L)
+    assert any("#" in frame or "-" in frame for frame in BasePack.P_FILL_R)
+    assert any("#" in frame or "-" in frame for frame in BasePack.P_FILL_L)
+    assert any("#" in frame or "-" in frame for frame in BasePack.P_EMPTY_R)
+    assert any("#" in frame or "-" in frame for frame in BasePack.P_EMPTY_L)
+    assert any("#" in frame or "-" in frame for frame in BasePack.P_FULL)
+    assert any("#" in frame or "-" in frame for frame in BasePack.P_EMPTY)
+
+
+def test_basepack_update_invalid_style(
+    ) -> None:
+    with pytest.raises(ErrorType):
+        BasePack.update("hi")
 
 
 quit(delete_log=True)

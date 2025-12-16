@@ -104,7 +104,7 @@ init()
 
 my_animation = Animation(BasePack.P_FILL_R)
 for i in range(5):
-    Console.print(my_animation.render(delete=True), end="", sleep=0.5)
+    Console.print(my_animation.render(delete=True), sleep=0.5)
     my_animation.update()
 
 quit(delete_log=True)
@@ -121,7 +121,7 @@ init()
 
 my_animation = Animation(['Frame 1', 'Frame 2', 'Frame 3'])
 for i in range(5):
-    Console.print(my_animation.render(delete=True), end="", sleep=0.5)
+    Console.print(my_animation.render(delete=True), sleep=0.5)
     my_animation.update()
 
 quit(delete_log=True)
@@ -159,9 +159,9 @@ style : Style = Style(on="=", off=" ", border_left="[", border_right="]")
 bar : ProgressBar
 
 for i in range(1001):
-	bar = ProgressBar(len(Console) - 20, percent_style="mix", style=style)
+	bar = ProgressBar(len(Console) - 15, percent_style="mix", style=style)
 	bar.update(i/10)
-	Console.print(bar.render(delete=True), end="", sleep=0.01, cut=True)
+	Console.print(bar.render(delete=True), sleep=0.01, cut=True)
 
 quit(delete_log=True)
 ```
@@ -341,7 +341,7 @@ REPO/
     *   `#P_INFO`: Colors for information title and body.
 
 *   **Color**: Class for ANSI color codes.
-	*   `@color(color: int)`: Returns Ansi sequence for pre-made color codes.
+	*   `@color(color: int)`: Returns ANSI sequence for pre-made color codes.
     *   `@color_fg(color: int)`: Returns ANSI sequence for a foreground color.
     *   `@color_bg(color: int)`: Returns ANSI sequence for a background color.
     *   `@rgb_fg(r: int, g: int, b: int)`: Returns ANSI sequence for a foreground RGB color.
@@ -395,10 +395,10 @@ REPO/
     *   `+Action(name: str, function: Callable, *args, **kwargs`: Constructor to create an Action object.
 
 *   **Actions**: Class for actions list saving.
-    *   `+Actions(actions: list[Action] | Action | None = None)`: Constructor to create a Actions object.
+    *   `+Actions(actions: list[Action] | Action | None = None)`: Constructor to create an Actions object.
 
 *   **Config**: Class for configuration management.
-    *   `+Config(path:str, data: dict | None = None, file_name:str = "config.ini")`: Constructor to create a Config object (create the config file if does not exist, read it otherwise).
+    *   `+Config(path:str, data: dict | None = None, file_name:str = "config.ini")`: Constructor to create a Config object (create the config file if it does not exist, read it otherwise).
     *   `_get(section: str, option: str, wanted_type: type = str)`: Returns the value of type `wanted_type` in section `section` and option `option`.
     *   `_delete(cached: bool = False)`: Deletes the configuration file (and removes cached values unless `cached=True`).
     *   `@exist(path: str, file_name: str = "config.ini")`: Returns whether a config file named `file_name` exist in `path` or not.

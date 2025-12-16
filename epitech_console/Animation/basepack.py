@@ -67,7 +67,7 @@ class BasePack:
 
         from epitech_console.Animation.style import Style
 
-        if not isinstance(style, Style):
+        if not type(style) in [Style]:
             from epitech_console.Error.error import ErrorType
             from epitech_console import quit
 

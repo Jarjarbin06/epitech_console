@@ -113,7 +113,7 @@ info:
 clean:
 	@echo -e "$(YELLOW)[CLEAN] Removing cache, test, log and build files$(NC)"
 	@find . -type d -name "__pycache__" -exec rm -frd {} +
-	@rm -frd *.egg-info *.xml trace htmlcov .pytest_cache log/*
+	@rm -frd *.egg-info *.xml trace htmlcov .pytest_cache epitech_console/log/*
 	@echo -e "$(GREEN)[CLEAN] Done$(NC)"
 
 # ------------------------------------------------------------
