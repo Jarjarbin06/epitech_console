@@ -67,7 +67,7 @@ If you want the latest version directly from the source, you can install it usin
 ```bash
 git clone -b latest https://github.com/Jarjarbin06/epitech_console.git
 cd epitech_console
-./script/install-package
+make install
 ```
 This downloads the code, then the `install-package` script handles the installation.
 These commands install the `epitech_console` package and its dependencies (None currently).
@@ -281,6 +281,7 @@ REPO/
 │   │   └── test_text_text.py
 ├── .gitignore
 ├── LICENSE
+├── Makefile
 ├── MANIFEST.in
 ├── pyproject.toml
 └── README.md

@@ -359,11 +359,10 @@ def animation_demo(
                 hide_spinner_at_end=True,
                 delete=True
             ),
-            sleep=0.1,
-            end=""
+            sleep=0.1
         )
 
-    print("\n(spinner should hidden at the end)")
+    print("\n(spinner should hide at the end)")
 
 
     # ============================================================

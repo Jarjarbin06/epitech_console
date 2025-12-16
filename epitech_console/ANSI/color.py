@@ -122,13 +122,13 @@ class Color:
 
     @staticmethod
     def color(
-            color: int
+            color: Any | str | int
         ) -> ANSI:
         """
             Get ANSI sequence from the 'color'
 
             Arguments:
-                color (str): color code
+                color (ANSI | str | int): color code
 
             Returns:
                 ANSI: ansi sequence
@@ -136,7 +136,11 @@ class Color:
 
         from epitech_console.ANSI.ansi import ANSI
 
-        return ANSI(f"{ANSI.ESC}{str(color)}m")
+        if type(color) in [ANSI, str]:
+            return ANSI(str(color))
+
+        else:
+            return ANSI(f"{ANSI.ESC}{str(color)}m")
 
 
     @staticmethod

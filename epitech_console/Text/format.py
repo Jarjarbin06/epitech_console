@@ -163,7 +163,7 @@ class Format:
         return Format.apply(self, Color.color(BasePack.P_WARNING[1]))
 
 
-    def ok(
+    def valid(
             self,
             *,
             title : bool = False
@@ -182,8 +182,8 @@ class Format:
         from epitech_console.ANSI.basepack import BasePack
 
         if title:
-            return Format.apply(self, Color.color(BasePack.P_OK[0]))
-        return Format.apply(self, Color.color(BasePack.P_OK[1]))
+            return Format.apply(self, Color.color(BasePack.P_VALID[0]))
+        return Format.apply(self, Color.color(BasePack.P_VALID[1]))
 
 
     def info(

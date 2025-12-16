@@ -128,7 +128,7 @@ def text_demo(
 
     Console.print(Text.Text("Error message").error())
     Console.print(Text.Text("Warning message").warning())
-    Console.print(Text.Text("OK message").ok())
+    Console.print(Text.Text("Valid message").valid())
     Console.print(Text.Text("Info message").info())
 
     print("\n(colored foreground styles)")
@@ -142,7 +142,7 @@ def text_demo(
 
     Console.print(Text.Text("ERROR").error(title=True))
     Console.print(Text.Text("WARNING").warning(title=True))
-    Console.print(Text.Text("OK").ok(title=True))
+    Console.print(Text.Text("VALID").valid(title=True))
     Console.print(Text.Text("INFO").info(title=True))
 
     print("\n(background colored styles)")
