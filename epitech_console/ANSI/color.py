@@ -125,7 +125,7 @@ class Color:
             color: Any | str | int
         ) -> ANSI:
         """
-            Get ANSI sequence from the 'color'
+            Get ANSI sequence from the 'color' (color must be one of the preset C_?)
 
             Arguments:
                 color (ANSI | str | int): color code
@@ -139,8 +139,15 @@ class Color:
         if type(color) in [ANSI, str]:
             return ANSI(str(color))
 
+        elif type(color) in [int]:
+            if 0 <= color <= 107:
+                return ANSI(f"{ANSI.ESC}{str(color)}m")
+
+            else:
+                return ANSI("")
+
         else:
-            return ANSI(f"{ANSI.ESC}{str(color)}m")
+            return ANSI("")
 
 
     @staticmethod
@@ -159,7 +166,10 @@ class Color:
 
         from epitech_console.ANSI.ansi import ANSI
 
-        return ANSI(f"{ANSI.ESC}38;5;{color}m")
+        if 0 <= color <= 255:
+            return ANSI(f"{ANSI.ESC}38;5;{color}m")
+
+        return ANSI("")
 
 
     @staticmethod
@@ -178,7 +188,11 @@ class Color:
 
         from epitech_console.ANSI.ansi import ANSI
 
-        return ANSI(f"{ANSI.ESC}48;5;{color}m")
+        if 0 <= color <= 255:
+            return ANSI(f"{ANSI.ESC}48;5;{color}m")
+
+        return ANSI("")
+
 
 
     @staticmethod
@@ -201,9 +215,10 @@ class Color:
 
         from epitech_console.ANSI.ansi import ANSI
 
-        if r < 0 or g < 0 or b < 0 or r > 255 or g > 255 or b > 255:
-            return ANSI("")
-        return ANSI(f"{ANSI.ESC}38;2;{r};{g};{b}m")
+        if 0 <= r <= 255 and 0 <= g <= 255 and 0 <= b <= 255:
+            return ANSI(f"{ANSI.ESC}38;2;{r};{g};{b}m")
+
+        return ANSI("")
 
 
     @staticmethod
@@ -226,7 +241,10 @@ class Color:
 
         from epitech_console.ANSI.ansi import ANSI
 
-        return ANSI(f"{ANSI.ESC}48;2;{r};{g};{b}m")
+        if 0 <= r <= 255 and 0 <= g <= 255 and 0 <= b <= 255:
+            return ANSI(f"{ANSI.ESC}48;2;{r};{g};{b}m")
+
+        return ANSI("")
 
 
     @staticmethod
