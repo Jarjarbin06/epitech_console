@@ -68,8 +68,8 @@ class Style:
 
         return (
             f'on="{self.on}";off="{self.off}";' +
-            f'arrow_left="{self.arrow_left}";arrow_right"{self.arrow_right}";' +
-            f'border_left="{self.border_left}";border_right"{self.border_right}"'
+            f'arrow_left="{self.arrow_left}";arrow_right="{self.arrow_right}";' +
+            f'border_left="{self.border_left}";border_right="{self.border_right}"'
         )
 
 

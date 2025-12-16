@@ -30,20 +30,24 @@ class Text(Format):
 
     def __init__(
             self,
-            text : Any | str = ""
+            text : list[Any | str] | Any | str = ""
         ) -> None:
         """
             Create a text.
 
             Parameters:
-                text (ANSI | str, optional): text
+                text (list[Any | str] | ANSI | str, optional): text
         """
 
         from epitech_console.ANSI.ansi import ANSI
 
         self.text : str = ""
 
-        if type(text) in [ANSI]:
+        if type(text) in [list]:
+            for item in text:
+                self.text += str(item)
+
+        elif type(text) in [ANSI]:
             self.text = text.sequence
 
         else :

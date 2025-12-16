@@ -9,16 +9,22 @@ init()
 
 
 
-def test_ansi_empty_init(
+def test_ansi_empty_initialization(
     ) -> None:
     a = ANSI()
     assert str(a) == ""
 
 
-def test_ansi_string_init(
+def test_ansi_string_initialization(
     ) -> None:
     a = ANSI("\033[31m")
     assert str(a) == "\033[31m"
+
+
+def test_ansi_list_initialization(
+    ) -> None:
+    a = ANSI(["\033[31m", "\033[32m", "\033[33m"])
+    assert str(a) == "\033[31m\033[32m\033[33m"
 
 
 def test_ansi_addition(

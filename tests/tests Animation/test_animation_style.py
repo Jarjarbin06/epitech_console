@@ -31,4 +31,16 @@ def test_style_default_values(
     assert s.border_right == "|"
 
 
+def test_style_string(
+    ) -> None:
+    s = Style()
+    assert str(s) == "on=\"#\";off=\"-\";arrow_left=\"<\";arrow_right=\">\";border_left=\"|\";border_right=\"|\""
+
+
+def test_style_repr(
+    ) -> None:
+    s = Style()
+    assert repr(s) == "Style(\"#\", \"-\", \"<\", \">\", \"|\", \"|\")"
+
+
 quit(delete_log=True)

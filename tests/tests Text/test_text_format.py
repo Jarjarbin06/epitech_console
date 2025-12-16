@@ -2,12 +2,11 @@ import pytest
 
 
 from epitech_console.Text import Text
+from epitech_console.Text import Format
 from epitech_console import init, quit
 
 
 init()
-
-
 
 
 def test_format_reset():
@@ -52,13 +51,13 @@ def test_format_strikethrough():
     assert str(s) == "\033[9mhi"
 
 
-"""
 def test_format_apply_to_text():
     t = Text("hi")
-    result = Format.apply(t, sequence=Format.bold())
-    assert "\033[" in result
-    assert "hi" in result
+    result = Format.apply(t, sequence="world")
+    assert "worldhi" == str(result)
 
+
+"""
 def test_format_apply_to_str():
     result = Format.apply("hello", sequence=Format.italic())
     assert "\033[" in result
@@ -90,7 +89,7 @@ def test_format_tree_dict():
     assert "file1" in tree_output
     assert "subfolder" in tree_output
     assert "file2" in tree_output
-
+"""
 
 def test_format_tree_list():
     data = ["a", "b", "c"]
@@ -112,9 +111,10 @@ def test_format_tree_string():
 def test_format_module_tree():
     output = Format.module_tree()
 
-    # check that the tree contains the expected root
-    assert "epitech_console" in output
-"""
+    assert "epitech_console/" in output
+    assert " Text/" in output
+    assert " System/" in output
+    assert " Time" in output
 
 
 quit(delete_log=True)

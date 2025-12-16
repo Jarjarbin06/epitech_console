@@ -10,6 +10,8 @@
 
 from builtins import object
 from typing import Any
+
+
 from epitech_console.System.setting import Setting
 
 
@@ -326,12 +328,18 @@ class Format:
                     "Line"
                 ],
                 "Error": [
-                    "Error"
+                    "Error",
+                    "ErrorLaunch",
+                    "ErrorImport",
+                    "ErrorType",
+                    "ErrorValue",
                 ],
                 "System": [
                     "Action & Actions",
                     "Config",
                     "Console",
+                    "Log",
+                    "Setting",
                     "StopWatch",
                     "Time"
                 ]

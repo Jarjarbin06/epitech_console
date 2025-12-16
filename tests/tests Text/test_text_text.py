@@ -1,6 +1,7 @@
 import pytest
 
 
+from epitech_console.ANSI import ANSI
 from epitech_console.Text import Text
 from epitech_console import init, quit
 
@@ -8,16 +9,40 @@ from epitech_console import init, quit
 init()
 
 
-def test_text_initialization(
+def test_text_string_initialization(
     ) -> None:
     t = Text("hello")
     assert str(t) == "hello"
+
+
+def test_text_ANSI_initialization(
+    ) -> None:
+    t = Text(ANSI("hello"))
+    assert str(t) == "hello"
+
+
+def test_ansi_list_init(
+    ) -> None:
+    a = Text(["Hello", " World", "!!!"])
+    assert str(a) == "Hello World!!!"
 
 
 def test_text_empty_initialization(
     ) -> None:
     t = Text()
     assert str(t) == ""
+
+
+def test_text_length(
+    ) -> None:
+    t = Text("hello")
+    assert len(t) == 5
+
+
+def test_text_repr(
+    ) -> None:
+    t = Text("hello")
+    assert repr(t) == "Text(\"hello\")"
 
 
 def test_text_url_link_no_text(
