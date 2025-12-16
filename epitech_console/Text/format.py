@@ -234,7 +234,7 @@ class Format:
         from epitech_console.Animation.progressbar import ProgressBar
 
         if not sequence:
-            sequence: ANSI = Color.color(Color.C_BOLD)
+            sequence: ANSI = Color.color(Color.C_RESET)
 
         if type(obj) in [str]:
             return str(sequence) + str(obj)
@@ -246,11 +246,11 @@ class Format:
             return ANSI(str(sequence) + str(obj))
 
         if type(obj) in [Animation]:
-            animation: list[str] = [(str(sequence) + str(line)) for line in obj.animation]
+            animation : list[str] = [(str(sequence) + str(line)) for line in obj.animation]
             return Animation(animation)
 
         if type(obj) in [ProgressBar]:
-            animation: Animation = Animation([(str(sequence) + str(line)) for line in obj.animation])
+            animation : Animation = Animation([(str(sequence) + str(line)) for line in obj.animation])
             spinner : Animation | None = None
             if obj.spinner:
                 spinner: Animation = Animation([(str(sequence) + str(line)) for line in obj.spinner])

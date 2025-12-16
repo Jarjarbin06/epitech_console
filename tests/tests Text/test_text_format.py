@@ -52,28 +52,29 @@ def test_format_strikethrough():
 
 
 def test_format_apply_to_text():
-    t = Text("hi")
-    result = Format.apply(t, sequence="world")
-    assert "worldhi" == str(result)
+    t = Text("hello world")
+    result = Format.apply(t, "s1")
+    assert type(result) == Text
+    assert "s1hello world" == str(result)
 
 
-"""
 def test_format_apply_to_str():
-    result = Format.apply("hello", sequence=Format.italic())
-    assert "\033[" in result
-    assert "hello" in result
+    result = Format.apply("hello world", "s2")
+    assert type(result) == str
+    assert "s2hello world" == str(result)
 
 
 def test_format_apply_without_sequence_uses_reset():
-    result = Format.apply("hello")
-    assert "\033[" in result
+    result = Format.apply("hello world")
+    assert "\033[0mhello world" in result
 
 
 def test_format_apply_invalid_target():
-    with pytest.raises(TypeError):
-        Format.apply(123, sequence=Format.bold())
+    result = Format.apply(123, "s3")
+    assert result == 123
 
 
+"""
 def test_format_tree_dict():
     data = {
         "folder": {
@@ -90,6 +91,7 @@ def test_format_tree_dict():
     assert "subfolder" in tree_output
     assert "file2" in tree_output
 """
+
 
 def test_format_tree_list():
     data = ["a", "b", "c"]
