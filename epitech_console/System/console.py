@@ -57,6 +57,15 @@ class Console(metaclass=ConsoleMeta):
 
 
     @staticmethod
+    def execute(
+        ) -> None:
+        """
+            Execute code in the console.
+        """
+        pass #yet to be implemented
+
+
+    @staticmethod
     def print(
             *args,
             separator: str = " ",
