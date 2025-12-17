@@ -173,7 +173,7 @@ class ProgressBar(Format):
             Do a step of the animations.
         """
 
-        self.update()
+        self.update(self.percent + 1)
 
 
     def update(
@@ -247,7 +247,7 @@ class ProgressBar(Format):
                 str: ProgressBar string
         """
 
-        return f"ProgressBar(\"{self.length}\", animation={self.animation.__repr__()}, style={self.style}, percent_style=\"{self.percent_style}\", spinner={self.spinner.__repr__()}, spinner_position=\"{self.spinner_position}\")"
+        return f"ProgressBar({self.length}, animation=[\"{self.animation[0]}\", ..., \"{self.animation[-1]}\"], style={self.style}, percent_style=\"{self.percent_style}\", spinner={repr(self.spinner)}, spinner_position=\"{self.spinner_position}\")"
 
 
 if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.ProgressBar: created")

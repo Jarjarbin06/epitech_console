@@ -62,7 +62,7 @@ class Action:
             Return the string representation of the Action object.
         """
 
-        return f"name = {self.name}  ;  function = {self.function}  ;  args = {self.args}  ;  kwargs = {self.kwargs}"
+        return f"\"{self.name}\" : {self.function.__name__}(*args = {self.args}, **kwargs = {self.kwargs})"
 
 
     def __add__(
@@ -102,7 +102,7 @@ class Action:
                 str: Action string
         """
 
-        return f"Action(\"{self.name}\", function={self.function}, args={self.args}, kwargs={self.kwargs})"
+        return f"Action(\"{self.name}\", function={self.function.__name__}, args={repr(self.args)}, kwargs={repr(self.kwargs)})"
 
 
 class Actions:
@@ -148,8 +148,8 @@ class Actions:
 
         for idx in range(len(self.actions)):
             string += f"{idx + 1} :\n"
-            string += f"    name = {self.actions[idx].name}\n"
-            string += f"    function = {self.actions[idx].function}\n"
+            string += f"    name = \"{self.actions[idx].name}\"\n"
+            string += f"    function = {self.actions[idx].function.__name__}\n"
             string += f"    args = {self.actions[idx].args}\n"
             string += f"    kwargs = {self.actions[idx].kwargs}\n\n"
 
@@ -229,7 +229,7 @@ class Actions:
                 str: Actions string
         """
 
-        return f"Actions({self.actions})"
+        return f"Actions({repr(self.actions)})"
 
 
 if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Action: created")

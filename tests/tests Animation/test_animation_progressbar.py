@@ -28,6 +28,27 @@ def test_progressbar_update_basic(
     assert pb.percent == 50
 
 
+def test_progressbar_update_greater_than_hundred(
+    ) -> None:
+    pb = ProgressBar(10)
+    pb.update(500)
+    assert pb.percent == 100
+
+
+def test_progressbar_update_call(
+    ) -> None:
+    pb = ProgressBar(10)
+    for _ in range(10):
+        pb()
+    assert pb.percent == 10
+    for _ in range(90):
+        pb()
+    assert pb.percent == 100
+    for _ in range(10):
+        pb()
+    assert pb.percent == 100
+
+
 def test_progressbar_update_spinner_flag(
     ) -> None:
     sp = Spinner.plus()
@@ -73,6 +94,28 @@ def test_progressbar_render_hide_spinner_at_end(
     assert sp.render().replace("\033[0m", "") not in result  # spinner hidden
 
 
+def test_progressbar_render_spinner_before_bar(
+    ) -> None:
+    sp = Spinner.stick()
+    pb = ProgressBar(10, spinner=sp, spinner_position="b")
+
+    result = str(pb.render())
+
+    assert isinstance(result, str)
+    assert sp.render().replace("\033[0m", "") in result  # spinner hidden
+
+
+def test_progressbar_render_spinner_after_bar(
+    ) -> None:
+    sp = Spinner.stick()
+    pb = ProgressBar(10, spinner=sp, spinner_position="a")
+
+    result = str(pb.render())
+
+    assert isinstance(result, str)
+    assert sp.render().replace("\033[0m", "") in result  # spinner hidden
+
+
 def test_progressbar_render_delete_flag(
     ) -> None:
     pb = ProgressBar(10)
@@ -106,6 +149,13 @@ def test_progressbar_percent_style_mix(
     # Mix style includes both bar and percent digits
     assert "#" in text
     assert "%" in text
+
+
+def test_progressbar_repr(
+    ) -> None:
+    pb = ProgressBar(10)
+    print(repr(pb))
+    assert repr(pb) == "ProgressBar(10, animation=[\"|>--------|\", ..., \"|#########|\"], style=on=\"#\";off=\"-\";arrow_left=\"<\";arrow_right=\">\";border_left=\"|\";border_right=\"|\", percent_style=\"bar\", spinner=None, spinner_position=\"a\")"
 
 
 quit(delete_log=True)

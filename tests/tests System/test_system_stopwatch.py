@@ -9,7 +9,6 @@ from epitech_console import init, quit
 init()
 
 
-
 def test_stopwatch_default_start_false(
     ) -> None:
     sw = StopWatch()
@@ -21,19 +20,19 @@ def test_stopwatch_start_and_stop(
     ) -> None:
     sw = StopWatch()
     sw.start()
-    time.sleep(0.05)
+    time.sleep(0.1)
     sw.stop()
 
-    assert 0.05 < sw < 0.06
+    assert 0.1 < sw < 0.11
 
 
 def test_stopwatch_elapsed_auto_update(
     ) -> None:
     sw = StopWatch(start=True)
-    time.sleep(0.05)
+    time.sleep(0.1)
     elapsed = sw.elapsed()
 
-    assert elapsed >= 0.05
+    assert elapsed >= 0.1
 
 
 def test_stopwatch_elapsed_manual_update(
@@ -57,7 +56,7 @@ def test_stopwatch_str(
 def test_stopwatch_reset(
     ) -> None:
     sw = StopWatch(start=True)
-    time.sleep(0.02)
+    time.sleep(0.1)
     sw.stop()
     sw.reset()
 
@@ -69,7 +68,7 @@ def test_stopwatch_double_start(
     ) -> None:
     sw = StopWatch(start=True)
     old_start = sw._start
-    time.sleep(0.02)
+    time.sleep(0.1)
     sw.start()  # Should restart
 
     assert sw._start != old_start
@@ -79,7 +78,7 @@ def test_stopwatch_double_start(
 def test_stopwatch_update(
     ) -> None:
     sw = StopWatch(start=True)
-    time.sleep(0.03)
+    time.sleep(0.1)
     sw.update()
 
     assert sw > 0.0
@@ -115,7 +114,7 @@ def test_stopwatch_lesser(
     sw = StopWatch(start=True)
     elapsed = sw.elapsed()
 
-    assert elapsed < 0.5
+    assert elapsed < 0.1
 
 
 def test_stopwatch_lesser_or_equal(
@@ -123,7 +122,7 @@ def test_stopwatch_lesser_or_equal(
     sw = StopWatch(start=True)
     elapsed = sw.elapsed()
 
-    assert elapsed <= 0.5
+    assert elapsed <= 0.1
     assert elapsed <= elapsed
 
 

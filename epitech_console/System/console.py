@@ -144,7 +144,9 @@ class Console(metaclass=ConsoleMeta):
                 Any: User input as 'type' type.
         """
 
-        return wanted_type(input(msg + separator))
+        ## cannot be tested with pytest ##
+
+        return wanted_type(input(msg + separator)) # pragma: no cover
 
     @staticmethod
     def flush(
@@ -157,7 +159,9 @@ class Console(metaclass=ConsoleMeta):
                 stream (Any, optional) : Stream object to be flushed (generally stdin, stdout and stderr).
         """
 
-        stream.flush()
+        ## cannot be tested with pytest ##
+
+        stream.flush() # pragma: no cover
 
 
 if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Console: created")

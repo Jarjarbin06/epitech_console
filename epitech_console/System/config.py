@@ -107,29 +107,26 @@ class Config:
     def get_bool(
             self,
             section : str,
-            option : str,
-            wanted_type : type = bool
-        ) -> Any:
+            option : str
+        ) -> bool:
         """
             Get a value as a bool from the config file.
 
             Parameters:
                 section (str): section name
                 option (str): option name
-                wanted_type (type, optional): type to check
 
             Returns:
                 Any: data retrieved from config file and of type 'wanted_type'
         """
 
-        return wanted_type(self.config.getboolean(section, option))
+        return self.config.getboolean(section, option)
 
 
     def get_int(
             self,
             section : str,
-            option : str,
-            wanted_type : type = int
+            option : str
         ) -> Any:
         """
             Get a value as a int from the config file.
@@ -137,20 +134,18 @@ class Config:
             Parameters:
                 section (str): section name
                 option (str): option name
-                wanted_type (type, optional): type to check
 
             Returns:
                 Any: data retrieved from config file and of type 'wanted_type'
         """
 
-        return wanted_type(self.config.getint(section, option))
+        return self.config.getint(section, option)
 
 
     def get_float(
             self,
             section : str,
-            option : str,
-            wanted_type : type = float
+            option : str
         ) -> Any:
         """
             Get a value as a float from the config file.
@@ -158,13 +153,12 @@ class Config:
             Parameters:
                 section (str): section name
                 option (str): option name
-                wanted_type (type, optional): type to check
 
             Returns:
                 Any: data retrieved from config file and of type 'wanted_type'
         """
 
-        return wanted_type(self.config.getfloat(section, option))
+        return self.config.getfloat(section, option)
 
 
     def delete(
@@ -183,9 +177,6 @@ class Config:
 
         from os import remove
 
-        if self.path[-1] != "/":
-            self.path += "/"
-
         remove(self.path + self.file_name)
 
         if not cached:
@@ -196,8 +187,10 @@ class Config:
             self.file_name = None
             return True
 
+        ## cannot be tested with pytest ##
+
         else:
-            return False
+            return False # pragma: no cover
 
 
     @staticmethod

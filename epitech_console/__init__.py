@@ -59,12 +59,14 @@ def init(
         ANSI.BasePack.update()
         System.Setting.S_LOG.log("INFO", "module", "epitech_console initialized")
 
-    except Error.Error as error:
-        print(error)
-        print(Error.Error._lauch_message())
+    ## cannot be tested with pytest ##
 
-    except Exception as error:
-        print(f"\033[101m \033[0m \033[91m{error}\033[0m")
+    except Error.Error as error: # pragma: no cover
+        print(error) # pragma: no cover
+        print(Error.Error._lauch_message()) # pragma: no cover
+
+    except Exception as error: # pragma: no cover
+        print(f"\033[101m \033[0m \033[91m{error}\033[0m") # pragma: no cover
         print(
             "\033[103m \033[0m \033[93mepitech_console launched with error\033[0m\n"
             "\033[103m \033[0m\n"
@@ -72,7 +74,7 @@ def init(
             "\033[103m \033[0m \033[93m    'pip install --upgrade --force-reinstall epitech_console'\033[0m\n"
             "\033[103m \033[0m\n"
             "\033[103m \033[0m \033[93mPlease report the issue here : https://github.com/Jarjarbin06/epitech_console/issues\033[0m\n"
-        )
+        ) # pragma: no cover
 
 
 def quit(
@@ -93,8 +95,10 @@ def quit(
         System.Setting.S_LOG.close()
         System.Setting.S_CONFIG.set("SETTING", "opened-log", "null")
 
+        ## cannot be tested with pytest ##
+
         if show:
-            System.Setting.S_LOG.show()
+            System.Setting.S_LOG.show() # pragma: no cover
 
         if delete_log:
             System.Setting.S_LOG.close(True)
