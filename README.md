@@ -193,10 +193,10 @@ init()
 
 my_path = "."
 if not Config.exist(my_path):
-    Config(my_path, {
+    my_config = Config(my_path, {
       "GENERALE" : {"theme": "dark", "language": "en"},
       "USER" : {"username": "guest", "email": "my_email@email.com"}
-    })
+    }, file_name="my_config.ini")
 
 quit(delete_log=True)
 ```
