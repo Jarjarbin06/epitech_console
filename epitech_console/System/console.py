@@ -62,7 +62,10 @@ class Console(metaclass=ConsoleMeta):
         """
             Execute code in the console.
         """
-        pass #yet to be implemented
+
+        ## cannot be tested with pytest ##
+
+        pass # pragma: no cover #yet to be implemented
 
 
     @staticmethod
