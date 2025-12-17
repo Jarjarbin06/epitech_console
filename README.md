@@ -5,7 +5,6 @@
 <img src="https://github.com/Jarjarbin06/epitech_console/blob/main/source/epitech_console_logo.png?raw=true" alt="Epitech Console logo" width="49%" style="display:inline-block;">
 
 # **epitech_console** v0.1.8
-🚧 UNDER DEVELOPMENT 🚧
 
 [![Python package](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml/badge.svg?branch=main)](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
@@ -470,6 +469,8 @@ REPO/
 
 ## Release-Notes
 * #### v0.1.8:
+	*   **[FIX]** minor random correction
+	*   **[ADD]** `pytest` tests 100% coverage reached
 	*   **[ADD]** some logs in `Animation` classes
 	*   **[ADD]** new logging system
 	*   **[ADD]** new `pytest` tests
