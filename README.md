@@ -413,7 +413,8 @@ REPO/
     *   `_log(status: str, title: str, description: str)`: Create a formatted log and save it a log file.
     *   `_comment(comment: str)`: Create a non formatted log and save it in a log file.
     *   `_save(log_str: str)`: Save a log in a log file.
-    *   `_close(delete_logs: bool = False)` delete the log file if `delete_logs`, else format the end of the log file and save it.
+    *   `_close(delete: bool = False)` format the end of the log file and save it, delete the log file if `delete_logs`.
+    *   `_delete()` delete the log file.
     *   `_read()`: Returns the content of a log file.
     *   `_show()`: Print a formatted table of the content of a log_file.
 
