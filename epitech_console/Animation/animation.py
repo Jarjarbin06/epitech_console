@@ -42,13 +42,15 @@ class Animation(Format):
                 animation (list[str] | str, optional): list of step
         """
 
-        if not isinstance(animation, (list, str)):
-            from epitech_console.Error.error import ErrorType
-            from epitech_console import quit
+        ## cannot be tested with pytest ##
 
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__init__: animation is of an unsupported type (supported: list[Any], str ; current: {type(animation)})")
-            quit()
-            raise ErrorType(link=(f"{Setting.S_PACKAGE_PATH}Animation/animation", 36)) from None
+        if not isinstance(animation, (list, str)): # pragma: no cover
+            from epitech_console.Error.error import ErrorType # pragma: no cover
+            from epitech_console import quit # pragma: no cover
+
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__init__: animation is of an unsupported type (supported: list[Any], str ; current: {type(animation)})") # pragma: no cover
+            quit() # pragma: no cover
+            raise ErrorType(link=(f"{Setting.S_PACKAGE_PATH}Animation/animation", 36)) from None # pragma: no cover
 
         self.animation : list[str] = []
 
@@ -81,13 +83,15 @@ class Animation(Format):
         from epitech_console.ANSI.ansi import ANSI
         from epitech_console.System.stopwatch import StopWatch
 
-        if not isinstance(other, (Animation, ANSI, Text, StopWatch, str)):
-            from epitech_console.Error.error import ErrorType
-            from epitech_console import quit
+        ## cannot be tested with pytest ##
 
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__add__: other is of an unsupported type (supported: Animation, ANSI, Text, StopWatch, str ; current: {type(other)})")
-            quit()
-            raise ErrorType()
+        if not isinstance(other, (Animation, ANSI, Text, StopWatch, str)): # pragma: no cover
+            from epitech_console.Error.error import ErrorType # pragma: no cover
+            from epitech_console import quit # pragma: no cover
+
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__add__: other is of an unsupported type (supported: Animation, ANSI, Text, StopWatch, str ; current: {type(other)})") # pragma: no cover
+            quit() # pragma: no cover
+            raise ErrorType() from None # pragma: no cover
 
         if type(other) in [Animation]:
             return Animation(self.animation + other.animation)
@@ -95,8 +99,10 @@ class Animation(Format):
         elif type(other) in [Text, StopWatch, ANSI, str]:
             return Animation(self.animation + [str(other)])
 
+        ## cannot be tested with pytest ##
+
         else:
-            return Animation([])
+            return Animation([]) # pragma: no cover
 
 
     def __getitem__(
@@ -110,13 +116,15 @@ class Animation(Format):
                 str: Animation string
         """
 
-        if not isinstance(item, int):
-            from epitech_console.Error.error import ErrorType
-            from epitech_console import quit
+        ## cannot be tested with pytest ##
 
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__getitem__: item is of an unsupported type (supported: int ; current: {type(item)})")
-            quit()
-            raise ErrorType()
+        if not isinstance(item, int): # pragma: no cover
+            from epitech_console.Error.error import ErrorType # pragma: no cover
+            from epitech_console import quit # pragma: no cover
+
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__getitem__: item is of an unsupported type (supported: int ; current: {type(item)})") # pragma: no cover
+            quit() # pragma: no cover
+            raise ErrorType() from None # pragma: no cover
 
         if self.is_last():
             return str(self.animation[self.length - 1])
@@ -142,8 +150,10 @@ class Animation(Format):
         from epitech_console.ANSI.ansi import ANSI
         from epitech_console.ANSI.color import Color
 
-        if not isinstance(color, ANSI):
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.__str__: color is of an unsupported type (supported: ANSI ; current: {type(color)})")
+        ## cannot be tested with pytest ##
+
+        if not isinstance(color, ANSI): # pragma: no cover
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.__str__: color is of an unsupported type (supported: ANSI ; current: {type(color)})") # pragma: no cover
 
         return f"{color}{str(self[self.step])}{Color.color(Color.C_RESET)}"
 
@@ -155,7 +165,7 @@ class Animation(Format):
             Do a step of the animation.
         """
 
-        self.update(auto_reset=True)
+        self.update()
 
 
     def __len__(
@@ -183,8 +193,10 @@ class Animation(Format):
                 auto_reset (bool, optional): Automatically reset the animation. Defaults to False.
         """
 
-        if not isinstance(auto_reset, bool):
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.update: auto_reset is of an unsupported type (supported: bool ; current: {type(auto_reset)})")
+        ## cannot be tested with pytest ##
+
+        if not isinstance(auto_reset, bool): # pragma: no cover
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.update: auto_reset is of an unsupported type (supported: bool ; current: {type(auto_reset)})") # pragma: no cover
 
         self.step += 1
 
@@ -213,11 +225,13 @@ class Animation(Format):
         from epitech_console.ANSI.cursor import Cursor
         from epitech_console.ANSI.color import Color
 
-        if not isinstance(color, (ANSI, int)):
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.render: color is of an unsupported type (supported: ANSI, int ; current: {type(color)})")
+        ## cannot be tested with pytest ##
 
-        if not isinstance(delete, bool):
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.render: delete is of an unsupported type (supported: bool ; current: {type(delete)})")
+        if not isinstance(color, (ANSI, int)): # pragma: no cover
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.render: color is of an unsupported type (supported: ANSI, int ; current: {type(color)})") # pragma: no cover
+
+        if not isinstance(delete, bool): # pragma: no cover
+            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.render: delete is of an unsupported type (supported: bool ; current: {type(delete)})") # pragma: no cover
 
         if type(color) == int:
             color = Color.color(color)
@@ -265,7 +279,7 @@ class Animation(Format):
                 str: Animation string
         """
 
-        return f"Animation(\"{self.animation}\")"
+        return f"Animation({self.animation})"
 
 
 if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.Animation: created")

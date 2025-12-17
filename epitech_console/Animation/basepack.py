@@ -76,7 +76,7 @@ class BasePack:
 
             if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.BasePack.update: style is of an unsupported type (supported: Style ; current: {type(style)})") # pragma: no cover
             quit() # pragma: no cover
-            raise ErrorType() # pragma: no cover
+            raise ErrorType() from None # pragma: no cover
 
         BasePack.P_SLIDE_R = [
             f"{style.border_left}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.off}{style.border_right}",
