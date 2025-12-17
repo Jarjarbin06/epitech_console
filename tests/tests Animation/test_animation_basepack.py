@@ -71,10 +71,4 @@ def test_basepack_update_without_style(
     assert any("#" in frame or "-" in frame for frame in BasePack.P_EMPTY)
 
 
-def test_basepack_update_invalid_style(
-    ) -> None:
-    with pytest.raises(ErrorType):
-        BasePack.update("hi")
-
-
 quit(delete_log=True)

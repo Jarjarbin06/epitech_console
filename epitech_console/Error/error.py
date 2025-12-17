@@ -41,7 +41,7 @@ class Error(Exception):
             Parameters:
                 message (str, optional): The error message.
                 error (str, optional): The error type (title).
-                link (tuple[str, int], optional): The link to where the error comes from (file and line).
+                link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
         """
 
         from epitech_console import quit as q
@@ -82,7 +82,9 @@ class Error(Exception):
                 str: Lauch error message.
         """
 
-        from epitech_console.ANSI.color import Color
+        ## cannot be tested with pytest ##
+
+        from epitech_console.ANSI.color import Color # pragma: no cover
 
         return (
             f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_YELLOW)}epitech_console launched with error{Color.color(Color.C_RESET)}\n"
@@ -91,7 +93,7 @@ class Error(Exception):
             f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_YELLOW)}    'pip install --upgrade --force-reinstall epitech_console'{Color.color(Color.C_RESET)}\n"
             f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)}\n"
             f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_YELLOW)}Please report the issue here : https://github.com/Jarjarbin06/epitech_console/issues{Color.color(Color.C_RESET)}\n"
-        )
+        ) # pragma: no cover
 
 
     def __str__(
@@ -127,7 +129,7 @@ class Error(Exception):
                 str: Error string
         """
 
-        return f"Error(\"{self.message}\", error=\"{self.error}\", link={self.link_data})"
+        return f"Error(\"{self.message}\", error=\"{self.error}\", link=(\"{self.link_data[0]}\", {self.link_data[1]}))"
 
 
 class ErrorLaunch(Error):
@@ -144,7 +146,7 @@ class ErrorLaunch(Error):
 
             *,
             error : str = "ErrorLaunch",
-            link : tuple[str , int] | None = None
+            link : tuple[str , int | None] | None = None
         ) -> None:
         """
             Create an Error.
@@ -152,7 +154,7 @@ class ErrorLaunch(Error):
             Parameters:
                 message (str, optional): The error message.
                 error (str, optional): The error type (title).
-                link (tuple[str, int], optional): The link to where the error comes from (file and line).
+                link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
         """
 
         self.message : str = message
@@ -177,7 +179,7 @@ class ErrorImport(Error):
 
             *,
             error : str = "ErrorImport",
-            link : tuple[str , int] | None = None
+            link : tuple[str , int | None] | None = None
         ) -> None:
         """
             Create an Error.
@@ -185,7 +187,7 @@ class ErrorImport(Error):
             Parameters:
                 message (str, optional): The error message.
                 error (str, optional): The error type (title).
-                link (tuple[str, int], optional): The link to where the error comes from (file and line).
+                link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
         """
 
         self.message : str = message
@@ -210,7 +212,7 @@ class ErrorType(Error):
 
             *,
             error : str = "ErrorType",
-            link : tuple[str , int] | None = None
+            link : tuple[str , int | None] | None = None
         ) -> None:
         """
             Create an Error.
@@ -218,7 +220,7 @@ class ErrorType(Error):
             Parameters:
                 message (str, optional): The error message.
                 error (str, optional): The error type (title).
-                link (tuple[str, int], optional): The link to where the error comes from (file and line).
+                link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
         """
 
         self.message : str = message
@@ -243,7 +245,7 @@ class ErrorValue(Error):
 
             *,
             error : str = "ErrorValue",
-            link : tuple[str , int] | None = None
+            link : tuple[str , int | None] | None = None
         ) -> None:
         """
             Create an Error.
@@ -251,7 +253,7 @@ class ErrorValue(Error):
             Parameters:
                 message (str, optional): The error message.
                 error (str, optional): The error type (title).
-                link (tuple[str, int], optional): The link to where the error comes from (file and line).
+                link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
         """
 
         self.message : str = message

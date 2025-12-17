@@ -57,6 +57,13 @@ def test_config_delete_cached(
     assert not Config.exist("tests")
 
 
+def test_config_repr(
+    ) -> None:
+    config = Config("tests")
+
+    assert repr(config) == "Config(\"tests/\", ?, \"config.ini\")"
+
+
 def test_config_delete_not_cached(
     ) -> None:
     config = Config("tests")
@@ -68,13 +75,6 @@ def test_config_delete_not_cached(
 def test_config_delete_not_exist(
     ) -> None:
     assert not Config.exist("tests")
-
-
-def test_config_repr(
-    ) -> None:
-    config = Config("tests")
-
-    assert repr(config) == "Config(\"tests/\", ?, \"config.ini\")"
 
 
 quit(delete_log=True)

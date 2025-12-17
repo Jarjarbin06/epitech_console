@@ -117,16 +117,15 @@ class Log:
 
     def close(
             self,
-            delete_logs : bool = False
+            *,
+            delete : bool = False
         ) -> None :
         """
             Close the log file.
 
             Parameters:
-                delete_logs (bool, optional): delete the log file
+                delete (bool, optional): delete the log file
         """
-
-        from os import remove
 
         try:
             with open(f"{self.log_path}{self.log_file_name}.log", 'a') as log_file :
@@ -135,11 +134,23 @@ class Log:
         except FileNotFoundError:
             pass
 
-        if delete_logs :
-            try :
-                remove(f"{self.log_path}{self.log_file_name}.log")
-            except FileNotFoundError:
-                pass
+        if delete :
+            self.delete()
+
+
+    def delete(
+            self
+        ) -> None:
+        """
+            Delete the log file.
+        """
+
+        from os import remove
+
+        try:
+            remove(f"{self.log_path}{self.log_file_name}.log")
+        except FileNotFoundError:
+            pass
 
 
     def read(
@@ -164,11 +175,11 @@ class Log:
         return log_str
 
 
-    def show(
+    def __str__(
             self
-        ) -> None :
+        ) -> str :
         """
-            Show a formated log file.
+            Returns a formated log file.
         """
 
         from epitech_console.System import Console
@@ -215,7 +226,7 @@ class Log:
 
         string += footer + (" " * (t_size - 1)) + f"{c_reset}\n"
 
-        Console.print(string)
+        return string
 
 
     def __repr__(

@@ -1,7 +1,7 @@
 import pytest
 
 
-from epitech_console.Error import Error
+from epitech_console.Error import Error, ErrorLaunch, ErrorImport, ErrorType, ErrorValue
 from epitech_console import init, quit
 
 
@@ -37,7 +37,25 @@ def test_error_str_without_link(
     assert "line" not in s
 
 
-def test_error_str_with_link(
+def test_error_str_with_link_no_line(
+    ) -> None:
+    err = Error("Crash detected", error="FatalError", link=("engine.py", None))
+    s = str(err)
+
+    assert "FatalError" in s
+    assert "Crash detected" in s
+    assert "engine.py" in s
+    assert "File" in s
+
+
+def test_error_repr(
+    ) -> None:
+    err = Error("Crash detected", error="FatalError", link=("engine.py", None))
+
+    assert repr(err) == "Error(\"Crash detected\", error=\"FatalError\", link=(\"engine.py\", None))"
+
+
+def test_error_str_with_link_with_line(
     ) -> None:
     err = Error("Crash detected", error="FatalError", link=("engine.py", 88))
     s = str(err)
@@ -72,6 +90,34 @@ def test_empty_message_and_error_are_allowed(
     err = Error("", error="")
     assert err.message == ""
     assert err.error == ""
+
+
+def test_error_error_launch(
+    ) -> None:
+    err = ErrorLaunch()
+
+    assert err.error == "ErrorLaunch"
+
+
+def test_error_error_import(
+    ) -> None:
+    err = ErrorImport()
+
+    assert err.error == "ErrorImport"
+
+
+def test_error_error_type(
+    ) -> None:
+    err = ErrorType()
+
+    assert err.error == "ErrorType"
+
+
+def test_error_error_value(
+    ) -> None:
+    err = ErrorValue()
+
+    assert err.error == "ErrorValue"
 
 
 quit(delete_log=True)

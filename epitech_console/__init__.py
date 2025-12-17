@@ -98,10 +98,10 @@ def quit(
         ## cannot be tested with pytest ##
 
         if show:
-            System.Setting.S_LOG.show() # pragma: no cover
+            System.Console.print(str(System.Setting.S_LOG)) # pragma: no cover
 
         if delete_log:
-            System.Setting.S_LOG.close(True)
+            System.Setting.S_LOG.close(delete=True)
 
 
 __all__ : list[str] = [
