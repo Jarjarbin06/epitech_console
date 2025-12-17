@@ -280,13 +280,13 @@ class Format:
 
         string : str = ((title + "/\n") if title else "")
 
-        if type(d) in [None]:
+        if d is None:
             return string
 
-        elif type(d) in [str]:
+        elif type(d) == str:
             string += ("│   " * indent) + "├── " + d + "\n"
 
-        elif type(d) in [list]:
+        elif type(d) == list:
             for line in d:
                 string += ("│   " * indent) + "├── " + line + "\n"
 

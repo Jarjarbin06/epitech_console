@@ -155,7 +155,7 @@ def test_progressbar_repr(
     ) -> None:
     pb = ProgressBar(10)
     print(repr(pb))
-    assert repr(pb) == "ProgressBar(10, animation=[\"|>--------|\", ..., \"|#########|\"], style=on=\"#\";off=\"-\";arrow_left=\"<\";arrow_right=\">\";border_left=\"|\";border_right=\"|\", percent_style=\"bar\", spinner=None, spinner_position=\"a\")"
+    assert repr(pb) == "ProgressBar(10, animation=[\"|>---------|\", ..., \"|##########|\"], style=on=\"#\";off=\"-\";arrow_left=\"<\";arrow_right=\">\";border_left=\"|\";border_right=\"|\", percent_style=\"bar\", spinner=None, spinner_position=\"a\")"
 
 
 quit(delete_log=True)

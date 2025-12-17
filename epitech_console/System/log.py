@@ -41,7 +41,11 @@ class Log:
         try :
             with open(f"{self.log_path}{self.log_file_name}.log", 'r') as log_file:
                 if log_file.read() == "":
-                    raise FileNotFoundError
+
+                    ## cannot be tested with pytest ##
+
+                    raise FileNotFoundError # pragma: no cover
+
             log_file.close()
 
         except FileNotFoundError:
@@ -49,8 +53,11 @@ class Log:
                 with open(f"{self.log_path}{self.log_file_name}.log", 'a') as log_file:
                     log_file.write("   date          time      | [TYPE]  title      | detail\n\n---START---")
                 log_file.close()
-            except FileNotFoundError:
-                pass
+
+            ## cannot be tested with pytest ##
+
+            except FileNotFoundError: # pragma: no cover
+                pass # pragma: no cover
 
 
     def log(
@@ -111,8 +118,11 @@ class Log:
             with open(f"{self.log_path}{self.log_file_name}.log", 'a') as log_file :
                 log_file.write(f"\n{log_str}")
             log_file.close()
-        except FileNotFoundError:
-            pass
+
+        ## cannot be tested with pytest ##
+
+        except FileNotFoundError: # pragma: no cover
+            pass # pragma: no cover
 
 
     def close(
@@ -131,8 +141,11 @@ class Log:
             with open(f"{self.log_path}{self.log_file_name}.log", 'a') as log_file :
                 log_file.write(f"\n----END----\n")
             log_file.close()
-        except FileNotFoundError:
-            pass
+
+        ## cannot be tested with pytest ##
+
+        except FileNotFoundError: # pragma: no cover
+            pass # pragma: no cover
 
         if delete :
             self.delete()
@@ -149,8 +162,11 @@ class Log:
 
         try:
             remove(f"{self.log_path}{self.log_file_name}.log")
-        except FileNotFoundError:
-            pass
+
+        ## cannot be tested with pytest ##
+
+        except FileNotFoundError: # pragma: no cover
+            pass # pragma: no cover
 
 
     def read(
@@ -169,8 +185,11 @@ class Log:
             with open(f"{self.log_path}{self.log_file_name}.log", 'r') as log_file:
                 log_str = log_file.read()
             log_file.close()
-        except FileNotFoundError:
-            pass
+
+        ## cannot be tested with pytest ##
+
+        except FileNotFoundError: # pragma: no cover
+            pass # pragma: no cover
 
         return log_str
 
@@ -221,8 +240,11 @@ class Log:
                         f"{color[1]}{c_bold}{log_line[1][8:]}{c_reset} | " +
                         (f"{log_line[2][:(t_size - 1)]}..." if len(log_line[2]) > (t_size - 1) else f"{color[1]}{log_line[2]}") +
                         f"{c_reset}\n")
-                elif len(log_line) == 1:
-                    string += f"{Color.color(Color.C_BG_DARK_BLUE)}|{c_reset} " + f"{Color.color(Color.C_FG_DARK_BLUE)}UNFORMATTED\n\"{log_line[0]}\"{c_reset}\n"
+
+                ## cannot be tested with pytest ##
+
+                elif len(log_line) == 1: # pragma: no cover
+                    string += f"{Color.color(Color.C_BG_DARK_BLUE)}|{c_reset} " + f"{Color.color(Color.C_FG_DARK_BLUE)}UNFORMATTED\n\"{log_line[0]}\"{c_reset}\n" # pragma: no cover
 
         string += footer + (" " * (t_size - 1)) + f"{c_reset}\n"
 

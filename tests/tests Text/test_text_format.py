@@ -1,8 +1,9 @@
 import pytest
 
 
-from epitech_console.Text import Text
-from epitech_console.Text import Format
+from epitech_console.Text import Text, Format
+from epitech_console.ANSI import ANSI
+from epitech_console.Animation import Animation, ProgressBar, Spinner
 from epitech_console import init, quit
 
 
@@ -10,9 +11,9 @@ init()
 
 
 def test_format_reset():
-    text = Text("hi")
+    text = ANSI("hi")
     s = text.reset()
-    assert isinstance(s, Text)
+    assert isinstance(s, ANSI)
     assert str(s) == "\033[0mhi"
 
 
@@ -24,9 +25,9 @@ def test_format_bold():
 
 
 def test_format_italic():
-    text = Text("hi")
+    text = ANSI("hi")
     s = text.italic()
-    assert isinstance(s, Text)
+    assert isinstance(s, ANSI)
     assert str(s) == "\033[3mhi"
 
 
@@ -38,9 +39,9 @@ def test_format_underline():
 
 
 def test_format_hide():
-    text = Text("hi")
+    text = ANSI("hi")
     s = text.hide()
-    assert isinstance(s, Text)
+    assert isinstance(s, ANSI)
     assert str(s) == "\033[8mhi"
 
 
@@ -49,6 +50,62 @@ def test_format_strikethrough():
     s = text.strikethrough()
     assert isinstance(s, Text)
     assert str(s) == "\033[9mhi"
+
+
+def test_format_error():
+    text = Text("hi")
+    s = text.error()
+    assert isinstance(s, Text)
+    assert str(s) == "\033[31mhi"
+
+
+def test_format_error_title():
+    text = ANSI("hi")
+    s = text.error(title=True)
+    assert isinstance(s, ANSI)
+    assert str(s) == "\033[41mhi"
+
+
+def test_format_warning():
+    text = Text("hi")
+    s = text.warning()
+    assert isinstance(s, Text)
+    assert str(s) == "\033[33mhi"
+
+
+def test_format_warning_title():
+    text = ANSI("hi")
+    s = text.warning(title=True)
+    assert isinstance(s, ANSI)
+    assert str(s) == "\033[43mhi"
+
+
+def test_format_valid():
+    text = Text("hi")
+    s = text.valid()
+    assert isinstance(s, Text)
+    assert str(s) == "\033[32mhi"
+
+
+def test_format_valid_title():
+    text = ANSI("hi")
+    s = text.valid(title=True)
+    assert isinstance(s, ANSI)
+    assert str(s) == "\033[42mhi"
+
+
+def test_format_info():
+    text = Text("hi")
+    s = text.info()
+    assert isinstance(s, Text)
+    assert str(s) == "\033[0mhi"
+
+
+def test_format_info_title():
+    text = ANSI("hi")
+    s = text.info(title=True)
+    assert isinstance(s, ANSI)
+    assert str(s) == "\033[7mhi"
 
 
 def test_format_apply_to_text():
@@ -64,6 +121,29 @@ def test_format_apply_to_str():
     assert "s2hello world" == str(result)
 
 
+def test_format_apply_to_animation():
+    a = Animation(["hello", "world"])
+    result = Format.apply(a, "s3")
+    assert type(result) == Animation
+    assert ["s3hello", "s3world"] == result.animation
+
+
+def test_format_apply_to_progress_bar_no_spinner():
+    a = ProgressBar(3)
+    result = Format.apply(a, "s4")
+    assert type(result) == ProgressBar
+    assert ["s4|>--|", "s4|#>-|", "s4|##>|", "s4|###|"] == result.animation.animation
+
+
+def test_format_apply_to_progress_bar_with_spinner():
+    s = Spinner.stick()
+    a = ProgressBar(3, spinner=s)
+    result = Format.apply(a, "s4")
+    assert type(result) == ProgressBar
+    assert ["s4|>--|", "s4|#>-|", "s4|##>|", "s4|###|"] == result.animation.animation
+    assert ["s4-", "s4\\", "s4|", "s4/"] == result.spinner.animation
+
+
 def test_format_apply_without_sequence_uses_reset():
     result = Format.apply("hello world")
     assert "\033[0mhello world" in result
@@ -74,12 +154,12 @@ def test_format_apply_invalid_target():
     assert result == 123
 
 
-"""
+#"""
 def test_format_tree_dict():
     data = {
         "folder": {
             "file1": None,
-            "subfolder": {"file2": None},
+            "subfolder": ["file2"],
         }
     }
     tree_output = Format.tree(data, title="Project")
@@ -90,7 +170,7 @@ def test_format_tree_dict():
     assert "file1" in tree_output
     assert "subfolder" in tree_output
     assert "file2" in tree_output
-"""
+#"""
 
 
 def test_format_tree_list():

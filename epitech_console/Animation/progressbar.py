@@ -76,6 +76,8 @@ class ProgressBar(Format):
 
             animation: list[str] = []
 
+            length += 1
+
             for y in range(length):
                 animation += [style.border_left]
 

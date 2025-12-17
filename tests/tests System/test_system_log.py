@@ -28,6 +28,13 @@ def test_log_str(
     assert "this is a custom comment" in s
 
 
+def test_log_repr(
+    ) -> None:
+    log = Log("tests", "log_test")
+    s = repr(log)
+    assert s == "Log(\"tests/\", \"log_test\")"
+
+
 def test_log_delete(
     ) -> None:
     log = Log("tests", "log_test")
