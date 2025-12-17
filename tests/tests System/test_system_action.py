@@ -1,5 +1,4 @@
 import pytest
-from numpy.ma.extras import atleast_2d
 
 from epitech_console.System import Action, Actions
 from epitech_console import init, quit
