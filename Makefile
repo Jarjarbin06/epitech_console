@@ -38,6 +38,8 @@ NC              := \033[0m
 help:
 	@echo -e "$(GREEN)Available commands:$(NC)"
 	@echo ""
+	@echo -e "\tmake/make help\t\tShow this help message"
+	@echo ""
 	@echo -e "\tmake install\t\tInstall the package"
 	@echo -e "\tmake uninstall\t\tUninstall the package"
 	@echo -e "\tmake reinstall\t\tReinstall the package"
@@ -58,53 +60,62 @@ help:
 # ------------------------------------------------------------
 
 install:
-	@echo -e "$(GREEN)[INSTALL] Installing package$(NC)"
+	@echo -e "$(YELLOW)[INSTALL] Installing package$(NC)"
 	@./$(SCRIPT_DIR)/install-package
+	@echo -e "$(GREEN)[INSTALL] Installing package$(NC)"
 
 uninstall:
-	@echo -e "$(RED)[UNINSTALL] Uninstalling package$(NC)"
+	@echo -e "$(YELLOW)[UNINSTALL] Uninstalling package$(NC)"
 	@./$(SCRIPT_DIR)/uninstall-package
+	@echo -e "$(GREEN)[UNINSTALL] Package uninstalled(NC)"
 
-reinstall: uninstall install
-	@echo -e "$(GREEN)[REINSTALL] Done$(NC)"
+reinstall:
+	@echo -e "$(YELLOW)[REINSTALL] Reinstalling package$(NC)"
+	@make -s uninstall install
+	@echo -e "$(GREEN)[REINSTALL] Package reinstalled$(NC)"
 
 # ------------------------------------------------------------
 # TESTS & CHECKS
 # ------------------------------------------------------------
 
 test:
-	@echo -e "$(GREEN)[TEST] Running tests$(NC)"
+	@echo -e "$(YELLOW)[TEST] Running tests$(NC)"
 	@./$(SCRIPT_DIR)/test-package
+	@echo -e "$(GREEN)[TEST] Tests ran$(NC)"
 
 check:
-	@echo -e "$(GREEN)[CHECK] Checking package$(NC)"
+	@echo -e "$(YELLOW)[CHECK] Checking package$(NC)"
 	@./$(SCRIPT_DIR)/check-package
+	@echo -e "$(GREEN)[CHECK] Package checked$(NC)"
 
 # ------------------------------------------------------------
 # DEMOS
 # ------------------------------------------------------------
 
 demo:
-	@echo -e "$(GREEN)[DEMO] Running full demo$(NC)"
+	@echo -e "$(YELLOW)[DEMO] Running full demo$(NC)"
 	@./$(SCRIPT_DIR)/full_demo
+	@echo -e "$(GREEN)[DEMO] Full demo ran$(NC)"
 
 # ------------------------------------------------------------
 # DEVELOPMENT UTILITIES
 # ------------------------------------------------------------
 
 venv:
-	@echo -e "$(GREEN)[VENV] Creating virtual environment$(NC)"
+	@echo -e "$(YELLOW)[VENV] Creating virtual environment$(NC)"
 	@$(PYTHON) -m venv $(VENV_DIR)
 	@echo "Activate it with:"
 	@echo "  source $(VENV_DIR)/bin/activate"
+	@echo -e "$(GREEN)[VENV] Virtual environment created$(NC)"
 
 venv-install: venv
-	@echo -e "$(GREEN)[VENV] Installing package in virtualenv$(NC)"
+	@echo -e "$(YELLOW)[VENV] Installing package in virtualenv$(NC)"
 	@source $(VENV_DIR)/bin/activate && ./$(SCRIPT_DIR)/install-package
+	@echo -e "$(GREEN)[VENV] Package installed in virtualenv$(NC)"
 
 info:
-	@echo -e "$(GREEN)[INFO] Package information$(NC)"
-	@$(PIP) show $(PACKAGE_NAME) || echo "Package not installed"
+	@echo -e "$(YELLOW)[INFO] Getting package informations$(NC)"
+	@$(PIP) show $(PACKAGE_NAME) >/dev/null 2>&1 && echo -e "$(GREEN)[INFO] Package informations shown$(NC)" || echo -e "$(RED)[INFO] Package not installed$(NC)"
 
 # ------------------------------------------------------------
 # CLEANUP
