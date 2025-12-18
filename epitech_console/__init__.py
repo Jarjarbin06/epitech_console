@@ -33,7 +33,7 @@ def _banner(
     offset_t = Text.Text("  ")
     title_t = epitech + Text.Text(f'{System.Setting.S_PACKAGE_NAME}').bold().underline() + reset + "  " + Text.Text.url_link(
         "https://github.com/Jarjarbin06/epitech_console", text="repository")
-    version_t = Text.Text(" " * 5) + epitech_dark + Text.Text("version ").italic() + Text.Text(
+    version_t = Text.Text(" " * (10 - len(System.Setting.S_PACKAGE_VERSION))) + epitech_dark + Text.Text("version ").italic() + Text.Text(
         f'{System.Setting.S_PACKAGE_VERSION}').bold() + reset
     desc_t = Text.Text("   Text • Animation • ANSI • Error • System   ").italic()
     line_t = epitech + ("─" * banner_size) + reset

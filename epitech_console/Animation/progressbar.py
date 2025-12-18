@@ -60,38 +60,38 @@ class ProgressBar(Format):
         from epitech_console.Animation.style import Style
 
         def create_progress_bar(
-                length : int,
-                style : Style
+                new_length : int,
+                new_style : Style
             ) -> list[str]:
             """
                 Create the Progress-bar animation.
 
                 Parameters:
-                    length (int): Progress bar length.
-                    style (Style): Progress bar style.
+                    new_length (int): Progress bar length.
+                    new_style (Style): Progress bar style.
 
                 Returns:
                     list[str]: Progress bar animation.
             """
 
-            animation: list[str] = []
+            new_animation: list[str] = []
 
-            for y in range(length):
-                animation += [style.border_left]
+            new_length += 1
+
+            for y in range(new_length):
+                new_animation += [new_style.border_left]
 
                 for x in range(y):
-                    animation[y] += style.on
+                    new_animation[y] += new_style.on
 
-                animation[y] += style.arrow_right
+                new_animation[y] += new_style.arrow_right
 
-                for x in range((length - y) - 1):
-                    animation[y] += style.off
+                for x in range((new_length - y) - 1):
+                    new_animation[y] += new_style.off
 
-                animation[y] = animation[y][0:-1] + style.border_right
+                new_animation[y] = new_animation[y][0:-1] + new_style.border_right
 
-            return animation
-
-        length += 1
+            return new_animation
 
         if not animation :
             animation = Animation(create_progress_bar(length, style))
@@ -152,7 +152,7 @@ class ProgressBar(Format):
             string += self.spinner.__str__(color=color[1])
 
         if self.percent_style in ["bar", "mix"] :
-            idx : int = int((self.percent / 100) * self.length)
+            idx : int = int((self.percent / 100) * (self.length + 1))
 
             if idx >= self.length:
                 idx = self.length - 1
