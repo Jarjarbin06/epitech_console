@@ -1,6 +1,7 @@
 <small>last update : 
 **PACKAGE** = *2025-12-18 10:27 UTC+1(Paris)* ; 
 **README** = *2025-12-17 16:07 UTC+1(Paris)*</small>\
+\
 <img src="https://github.com/Jarjarbin06/epitech_console/blob/main/source/epitech_logo.png?raw=true" alt="Epitech logo" width="49%" style="display:inline-block; margin-right:1%;">
 <img src="https://github.com/Jarjarbin06/epitech_console/blob/main/source/epitech_console_logo.png?raw=true" alt="Epitech Console logo" width="49%" style="display:inline-block;">
 
@@ -9,6 +10,10 @@
 <summary>Development status</summary>
 🟠 UNDER DEVELOPMENT 🟠
 <!-- 🟢 RELEASED 🟢 -->
+</details>
+<details>
+<summary>Latest release</summary>
+v0.1.8
 </details>
 
 [![Python package](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml/badge.svg?branch=main)](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml)
