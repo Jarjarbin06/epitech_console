@@ -109,14 +109,20 @@ class Error(Exception):
         from epitech_console.ANSI.color import Color
 
         string : str = "\n"
-        string += (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + self.error + ":"
+        string += (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "")
+        string += (self.error if self.error else "ErrorUnknown")
+        string += (":" if len(self.message) > 0 else "")
 
-        for line in self.message.splitlines():
-            string += "\n" + (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}     {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + self.message
+        if len(self.message) > 0:
+            for line in self.message.splitlines():
+                string += "\n" + (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}     {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "")
+                string += line
 
-        string += "\n" + (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + (f"\n{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}\n{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}  {Color.color(Color.C_FG_RED)}" + self.link) if self.link else ""
+            string += "\n"
 
-        return string + "\n"
+        string += (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + (f"\n{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}\n{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}  {Color.color(Color.C_FG_RED)}" + self.link) if self.link else ""
+
+        return string
 
 
     def __repr__(

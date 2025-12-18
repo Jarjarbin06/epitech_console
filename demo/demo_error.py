@@ -38,7 +38,7 @@ def error_demo(
     print("\n=== BASIC ERROR (DEFAULT) ===")
 
     err = Error()
-    print(err)
+    Console.print(err)
 
     print("\n(Default error message and name should be shown)")
 
@@ -50,7 +50,17 @@ def error_demo(
     print("\n=== CUSTOM ERROR MESSAGE ===")
 
     err = Error(message="Something went wrong")
-    print(err)
+    Console.print(err)
+
+
+    # ============================================================
+    # CUSTOM MULTIPLE LINE MESSAGE
+    # ============================================================
+
+    print("\n=== CUSTOM MULTIPLE LINE MESSAGE ===")
+
+    err = Error(message="On the left side of my brain, there's nothing right.\nAnd on the right side, there's nothing left.")
+    Console.print(err)
 
 
     # ============================================================
@@ -63,7 +73,7 @@ def error_demo(
         message="Invalid configuration detected",
         error="ConfigError"
     )
-    print(err)
+    Console.print(err)
 
 
     # ============================================================
@@ -77,7 +87,7 @@ def error_demo(
         error="ConfigError",
         link=("epitech_console/config.ini", 12)
     )
-    print(err)
+    Console.print(err)
 
     print("\n(The file path and line number should be visible)")
 
@@ -91,9 +101,9 @@ def error_demo(
     err = Error(
         message="Missing environment variable",
         error="EnvError",
-        link=("perso/full_epitech_console_demo_error.py", None)
+        link=("demo/demo_error.py", None)
     )
-    print(err)
+    Console.print(err)
 
 
     # ============================================================
@@ -127,7 +137,7 @@ def error_demo(
         )
     except Error as e:
         print("Caught Error:")
-        print(e)
+        Console.print(e)
 
 
     # ============================================================
@@ -143,7 +153,7 @@ def error_demo(
             link=("calculator.py", 42)
         )
     except Error as e:
-        print(e)
+        Console.print(e)
 
 
     # ============================================================
@@ -157,14 +167,14 @@ def error_demo(
             raise Error(
                 message="Cannot divide by zero",
                 error="MathError",
-                link=("epitech_console/full_epitech_console_demo_error.py", 152)
+                link=("epitech_console/demo/demo_error.py", 156)
             )
         return a / b
 
     try:
         divide(10, 0)
     except Error as e:
-        print(e)
+        Console.print(e)
 
     print("\n(Function execution stopped correctly)")
 
@@ -182,8 +192,8 @@ def error_demo(
     ]
 
     for e in errors:
-        print(e)
-        Time.wait(0.3)
+        Console.print(e)
+        Time.wait(0.1)
 
 
     # ============================================================
@@ -193,7 +203,7 @@ def error_demo(
     print("\n=== EMPTY MESSAGE ===")
 
     err = Error(message="")
-    print(err)
+    Console.print(err)
 
 
     # ============================================================
@@ -206,7 +216,7 @@ def error_demo(
         message="Error without a name",
         error=""
     )
-    print(err)
+    Console.print(err)
 
 
     # ============================================================
@@ -216,7 +226,7 @@ def error_demo(
     print("\n=== EMPTY MESSAGE AND ERROR NAME ===")
 
     err = Error(message="", error="")
-    print(err)
+    Console.print(err)
 
 
     # ============================================================
@@ -235,7 +245,7 @@ def error_demo(
     Time.wait(1)
 
     print("Now displaying stored error:")
-    print(stored_error)
+    Console.print(stored_error)
 
 
     # ============================================================
@@ -253,7 +263,7 @@ def error_demo(
                 )
             print(f"Loop iteration {i} OK")
         except Error as e:
-            print(e)
+            Console.print(e)
             break
 
 
@@ -270,7 +280,7 @@ def error_demo(
         )
 
     result = bad_function()
-    print(result)
+    Console.print(result)
 
     print("\n(This should NOT stop execution, but is discouraged)")
 

@@ -76,8 +76,6 @@ class ProgressBar(Format):
 
             animation: list[str] = []
 
-            length += 1
-
             for y in range(length):
                 animation += [style.border_left]
 
@@ -92,6 +90,8 @@ class ProgressBar(Format):
                 animation[y] = animation[y][0:-1] + style.border_right
 
             return animation
+
+        length += 1
 
         if not animation :
             animation = Animation(create_progress_bar(length, style))
