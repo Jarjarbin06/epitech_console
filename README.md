@@ -468,6 +468,9 @@ REPO/
     *   `@file_link(path: str, line: int | None = None)`: Creates a link to a file and line number.
 
 ## Release-Notes
+* #### v0.1.8(2):
+	*   **[UPDATE]** import banner updated
+	*   **[FIX]** `ProgressBar` wrong length
 * #### v0.1.8:
 	*   **[FIX]** minor random correction
 	*   **[ADD]** `pytest` tests 100% coverage reached
