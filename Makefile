@@ -115,7 +115,7 @@ venv-install: venv
 
 info:
 	@echo -e "$(YELLOW)[INFO] Getting package informations$(NC)"
-	@$(PIP) show $(PACKAGE_NAME) >/dev/null 2>&1 && echo -e "$(GREEN)[INFO] Package informations shown$(NC)" || echo -e "$(RED)[INFO] Package not installed$(NC)"
+	@$(PIP) show $(PACKAGE_NAME) >/dev/null 2>&1 && $(PIP) show $(PACKAGE_NAME) && echo -e "$(GREEN)[INFO] Package informations shown$(NC)" || echo -e "$(RED)[INFO] Package not installed$(NC)"
 
 # ------------------------------------------------------------
 # CLEANUP
