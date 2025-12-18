@@ -7,7 +7,7 @@
 # **epitech_console** v0.1.8.2
 <details>
 <summary>Development status</summary>
-🟠 UNDER CONSTRUCTION 🟠
+🟠 UNDER DEVELOPMENT 🟠
 <!-- 🟢 RELEASED 🟢 -->
 </details>
 
