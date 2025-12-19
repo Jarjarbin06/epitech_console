@@ -76,8 +76,6 @@ class ProgressBar(Format):
 
             new_animation: list[str] = []
 
-            new_length += 1
-
             for y in range(new_length):
                 new_animation += [new_style.border_left]
 
@@ -94,7 +92,7 @@ class ProgressBar(Format):
             return new_animation
 
         if not animation :
-            animation = Animation(create_progress_bar(length, style))
+            animation = Animation(create_progress_bar(length + 1, style))
 
         self.length = length
         self.animation : Animation = animation
@@ -152,10 +150,10 @@ class ProgressBar(Format):
             string += self.spinner.__str__(color=color[1])
 
         if self.percent_style in ["bar", "mix"] :
-            idx : int = int((self.percent / 100) * (self.length + 1))
+            idx : int = int((self.percent / 100) * self.length)
 
             if idx >= self.length:
-                idx = self.length - 1
+                idx = self.length
 
             string += self.__getitem__(idx, color=color[0])
 
