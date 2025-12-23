@@ -17,7 +17,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.ProgressBar: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Animation.ProgressBar: imported")
 
 
 class ProgressBar(Format):
@@ -250,4 +250,4 @@ class ProgressBar(Format):
         return f"ProgressBar({self.length}, animation=[\"{self.animation[0]}\", ..., \"{self.animation[-1]}\"], style={self.style}, percent_style=\"{self.percent_style}\", spinner={repr(self.spinner)}, spinner_position=\"{self.spinner_position}\")"
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.ProgressBar: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Animation.ProgressBar: created")

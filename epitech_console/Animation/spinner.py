@@ -16,7 +16,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.Spinner: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Animation.Spinner: imported")
 
 
 class Spinner:
@@ -108,4 +108,4 @@ class Spinner:
         )
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.Spinner: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Animation.Spinner: created")

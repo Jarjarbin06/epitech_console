@@ -16,7 +16,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "ANSI.Cursor: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "ANSI.Cursor: imported")
 
 
 class Cursor:
@@ -258,4 +258,4 @@ class Cursor:
         return ANSI(f"{ANSI.ESC}?25l")
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "ANSI.Cursor: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "ANSI.Cursor: created")

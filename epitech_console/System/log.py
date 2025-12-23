@@ -34,30 +34,32 @@ class Log:
         """
 
         from datetime import datetime
+        from platform import system
+        from epitech_console.Error.error import Error, ErrorLog
 
-        self.log_path : str = (path if path[-1] == "/" else path + "/")
+        self.log_path : str = (path if path[-1] in ["/", "\\"] else path + ("\\" if system() == "Windows" else "/"))
         self.log_file_name : str = str(datetime.now()).replace(":", "_") if not file_name else file_name
 
         try :
-            with open(f"{self.log_path}{self.log_file_name}.log", 'r') as log_file:
-                if log_file.read() == "":
+            open(f"{self.log_path}{self.log_file_name}.log", 'x').close()
 
-                    ## cannot be tested with pytest ##
+        ## cannot be tested with pytest ##
 
-                    raise FileNotFoundError # pragma: no cover
+        except FileNotFoundError: # pragma: no cover
+            raise ErrorLog("failed to create log file") # pragma: no cover
 
+        except FileExistsError:
+            pass
+
+        try :
+            with open(f"{self.log_path}{self.log_file_name}.log", 'w') as log_file:
+                log_file.write("   date          time      | [TYPE]  title      | detail\n\n---START---")
             log_file.close()
 
-        except FileNotFoundError:
-            try :
-                with open(f"{self.log_path}{self.log_file_name}.log", 'a') as log_file:
-                    log_file.write("   date          time      | [TYPE]  title      | detail\n\n---START---")
-                log_file.close()
+        ## cannot be tested with pytest ##
 
-            ## cannot be tested with pytest ##
-
-            except FileNotFoundError: # pragma: no cover
-                pass # pragma: no cover
+        except FileNotFoundError: # pragma: no cover
+            raise ErrorLog("failed to write on log file") # pragma: no cover
 
 
     def log(
@@ -114,6 +116,8 @@ class Log:
                 log_str (str): log string
         """
 
+        from epitech_console.Error.error import ErrorLog
+
         try :
             with open(f"{self.log_path}{self.log_file_name}.log", 'a') as log_file :
                 log_file.write(f"\n{log_str}")
@@ -122,7 +126,7 @@ class Log:
         ## cannot be tested with pytest ##
 
         except FileNotFoundError: # pragma: no cover
-            pass # pragma: no cover
+            raise ErrorLog("failed to write on log file") # pragma: no cover
 
 
     def close(
@@ -137,6 +141,8 @@ class Log:
                 delete (bool, optional): delete the log file
         """
 
+        from epitech_console.Error.error import ErrorLog
+
         try:
             with open(f"{self.log_path}{self.log_file_name}.log", 'a') as log_file :
                 log_file.write(f"\n----END----\n")
@@ -145,7 +151,7 @@ class Log:
         ## cannot be tested with pytest ##
 
         except FileNotFoundError: # pragma: no cover
-            pass # pragma: no cover
+            raise ErrorLog("failed to write on log file") # pragma: no cover
 
         if delete :
             self.delete()
@@ -159,6 +165,7 @@ class Log:
         """
 
         from os import remove
+        from epitech_console.Error.error import ErrorLog
 
         try:
             remove(f"{self.log_path}{self.log_file_name}.log")
@@ -166,7 +173,7 @@ class Log:
         ## cannot be tested with pytest ##
 
         except FileNotFoundError: # pragma: no cover
-            pass # pragma: no cover
+            raise ErrorLog("failed to delete log file") # pragma: no cover
 
 
     def read(
@@ -179,6 +186,8 @@ class Log:
                 str: content of the log file
         """
 
+        from epitech_console.Error.error import ErrorLog
+
         log_str : str = ""
 
         try:
@@ -189,7 +198,7 @@ class Log:
         ## cannot be tested with pytest ##
 
         except FileNotFoundError: # pragma: no cover
-            pass # pragma: no cover
+            raise ErrorLog("failed to read log file") # pragma: no cover
 
         return log_str
 

@@ -16,7 +16,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Time: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "System.Time: imported")
 
 
 class Time:
@@ -74,5 +74,5 @@ class Time:
         return watch.elapsed(True) # pragma: no cover
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Time: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "System.Time: created")
 

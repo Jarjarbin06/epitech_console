@@ -13,6 +13,7 @@ from typing import Any
 
 from epitech_console import Animation, ANSI, Error, System, Text
 
+
 __version__ : str = 'v0.1.8'
 __author__ : str = 'Nathan Jarjarbin'
 __email__ : str = 'nathan.amaraggi@epitech.eu'
@@ -57,13 +58,13 @@ def init(
         System.Setting.update()
         Animation.BasePack.update()
         ANSI.BasePack.update()
-        System.Setting.S_LOG.log("INFO", "module", "epitech_console initialized")
+        System.Setting.S_LOG_FILE.log("INFO", "module", "epitech_console initialized")
 
     ## cannot be tested with pytest ##
 
     except Error.Error as error: # pragma: no cover
         print(error) # pragma: no cover
-        print(Error.Error._lauch_message()) # pragma: no cover
+        print(Error.Error._lauch_error()) # pragma: no cover
 
     except Exception as error: # pragma: no cover
         print(f"\033[101m \033[0m \033[91m{error}\033[0m") # pragma: no cover
@@ -90,18 +91,18 @@ def quit(
             delete_log (bool, optional) : delete the log file
     """
 
-    if System.Setting.S_SETTING_LOG:
-        System.Setting.S_LOG.log("INFO", "module", "epitech_console uninitialized")
-        System.Setting.S_LOG.close()
-        System.Setting.S_CONFIG.set("SETTING", "opened-log", "null")
+    if System.Setting.S_SETTING_LOG_MODE:
+        System.Setting.S_LOG_FILE.log("INFO", "module", "epitech_console uninitialized")
+        System.Setting.S_LOG_FILE.close()
+        System.Setting.S_CONFIG_FILE.set("SETTING", "opened-log", "null")
 
         ## cannot be tested with pytest ##
 
         if show:
-            System.Console.print(str(System.Setting.S_LOG)) # pragma: no cover
+            System.Console.print(str(System.Setting.S_LOG_FILE)) # pragma: no cover
 
         if delete_log:
-            System.Setting.S_LOG.close(delete=True)
+            System.Setting.S_LOG_FILE.close(delete=True)
 
 
 __all__ : list[str] = [

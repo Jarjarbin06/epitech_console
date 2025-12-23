@@ -16,7 +16,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.Style: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Animation.Style: imported")
 
 
 class Style:
@@ -86,4 +86,4 @@ class Style:
         return f"Style(\"{self.on}\", \"{self.off}\", \"{self.arrow_left}\", \"{self.arrow_right}\", \"{self.border_left}\", \"{self.border_right}\")"
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.Style: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Animation.Style: created")

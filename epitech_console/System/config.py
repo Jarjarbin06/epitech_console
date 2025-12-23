@@ -37,6 +37,7 @@ class Config:
         """
 
         from configparser import ConfigParser
+        from platform import system
 
         if path[-1] != "/":
             path += "/"
@@ -45,12 +46,21 @@ class Config:
         self.path : str | None = path
         self.file_name : str | None = file_name
 
+        if system() == "Windows":
+            self.path = self.path.replace("/", "\\")
+            self.file_name = self.file_name.replace("/", "\\")
+
+        if system() == "Linux":
+            self.path = self.path.replace("\\", "/")
+            self.file_name = self.file_name.replace("/", "\\")
+
         if Config.exist(self.path):
             self.config.read(self.path + self.file_name)
 
         else:
             if not data and self.file_name == "config.ini":
                 data = {}
+
             with open(str(self.path) + str(self.file_name), 'w') as config_file:
                 for key in data:
                     self.config[key] = data[key]
@@ -95,7 +105,7 @@ class Config:
             Parameters:
                 section (str): section name
                 option (str): option name
-                wanted_type (type, optional): type to check
+                wanted_type (type, optional): returned type
 
             Returns:
                 Any: data retrieved from config file and of type 'wanted_type'

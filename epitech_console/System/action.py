@@ -16,7 +16,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Action: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "System.Action: imported")
 
 
 class Action:
@@ -232,4 +232,4 @@ class Actions:
         return f"Actions({repr(self.actions)})"
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Action: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "System.Action: created")

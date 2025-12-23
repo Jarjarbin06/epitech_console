@@ -16,7 +16,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "ANSI.BasePack: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "ANSI.BasePack: imported")
 
 
 class BasePack:
@@ -57,4 +57,4 @@ class BasePack:
         BasePack.P_INFO = (Color.color(Color.C_BG), Color.color(Color.C_RESET))
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "ANSI.BasePack: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "ANSI.BasePack: created")

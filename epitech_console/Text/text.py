@@ -17,7 +17,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Text.Text: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Text.Text: imported")
 
 
 class Text(Format):
@@ -154,4 +154,4 @@ class Text(Format):
             return Text(f'\033]8;;jetbrains://clion/navigate/reference?file={path}\033\\File "{path}"\033]8;;\033\\')
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Text.Text: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Text.Text: created")

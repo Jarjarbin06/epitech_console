@@ -10,13 +10,6 @@
 
 from builtins import object
 from typing import Any
-from epitech_console.System.setting import Setting
-
-
-Setting.update()
-
-
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Error.Error: imported")
 
 
 class Error(Exception):
@@ -44,14 +37,34 @@ class Error(Exception):
                 link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
         """
 
-        from epitech_console import quit as q
-
         self.message : str = message
         self.error : str = error
         self.link_data : tuple[str, int | None] | None = link
         self.link : str | None = None
 
         self.create_link()
+        self.log()
+
+
+    def log(
+            self
+        ) -> None:
+        """
+            Log the error.
+        """
+
+        from epitech_console.System.setting import Setting
+
+        Setting.S_LOG_FILE.log("ERROR", "error", f"\"{self.error}\": {self.message}")
+
+        if self.link_data:
+            if self.link_data[1] is None:
+                Setting.S_LOG_FILE.comment(f"A file as been linked to the previous error:")
+                Setting.S_LOG_FILE.comment(f"\"{self.link_data[0]}\"")
+
+            else:
+                Setting.S_LOG_FILE.comment(f"A file and line number as been linked to the previous error:")
+                Setting.S_LOG_FILE.comment(f"\"{self.link_data[0]}\" line {self.link_data[1]}")
 
 
     def create_link(
@@ -62,18 +75,21 @@ class Error(Exception):
             Create an error link.
         """
 
-        from epitech_console.Text.text import Text
+        #from epitech_console.Text.text import Text
 
         if self.link_data:
-            if (len(self.link_data) == 1 or (len(self.link_data) == 2 and not self.link_data[1])) and type(self.link_data[0]) in [str]:
-                self.link = str(Text.file_link(self.link_data[0]))
-            if len(self.link_data) == 2 and type(self.link_data[0]) in [str] and type(self.link_data[1]) in [int]:
-                if self.link_data[1] > 0:
-                    self.link = str(Text.file_link(self.link_data[0], self.link_data[1]))
+            self.link = f"File \"{self.link_data[0]}\", line {self.link_data[1]}"
+
+            #if self.link_data[1] is None:
+            #    self.link = str(Text.file_link(self.link_data[0]))
+
+            #else:
+            #    if self.link_data[1] > 0:
+            #        self.link = str(Text.file_link(self.link_data[0], self.link_data[1]))
 
 
     @staticmethod
-    def _lauch_message(
+    def _lauch_error(
         ) -> str:
         """
             Returns lauch error message.
@@ -107,6 +123,7 @@ class Error(Exception):
         """
 
         from epitech_console.ANSI.color import Color
+        from epitech_console.System.setting import Setting
 
         string : str = "\n"
         string += (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "")
@@ -151,7 +168,6 @@ class ErrorLaunch(Error):
             message : str = "an error occurred during the launch",
 
             *,
-            error : str = "ErrorLaunch",
             link : tuple[str , int | None] | None = None
         ) -> None:
         """
@@ -159,12 +175,11 @@ class ErrorLaunch(Error):
 
             Parameters:
                 message (str, optional): The error message.
-                error (str, optional): The error type (title).
                 link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
         """
 
         self.message : str = message
-        self.error : str = error
+        self.error : str = "ErrorLaunch"
         self.link_data : tuple[str, int] | None = link
         self.link : str | None = None
 
@@ -184,7 +199,6 @@ class ErrorImport(Error):
             message : str = "an error occurred during an import",
 
             *,
-            error : str = "ErrorImport",
             link : tuple[str , int | None] | None = None
         ) -> None:
         """
@@ -192,12 +206,104 @@ class ErrorImport(Error):
 
             Parameters:
                 message (str, optional): The error message.
-                error (str, optional): The error type (title).
                 link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
         """
 
         self.message : str = message
-        self.error : str = error
+        self.error : str = "ErrorImport"
+        self.link_data : tuple[str, int] | None = link
+        self.link : str | None = None
+
+        self.create_link()
+
+
+class ErrorLog(Error):
+    """
+        ErrorLog class.
+
+        Log Error.
+    """
+
+
+    def __init__(
+            self,
+            message : str = "an error occurred on/in a log file",
+
+            *,
+            link : tuple[str , int | None] | None = None
+        ) -> None:
+        """
+            Create an Error.
+
+            Parameters:
+                message (str, optional): The error message.
+                link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
+        """
+
+        self.message : str = message
+        self.error : str = "ErrorLog"
+        self.link_data : tuple[str, int] | None = link
+        self.link : str | None = None
+
+        self.create_link()
+
+
+class ErrorConfig(Error):
+    """
+        ErrorConfig class.
+
+        Config Error.
+    """
+
+
+    def __init__(
+            self,
+            message : str = "an error occurred on/in a config file",
+
+            *,
+            link : tuple[str , int | None] | None = None
+        ) -> None:
+        """
+            Create an Error.
+
+            Parameters:
+                message (str, optional): The error message.
+                link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
+        """
+
+        self.message : str = message
+        self.error : str = "ErrorConfig"
+        self.link_data : tuple[str, int] | None = link
+        self.link : str | None = None
+
+        self.create_link()
+
+
+class ErrorSetting(Error):
+    """
+        ErrorSetting class.
+
+        Setting Error.
+    """
+
+
+    def __init__(
+            self,
+            message : str = "an error occurred during setting's update",
+
+            *,
+            link : tuple[str , int | None] | None = None
+        ) -> None:
+        """
+            Create an Error.
+
+            Parameters:
+                message (str, optional): The error message.
+                link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
+        """
+
+        self.message : str = message
+        self.error : str = "ErrorSetting"
         self.link_data : tuple[str, int] | None = link
         self.link : str | None = None
 
@@ -217,7 +323,6 @@ class ErrorType(Error):
             message : str = "an error occurred on a type",
 
             *,
-            error : str = "ErrorType",
             link : tuple[str , int | None] | None = None
         ) -> None:
         """
@@ -225,12 +330,11 @@ class ErrorType(Error):
 
             Parameters:
                 message (str, optional): The error message.
-                error (str, optional): The error type (title).
                 link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
         """
 
         self.message : str = message
-        self.error : str = error
+        self.error : str = "ErrorType"
         self.link_data : tuple[str, int] | None = link
         self.link : str | None = None
 
@@ -250,7 +354,6 @@ class ErrorValue(Error):
             message : str = "an error occurred on a value",
 
             *,
-            error : str = "ErrorValue",
             link : tuple[str , int | None] | None = None
         ) -> None:
         """
@@ -258,16 +361,12 @@ class ErrorValue(Error):
 
             Parameters:
                 message (str, optional): The error message.
-                error (str, optional): The error type (title).
                 link (tuple[str, int | None] | None, optional): The link to where the error comes from (file and line).
         """
 
         self.message : str = message
-        self.error : str = error
+        self.error : str = "ErrorValue"
         self.link_data : tuple[str, int] | None = link
         self.link : str | None = None
 
         self.create_link()
-
-
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Error.Error: created")

@@ -18,7 +18,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Text.Format: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Text.Format: imported")
 
 
 class Format:
@@ -347,4 +347,4 @@ class Format:
             "epitech_console")
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Text.Format: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Text.Format: created")

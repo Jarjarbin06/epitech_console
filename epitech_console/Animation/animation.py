@@ -17,7 +17,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.Animation: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Animation.Animation: imported")
 
 
 class Animation(Format):
@@ -48,7 +48,7 @@ class Animation(Format):
             from epitech_console.Error.error import ErrorType # pragma: no cover
             from epitech_console import quit # pragma: no cover
 
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__init__: animation is of an unsupported type (supported: list[Any], str ; current: {type(animation)})") # pragma: no cover
+            if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("ERROR", "type", f"Animation.Animation.__init__: animation is of an unsupported type (supported: list[Any], str ; current: {type(animation)})") # pragma: no cover
             quit() # pragma: no cover
             raise ErrorType(link=(f"{Setting.S_PACKAGE_PATH}Animation/animation", 36)) from None # pragma: no cover
 
@@ -89,7 +89,7 @@ class Animation(Format):
             from epitech_console.Error.error import ErrorType # pragma: no cover
             from epitech_console import quit # pragma: no cover
 
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__add__: other is of an unsupported type (supported: Animation, ANSI, Text, StopWatch, str ; current: {type(other)})") # pragma: no cover
+            if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("ERROR", "type", f"Animation.Animation.__add__: other is of an unsupported type (supported: Animation, ANSI, Text, StopWatch, str ; current: {type(other)})") # pragma: no cover
             quit() # pragma: no cover
             raise ErrorType() from None # pragma: no cover
 
@@ -122,7 +122,7 @@ class Animation(Format):
             from epitech_console.Error.error import ErrorType # pragma: no cover
             from epitech_console import quit # pragma: no cover
 
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.Animation.__getitem__: item is of an unsupported type (supported: int ; current: {type(item)})") # pragma: no cover
+            if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("ERROR", "type", f"Animation.Animation.__getitem__: item is of an unsupported type (supported: int ; current: {type(item)})") # pragma: no cover
             quit() # pragma: no cover
             raise ErrorType() from None # pragma: no cover
 
@@ -153,7 +153,7 @@ class Animation(Format):
         ## cannot be tested with pytest ##
 
         if not isinstance(color, ANSI): # pragma: no cover
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.__str__: color is of an unsupported type (supported: ANSI ; current: {type(color)})") # pragma: no cover
+            if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("WARN", "type", f"Animation.Animation.__str__: color is of an unsupported type (supported: ANSI ; current: {type(color)})") # pragma: no cover
 
         return f"{color}{str(self[self.step])}{Color.color(Color.C_RESET)}"
 
@@ -196,7 +196,7 @@ class Animation(Format):
         ## cannot be tested with pytest ##
 
         if not isinstance(auto_reset, bool): # pragma: no cover
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.update: auto_reset is of an unsupported type (supported: bool ; current: {type(auto_reset)})") # pragma: no cover
+            if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("WARN", "type", f"Animation.Animation.update: auto_reset is of an unsupported type (supported: bool ; current: {type(auto_reset)})") # pragma: no cover
 
         self.step += 1
 
@@ -228,10 +228,10 @@ class Animation(Format):
         ## cannot be tested with pytest ##
 
         if not isinstance(color, (ANSI, int)): # pragma: no cover
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.render: color is of an unsupported type (supported: ANSI, int ; current: {type(color)})") # pragma: no cover
+            if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("WARN", "type", f"Animation.Animation.render: color is of an unsupported type (supported: ANSI, int ; current: {type(color)})") # pragma: no cover
 
         if not isinstance(delete, bool): # pragma: no cover
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("WARN", "type", f"Animation.Animation.render: delete is of an unsupported type (supported: bool ; current: {type(delete)})") # pragma: no cover
+            if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("WARN", "type", f"Animation.Animation.render: delete is of an unsupported type (supported: bool ; current: {type(delete)})") # pragma: no cover
 
         if type(color) == int:
             color = Color.color(color)
@@ -282,4 +282,4 @@ class Animation(Format):
         return f"Animation({self.animation})"
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.Animation: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Animation.Animation: created")

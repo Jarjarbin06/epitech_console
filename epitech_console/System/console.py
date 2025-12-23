@@ -16,7 +16,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Console: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "System.Console: imported")
 
 
 class ConsoleMeta(type):
@@ -167,4 +167,4 @@ class Console(metaclass=ConsoleMeta):
         stream.flush() # pragma: no cover
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.Console: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "System.Console: created")

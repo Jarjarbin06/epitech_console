@@ -16,7 +16,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.BasePack: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Animation.BasePack: imported")
 
 
 class BasePack:
@@ -74,7 +74,7 @@ class BasePack:
             from epitech_console.Error.error import ErrorType # pragma: no cover
             from epitech_console import quit # pragma: no cover
 
-            if Setting.S_SETTING_LOG: Setting.S_LOG.log("ERROR", "type", f"Animation.BasePack.update: style is of an unsupported type (supported: Style ; current: {type(style)})") # pragma: no cover
+            if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("ERROR", "type", f"Animation.BasePack.update: style is of an unsupported type (supported: Style ; current: {type(style)})") # pragma: no cover
             quit() # pragma: no cover
             raise ErrorType() from None # pragma: no cover
 
@@ -221,4 +221,4 @@ class BasePack:
         ]
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "Animation.BasePack: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Animation.BasePack: created")

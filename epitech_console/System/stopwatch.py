@@ -16,7 +16,7 @@ from epitech_console.System.setting import Setting
 Setting.update()
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.StopWatch: imported")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "System.StopWatch: imported")
 
 
 class StopWatch:
@@ -225,4 +225,4 @@ class StopWatch:
         return f"StopWatch(?)"
 
 
-if Setting.S_SETTING_LOG: Setting.S_LOG.log("INFO", "init", "System.StopWatch: created")
+if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "System.StopWatch: created")
