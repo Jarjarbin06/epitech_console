@@ -74,7 +74,7 @@ class Setting:
         from epitech_console.System.log import Log
         from epitech_console.Error.error import ErrorSetting
 
-        Setting.S_SETTING_OS = system()
+        Setting.S_OS = system()
 
         if Setting.S_OS == "Windows":
             Setting.S_PACKAGE_PATH = __file__.removesuffix("System\\setting.py")
@@ -103,8 +103,8 @@ class Setting:
             Setting.S_SETTING_OPENED_LOG = Setting.S_CONFIG_FILE.get("SETTING", "opened-log")
 
             if Setting.S_SETTING_OPENED_LOG == "null":
-                Setting.S_LOG_MODE = Log(Setting.S_PACKAGE_PATH + "log")
-                Setting.S_CONFIG_FILE.set("SETTING", "opened-log", Setting.S_LOG_MODE.log_file_name)
+                Setting.S_LOG_FILE = Log(Setting.S_PACKAGE_PATH + "log")
+                Setting.S_CONFIG_FILE.set("SETTING", "opened-log", Setting.S_LOG_FILE.log_file_name)
                 Setting.S_SETTING_OPENED_LOG = Setting.S_CONFIG_FILE.get("SETTING", "opened-log")
 
             else:

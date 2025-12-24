@@ -55,6 +55,8 @@ class Error(Exception):
 
         from epitech_console.System.setting import Setting
 
+        Setting.update()
+
         Setting.S_LOG_FILE.log("ERROR", "error", f"\"{self.error}\": {self.message}")
 
         if self.link_data:
@@ -78,7 +80,11 @@ class Error(Exception):
         #from epitech_console.Text.text import Text
 
         if self.link_data:
-            self.link = f"File \"{self.link_data[0]}\", line {self.link_data[1]}"
+            if self.link_data[1] is None:
+                self.link = f"File \"{self.link_data[0]}\""
+
+            elif self.link_data[1] > 0:
+                self.link = f"File \"{self.link_data[0]}\", line {self.link_data[1]}"
 
             #if self.link_data[1] is None:
             #    self.link = str(Text.file_link(self.link_data[0]))
@@ -184,6 +190,7 @@ class ErrorLaunch(Error):
         self.link : str | None = None
 
         self.create_link()
+        self.log()
 
 
 class ErrorImport(Error):
@@ -215,6 +222,7 @@ class ErrorImport(Error):
         self.link : str | None = None
 
         self.create_link()
+        self.log()
 
 
 class ErrorLog(Error):
@@ -246,6 +254,7 @@ class ErrorLog(Error):
         self.link : str | None = None
 
         self.create_link()
+        self.log()
 
 
 class ErrorConfig(Error):
@@ -277,6 +286,7 @@ class ErrorConfig(Error):
         self.link : str | None = None
 
         self.create_link()
+        self.log()
 
 
 class ErrorSetting(Error):
@@ -308,6 +318,7 @@ class ErrorSetting(Error):
         self.link : str | None = None
 
         self.create_link()
+        self.log()
 
 
 class ErrorType(Error):
@@ -339,6 +350,7 @@ class ErrorType(Error):
         self.link : str | None = None
 
         self.create_link()
+        self.log()
 
 
 class ErrorValue(Error):
@@ -370,3 +382,4 @@ class ErrorValue(Error):
         self.link : str | None = None
 
         self.create_link()
+        self.log()

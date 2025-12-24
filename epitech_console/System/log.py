@@ -43,6 +43,11 @@ class Log:
         try :
             open(f"{self.log_path}{self.log_file_name}.log", 'x').close()
 
+            with open(f"{self.log_path}{self.log_file_name}.log", 'a') as log_file:
+                log_file.write("   date          time      | [TYPE]  title      | detail\n\n---START---")
+            log_file.close()
+
+
         ## cannot be tested with pytest ##
 
         except FileNotFoundError: # pragma: no cover
@@ -52,13 +57,15 @@ class Log:
             pass
 
         try :
-            with open(f"{self.log_path}{self.log_file_name}.log", 'w') as log_file:
-                log_file.write("   date          time      | [TYPE]  title      | detail\n\n---START---")
+            with open(f"{self.log_path}{self.log_file_name}.log", 'r') as log_file:
+                string = log_file.read()
             log_file.close()
+
+            assert "   date          time      | [TYPE]  title      | detail\n\n---START---" in string
 
         ## cannot be tested with pytest ##
 
-        except FileNotFoundError: # pragma: no cover
+        except FileNotFoundError or AssertionError: # pragma: no cover
             raise ErrorLog("failed to write on log file") # pragma: no cover
 
 

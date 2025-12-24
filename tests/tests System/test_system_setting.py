@@ -1,8 +1,7 @@
 import pytest
 
 
-from epitech_console.System import Setting
-from epitech_console.System import Log
+from epitech_console.System import Setting, Log, Config
 from epitech_console import init, quit
 
 
@@ -11,6 +10,9 @@ init()
 
 def test_system_has_attributes(
     ) -> None:
+    assert hasattr(Setting, "S_OS")
+    assert hasattr(Setting, "S_CONFIG_FILE")
+    assert hasattr(Setting, "S_LOG_FILE")
     assert hasattr(Setting, "S_PACKAGE_NAME")
     assert hasattr(Setting, "S_PACKAGE_VERSION")
     assert hasattr(Setting, "S_PACKAGE_DESCRIPTION")
@@ -19,13 +21,15 @@ def test_system_has_attributes(
     assert hasattr(Setting, "S_SETTING_AUTO_COLOR")
     assert hasattr(Setting, "S_SETTING_SAFE_MODE")
     assert hasattr(Setting, "S_SETTING_MINIMAL_MODE")
-    assert hasattr(Setting, "S_SETTING_DEBUG")
-    assert hasattr(Setting, "S_SETTING_LOG")
-    assert hasattr(Setting, "S_LOG")
+    assert hasattr(Setting, "S_SETTING_DEBUG_MODE")
+    assert hasattr(Setting, "S_SETTING_LOG_MODE")
 
 
 def test_system_types(
     ) -> None:
+    assert isinstance(Setting.S_OS, str)
+    assert isinstance(Setting.S_CONFIG_FILE, Config)
+    assert isinstance(Setting.S_LOG_FILE, Log)
     assert isinstance(Setting.S_PACKAGE_NAME, str)
     assert isinstance(Setting.S_PACKAGE_VERSION, str)
     assert isinstance(Setting.S_PACKAGE_DESCRIPTION, str)
@@ -34,9 +38,8 @@ def test_system_types(
     assert isinstance(Setting.S_SETTING_AUTO_COLOR, bool)
     assert isinstance(Setting.S_SETTING_SAFE_MODE, bool)
     assert isinstance(Setting.S_SETTING_MINIMAL_MODE, bool)
-    assert isinstance(Setting.S_SETTING_DEBUG, bool)
-    assert isinstance(Setting.S_SETTING_LOG, bool)
-    assert isinstance(Setting.S_LOG, Log)
+    assert isinstance(Setting.S_SETTING_DEBUG_MODE, bool)
+    assert isinstance(Setting.S_SETTING_LOG_MODE, bool)
 
 
 quit(delete_log=True)

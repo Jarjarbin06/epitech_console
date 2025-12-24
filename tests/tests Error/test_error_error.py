@@ -1,12 +1,11 @@
 import pytest
 
 
-from epitech_console.Error import Error, ErrorLaunch, ErrorImport, ErrorType, ErrorValue
+from epitech_console.Error import *
 from epitech_console import init, quit
 
 
 init()
-
 
 
 def test_error_default_constructor(
@@ -23,7 +22,10 @@ def test_error_full_constructor(
     err = Error("Something broke", error="SystemError", link=("path/file.py", 42))
     assert err.message == "Something broke"
     assert err.error == "SystemError"
-    assert str(err.link) == '\033]8;;jetbrains://clion/navigate/reference?file=path/file.py&line=42\033\\File "path/file.py", line 42\033]8;;\033\\'
+    assert not err.link is None
+    assert str(err.link) == 'File "path/file.py", line 42'
+    #assert 'file=path/file.py&line=42' in str(err.link)
+    #assert '"path/file.py", line 42' in str(err.link)
 
 
 def test_error_str_without_link(
@@ -104,6 +106,27 @@ def test_error_error_import(
     err = ErrorImport()
 
     assert err.error == "ErrorImport"
+
+
+def test_error_error_log(
+    ) -> None:
+    err = ErrorLog()
+
+    assert err.error == "ErrorLog"
+
+
+def test_error_error_config(
+    ) -> None:
+    err = ErrorConfig()
+
+    assert err.error == "ErrorConfig"
+
+
+def test_error_error_setting(
+    ) -> None:
+    err = ErrorSetting()
+
+    assert err.error == "ErrorSetting"
 
 
 def test_error_error_type(
