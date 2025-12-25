@@ -154,7 +154,6 @@ def test_format_apply_invalid_target():
     assert result == 123
 
 
-#"""
 def test_format_tree_dict():
     data = {
         "folder": {
@@ -170,7 +169,6 @@ def test_format_tree_dict():
     assert "file1" in tree_output
     assert "subfolder" in tree_output
     assert "file2" in tree_output
-#"""
 
 
 def test_format_tree_list():
