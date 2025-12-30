@@ -79,8 +79,8 @@ If you want the latest version directly from the source, you can install it usin
 git clone -b latest https://github.com/Jarjarbin06/epitech_console.git
 make -C epitech_console install
 ```
-This downloads the code, then the `install-package` script handles the installation.
-These commands install the `epitech_console` package and its dependencies (None currently).
+This downloads the code, then the `install` script handles the installation.
+These commands install the `epitech_console` package and its dependencies (datetime).
 
 ## Usage
 
