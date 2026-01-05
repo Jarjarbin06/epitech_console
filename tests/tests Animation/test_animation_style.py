@@ -3,14 +3,9 @@ import pytest
 
 from epitech_console.Animation import Style
 from epitech_console import init, quit
-from epitech_console.Error import ErrorLog
 
 
-try:
-    init()
-
-except ErrorLog:
-    pass
+init()
 
 
 def test_style_initialization(
