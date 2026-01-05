@@ -8,7 +8,6 @@ from epitech_console import init, quit
 init()
 
 
-
 def test_config_exist_returns_false(
     ) -> None:
     assert not Config.exist("tests")

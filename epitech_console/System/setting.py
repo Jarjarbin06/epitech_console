@@ -111,7 +111,5 @@ class Setting:
                 Setting.S_LOG_FILE = Log(Setting.S_PACKAGE_PATH + ("log\\" if system() == "Windows" else "log/"), file_name=Setting.S_SETTING_OPENED_LOG)
 
             if Setting.S_LOG_FILE is None:
-                file_path : str = Setting.S_PACKAGE_PATH + ('log\\' if system() == 'Windows' else 'log/')
-                raise ErrorSetting(f"log file creation failed (file path: \"{file_path}\")\"")
-
+                print('\x1b[101 \x1b[0m \x1b[91mAn error occured when updating setting S_LOG_FILE (currently equal \"None\"\x1b[0m')
             Setting.S_LOG_FILE.log("INFO", "function", "System.Setting.update(): setting updated")
