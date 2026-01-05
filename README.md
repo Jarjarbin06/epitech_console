@@ -8,7 +8,7 @@
 # **epitech_console** v0.1.8.3
 <details>
 <summary>Latest development version</summary>
-🟠 UNDER DEVELOPMENT 🟠 None 🟠
+🟠 UNDER DEVELOPMENT 🟠 v0.1.9 🟠
 </details>
 <details>
 <summary>Latest release</summary>
