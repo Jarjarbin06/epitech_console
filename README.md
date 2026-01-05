@@ -5,14 +5,14 @@
 <img src="https://github.com/Jarjarbin06/epitech_console/blob/main/source/epitech_logo.png?raw=true" alt="Epite6ch logo" width="49%" style="display:inline-block; margin-right:1%;">
 <img src="https://github.com/Jarjarbin06/epitech_console/blob/main/source/epitech_console_logo.png?raw=true" alt="Epitech Console logo" width="49%" style="display:inline-block;">
 
-# **epitech_console** v0.1.8.2
+# **epitech_console** v0.1.8.3
 <details>
 <summary>Latest development version</summary>
 🟠 UNDER DEVELOPMENT 🟠 None 🟠
 </details>
 <details>
 <summary>Latest release</summary>
-🟢 RELEASED 🟢 v0.1.8.2 🟢
+🟢 RELEASED 🟢 v0.1.8.3 🟢
 </details>
 
 [![Python package](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml/badge.svg?branch=main)](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml)
@@ -478,6 +478,7 @@ REPO/
 
 ## Release-Notes
 * #### v0.1.8:
+	*   **[FIX]** log fix and random fixes
 	*   **[UPDATE]** import banner updated
 	*   **[FIX]** `ProgressBar` wrong length
 	*   **[FIX]** minor random correction
