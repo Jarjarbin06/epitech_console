@@ -1,4 +1,5 @@
 import pytest
+from types import NoneType
 
 
 from epitech_console.System import Setting, Log, Config
@@ -29,7 +30,7 @@ def test_system_types(
     ) -> None:
     assert isinstance(Setting.S_OS, str)
     assert isinstance(Setting.S_CONFIG_FILE, Config)
-    assert isinstance(Setting.S_LOG_FILE, Log)
+    assert isinstance(Setting.S_LOG_FILE, (Log, NoneType))
     assert isinstance(Setting.S_PACKAGE_NAME, str)
     assert isinstance(Setting.S_PACKAGE_VERSION, str)
     assert isinstance(Setting.S_PACKAGE_DESCRIPTION, str)

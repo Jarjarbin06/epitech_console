@@ -57,16 +57,18 @@ class Error(Exception):
 
         Setting.update()
 
-        Setting.S_LOG_FILE.log("ERROR", "error", f"\"{self.error}\": {self.message}")
+        if Setting.S_SETTING_LOG_MODE:
 
-        if self.link_data:
-            if self.link_data[1] is None:
-                Setting.S_LOG_FILE.comment(f"A file as been linked to the previous error:")
-                Setting.S_LOG_FILE.comment(f"\"{self.link_data[0]}\"")
+            Setting.S_LOG_FILE.log("ERROR", "error", f"\"{self.error}\": {self.message}")
 
-            else:
-                Setting.S_LOG_FILE.comment(f"A file and line number as been linked to the previous error:")
-                Setting.S_LOG_FILE.comment(f"\"{self.link_data[0]}\" line {self.link_data[1]}")
+            if self.link_data:
+                if self.link_data[1] is None:
+                    Setting.S_LOG_FILE.comment(f"A file as been linked to the previous error:")
+                    Setting.S_LOG_FILE.comment(f"\"{self.link_data[0]}\"")
+
+                else:
+                    Setting.S_LOG_FILE.comment(f"A file and line number as been linked to the previous error:")
+                    Setting.S_LOG_FILE.comment(f"\"{self.link_data[0]}\" line {self.link_data[1]}")
 
 
     def create_link(
