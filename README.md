@@ -8,12 +8,12 @@
 # **epitech_console** v0.1.8.2
 <details>
 <summary>Development status</summary>
-🟠 UNDER DEVELOPMENT 🟠
-<!-- 🟢 RELEASED 🟢 -->
+<!-- 🟠 UNDER DEVELOPMENT 🟠 -->
+🟢 RELEASED 🟢
 </details>
 <details>
 <summary>Latest release</summary>
-v0.1.8
+v0.1.8.2
 </details>
 
 [![Python package](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml/badge.svg?branch=main)](https://github.com/Jarjarbin06/epitech_console/actions/workflows/test-package.yml)
