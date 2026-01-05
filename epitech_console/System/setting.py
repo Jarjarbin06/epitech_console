@@ -111,6 +111,6 @@ class Setting:
                 Setting.S_LOG_FILE = Log(Setting.S_PACKAGE_PATH + ("log\\" if system() == "Windows" else "log/"), file_name=Setting.S_SETTING_OPENED_LOG)
 
             if Setting.S_LOG_FILE is None:
-                raise ErrorSetting(f"log file creation failed (file path: \"{Setting.S_PACKAGE_PATH + ('log\\' if system() == 'Windows' else 'log/')}\")\"")
+                raise ErrorSetting(f"log file creation failed (file path: \"{Setting.S_PACKAGE_PATH + ("log\\" if system() == "Windows" else "log/")}\")\"")
 
             Setting.S_LOG_FILE.log("INFO", "function", "System.Setting.update(): setting updated")
