@@ -2,7 +2,7 @@
 **PACKAGE** = *2025-12-18 10:27 UTC+1(Paris)* ; 
 **README** = *2025-12-17 16:07 UTC+1(Paris)*</small>\
 \
-<img src="https://github.com/Jarjarbin06/epitech_console/blob/main/source/epitech_logo.png?raw=true" alt="Epitech logo" width="49%" style="display:inline-block; margin-right:1%;">
+<img src="https://github.com/Jarjarbin06/epitech_console/blob/main/source/epitech_logo.png?raw=true" alt="Epite6ch logo" width="49%" style="display:inline-block; margin-right:1%;">
 <img src="https://github.com/Jarjarbin06/epitech_console/blob/main/source/epitech_console_logo.png?raw=true" alt="Epitech Console logo" width="49%" style="display:inline-block;">
 
 # **epitech_console** v0.1.8.2
@@ -79,8 +79,8 @@ If you want the latest version directly from the source, you can install it usin
 git clone -b latest https://github.com/Jarjarbin06/epitech_console.git
 make -C epitech_console install
 ```
-This downloads the code, then the `install-package` script handles the installation.
-These commands install the `epitech_console` package and its dependencies (None currently).
+This downloads the code, then the `install` script handles the installation.
+These commands install the `epitech_console` package and its dependencies (datetime).
 
 ## Usage
 
@@ -478,10 +478,9 @@ REPO/
     *   `@file_link(path: str, line: int | None = None)`: Creates a link to a file and line number.
 
 ## Release-Notes
-* #### v0.1.8(2):
+* #### v0.1.8:
 	*   **[UPDATE]** import banner updated
 	*   **[FIX]** `ProgressBar` wrong length
-* #### v0.1.8:
 	*   **[FIX]** minor random correction
 	*   **[ADD]** `pytest` tests 100% coverage reached
 	*   **[ADD]** some logs in `Animation` classes
@@ -498,7 +497,7 @@ REPO/
     *   **[ADD]** `pytest` tests for the whole module (including sub-modules)
     *   **[FIX]** all docstrings containing the word `optional`
 
-* #### v0.1.6(2):
+* #### v0.1.6:
     *   **[ADD]** project wiki added
     *   **[ADD]** `len()` `Console` compatibility
     *   **[UPDATE]** directory tree
