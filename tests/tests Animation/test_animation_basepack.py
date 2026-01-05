@@ -2,12 +2,15 @@ import pytest
 
 
 from epitech_console.Animation import BasePack, Style
-from epitech_console.Error import ErrorType
 from epitech_console import init, quit
+from epitech_console.Error import ErrorLog, ErrorType
 
 
-init()
+try:
+    init()
 
+except ErrorLog:
+    pass
 
 
 def test_basepack_has_attributes(

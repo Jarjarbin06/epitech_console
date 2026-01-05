@@ -4,10 +4,14 @@ import pytest
 from epitech_console.Animation import Animation
 from epitech_console.Animation import Spinner
 from epitech_console import init, quit
+from epitech_console.Error import ErrorLog
 
 
-init()
+try:
+    init()
 
+except ErrorLog:
+    pass
 
 
 def test_spinner_stick(

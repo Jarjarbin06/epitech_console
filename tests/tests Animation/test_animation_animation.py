@@ -4,9 +4,14 @@ import pytest
 from epitech_console.Text import Text
 from epitech_console.Animation import Animation
 from epitech_console import init, quit
+from epitech_console.Error import ErrorLog
 
 
-init()
+try:
+    init()
+
+except ErrorLog:
+    pass
 
 
 def test_animation_initialization_with_list(
