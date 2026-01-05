@@ -254,7 +254,14 @@ class ErrorLog(Error):
         self.link : str | None = None
 
         self.create_link()
-        self.log()
+
+    def log(
+            self
+        ) -> None:
+        """
+            Cannot log this error into a log file.
+        """
+        pass
 
 
 class ErrorConfig(Error):
