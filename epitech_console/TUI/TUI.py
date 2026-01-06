@@ -29,6 +29,7 @@ class TUI:
     """
 
 
+    from collections.abc import Callable
     from epitech_console.System.action import Action, Actions
     from epitech_console.ANSI.color import Color
 
@@ -67,16 +68,6 @@ class TUI:
                 })
 
 
-    def add(
-            self,
-            name: str,
-            action: Action | Actions | None = None,
-            date: Any = None,
-            color: Color = Color(Color.C_RESET)
-        ) -> None:
-        pass
-
-
     def __str__(
             self
         ) -> str:
@@ -89,10 +80,50 @@ class TUI:
         string : str = ""
         for line in self._screen:
             for column in line:
-                string += f"{column['color']}{column['name']}{Color(Color.C_RESET)}"
-            string += "\n"
+                string += f"{column['color']}{column['name']}{Color(Color.C_RESET)}  "
+            string = string[:-2] + "\n"
 
         return string[:-1]
+
+
+    def add(
+            self,
+            x: int,
+            y: int,
+            name: str,
+            *,
+            action: Action | Actions | Callable | None = None,
+            data: Any | None = None,
+            color: Color | None = None
+        ) -> None:
+        """
+            Add an element to interact with.
+
+            Parameters:
+                x (int): x position of the element.
+                y (int): y position of the element.
+                name (str): name of the element to show.
+                action (Action | Actions | Callable | None, optional): action(s) to perform when the element is interacted with.
+                data (Any | None, optional): data linked to the element (hidden behind the scene).
+                color (Color | None, optional): color of the element.
+        """
+
+        self._screen[x][y]["name"] = name
+
+        if action is not None:
+            self._screen[x][y]["action"] = action
+
+        if data is not None:
+            self._screen[x][y]["data"] = data
+
+        if color is not None:
+            self._screen[x][y]["color"] = color
+
+
+    def fill(
+            self
+        ) -> None:
+        pass
 
 
     @staticmethod
