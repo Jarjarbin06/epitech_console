@@ -67,7 +67,7 @@ install:
 uninstall:
 	@echo -e "$(YELLOW)[UNINSTALL] Uninstalling package$(NC)"
 	@./$(SCRIPT_DIR)/uninstall-package
-	@echo -e "$(GREEN)[UNINSTALL] Package uninstalled(NC)"
+	@echo -e "$(GREEN)[UNINSTALL] Package uninstalled$(NC)"
 
 reinstall:
 	@echo -e "$(YELLOW)[REINSTALL] Reinstalling package$(NC)"

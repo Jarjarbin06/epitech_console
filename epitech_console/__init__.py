@@ -12,6 +12,7 @@ from builtins import object
 from typing import Any
 
 from epitech_console import Animation, ANSI, Error, System, Text
+from epitech_console.TUI.TUI import TUI
 
 
 __version__ : str = 'v0.1.8'
