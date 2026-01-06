@@ -57,10 +57,10 @@ def ansi_demo(
 
     print("\n=== BASIC FOREGROUND COLORS ===")
 
-    print(ANSI.Color.color_fg(1) + "RED TEXT" + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.color_fg(2) + "GREEN TEXT" + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.color_fg(3) + "YELLOW TEXT" + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.color_fg(4) + "BLUE TEXT" + ANSI.Color.color(ANSI.Color.C_RESET))
+    print(ANSI.Color.color_fg(1) + "RED TEXT" + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.color_fg(2) + "GREEN TEXT" + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.color_fg(3) + "YELLOW TEXT" + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.color_fg(4) + "BLUE TEXT" + ANSI.Color(ANSI.Color.C_RESET))
 
 
     # ============================================================
@@ -69,10 +69,10 @@ def ansi_demo(
 
     print("\n=== BASIC BACKGROUND COLORS ===")
 
-    print(ANSI.Color.color_bg(1) + " RED BG " + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.color_bg(2) + " GREEN BG " + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.color_bg(3) + " YELLOW BG " + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.color_bg(4) + " BLUE BG " + ANSI.Color.color(ANSI.Color.C_RESET))
+    print(ANSI.Color.color_bg(1) + " RED BG " + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.color_bg(2) + " GREEN BG " + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.color_bg(3) + " YELLOW BG " + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.color_bg(4) + " BLUE BG " + ANSI.Color(ANSI.Color.C_RESET))
 
 
     # ============================================================
@@ -81,10 +81,10 @@ def ansi_demo(
 
     print("\n=== RGB FOREGROUND COLORS ===")
 
-    print(ANSI.Color.rgb_fg(255, 0, 0) + "RGB RED" + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.rgb_fg(0, 255, 0) + "RGB GREEN" + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.rgb_fg(0, 0, 255) + "RGB BLUE" + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.rgb_fg(255, 255, 0) + "RGB YELLOW" + ANSI.Color.color(ANSI.Color.C_RESET))
+    print(ANSI.Color.rgb_fg(255, 0, 0) + "RGB RED" + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.rgb_fg(0, 255, 0) + "RGB GREEN" + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.rgb_fg(0, 0, 255) + "RGB BLUE" + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.rgb_fg(255, 255, 0) + "RGB YELLOW" + ANSI.Color(ANSI.Color.C_RESET))
 
 
     # ============================================================
@@ -93,10 +93,10 @@ def ansi_demo(
 
     print("\n=== RGB BACKGROUND COLORS ===")
 
-    print(ANSI.Color.rgb_bg(80, 0, 0) + " DARK RED BG " + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.rgb_bg(0, 80, 0) + " DARK GREEN BG " + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.rgb_bg(0, 0, 80) + " DARK BLUE BG " + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.rgb_bg(80, 80, 0) + " DARK YELLOW BG " + ANSI.Color.color(ANSI.Color.C_RESET))
+    print(ANSI.Color.rgb_bg(80, 0, 0) + " DARK RED BG " + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.rgb_bg(0, 80, 0) + " DARK GREEN BG " + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.rgb_bg(0, 0, 80) + " DARK BLUE BG " + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.rgb_bg(80, 80, 0) + " DARK YELLOW BG " + ANSI.Color(ANSI.Color.C_RESET))
 
 
     # ============================================================
@@ -105,10 +105,10 @@ def ansi_demo(
 
     print("\n=== EPITECH COLOR PRESETS ===")
 
-    print(ANSI.Color.epitech_fg() + "EPITECH LIGHT FG" + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.epitech_bg() + " EPITECH LIGHT BG " + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.epitech_dark_fg() + "EPITECH DARK FG" + ANSI.Color.color(ANSI.Color.C_RESET))
-    print(ANSI.Color.epitech_dark_bg() + " EPITECH DARK BG " + ANSI.Color.color(ANSI.Color.C_RESET))
+    print(ANSI.Color.epitech_fg() + "EPITECH LIGHT FG" + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.epitech_bg() + " EPITECH LIGHT BG " + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.epitech_dark_fg() + "EPITECH DARK FG" + ANSI.Color(ANSI.Color.C_RESET))
+    print(ANSI.Color.epitech_dark_bg() + " EPITECH DARK BG " + ANSI.Color(ANSI.Color.C_RESET))
 
 
     # ============================================================
@@ -122,7 +122,7 @@ def ansi_demo(
         ANSI.Color.rgb_bg(60, 60, 60)
     )
 
-    print(combo + "WHITE ON DARK GRAY" + ANSI.Color.color(ANSI.Color.C_RESET))
+    print(combo + "WHITE ON DARK GRAY" + ANSI.Color(ANSI.Color.C_RESET))
 
 
     # ============================================================
@@ -237,7 +237,7 @@ def ansi_demo(
         ANSI.Cursor.right(5)
     )
 
-    print(chain + "CHAINED ANSI SEQUENCES" + ANSI.Color.color(ANSI.Color.C_RESET))
+    print(chain + "CHAINED ANSI SEQUENCES" + ANSI.Color(ANSI.Color.C_RESET))
 
 
     # ============================================================
@@ -248,7 +248,7 @@ def ansi_demo(
 
     print(ANSI.Cursor.up(0) + "Cursor up 0 (no-op)")
     print(ANSI.Cursor.left(0) + "Cursor left 0 (no-op)")
-    print(ANSI.Color.rgb_fg(0, 0, 0) + "Black RGB" + ANSI.Color.color(ANSI.Color.C_RESET))
+    print(ANSI.Color.rgb_fg(0, 0, 0) + "Black RGB" + ANSI.Color(ANSI.Color.C_RESET))
 
 
     # ============================================================

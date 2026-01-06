@@ -41,7 +41,7 @@ class Format:
 
         from epitech_console.ANSI.color import Color
 
-        return Format.apply(self, Color.color(Color.C_RESET))
+        return Format.apply(self, Color(Color.C_RESET))
 
 
 
@@ -57,7 +57,7 @@ class Format:
 
         from epitech_console.ANSI.color import Color
 
-        return Format.apply(self, Color.color(Color.C_BOLD))
+        return Format.apply(self, Color(Color.C_BOLD))
 
 
     def italic(
@@ -71,7 +71,7 @@ class Format:
         """
         from epitech_console.ANSI.color import Color
 
-        return Format.apply(self, Color.color(Color.C_ITALIC))
+        return Format.apply(self, Color(Color.C_ITALIC))
 
 
     def underline(
@@ -86,7 +86,7 @@ class Format:
 
         from epitech_console.ANSI.color import Color
 
-        return Format.apply(self, Color.color(Color.C_UNDERLINE))
+        return Format.apply(self, Color(Color.C_UNDERLINE))
 
 
     def hide(
@@ -101,7 +101,7 @@ class Format:
 
         from epitech_console.ANSI.color import Color
 
-        return Format.apply(self, Color.color(Color.C_HIDDEN))
+        return Format.apply(self, Color(Color.C_HIDDEN))
 
 
     def strikethrough(
@@ -116,7 +116,7 @@ class Format:
 
         from epitech_console.ANSI.color import Color
 
-        return Format.apply(self, Color.color(Color.C_STRIKETHROUGH))
+        return Format.apply(self, Color(Color.C_STRIKETHROUGH))
 
 
     def error(
@@ -138,8 +138,8 @@ class Format:
         from epitech_console.ANSI.basepack import BasePack
 
         if title:
-            return Format.apply(self, Color.color(BasePack.P_ERROR[0]))
-        return Format.apply(self, Color.color(BasePack.P_ERROR[1]))
+            return Format.apply(self, Color(BasePack.P_ERROR[0]))
+        return Format.apply(self, Color(BasePack.P_ERROR[1]))
 
 
     def warning(
@@ -161,8 +161,8 @@ class Format:
         from epitech_console.ANSI.basepack import BasePack
 
         if title:
-            return Format.apply(self, Color.color(BasePack.P_WARNING[0]))
-        return Format.apply(self, Color.color(BasePack.P_WARNING[1]))
+            return Format.apply(self, Color(BasePack.P_WARNING[0]))
+        return Format.apply(self, Color(BasePack.P_WARNING[1]))
 
 
     def valid(
@@ -184,8 +184,8 @@ class Format:
         from epitech_console.ANSI.basepack import BasePack
 
         if title:
-            return Format.apply(self, Color.color(BasePack.P_VALID[0]))
-        return Format.apply(self, Color.color(BasePack.P_VALID[1]))
+            return Format.apply(self, Color(BasePack.P_VALID[0]))
+        return Format.apply(self, Color(BasePack.P_VALID[1]))
 
 
     def info(
@@ -207,8 +207,8 @@ class Format:
         from epitech_console.ANSI.basepack import BasePack
 
         if title:
-            return Format.apply(self, Color.color(BasePack.P_INFO[0]))
-        return Format.apply(self, Color.color(BasePack.P_INFO[1]))
+            return Format.apply(self, Color(BasePack.P_INFO[0]))
+        return Format.apply(self, Color(BasePack.P_INFO[1]))
 
 
     @staticmethod
@@ -234,7 +234,7 @@ class Format:
         from epitech_console.Animation.progressbar import ProgressBar
 
         if not sequence:
-            sequence: ANSI = Color.color(Color.C_RESET)
+            sequence: ANSI = Color(Color.C_RESET)
 
         if type(obj) in [str]:
             return str(sequence) + str(obj)

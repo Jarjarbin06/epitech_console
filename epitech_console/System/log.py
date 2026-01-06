@@ -228,9 +228,9 @@ class Log:
             "[WARN] " : BasePack.P_WARNING,
             "[ERROR]" : BasePack.P_ERROR,
         }
-        c_reset : Any = Color.color(Color.C_RESET)
-        c_under : Any = Color.color(Color.C_UNDERLINE)
-        c_bold : Any = Color.color(Color.C_BOLD)
+        c_reset : Any = Color(Color.C_RESET)
+        c_under : Any = Color(Color.C_UNDERLINE)
+        c_bold : Any = Color(Color.C_BOLD)
         start : int = log_str.index("---START---\n") + len("---START---\n")
         end : int = log_str.index("----END----\n")
         logs : list = [lines.split(" | ") for lines in log_str[start:end].splitlines()]
@@ -260,7 +260,7 @@ class Log:
                 ## cannot be tested with pytest ##
 
                 elif len(log_line) == 1: # pragma: no cover
-                    string += f"{Color.color(Color.C_BG_DARK_BLUE)}|{c_reset} " + f"{Color.color(Color.C_FG_DARK_BLUE)}UNFORMATTED\n\"{log_line[0]}\"{c_reset}\n" # pragma: no cover
+                    string += f"{Color(Color.C_BG_DARK_BLUE)}|{c_reset} " + f"{Color(Color.C_FG_DARK_BLUE)}UNFORMATTED\n\"{log_line[0]}\"{c_reset}\n" # pragma: no cover
 
         string += footer + (" " * (t_size - 1)) + f"{c_reset}\n"
 

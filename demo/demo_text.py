@@ -155,7 +155,7 @@ def text_demo(
     print("\n=== FORMAT.APPLY ON TEXT ===")
 
     t = Text.Text("Applied bold")
-    Format.apply(t, ANSI.Color.color(ANSI.Color.C_BOLD))
+    Format.apply(t, ANSI.Color(ANSI.Color.C_BOLD))
     Console.print(t)
 
     print("\n(apply works on Text)")
@@ -168,7 +168,7 @@ def text_demo(
     print("\n=== FORMAT.APPLY ON STRING ===")
 
     raw = "Raw string formatted"
-    formatted = Format.apply(raw, ANSI.Color.color(ANSI.Color.C_UNDERLINE))
+    formatted = Format.apply(raw, ANSI.Color(ANSI.Color.C_UNDERLINE))
     Console.print(formatted)
 
     print("\n(apply works on raw string)")
@@ -181,9 +181,9 @@ def text_demo(
     print("\n=== MULTIPLE APPLY CALLS ===")
 
     t = Text.Text("Multi-applied")
-    Format.apply(t, ANSI.Color.color(ANSI.Color.C_BOLD))
-    Format.apply(t, ANSI.Color.color(ANSI.Color.C_ITALIC))
-    Format.apply(t, ANSI.Color.color(ANSI.Color.C_UNDERLINE))
+    Format.apply(t, ANSI.Color(ANSI.Color.C_BOLD))
+    Format.apply(t, ANSI.Color(ANSI.Color.C_ITALIC))
+    Format.apply(t, ANSI.Color(ANSI.Color.C_UNDERLINE))
     Console.print(t)
 
     print("\n(multiple ANSI sequences applied)")

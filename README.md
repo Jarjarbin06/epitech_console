@@ -95,7 +95,7 @@ from epitech_console import init, quit
 init()
 
 epitech_color = Color.epitech_fg() + Color.rgb_bg(0, 0 ,0)
-reset = Color.color(Color.C_RESET)
+reset = Color(Color.C_RESET)
 my_text = epitech_color + Text("hi").bold() + reset
 
 print(my_text)

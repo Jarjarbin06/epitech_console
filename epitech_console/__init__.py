@@ -11,8 +11,32 @@
 from builtins import object
 from typing import Any
 
-from epitech_console import Animation, ANSI, Error, System, Text
-from epitech_console.TUI.TUI import TUI
+
+def fatal_error(
+        err : Exception
+    ) -> None:
+    """
+        print an error message and exit (with code 84)
+    """
+
+    print(f"\033[101m \033[0m \033[91m{err}\033[0m")  # pragma: no cover
+    print(
+        f"\033[103m \033[0m \033[93mepitech_console launched with fatal error\033[0m\n"
+        "\033[103m \033[0m\n"
+        "\033[103m \033[0m \033[93mPlease reinstall with :\033[0m\n"
+        "\033[103m \033[0m \033[93m    'pip install --upgrade --force-reinstall epitech_console'\033[0m\n"
+        "\033[103m \033[0m\n"
+        "\033[103m \033[0m \033[93mPlease report the issue here : https://github.com/Jarjarbin06/epitech_console/issues\033[0m\n"
+    )  # pragma: no cover
+    exit(84)  # pragma: no cover
+
+
+try:
+    from epitech_console import Animation, ANSI, Error, System, Text
+    from epitech_console.TUI.TUI import TUI
+
+except Exception as error:  # pragma: no cover
+    fatal_error(error)  # pragma: no cover
 
 
 __version__ : str = 'v0.1.8'
@@ -30,7 +54,7 @@ def _banner(
 
     epitech = ANSI.Color.epitech_fg()
     epitech_dark = ANSI.Color.epitech_dark_fg()
-    reset = ANSI.Color.color(ANSI.Color.C_RESET)
+    reset = ANSI.Color(ANSI.Color.C_RESET)
 
     offset_t = Text.Text("  ")
     title_t = epitech + Text.Text(f'{System.Setting.S_PACKAGE_NAME}').bold().underline() + reset + "  " + Text.Text.url_link(
@@ -59,24 +83,18 @@ def init(
         System.Setting.update()
         Animation.BasePack.update()
         ANSI.BasePack.update()
-        System.Setting.S_LOG_FILE.log("INFO", "module", "epitech_console initialized")
+        if System.Setting.S_SETTING_LOG_MODE:
+            System.Setting.S_LOG_FILE.log("INFO", "module", "epitech_console initialized")
 
     ## cannot be tested with pytest ##
 
     except Error.Error as error: # pragma: no cover
         print(error) # pragma: no cover
-        print(Error.Error._lauch_error()) # pragma: no cover
+        print(Error.Error.lauch_error()) # pragma: no cover
+        exit(84)
 
     except Exception as error: # pragma: no cover
-        print(f"\033[101m \033[0m \033[91m{error}\033[0m") # pragma: no cover
-        print(
-            "\033[103m \033[0m \033[93mepitech_console launched with error\033[0m\n"
-            "\033[103m \033[0m\n"
-            "\033[103m \033[0m \033[93mPlease reinstall with :\033[0m\n"
-            "\033[103m \033[0m \033[93m    'pip install --upgrade --force-reinstall epitech_console'\033[0m\n"
-            "\033[103m \033[0m\n"
-            "\033[103m \033[0m \033[93mPlease report the issue here : https://github.com/Jarjarbin06/epitech_console/issues\033[0m\n"
-        ) # pragma: no cover
+        fatal_error(error)  # pragma: no cover
 
 
 def quit(

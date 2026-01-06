@@ -97,7 +97,7 @@ class Error(Exception):
 
 
     @staticmethod
-    def _lauch_error(
+    def lauch_error(
         ) -> str:
         """
             Returns lauch error message.
@@ -111,12 +111,12 @@ class Error(Exception):
         from epitech_console.ANSI.color import Color # pragma: no cover
 
         return (
-            f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_YELLOW)}epitech_console launched with error{Color.color(Color.C_RESET)}\n"
-            f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)}\n"
-            f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_YELLOW)}Please reinstall with :{Color.color(Color.C_RESET)}\n"
-            f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_YELLOW)}    'pip install --upgrade --force-reinstall epitech_console'{Color.color(Color.C_RESET)}\n"
-            f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)}\n"
-            f"{Color.color(Color.C_BG_YELLOW)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_YELLOW)}Please report the issue here : https://github.com/Jarjarbin06/epitech_console/issues{Color.color(Color.C_RESET)}\n"
+            f"{Color(Color.C_BG_YELLOW)} {Color(Color.C_RESET)} {Color(Color.C_FG_YELLOW)}epitech_console launched with error{Color(Color.C_RESET)}\n"
+            f"{Color(Color.C_BG_YELLOW)} {Color(Color.C_RESET)}\n"
+            f"{Color(Color.C_BG_YELLOW)} {Color(Color.C_RESET)} {Color(Color.C_FG_YELLOW)}Please reinstall with :{Color(Color.C_RESET)}\n"
+            f"{Color(Color.C_BG_YELLOW)} {Color(Color.C_RESET)} {Color(Color.C_FG_YELLOW)}    'pip install --upgrade --force-reinstall epitech_console'{Color(Color.C_RESET)}\n"
+            f"{Color(Color.C_BG_YELLOW)} {Color(Color.C_RESET)}\n"
+            f"{Color(Color.C_BG_YELLOW)} {Color(Color.C_RESET)} {Color(Color.C_FG_YELLOW)}Please report the issue here : https://github.com/Jarjarbin06/epitech_console/issues{Color(Color.C_RESET)}\n"
         ) # pragma: no cover
 
 
@@ -134,18 +134,18 @@ class Error(Exception):
         from epitech_console.System.setting import Setting
 
         string : str = "\n"
-        string += (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "")
+        string += (f"{Color(Color.C_BG_RED)} {Color(Color.C_RESET)} {Color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "")
         string += (self.error if self.error else "ErrorUnknown")
         string += (":" if len(self.message) > 0 else "")
 
         if len(self.message) > 0:
             for line in self.message.splitlines():
-                string += "\n" + (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}     {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "")
+                string += "\n" + (f"{Color(Color.C_BG_RED)} {Color(Color.C_RESET)}     {Color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "")
                 string += line
 
             string += "\n"
 
-        string += (f"{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)} {Color.color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + (f"\n{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}\n{Color.color(Color.C_BG_RED)} {Color.color(Color.C_RESET)}  {Color.color(Color.C_FG_RED)}" + self.link) if self.link else ""
+        string += (f"{Color(Color.C_BG_RED)} {Color(Color.C_RESET)} {Color(Color.C_FG_RED)}" if Setting.S_SETTING_AUTO_COLOR else "") + (f"\n{Color(Color.C_BG_RED)} {Color(Color.C_RESET)}\n{Color(Color.C_BG_RED)} {Color(Color.C_RESET)}  {Color(Color.C_FG_RED)}" + self.link) if self.link else ""
 
         return string
 

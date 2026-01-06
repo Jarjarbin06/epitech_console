@@ -51,10 +51,10 @@ class BasePack:
 
         from epitech_console.ANSI.color import Color
 
-        BasePack.P_ERROR = (Color.color(Color.C_BG_DARK_RED), Color.color(Color.C_FG_DARK_RED))
-        BasePack.P_WARNING = (Color.color(Color.C_BG_DARK_YELLOW), Color.color(Color.C_FG_DARK_YELLOW))
-        BasePack.P_VALID = (Color.color(Color.C_BG_DARK_GREEN), Color.color(Color.C_FG_DARK_GREEN))
-        BasePack.P_INFO = (Color.color(Color.C_BG), Color.color(Color.C_RESET))
+        BasePack.P_ERROR = (Color(Color.C_BG_DARK_RED), Color(Color.C_FG_DARK_RED))
+        BasePack.P_WARNING = (Color(Color.C_BG_DARK_YELLOW), Color(Color.C_FG_DARK_YELLOW))
+        BasePack.P_VALID = (Color(Color.C_BG_DARK_GREEN), Color(Color.C_FG_DARK_GREEN))
+        BasePack.P_INFO = (Color(Color.C_BG), Color(Color.C_RESET))
 
 
 if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "ANSI.BasePack: created")

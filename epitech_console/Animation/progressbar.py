@@ -107,7 +107,7 @@ class ProgressBar(Format):
             self,
             item : int,
             *,
-            color : Any = Color.color(Color.C_RESET)
+            color : Any = Color(Color.C_RESET)
         ) -> str :
         """
             Get the current step of the animations and convert it to a string.
@@ -122,13 +122,13 @@ class ProgressBar(Format):
 
         from epitech_console.ANSI.color import Color
 
-        return str(color + self.animation[item] + str(Color.color(Color.C_RESET)))
+        return str(color + self.animation[item] + str(Color(Color.C_RESET)))
 
 
     def __str__(
             self,
             *,
-            color : tuple[Any, Any, Any] = (Color.color(Color.C_RESET), Color.color(Color.C_RESET), Color.color(Color.C_RESET)),
+            color : tuple[Any, Any, Any] = (Color(Color.C_RESET), Color(Color.C_RESET), Color(Color.C_RESET)),
             hide_spinner : bool = False
         ) -> str :
         """
@@ -161,7 +161,7 @@ class ProgressBar(Format):
             string += self.spinner.__str__(color=color[1])
 
         if self.percent_style in ["num", "mix"] :
-            string += f" {color[2]}{str(self.percent)}%{Color.color(Color.C_RESET)}"
+            string += f" {color[2]}{str(self.percent)}%{Color(Color.C_RESET)}"
 
         return string
 
@@ -204,7 +204,7 @@ class ProgressBar(Format):
     def render(
             self,
             *,
-            color : Any | tuple[Any, Any, Any] = Color.color(Color.C_RESET),
+            color : Any | tuple[Any, Any, Any] = Color(Color.C_RESET),
             hide_spinner_at_end: bool = True,
             delete : bool = False
         ) -> Any:

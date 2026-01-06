@@ -71,6 +71,17 @@ class Text(Format):
         return Text(str(self) + str(other))
 
 
+    def __mul__(
+            self,
+            other : int
+        ) -> Any:
+        """
+            Multiply Text sequences.
+        """
+
+        return Text(str(self) * other)
+
+
     def __str__(
             self
         ) -> str :

@@ -135,7 +135,7 @@ class Animation(Format):
     def __str__(
             self,
             *,
-            color : Any = Color.color(Color.C_RESET)
+            color : Any = Color(Color.C_RESET)
         ) -> str :
         """
             Convert Animation object to string.
@@ -155,7 +155,7 @@ class Animation(Format):
         if not isinstance(color, ANSI): # pragma: no cover
             if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("WARN", "type", f"Animation.Animation.__str__: color is of an unsupported type (supported: ANSI ; current: {type(color)})") # pragma: no cover
 
-        return f"{color}{str(self[self.step])}{Color.color(Color.C_RESET)}"
+        return f"{color}{str(self[self.step])}{Color(Color.C_RESET)}"
 
 
     def __call__(
@@ -207,7 +207,7 @@ class Animation(Format):
     def render(
             self,
             *,
-            color : Any = Color.color(Color.C_RESET),
+            color : Any = Color(Color.C_RESET),
             delete : bool = False
         ) -> str:
         """
@@ -234,11 +234,11 @@ class Animation(Format):
             if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("WARN", "type", f"Animation.Animation.render: delete is of an unsupported type (supported: bool ; current: {type(delete)})") # pragma: no cover
 
         if type(color) == int:
-            color = Color.color(color)
+            color = Color(color)
 
         string : str = ""
 
-        string += self.__str__(color=color) + str(Color.color(Color.C_RESET))
+        string += self.__str__(color=color) + str(Color(Color.C_RESET))
 
         if delete:
             string += str(Cursor.up() + Cursor.move_column(0))

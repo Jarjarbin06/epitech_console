@@ -37,10 +37,13 @@ class ConsoleMeta(type):
 
         from os import get_terminal_size
 
+        size: int
+
         try :
-            size : int = get_terminal_size().columns
+            size = get_terminal_size().columns
+
         except OSError:
-            size : int = 100
+            size = 100
 
         return size
 
@@ -116,10 +119,10 @@ class Console(metaclass=ConsoleMeta):
 
         for idx in range(len(string_list)):
             if cut and (len(string_list[idx]) - (string_list[idx].count("\033[") * 2)) > (len(Console) + 6):
-                string_list[idx] = string_list[idx][:(len(Console) + 2 + string_list[idx].count("\033[") * 2)] + "..." + str(Color.color(Color.C_RESET))
+                string_list[idx] = string_list[idx][:(len(Console) + 2 + string_list[idx].count("\033[") * 2)] + "..." + str(Color(Color.C_RESET))
             final_string += Text(string_list[idx]) + (Text("\n") if len(string_list) > 1 else Text(""))
 
-        final_string = Text(start) + final_string + (Color.color(Color.C_RESET) if auto_reset else Text("")) + Text(end)
+        final_string = Text(start) + final_string + (Color(Color.C_RESET) if auto_reset else Text("")) + Text(end)
 
         print(final_string, end="", file=file)
 
@@ -165,6 +168,30 @@ class Console(metaclass=ConsoleMeta):
         ## cannot be tested with pytest ##
 
         stream.flush() # pragma: no cover
+
+
+    @staticmethod
+    def get_size(
+        ) -> tuple[int, int]:
+        """
+            get the size of the current terminal
+
+            Returns:
+                tuple: size (width, height) of the terminal
+        """
+
+        from os import get_terminal_size
+
+        t_size = get_terminal_size()
+        size : tuple[int, int]
+
+        try :
+            size = (t_size.columns, t_size.lines)
+
+        except OSError:
+            size = (100, 10)
+
+        return size
 
 
 if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "System.Console: created")

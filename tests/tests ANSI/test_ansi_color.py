@@ -10,31 +10,31 @@ init()
 
 def test_color_str(
     ) -> None:
-    seq = Color.color("hey")
+    seq = Color("hey")
     assert str(seq) == "hey"
 
 
 def test_color_ANSI(
     ) -> None:
-    seq = Color.color(ANSI("hey"))
+    seq = Color(ANSI("hey"))
     assert str(seq) == "hey"
 
 
 def test_color_int_valid(
     ) -> None:
-    seq = Color.color(31)
+    seq = Color(31)
     assert str(seq) == "\033[31m"
 
 
 def test_color_int_invalid(
     ) -> None:
-    seq = Color.color(-1)
+    seq = Color(-1)
     assert str(seq) == ""
 
 
 def test_color_invalid_type(
     ) -> None:
-    seq = Color.color(Text("hey"))
+    seq = Color(Text("hey"))
     assert str(seq) == ""
 
 
@@ -88,7 +88,7 @@ def test_rgb_bg_invalid_range(
 
 def test_static_colors(
     ) -> None:
-    color = Color.color(Color.C_RESET)
+    color = Color(Color.C_RESET)
     assert isinstance(color, ANSI)
     assert str(color) == "\033[0m"
 
@@ -119,7 +119,7 @@ def test_epitech_dark_bg(
 
 def test_len_color(
     ) -> None:
-    assert len(Color.color(Color.C_FG_RED)) == len("\033[91m")
+    assert len(Color(Color.C_FG_RED)) == len("\033[91m")
 
 
 quit(delete_log=True)

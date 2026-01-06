@@ -120,6 +120,17 @@ class Color:
     C_BG_WHITE : int = 107
 
 
+    def __new__(
+            cls,
+            *args
+        ) -> ANSI:
+        """
+            Call Color.color()
+        """
+
+        return Color.color(*args)
+
+
     @staticmethod
     def color(
             color: Any | str | int

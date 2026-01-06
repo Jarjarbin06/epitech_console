@@ -85,9 +85,20 @@ class ANSI(Format):
             return self
 
 
+    def __mul__(
+            self,
+            other : int
+        ) -> Any:
+        """
+            Multiply ANSI sequences.
+        """
+
+        return ANSI(str(self) * other)
+
+
     def __str__(
             self
-        ) -> str :
+        ) -> str:
         """
             Convert ANSI object to string.
 
