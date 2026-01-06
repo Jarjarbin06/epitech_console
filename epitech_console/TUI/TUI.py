@@ -29,24 +29,76 @@ class TUI:
     """
 
 
+    from epitech_console.System.action import Action, Actions
+    from epitech_console.ANSI.color import Color
+
+
     def __init__(
             self,
-            *args,
+            width: int,
+            height: int,
             **kwargs
         ) -> None:
         """
             Create a TUI (Terminal User Interface).
+
+            Parameters:
+                width (int): width of the TUI.
+                height (int): height of the TUI.
         """
 
         from epitech_console.ANSI.ansi import ANSI
         from epitech_console.ANSI.color import Color
-        from epitech_console.System.console import Console
 
         self._title_color : ANSI = Color(Color.C_BG)
         self._reset_color : ANSI = Color(Color.C_RESET)
-        self._width : int = Console.get_size()[0] - 1
-        self._height : int = Console.get_size()[1]
+        self._width : int = width
+        self._height : int = height
+        self._screen : list[list[dict]] = []
 
-        self._screen : list[list[Any]] = []
+        for _ in range(self._height):
+            self._screen.append([])
+            for _ in range(self._width):
+                self._screen[-1].append({
+                    "name" : "",
+                    "action" : TUI.none,
+                    "data" : None,
+                    "color" : Color(Color.C_RESET)
+                })
 
 
+    def add(
+            self,
+            name: str,
+            action: Action | Actions | None = None,
+            date: Any = None,
+            color: Color = Color(Color.C_RESET)
+        ) -> None:
+        pass
+
+
+    def __str__(
+            self
+        ) -> str:
+        """
+            Return the string representation of the TUI.
+        """
+
+        from epitech_console.ANSI.color import Color
+
+        string : str = ""
+        for line in self._screen:
+            for column in line:
+                string += f"{column['color']}{column['name']}{Color(Color.C_RESET)}"
+            string += "\n"
+
+        return string[:-1]
+
+
+    @staticmethod
+    def none(
+        ) -> None:
+        """
+            Nothing
+        """
+        pass
