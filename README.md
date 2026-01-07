@@ -477,6 +477,11 @@ REPO/
     *   `@file_link(path: str, line: int | None = None)`: Creates a link to a file and line number.
 
 ## Release-Notes
+* #### v0.1.9:
+	*   **[UPDATE]** `Console` upgrade and new function
+	*   **[ADD]** `TUI` (Terminal User Interface)
+	*   **[FIX]** random fixes
+
 * #### v0.1.8:
 	*   **[FIX]** log fix and random fixes
 	*   **[UPDATE]** import banner updated
