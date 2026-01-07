@@ -57,12 +57,12 @@ class TUI:
         self._width : int = width
         self._height : int = height
         self.title : str = ">>>  TUI  <<<"
-        self.title_color : ANSI = Color(Color.C_BG)
+        self.title_color : ANSI = Color.rgb_bg(255, 255, 255) + Color.rgb_fg(50, 50, 50)
         self._element_length = ((len(Console)) // self._width) - len(self.separator)
         self._element_base : str = (' ' * self._element_length)
-        self.element_color : ANSI = Color(Color.C_BG_GREY)
+        self.element_color : ANSI = Color.rgb_bg(50, 50, 50) + Color.rgb_fg(255, 255, 255)
         self._total_length : int = (self._element_length * self._width) + (len(self.separator) * (self._width - 1))
-        self.selection_color : ANSI = Color(Color.C_BG_DARK_GREY) + Color(Color.C_FG_WHITE)
+        self.selection_color : ANSI = Color.rgb_bg(150, 150, 150) + Color.rgb_fg(50, 50, 50)
         self._running : bool = False
         self.selection : tuple = (0, 0)
         self._base_element : dict = {
@@ -110,7 +110,7 @@ class TUI:
             string += f"{self.title_color} {Color(Color.C_RESET)}{self.element_color}"
 
             for column in range(self._width):
-                string += f"{Color(Color.C_RESET)}{"" if line == self.selection[0] and column == self.selection[1] else self._screen[line][column]['color']}{self._screen[line][column]['name']}{Color(Color.C_RESET)}{self.element_color}{self.separator}"
+                string += f"{Color(Color.C_RESET)}{self.selection_color if line == self.selection[0] and column == self.selection[1] else self._screen[line][column]['color']}{self._screen[line][column]['name']}{Color(Color.C_RESET)}{self.element_color}{self.separator}"
 
             string = string[:-2] + f"{Color(Color.C_RESET)}{self.title_color} "
             string += (" " * (len(Console) - (self._total_length + 2))) + str(Color(Color.C_RESET)) + "\n"
@@ -185,14 +185,18 @@ class TUI:
 
         from epitech_console.ANSI.color import Color
 
+        if len(filler) > self._element_length:
+            filler = filler[:self._element_length]
+
+        else:
+            empty_len = (self._element_length - len(filler))
+            filler = (" " * (empty_len // 2)) + filler + (" " * (empty_len - (empty_len // 2)))
+
         for line in range(self._height):
             for column in range(self._width):
-                self._screen[line][column] = {
-                    "name" : filler,
-                    "action" : TUI._none,
-                    "data" : None,
-                    "color" : Color(Color.C_RESET)
-                }
+                copy = self._base_element.copy()
+                copy["name"] = filler
+                self._screen[line][column] = copy
 
 
     def run(
