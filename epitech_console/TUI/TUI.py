@@ -65,32 +65,33 @@ class TUI:
         self.selection_color : ANSI = Color(Color.C_BG_DARK_GREY) + Color(Color.C_FG_WHITE)
         self._running : bool = False
         self.selection : tuple = (0, 0)
+        self._base_element : dict = {
+            "name" : self._element_base,
+            "action" : TUI._none,
+            "data" : None,
+            "color" : self.element_color
+        }
 
         if "title" in kwargs and type(kwargs["title"]) == str:
-            self._title = kwargs["title"]
+            self.title = kwargs["title"]
 
         if "title_color" in kwargs and type(kwargs["title_color"]) == ANSI:
-            self._title_color = kwargs["title_color"]
+            self.title_color = kwargs["title_color"]
 
         if "element_color" in kwargs and type(kwargs["element_color"]) == ANSI:
-            self._element_color = kwargs["element_color"]
+            self.element_color = kwargs["element_color"]
 
         if "selection_color" in kwargs and type(kwargs["selection_color"]) == ANSI:
-            self._selection_color = kwargs["selection_color"]
+            self.selection_color = kwargs["selection_color"]
 
         if "separator" in kwargs and type(kwargs["separator"]) == str:
-            self._separator = kwargs["separator"]
+            self.separator = kwargs["separator"]
 
         for _ in range(self._height):
             self._screen.append([])
 
             for _ in range(self._width):
-                self._screen[-1].append({
-                    "name" : self._element_base,
-                    "action" : TUI._none,
-                    "data" : None,
-                    "color" : self.element_color
-                })
+                self._screen[-1].append(self._base_element.copy())
 
 
     def __str__(
@@ -113,6 +114,8 @@ class TUI:
 
             string = string[:-2] + f"{Color(Color.C_RESET)}{self.title_color} "
             string += (" " * (len(Console) - (self._total_length + 2))) + str(Color(Color.C_RESET)) + "\n"
+
+        string += f"{self.title_color + Color(Color.C_BOLD)}{" " * len(Console)}{Color(Color.C_RESET)}\n"
 
         return string[:-1]
 
@@ -158,6 +161,20 @@ class TUI:
             self._screen[y][x]["color"] = color
 
 
+    def delete(
+            self,
+            y: int,
+            x: int
+        ) -> None :
+        """
+            Delete an element from the TUI.
+        """
+
+        y, x = y - 1, x - 1
+
+        self._screen[y][x] = self._base_element.copy()
+
+
     def fill(
             self,
             filler: str = ""
@@ -187,6 +204,7 @@ class TUI:
 
         from epitech_console.System.console import Console
         from epitech_console.ANSI.cursor import Cursor
+        from epitech_console.ANSI.line import Line
 
         self._running = True
         pressed_key : str
@@ -194,7 +212,7 @@ class TUI:
         Console.print(Cursor.hide(), end = "")
 
         while self._running:
-            Console.print(str(self) + str(Cursor.up(str(self).count("\n") + 1)), end = "")
+            Console.print(Line.clear() + str(self), end = "")
             pressed_key = Console.get_key_press()
 
             if pressed_key == "q":
@@ -220,7 +238,7 @@ class TUI:
             elif self.selection[1] >= self._width:
                 self.selection = (self.selection[0], self.selection[1] - self._width)
 
-        Console.print(Cursor.show(), end = "")
+        Console.print(Line.clear() + Cursor.show(), end = "")
 
 
     def exit(

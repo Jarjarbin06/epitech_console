@@ -187,6 +187,54 @@ class Console(metaclass=ConsoleMeta):
 
 
     @staticmethod
+    def get_cursor_position(
+        ) -> tuple[int, int]:
+        """
+            Return cursor position in console.
+            (code from AI)
+
+            Returns:
+                tuple: cursor position in console.
+        """
+
+        import sys
+        import tty
+        import termios
+        import re
+
+        if not sys.stdin.isatty():
+            raise RuntimeError("stdin is not a TTY")
+
+        fd = sys.stdin.fileno()
+        old = termios.tcgetattr(fd)
+
+        try:
+            tty.setraw(fd)
+
+            # Request cursor position
+            sys.stdout.write("\x1b[6n")
+            sys.stdout.flush()
+
+            # Read response: ESC [ row ; col R
+            response = ""
+            while True:
+                ch = sys.stdin.read(1)
+                response += ch
+                if ch == "R":
+                    break
+
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old)
+
+        match = re.match(r"\x1b\[(\d+);(\d+)R", response)
+        if not match:
+            raise RuntimeError(f"Invalid response: {repr(response)}")
+
+        row, col = map(int, match.groups())
+        return row, col
+
+
+    @staticmethod
     def flush(
             stream : Any = stdout,
         ) -> None:

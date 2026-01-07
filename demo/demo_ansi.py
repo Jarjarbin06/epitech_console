@@ -155,7 +155,7 @@ def ansi_demo(
     print("\n=== CURSOR POSITIONING ===")
 
     Time.wait(1)
-    print(ANSI.Cursor.move(10, 5) + "Moved to (10,5)", end="")
+    print(ANSI.Cursor.move(5, 10) + "Moved to (5,10)", end="")
 
     Time.wait(1)
     print(ANSI.Cursor.move_column(1) + "Column 1", end="")
@@ -171,7 +171,7 @@ def ansi_demo(
     print(ANSI.Cursor.set(), end="")
 
     Time.wait(1)
-    print(ANSI.Cursor.move(30, 10) + "Temporary text")
+    print(ANSI.Cursor.move(10, 30) + "Temporary text")
 
     Time.wait(1)
     print(ANSI.Cursor.reset() + "Back to saved position")

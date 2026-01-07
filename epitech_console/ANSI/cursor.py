@@ -160,15 +160,15 @@ class Cursor:
 
     @staticmethod
     def move(
-            x : int = 0,
-            y : int = 0
+            y : int = 0,
+            x : int = 0
         ) -> ANSI:
         """
             Move the cursor to the column x and line y
 
             Parameters:
+                y (int, optional): row y position
                 x (int, optional): column x position
-                y (int, optional): line y position
 
             Returns:
                 ANSI: ansi sequence
