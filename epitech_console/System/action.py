@@ -229,7 +229,7 @@ class Actions:
                 str: Actions string
         """
 
-        return f"Actions({repr(self.actions)})"
+        return f"Actions({repr(repr(self.actions))})"
 
 
 if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "System.Action: created")

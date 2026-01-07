@@ -279,7 +279,7 @@ class Animation(Format):
                 str: Animation string
         """
 
-        return f"Animation({self.animation})"
+        return f"Animation({repr(self.animation)})"
 
 
 if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Animation.Animation: created")

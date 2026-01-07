@@ -277,4 +277,4 @@ class Log:
                 str: Log string
         """
 
-        return f"Log(\"{self.log_path}\", \"{self.log_file_name}\")"
+        return f"Log({repr(self.log_path)}, {repr(self.log_file_name)})"

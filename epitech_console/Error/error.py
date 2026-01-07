@@ -160,7 +160,7 @@ class Error(Exception):
                 str: Error string
         """
 
-        return f"Error(\"{self.message}\", error=\"{self.error}\", link=(\"{self.link_data[0]}\", {self.link_data[1]}))"
+        return f"Error({repr(self.message)}, error={repr(self.error)}, link=({repr(self.link_data[0])}, {repr(self.link_data[1])}))"
 
 
 class ErrorLaunch(Error):

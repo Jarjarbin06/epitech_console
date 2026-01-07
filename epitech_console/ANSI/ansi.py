@@ -129,7 +129,7 @@ class ANSI(Format):
                 str: ANSI string
         """
 
-        return f"ANSI(\"{self.sequence}\")"
+        return f"ANSI(\"{repr(self.sequence)}\")"
 
 
 if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "ANSI.ANSI: created")

@@ -247,7 +247,7 @@ class ProgressBar(Format):
                 str: ProgressBar string
         """
 
-        return f"ProgressBar({self.length}, animation=[\"{self.animation[0]}\", ..., \"{self.animation[-1]}\"], style={self.style}, percent_style=\"{self.percent_style}\", spinner={repr(self.spinner)}, spinner_position=\"{self.spinner_position}\")"
+        return f"ProgressBar({repr(self.length)}, animation=[{repr(self.animation[0])}, ..., {repr(self.animation[-1])}], style={repr(self.style)}, percent_style={repr(self.percent_style)}, spinner={repr(self.spinner)}, spinner_position={repr(self.spinner_position)})"
 
 
 if Setting.S_SETTING_LOG_MODE: Setting.S_LOG_FILE.log("INFO", "init", "Animation.ProgressBar: created")

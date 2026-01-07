@@ -154,6 +154,38 @@ class Console(metaclass=ConsoleMeta):
 
         return wanted_type(input(msg + separator)) # pragma: no cover
 
+
+    @staticmethod
+    def get_key_press(
+        ) -> str:
+        """
+            Wait for a key press and return it.
+            (code from AI)
+
+            Returns:
+                str: Key pressed.
+        """
+
+        import sys
+        import tty
+        import termios
+
+        fd = sys.stdin.fileno()
+        old_settings = termios.tcgetattr(fd)
+
+        try:
+            tty.setraw(fd)
+            ch1 = sys.stdin.read(1)
+
+            if ch1 == '\x1b':  # ESC
+                ch2 = sys.stdin.read(1)
+                ch3 = sys.stdin.read(1)
+                return ch1 + ch2 + ch3
+            return ch1
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+
+
     @staticmethod
     def flush(
             stream : Any = stdout,

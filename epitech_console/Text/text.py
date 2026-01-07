@@ -118,7 +118,7 @@ class Text(Format):
                 str: Text string
         """
 
-        return f"Text(\"{self.text}\")"
+        return f"Text({repr(self.text)})"
 
 
     @staticmethod
