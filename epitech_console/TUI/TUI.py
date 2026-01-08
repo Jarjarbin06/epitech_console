@@ -31,14 +31,24 @@ class TUI:
 
     from collections.abc import Callable
     from epitech_console.System.action import Action, Actions
+    from epitech_console.System.console import Console
     from epitech_console.ANSI.color import Color
+    from epitech_console.ANSI.ansi import ANSI
 
 
     def __init__(
             self,
             height: int,
             width: int,
-            **kwargs
+            *,
+            size: int = len(Console),
+            separator: str = "==",
+            title: str = ">>>  TUI  <<<",
+            title_color: ANSI = Color.rgb_bg(255, 255, 255) + Color.rgb_fg(50, 50, 50),
+            element_color: ANSI = Color.rgb_bg(50, 50, 50) + Color.rgb_fg(255, 255, 255),
+            selection_color: ANSI = Color.rgb_bg(150, 150, 150) + Color.rgb_fg(50, 50, 50),
+            selection: bool = True,
+            limit: tuple[int, int, int, int] | None = None
         ) -> None:
         """
             Create a TUI (Terminal User Interface).
@@ -46,34 +56,34 @@ class TUI:
             Parameters:
                 width (int): width of the TUI.
                 height (int): height of the TUI.
-
-            kwargs:
-                title (str): title of the TUI.
-                title_color (ANSI): color of the title of the TUI.
-                element_color (ANSI): color of the element of the TUI.
-                selection_color (ANSI): color of the selection of the TUI.
-                separator (str): separator between the elements of the TUI (recommended to have an even length).
-                limit (tuple[int, int, int, int]): limit the selection zone of the TUI (y1, x1, y2, x2).
+                size (int): size of the TUI.
+                title (str, optional): title.
+                title_color (ANSI, optional): color of the title.
+                element_color (ANSI, optional): color of the element.
+                selection_color (ANSI, optional): color of the selection.
+                separator (str, optional): separator between the elements (recommended to have an even length).
+                limit (tuple[int, int, int, int] | None, optional): limit the selection zone (y1, x1, y2, x2).
+                selection (bool, optional): enable/disable selection.
         """
 
         from epitech_console.ANSI.ansi import ANSI
-        from epitech_console.ANSI.color import Color
-        from epitech_console.System.console import Console
 
+        self.size : int = size
         self._screen : list[list[dict]] = []
-        self.separator : str = "=="
+        self.separator : str = separator
         self._width : int = width
         self._height : int = height
-        self.title : str = ">>>  TUI  <<<"
-        self.title_color : ANSI = Color.rgb_bg(255, 255, 255) + Color.rgb_fg(50, 50, 50)
-        self._element_length = ((len(Console)) // self._width) - len(self.separator)
+        self.title : str = title
+        self.title_color : ANSI = title_color
+        self._element_length = (self.size // self._width) - len(self.separator)
         self._element_base : str = (' ' * self._element_length)
-        self.element_color : ANSI = Color.rgb_bg(50, 50, 50) + Color.rgb_fg(255, 255, 255)
+        self.element_color : ANSI = element_color
         self._total_length : int = 0
-        self.selection_color : ANSI = Color.rgb_bg(150, 150, 150) + Color.rgb_fg(50, 50, 50)
+        self.selection_color : ANSI = selection_color
         self._running : bool = False
         self.limit : tuple[int, int, int, int] = (0, 0, self._height, self._width)
-        self.selection : tuple[int, int] = (self.limit[0], self.limit[1])
+        self.selected : tuple[int, int] = (self.limit[0], self.limit[1])
+        self.selection : bool = selection
         self._base_element : dict = {
             "name" : self._element_base,
             "action" : TUI._none,
@@ -81,25 +91,9 @@ class TUI:
             "color" : self.element_color
         }
 
-        if "title" in kwargs and type(kwargs["title"]) == str:
-            self.title = kwargs["title"]
-
-        if "title_color" in kwargs and type(kwargs["title_color"]) == ANSI:
-            self.title_color = kwargs["title_color"]
-
-        if "element_color" in kwargs and type(kwargs["element_color"]) == ANSI:
-            self.element_color = kwargs["element_color"]
-
-        if "selection_color" in kwargs and type(kwargs["selection_color"]) == ANSI:
-            self.selection_color = kwargs["selection_color"]
-
-        if "separator" in kwargs and type(kwargs["separator"]) == str:
-            self.separator = kwargs["separator"]
-
-        if "limit" in kwargs and type(kwargs["limit"]) == tuple:
-            self.limit = kwargs["limit"]
-            self.limit = (self.limit[0] - 1, self.limit[1] - 1, self.limit[2], self.limit[3]) # correction
-            self.selection: tuple[int, int] = (self.limit[0], self.limit[1])
+        if limit is not None:
+            self.limit = (limit[0] - 1, limit[1] - 1, limit[2], limit[3])
+            self.selected: tuple[int, int] = (self.limit[0], self.limit[1])
 
         self._total_length = (self._element_length * self._width) + (len(self.separator) * (self._width - 1))
 
@@ -118,20 +112,19 @@ class TUI:
         """
 
         from epitech_console.ANSI.color import Color
-        from epitech_console.System.console import Console
 
-        string : str = f"{self.title_color + Color(Color.C_BOLD)}{" " * ((self._total_length - len(self.title)) // 2)}{self.title}{" " * ((self._total_length - len(self.title)) // 2)}{" " * (len(Console) - (self._total_length - 1))}{Color(Color.C_RESET)}\n"
+        string : str = f"{self.title_color + Color(Color.C_BOLD)}{" " * ((self._total_length - len(self.title)) // 2)}{self.title}{" " * ((self._total_length - len(self.title)) // 2)}{" " * (self.size - (self._total_length - 1))}{Color(Color.C_RESET)}\n"
 
         for line in range(self._height):
             string += f"{self.title_color} {Color(Color.C_RESET)}{self.element_color}"
 
             for column in range(self._width):
-                string += f"{Color(Color.C_RESET)}{self.selection_color if line == self.selection[0] and column == self.selection[1] else self._screen[line][column]['color']}{self._screen[line][column]['name']}{Color(Color.C_RESET)}{self.element_color}{self.separator}"
+                string += f"{Color(Color.C_RESET)}{self.selection_color if (line == self.selected[0] and column == self.selected[1]) and self.selection else self._screen[line][column]['color']}{self._screen[line][column]['name']}{Color(Color.C_RESET)}{self.element_color}{self.separator}"
 
             string = string[:-2] + f"{Color(Color.C_RESET)}{self.title_color} "
-            string += (" " * (len(Console) - (self._total_length + 2))) + str(Color(Color.C_RESET)) + "\n"
+            string += (" " * (self.size - (self._total_length + 2))) + str(Color(Color.C_RESET)) + "\n"
 
-        string += f"{self.title_color + Color(Color.C_BOLD)}{" " * len(Console)}{Color(Color.C_RESET)}\n"
+        string += f"{self.title_color + Color(Color.C_BOLD)}{" " * self.size}{Color(Color.C_RESET)}\n"
 
         return string[:-1]
 
@@ -236,25 +229,25 @@ class TUI:
             if pressed_key == "q":
                 self._running = False
             elif pressed_key in ["\x1b[A"]:
-                self.selection = (self.selection[0] - 1, self.selection[1])
+                self.selected = (self.selected[0] - 1, self.selected[1])
             elif pressed_key in ["\x1b[B"]:
-                self.selection = (self.selection[0] + 1, self.selection[1])
+                self.selected = (self.selected[0] + 1, self.selected[1])
             elif pressed_key in ["\x1b[C"]:
-                self.selection = (self.selection[0], self.selection[1] + 1)
+                self.selected = (self.selected[0], self.selected[1] + 1)
             elif pressed_key in ["\x1b[D"]:
-                self.selection = (self.selection[0], self.selection[1] - 1)
+                self.selected = (self.selected[0], self.selected[1] - 1)
             elif pressed_key in ["\r", " "]:
-                self._screen[self.selection[0]][self.selection[1]]["action"]()
+                self._screen[self.selected[0]][self.selected[1]]["action"]()
 
-            if self.selection[0] < self.limit[0]:
-                self.selection = (self.selection[0] + (self.limit[2] - self.limit[0]), self.selection[1])
-            elif self.selection[0] >= self.limit[2]:
-                self.selection = (self.selection[0] - (self.limit[2] - self.limit[0]), self.selection[1])
+            if self.selected[0] < self.limit[0]:
+                self.selected = (self.selected[0] + (self.limit[2] - self.limit[0]), self.selected[1])
+            elif self.selected[0] >= self.limit[2]:
+                self.selected = (self.selected[0] - (self.limit[2] - self.limit[0]), self.selected[1])
 
-            if self.selection[1] < self.limit[1]:
-                self.selection = (self.selection[0], self.selection[1] + (self.limit[3] - self.limit[1]))
-            elif self.selection[1] >= self.limit[3]:
-                self.selection = (self.selection[0], self.selection[1] - (self.limit[3] - self.limit[1]))
+            if self.selected[1] < self.limit[1]:
+                self.selected = (self.selected[0], self.selected[1] + (self.limit[3] - self.limit[1]))
+            elif self.selected[1] >= self.limit[3]:
+                self.selected = (self.selected[0], self.selected[1] - (self.limit[3] - self.limit[1]))
 
         Console.print(Line.clear() + Cursor.show(), end = "")
 
@@ -288,7 +281,7 @@ class TUI:
         assert self.limit[0] <= y <= self.limit[2] or y == -1
         assert self.limit[1] <= x <= self.limit[3] or x == -1
 
-        self.selection = (y - 1 if y != -1 else self.selection[0], x - 1 if x != -1 else self.selection[1])
+        self.selected = (y - 1 if y != -1 else self.selected[0], x - 1 if x != -1 else self.selected[1])
 
 
     @staticmethod
